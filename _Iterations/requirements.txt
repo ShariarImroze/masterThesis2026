@@ -1,0 +1,42 @@
+# Data Processing & Analysis
+pandas==2.3.3
+numpy==1.24.3
+
+# Machine Learning & Classification
+scikit-learn==1.3.2
+scipy==1.11.4
+
+# NLP & Text Processing
+langdetect==1.0.9
+transformers==4.35.2
+torch==2.1.1
+
+# Deep Learning & GPU Support
+accelerate==0.24.1
+safetensors==0.4.0
+
+# Visualization
+matplotlib==3.8.2
+seaborn==0.13.0
+plotly==5.18.0
+
+# Progress Bars & Utilities
+tqdm==4.66.1
+
+# Data Serialization
+# pickle (built-in)
+
+# File I/O & System
+# os (built-in)
+# json (built-in)
+# glob (built-in)
+# shutil (built-in)
+# subprocess (built-in)
+# sys (built-in)
+# gc (built-in)
+# warnings (built-in)
+
+# Optional (for enhanced functionality)
+jupyter==1.0.0
+ipykernel==6.29.5
+nbformat==5.9.2
