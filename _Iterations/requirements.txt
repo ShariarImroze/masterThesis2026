@@ -40,3 +40,10 @@ tqdm==4.66.1
 jupyter==1.0.0
 ipykernel==6.29.5
 nbformat==5.9.2
+
+# Optional ML packages (install if you plan to run boosted/imbalance models)
+# xgboost and lightgbm provide gradient-boosted tree implementations
+# imbalanced-learn provides SMOTE and other resampling utilities
+xgboost==1.8.1
+lightgbm==3.3.5
+imbalanced-learn==0.10.1
