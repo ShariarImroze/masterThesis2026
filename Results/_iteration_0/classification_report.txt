@@ -14,18 +14,18 @@ MODEL PARAMETERS:
 DATASET INFORMATION:
   Embedding Model: bert-base-uncased
   Embedding Dimension: 768
-  Training Samples: 5,047
-  Test Samples: 1,262
+  Training Samples: 5,051
+  Test Samples: 1,263
 
 CLASSIFICATION REPORT:
 ================================================================================
                 precision    recall  f1-score   support
 
-        Non-PS     0.9289    0.8107    0.8658       919
-Process Safety     0.6217    0.8338    0.7123       343
+        Non-PS     0.9278    0.8248    0.8733       919
+Process Safety     0.6390    0.8285    0.7215       344
 
-      accuracy                         0.8170      1262
-     macro avg     0.7753    0.8222    0.7891      1262
-  weighted avg     0.8454    0.8170    0.8241      1262
+      accuracy                         0.8258      1263
+     macro avg     0.7834    0.8266    0.7974      1263
+  weighted avg     0.8491    0.8258    0.8319      1263
 
 ================================================================================
