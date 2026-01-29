@@ -1,0 +1,8 @@
+{
+  "iteration": 0,
+  "timestamp": "2026-01-29T23:46:48.970368",
+  "pipeline_stages": {
+    "1_data_loading": {
+      "description": "Loaded 3 raw datasets",
+      "files": [
+        
