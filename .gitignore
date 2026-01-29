@@ -180,8 +180,10 @@ cython_debug/
 .cursorignore
 .cursorindexingignore
 
+# Exclude all dataset files and embeddings
+/Datasets/
 Datasets/
-Datasets/Embeddings
+
 Betas/
 NLP_LLMs/
 SVM/
