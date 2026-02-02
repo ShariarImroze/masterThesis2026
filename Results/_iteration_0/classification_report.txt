@@ -1,31 +1,12 @@
-================================================================================
-ITERATION 0 - SVM BASELINE MODEL EVALUATION REPORT
-================================================================================
+                    precision    recall  f1-score   support
 
-MODEL PARAMETERS:
-  algorithm: SVM
-  kernel: rbf
-  C: 0.55
-  gamma: scale
-  probability: True
-  random_state: 42
-  class_weights: None
+Non-Process Safety     0.8955    0.8097    0.8505       720
+    Process Safety     0.5678    0.7258    0.6372       248
 
-DATASET INFORMATION:
-  Embedding Model: bert-base-uncased
-  Embedding Dimension: 768
-  Training Samples: 5,034
-  Test Samples: 1,259
+          accuracy                         0.7882       968
+         macro avg     0.7317    0.7678    0.7438       968
+      weighted avg     0.8116    0.7882    0.7958       968
 
-CLASSIFICATION REPORT:
-================================================================================
-                precision    recall  f1-score   support
-
-        Non-PS     0.8588    0.9519    0.9030       914
-Process Safety     0.8211    0.5855    0.6836       345
-
-      accuracy                         0.8515      1259
-     macro avg     0.8400    0.7687    0.7933      1259
-  weighted avg     0.8485    0.8515    0.8428      1259
-
-================================================================================
+Accuracy: 0.7882
+Macro F1: 0.7438
+Weighted F1: 0.7958

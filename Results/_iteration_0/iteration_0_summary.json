@@ -1,8 +1,30 @@
 {
   "iteration": 0,
-  "timestamp": "2026-01-29T23:46:48.970368",
-  "pipeline_stages": {
-    "1_data_loading": {
-      "description": "Loaded 3 raw datasets",
-      "files": [
-        
+  "model": "BERT-base-uncased + Linear SVM",
+  "dataset": {
+    "total_english_samples": 4840,
+    "train_samples": 3872,
+    "test_samples": 968,
+    "positive_class_ratio": 0.2566115702479339
+  },
+  "results": {
+    "accuracy": 0.7882231404958677,
+    "macro_f1": 0.7438211240422661,
+    "weighted_f1": 0.79582547085641,
+    "precision_ps": 0.5678233438485805,
+    "recall_ps": 0.7258064516129032,
+    "precision_non_ps": 0.8955453149001537,
+    "recall_non_ps": 0.8097222222222222
+  },
+  "confusion_matrix": {
+    "tn": 583,
+    "fp": 137,
+    "fn": 68,
+    "tp": 180
+  },
+  "gap_analysis": {
+    "current_macro_f1": 0.7438211240422661,
+    "rq1_target": 0.81,
+    "gap": 0.06617887595773397
+  }
+}
