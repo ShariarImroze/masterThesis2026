@@ -129,9 +129,9 @@ Incident reporting is a critical process for maintaining safety and operational 
 
 A comprehensive experimental framework was developed through seven iterative phases, progressively advancing from baseline BERT embeddings with Support Vector Machines to sophisticated LLM-based few-shot classification. The research evaluates traditional machine learning approaches (SVM, Random Forest, XGBoost, LightGBM) against transformer-based models (BERT, RoBERTa, DeBERTa, multilingual variants) across six country-specific datasets encompassing English, German, Swedish, and Dutch incident reports.
 
-Key contributions include: (1) a robust preprocessing pipeline for multilingual incident data, (2) comparative benchmarking of 10+ transformer architectures, (3) advanced class balancing strategies including SMOTE and language-aware undersampling, (4) ensemble methods combining multiple classifiers, and (5) LLM-based few-shot classification using Flan-T5 models.
+Key contributions include: (1) a robust preprocessing pipeline for multilingual incident data, (2) comparative benchmarking of more than 10 transformer architectures, (3) advanced class balancing strategies including SMOTE and language-aware undersampling, (4) ensemble methods combining multiple classifiers, and (5) LLM-based few-shot classification using Flan-T5 models.
 
-Experimental results demonstrate that the baseline BERT+SVM model achieves a macro F1-score of 0.79, with subsequent iterations improving performance through multilingual embeddings and advanced machine learning techniques. The study addresses four research questions concerning classification accuracy improvements, traditional ML versus LLM comparisons, hazard type extraction, and severity prediction capabilities.
+Experimental results demonstrate that the baseline BERT \& SVM model achieves a macro F1-score of 0.79, with subsequent iterations improving performance through multilingual embeddings and advanced machine learning techniques. The study addresses four research questions concerning classification accuracy improvements, traditional ML versus LLM comparisons, hazard type extraction, and severity prediction capabilities.
 
 \textbf{Keywords:} Incident Classification, Process Safety, Natural Language Processing, Machine Learning, Large Language Models, Transformer Models, Multilingual Text Classification, BERT, Few-Shot Learning
 
@@ -149,7 +149,7 @@ Ein umfassendes experimentelles Framework wurde durch sieben iterative Phasen en
 
 Die wichtigsten Beiträge umfassen: (1) eine robuste Vorverarbeitungspipeline für mehrsprachige Vorfallsdaten, (2) vergleichendes Benchmarking von mehr als 10 Transformer-Architekturen, (3) fortgeschrittene Klassenausgleichsstrategien einschließlich SMOTE und sprachbewusstem Unterabtasten, (4) Ensemble-Methoden zur Kombination mehrerer Klassifikatoren und (5) LLM-basierte Few-Shot-Klassifikation mit Flan-T5-Modellen.
 
-Experimentelle Ergebnisse zeigen, dass das Basis-BERT+SVM-Modell einen Makro-F1-Score von 0,79 erreicht, wobei nachfolgende Iterationen die Leistung durch mehrsprachige Embeddings und fortgeschrittene maschinelle Lerntechniken verbessern. Die Studie behandelt vier Forschungsfragen bezüglich Verbesserungen der Klassifikationsgenauigkeit, Vergleiche zwischen traditionellem ML und LLMs, Extraktion von Gefahrentypen und Vorhersage des Schweregrads.
+Experimentelle Ergebnisse zeigen, dass das Basis-BERT \& SVM-Modell einen Makro-F1-Score von 0,79 erreicht, wobei nachfolgende Iterationen die Leistung durch mehrsprachige Embeddings und fortgeschrittene maschinelle Lerntechniken verbessern. Die Studie behandelt vier Forschungsfragen bezüglich Verbesserungen der Klassifikationsgenauigkeit, Vergleiche zwischen traditionellem ML und LLMs, Extraktion von Gefahrentypen und Vorhersage des Schweregrads.
 
 \textbf{Schlüsselwörter:} Vorfallklassifizierung, Prozesssicherheit, Verarbeitung natürlicher Sprache, Maschinelles Lernen, Große Sprachmodelle, Transformer-Modelle, Mehrsprachige Textklassifikation, BERT, Few-Shot Learning
 
@@ -423,7 +423,8 @@ This thesis is organized into seven chapters as follows:
     Implement automatic extraction of underlying hazard types from titles/descriptions with \textbf{Macro-F1 $\geq 0.76$} across multilingual corpora, with per-language reporting and error analysis on frequent confusions (e.g., Loss of Containment vs.\ Mechanical Failure).
 
     \item \textbf{Severity prediction:}
-    Propose a multi-class severity model (low/medium/severe) achieving \textbf{Accuracy $\geq 0.70$}, \textbf{Macro-F1 $\geq 0.70$}, and \textbf{Recall$_{\text{severe}} \geq 0.80$} for the high/critical class, including calibrated probability outputs and decision thresholds suitable for risk-sensitive triage.
+    Propose a multi-class severity model (low/medium/severe) for the business case. 
+    %Propose a multi-class severity model (low/medium/severe) achieving \textbf{Accuracy $\geq 0.70$}, \textbf{Macro-F1 $\geq 0.70$}, and \textbf{Recall$_{\text{severe}} \geq 0.80$} for the high/critical class, including calibrated probability outputs and decision thresholds suitable for risk-sensitive triage.
     
 \end{enumerate}
 
@@ -515,10 +516,11 @@ Historical incident reports will be gathered from relevant industries, ensuring 
 \section{Proposed Dataset}
 \begin{enumerate}
     \item \textbf{Uniper HSSE Data:} HSSE data, Size 54000
-    \item \textbf{OSHA IMIS narratives:} Domain: Process/Health, Size 90000
-    \item \textbf{MSHA injury narratives:} Mining HS/PS, Size 35000
-    \item \textbf{Dutch Health Complaints:} Health Safety, Size 22000
-    \item \textbf{UK Environment Agency CICS summaries:} Env, Size 12000
+    
+    %\item \textbf{OSHA IMIS narratives:} Domain: Process/Health, Size 90000
+    %\item \textbf{MSHA injury narratives:} Mining HS/PS, Size 35000
+    %\item \textbf{Dutch Health Complaints:} Health Safety, Size 22000 /not needed
+    %\item \textbf{UK Environment Agency CICS summaries:} Env, Size 12000 /not needed
 \end{enumerate}
 
 Additional datasets will be incorporated during the dataset splitting phase to ensure balanced and comprehensive model evaluation.
@@ -555,7 +557,7 @@ NIL & \textbf{Title:} Safety Walk Betrieb\newline \textbf{Description:} 47319 An
 Before modeling, several preprocessing steps will be applied to improve data quality:
 \begin{itemize}
     \item \textit{Data Anonymization:} Remove or mask any sensitive or business-critical information to protect confidentiality.
-    \item \textit{Cleaning and Class balancing} Cleaning data according to standard processes (eg. NaN value removal, special characters removal etc.) after that we should also consider class balancing for classification task. 
+    \item \textit{Cleaning and Class balancing} Cleaning data according to standard processes (eg. NaN value removal, special characters removal etc.) after that consider class balancing for the classification task was considered. 
     \item \textit{Tokenization and Lemmatization:} Break down text into tokens (e.g., words), converting all text to lowercase for uniformity. Reduce words to their base forms to normalize different word inflections.
     \item \textit{Dataset Splitting:} Divide the dataset into training and test sets.\\
 \end{itemize}
@@ -617,7 +619,7 @@ The master dataset was constructed through several preprocessing steps to consol
 \end{itemize}
 These were concatenated into a single DataFrame (aligning common columns) to yield a master list of 54,750 incident records.
 
-We also explored creating containers in Azure Blob Storage to ingest data directly from Snowflake and thereby avoid relying on intermediate .csv exports. However, this approach was not adopted in the current pipeline because intermittent inconsistencies in the total number of incident reports likely caused by Snowflake data refresh schedules could not be fully resolved. This integration option will be revisited in future work as part of developing a robust, closed-loop data ingestion and model update workflow.  
+The option for creating containers in Azure Blob Storage to ingest data directly from Snowflake and thereby avoid relying on intermediate .csv exports was also explored. However, this approach was not adopted in the current pipeline because intermittent inconsistencies in the total number of incident reports likely caused by Snowflake data refresh schedules could not be fully resolved. This integration option will be revisited in future work as part of developing a robust, closed-loop data ingestion and model update workflow.  
 
 \item \textbf{Data Type Standardization}: Column types were standardized to enforce data integrity:
 \begin{itemize}
@@ -645,7 +647,7 @@ We also explored creating containers in Azure Blob Storage to ingest data direct
 \item \textbf{Feature Construction}: From the filtered English records, a minimal working dataset was created with only the essential fields for modeling: \texttt{CASENO}, \texttt{TITLE}, \texttt{CASE\_DESCRIPTION}, and \texttt{CASE\_TYPE}. The \texttt{TITLE} and \texttt{CASE\_DESCRIPTION} of each case were concatenated (with a period delimiter) to form a single text string (\texttt{text\_features}), as described above. This ensures each sample is represented by a unified text input that includes both summary and detailed description.
 \end{enumerate}
 
-The outcome of these steps is a cleansed, English-only dataset ready for NLP processing. The final dataset (\texttt{english\_dataset\_minimal.csv}) contains 7,920 records (approximately 14.47\% of the master dataset). By focusing on English text, we avoid issues with multilingual modeling in the baseline, at the cost of excluding a large portion of data.
+The outcome of these steps is a cleansed, English-only dataset ready for NLP processing. The final dataset (\texttt{english\_dataset\_minimal.csv}) contains 7,920 records (approximately 14.47\% of the master dataset). By focusing on English text, issues with multilingual modeling in the baseline were avoided, at the cost of excluding a large portion of data.
 
 \subsubsection{Language Detection Methodology}
 
@@ -712,7 +714,7 @@ Non-English Records (Excluded) & 46,830 & 85.53\% \\
 \item \textbf{Baseline Validity}: The English-only subset provides a controlled baseline to prove the concept. The baseline results are still meaningful, but they represent a lower bound on performance since much of the data were set aside.
 \end{itemize}
 
-After filtering, the English dataset retains the multi-class category distribution shown earlier in Table~\ref{tab:case_distribution}. As mentioned, we collapse this to a binary outcome for modeling: \textbf{Process Safety (positive class)} versus \textbf{Non-Process Safety (negative class)}.
+After filtering, the English dataset retains the multi-class category distribution shown earlier in Table~\ref{tab:case_distribution}. As mentioned, this resultd in a binary outcome for modeling: \textbf{Process Safety (positive class)} versus \textbf{Non-Process Safety (negative class)}.
 
 \subsubsection{Binary Classification Formulation}
 
@@ -726,15 +728,15 @@ y_i =
 \end{cases}
 \end{equation}
 
-In other words, if an incident’s category is \emph{Process Safety}, we label it as 1; any other category is labeled 0. This yields 2,055 positive examples and 5,865 negative examples in the dataset.
+In other words, if an incident’s category is \emph{Process Safety}, it is labelled as 1; any other category is labeled 0. This yields 2,055 positive examples and 5,865 negative examples in the dataset.
 
 \subsection{BERT-base-Uncased for Text Embeddings}
 
-To transform the incident texts into numerical features for the classifier, we leveraged the pre-trained \textbf{BERT-base-uncased} language model \cite{devlin2018bert}. BERT (Bidirectional Encoder Representations from Transformers) is a transformer model that produces contextual embeddings for text. Using BERT’s embeddings provides a rich, 768-dimensional representation of each incident’s text.
+To transform the incident texts into numerical features for the classifier, a pre-trained \textbf{BERT-base-uncased} language model \cite{devlin2018bert} was used. BERT (Bidirectional Encoder Representations from Transformers) is a transformer model that produces contextual embeddings for text. Using BERT’s embeddings provides a rich, 768-dimensional representation of each incident’s text.
 
 \subsubsection{Model Specifications}
 
-We used the base version of BERT (uncased, English):
+The base version of BERT (uncased, English) was used:
 
 \begin{itemize}
 \item 12 Transformer encoder layers, 12 self-attention heads, hidden size 768.
@@ -744,7 +746,7 @@ We used the base version of BERT (uncased, English):
 \item Uncased model: all text is lowercased before tokenization.
 \end{itemize}
 
-\paragraph{Embedding Generation Pipeline} For each incident’s combined text, we extracted the [CLS] embedding from the last BERT layer:
+\paragraph{Embedding Generation Pipeline} For each incident’s combined text, the [CLS] embedding is extracted from the last BERT layer:
 
 \begin{equation}
 \mathbf{h}_{\text{[CLS]}} = \text{BERT}_{L=12}\big([\texttt{[CLS]}] \oplus \text{tokens} \oplus [\texttt{[SEP]}]\big)[0] \in \mathbb{R}^{768}.
@@ -796,16 +798,9 @@ X = get_bert_embeddings(texts.tolist())  # shape: (7920, 768)
 
 \subsubsection{Classification Model: Linear Support Vector Machine}
 
-With BERT embeddings computed, we trained a \textbf{linear SVM}:
+With BERT embeddings computed, the next task was to train a \textbf{linear SVM} with the following parameters: Kernel: linear, Regularization parameter: $C = 1.0$, Class weighting: \texttt{class\_weight = 'balanced'}, Random state: 42. 
 
-\begin{itemize}
-\item Kernel: linear
-\item Regularization parameter: $C = 1.0$
-\item Class weighting: \texttt{class\_weight = 'balanced'}
-\item Random state: 42
-\end{itemize}
-
-We used an 80/20 stratified train/test split.
+An 80/20 stratified train/test split was used.
 
 The optimization objective is:
 
@@ -849,7 +844,7 @@ where $w_{y_i}$ are the class weights.
 
 \begin{table}[h]
 \centering
-\caption{Iteration 0 Performance Metrics (BERT-base-uncased + Linear SVM)}
+\caption{Iteration 0 Performance Metrics (BERT-base-uncased \& Linear SVM)}
 \label{tab:iter0-metrics}
 \begin{tabular}{lccc}
 \toprule
@@ -943,7 +938,7 @@ Three raw datasets were consolidated and cleaned:
 After removing duplicates, null values, and blank key fields (\texttt{CASENO}, \texttt{CASE\_DESCRIPTION}, \texttt{TITLE}), a master dataset of 54,750 valid incident records was created. The dataset was then stratified by country:
 \begin{itemize}
     \item UK, Germany, Sweden, Netherlands, UAE, International (individual datasets)
-    \item English (combined UK + UAE + International: 4,483 records)
+    \item English (combined UK, UAE & International: 4,483 records)
     \item Master (all countries: 54,750 records)
 \end{itemize}
 
@@ -1039,7 +1034,7 @@ Six country-specific datasets were processed (four datasets excluded due to insu
 
 \textbf{Included Datasets:}
 \begin{itemize}
-    \item UK, Germany, Sweden, Netherlands, Master (combined), English (UK + UAE + International)
+    \item UK, Germany, Sweden, Netherlands, Master (combined), English (UK,  UAE \& International)
 \end{itemize}
 
 \textbf{Excluded Datasets:}
@@ -1212,7 +1207,7 @@ Five state-of-the-art multilingual transformer models were selected based on the
 
 \textbf{E5 Embedding Models (Multilingual):}
 \begin{itemize}
-    \item \texttt{intfloat/multilingual-e5-base}: Text embedding model optimized for semantic similarity across 100+ languages
+    \item \texttt{intfloat/multilingual-e5-base}: Text embedding model optimized for semantic similarity across more than 100 languages
     \item \texttt{intfloat/multilingual-e5-large}: Scaled version with enhanced embedding quality (560M parameters)
     \item \texttt{intfloat/multilingual-e5-large-instruct}: Instruction-tuned variant for improved task-specific performance
 \end{itemize}
@@ -1229,7 +1224,7 @@ Consistent with Iteration 2, six datasets were processed:
     \item Sweden (Swedish)
     \item Netherlands (Dutch)
     \item Master (all countries combined)
-    \item English (UK + UAE + International combined)
+    \item English (UK, UAE \& International combined)
 \end{itemize}
 
 \textbf{Excluded Datasets:}
@@ -1394,26 +1389,27 @@ Results were analyzed across three dimensions:
     \item Most efficient model (accuracy per training time)
 \end{itemize}
 
-\paragraph{Classification Report Generation}
-For each model-dataset combination, sklearn-style classification reports were generated:
 
-\begin{table}[htbp]
-\centering
-\small
-\begin{tabular}{@{}lcccc@{}}
-\toprule
-\textbf{Class} & \textbf{Precision} & \textbf{Recall} & \textbf{F1-score} & \textbf{Support} \\
-\midrule
-Non-Process Safety   & 0.XX & 0.XX & 0.XX & XXXX \\
-Process Safety       & 0.XX & 0.XX & 0.XX & XXX \\
-\midrule
-accuracy             &      &      & 0.XX & XXXX \\
-macro avg            & 0.XX & 0.XX & 0.XX & XXXX \\
-weighted avg         & 0.XX & 0.XX & 0.XX & XXXX \\
-\bottomrule
-\end{tabular}
-\caption{Example classification report structure for Iteration 3 results}
-\end{table}
+%\paragraph{Classification Report Generation}
+%For each model-dataset combination, sklearn-style classification reports were generated:
+
+%\begin{table}[htbp]
+%\centering
+%\small
+%\begin{tabular}{@{}lcccc@{}}
+%\toprule
+%\textbf{Class} & \textbf{Precision} & \textbf{Recall} & \textbf{F1-score} & \textbf{Support} \\
+%\midrule
+%Non-Process Safety   & 0.XX & 0.XX & 0.XX & XXXX \\
+%Process Safety       & 0.XX & 0.XX & 0.XX & XXX \\
+%\midrule
+%accuracy             &      &      & 0.XX & XXXX \\
+%macro avg            & 0.XX & 0.XX & 0.XX & XXXX \\
+%weighted avg         & 0.XX & 0.XX & 0.XX & XXXX \\
+%\bottomrule
+%\end{tabular}
+%\caption{Example classification report structure for Iteration 3 results}
+%\end{table}
 
 \subsubsection{Key Innovations}
 
@@ -2842,12 +2838,12 @@ Flan-T5-Large (few-shot) & 0.8554 & 0.0135 & 0.71\% & None \\
 \toprule
 \textbf{Iteration} & \textbf{Best Macro F1} & \textbf{Best PS F1} & \textbf{RQ1 Met?} & \textbf{Key Innovation} \\
 \midrule
-0 & 0.7899 & 0.7070 & No & Baseline BERT+SVM \\
-1 & 0.8872 & 0.8156 & \checkmark & Country stratification \\
-2 & 0.8760 & 0.8120 & \checkmark & Multi-model comparison \\
-3 & 0.8889 & 0.8234 & \checkmark & Multilingual embeddings \\
-4 & \textbf{0.8923} & \textbf{0.8612} & \checkmark & Advanced ML techniques \\
-5 & 0.8234 & 0.7856 & \checkmark & Aggressive SMOTE \\
+0 & 0.7899 & 0.7070 & No & Baseline BERT \& SVM \\
+1 & 0.8872 & 0.8156 & Yes & Country stratification \\
+2 & 0.8760 & 0.8120 & Yes & Multi-model comparison \\
+3 & 0.8889 & 0.8234 & Yes & Multilingual embeddings \\
+4 & \textbf{0.8923} & \textbf{0.8612} & Yes & Advanced ML techniques \\
+5 & 0.8234 & 0.7856 & Yes & Aggressive SMOTE \\
 6 & 0.7750 & 0.7123 & No & Language-aware undersampling \\
 7 & 0.0135 & 0.0135 & No & LLM few-shot \\
 \bottomrule
@@ -2901,10 +2897,10 @@ The experimental results reveal a stark performance gap:
 \toprule
 \textbf{Approach} & \textbf{Macro F1} & \textbf{Meets Target?} \\
 \midrule
-Linear SVM + BERT & 0.7899 & \checkmark \\
-XGBoost + RoBERTa & 0.8834 & \checkmark \\
-LightGBM + E5-large & 0.8856 & \checkmark \\
-Flan-T5-Large (few-shot) & 0.0135 & $\times$ \\
+Linear SVM + BERT & 0.7899 & Yes \\
+XGBoost + RoBERTa & 0.8834 & Yes \\
+LightGBM + E5-large & 0.8856 & Yes \\
+Flan-T5-Large (few-shot) & 0.0135 & No \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -3084,10 +3080,10 @@ This thesis investigated the application of machine learning and large language 
 \toprule
 \textbf{Research Question} & \textbf{Target} & \textbf{Achieved} \\
 \midrule
-RQ1: Improve PS classification by 5+ points macro F1 & $\geq 0.81$ & \textbf{0.8923} \checkmark \\
-RQ2: Compare Traditional ML vs. LLM & -- & ML > LLM \checkmark \\
-RQ3: Hazard extraction with 80\% precision & $\geq 0.80$ & 0.12 $\times$ \\
-RQ4: Severity prediction & $\geq 0.70$ & Not addressed \\
+RQ1: Improve PS classification by 5+ points macro F1 & $\geq 0.81$ & \textbf{0.8923} Yes \\
+RQ2: Compare Traditional ML vs. LLM & -- & ML > LLM Yes \\
+RQ3: Hazard extraction with 80\% precision & $\geq 0.80$ & 0.12 No \\
+RQ4: Severity prediction &  & Not addressed \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -3135,7 +3131,7 @@ The clear superiority of trained embedding-classifier pipelines over few-shot LL
 The complete source code for all experiments is available at:
 
 \begin{center}
-\texttt{https://github.com/[repository-url]}
+\texttt{https://github.com/ShariarImroze/masterThesis2026}
 \end{center}
 
 The repository includes:
