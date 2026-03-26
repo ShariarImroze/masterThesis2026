@@ -181,6 +181,7 @@ cython_debug/
 .cursorindexingignore
 
 # Exclude all dataset files and embeddings
+/_old_MasterThesis2026/
 /Datasets/
 Datasets/
 
