@@ -1,12 +1,12 @@
                     precision    recall  f1-score   support
 
-Non-Process Safety     0.9096    0.7937    0.8477       761
-    Process Safety     0.5514    0.7628    0.6401       253
+Non-Process Safety     0.8981    0.7810    0.8354       767
+    Process Safety     0.5254    0.7323    0.6118       254
 
-          accuracy                         0.7860      1014
-         macro avg     0.7305    0.7783    0.7439      1014
-      weighted avg     0.8203    0.7860    0.7959      1014
+          accuracy                         0.7689      1021
+         macro avg     0.7117    0.7566    0.7236      1021
+      weighted avg     0.8054    0.7689    0.7798      1021
 
-Accuracy: 0.7860
-Macro F1: 0.7439
-Weighted F1: 0.7959
+Accuracy: 0.7689
+Macro F1: 0.7236
+Weighted F1: 0.7798

@@ -2,29 +2,29 @@
   "iteration": 0,
   "model": "BERT-base-uncased + Linear SVM",
   "dataset": {
-    "total_english_samples": 5067,
-    "train_samples": 4053,
-    "test_samples": 1014,
-    "positive_class_ratio": 0.2492599171107164
+    "total_english_samples": 5101,
+    "train_samples": 4080,
+    "test_samples": 1021,
+    "positive_class_ratio": 0.2485787100568516
   },
   "results": {
-    "accuracy": 0.7859960552268245,
-    "macro_f1": 0.7439259841145152,
-    "weighted_f1": 0.795925001450411,
-    "precision_ps": 0.5514285714285714,
-    "recall_ps": 0.7628458498023716,
-    "precision_non_ps": 0.9096385542168675,
-    "recall_non_ps": 0.7936925098554534
+    "accuracy": 0.7688540646425074,
+    "macro_f1": 0.7236337444028482,
+    "weighted_f1": 0.7798032947247493,
+    "precision_ps": 0.5254237288135594,
+    "recall_ps": 0.7322834645669292,
+    "precision_non_ps": 0.8980509745127436,
+    "recall_non_ps": 0.7809647979139505
   },
   "confusion_matrix": {
-    "tn": 604,
-    "fp": 157,
-    "fn": 60,
-    "tp": 193
+    "tn": 599,
+    "fp": 168,
+    "fn": 68,
+    "tp": 186
   },
   "gap_analysis": {
-    "current_macro_f1": 0.7439259841145152,
+    "current_macro_f1": 0.7236337444028482,
     "rq1_target": 0.81,
-    "gap": 0.0660740158854849
+    "gap": 0.08636625559715183
   }
 }
