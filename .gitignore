@@ -183,14 +183,17 @@ cython_debug/
 # Exclude all dataset files and embeddings
 /_old_MasterThesis2026/
 /Datasets/
-Datasets/
 /Master Dataset 34k/
-Master Dataset 34k/
 /Not in use Datasets/
-Not in use Datasets/
 
 Betas/
 NLP_LLMs/
 SVM/
 
-desktop.iniPrevious Master Dataset (Not in use)/
+desktop.ini
+Previous Master Dataset (Not in use)/
+
+# Data files
+*.json
+*.csv
+*.xlsx
