@@ -1,30 +1,87 @@
 {
   "iteration": 0,
   "model": "BERT-base-uncased + Linear SVM",
-  "dataset": {
-    "total_english_samples": 5096,
-    "train_samples": 4076,
-    "test_samples": 1020,
-    "positive_class_ratio": 0.24862637362637363
-  },
-  "results": {
-    "accuracy": 0.7862745098039216,
-    "macro_f1": 0.7446063657747721,
-    "weighted_f1": 0.7963881369954627,
-    "precision_ps": 0.5508474576271186,
-    "recall_ps": 0.7677165354330708,
-    "precision_non_ps": 0.9114114114114115,
-    "recall_non_ps": 0.7924281984334204
-  },
-  "confusion_matrix": {
-    "tn": 607,
-    "fp": 159,
-    "fn": 59,
-    "tp": 195
+  "datasets": {
+    "manual": {
+      "total_english_samples": 4713,
+      "train_samples": 3382,
+      "test_samples": 943,
+      "positive_class_ratio": 0.3,
+      "results": {
+        "accuracy": 0.74,
+        "macro_f1": 0.7,
+        "weighted_f1": 0.74,
+        "precision_ps": 0.55,
+        "recall_ps": 0.66,
+        "precision_non_ps": 0.84,
+        "recall_non_ps": 0.77
+      },
+      "confusion_matrix": {
+        "tn": 508,
+        "fp": 153,
+        "fn": 96,
+        "tp": 186
+      }
+    },
+    "langdetect": {
+      "total_english_samples": 5994,
+      "train_samples": 3676,
+      "test_samples": 1199,
+      "positive_class_ratio": 0.25,
+      "results": {
+        "accuracy": 0.74,
+        "macro_f1": 0.68,
+        "weighted_f1": 0.75,
+        "precision_ps": 0.49,
+        "recall_ps": 0.61,
+        "precision_non_ps": 0.86,
+        "recall_non_ps": 0.78
+      },
+      "confusion_matrix": {
+        "tn": 699,
+        "fp": 195,
+        "fn": 118,
+        "tp": 187
+      }
+    },
+    "lingua": {
+      "total_english_samples": 6205,
+      "train_samples": 3660,
+      "test_samples": 1241,
+      "positive_class_ratio": 0.25,
+      "results": {
+        "accuracy": 0.74,
+        "macro_f1": 0.69,
+        "weighted_f1": 0.76,
+        "precision_ps": 0.48,
+        "recall_ps": 0.67,
+        "precision_non_ps": 0.88,
+        "recall_non_ps": 0.77
+      },
+      "confusion_matrix": {
+        "tn": 719,
+        "fp": 218,
+        "fn": 100,
+        "tp": 204
+      }
+    }
   },
   "gap_analysis": {
-    "current_macro_f1": 0.7446063657747721,
-    "rq1_target": 0.81,
-    "gap": 0.06539363422522793
-  }
+    "manual": {
+      "current_macro_f1": 0.7,
+      "rq1_target": 0.81,
+      "gap": 0.11
+    },
+    "langdetect": {
+      "current_macro_f1": 0.68,
+      "rq1_target": 0.81,
+      "gap": 0.13
+    },
+    "lingua": {
+      "current_macro_f1": 0.69,
+      "rq1_target": 0.81,
+      "gap": 0.12
+    }
+  },
+  "best_dataset": "manual"
 }

@@ -1,0 +1,13 @@
+Dataset: lingua
+                    precision    recall  f1-score   support
+
+Non-Process Safety       0.88      0.77      0.82       937
+    Process Safety       0.48      0.67      0.56       304
+
+          accuracy                           0.74      1241
+         macro avg       0.68      0.72      0.69      1241
+      weighted avg       0.78      0.74      0.76      1241
+
+Accuracy: 0.74
+Macro F1: 0.69
+Weighted F1: 0.76
