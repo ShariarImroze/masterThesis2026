@@ -136,3 +136,34 @@ MODELS = {
     # Add more models as needed
 }
 
+
+from iteration 3:
+
+Notes and References: 
+
+https://cholakovit.com/en/ai/embeddings/sentence-transformers
+
+https://arxiv.org/pdf/2002.06652
+
+https://viso.ai/deep-learning/pytorch-vs-tensorflow/#:~:text=However%2C%20the%20core%20difference%20between,resulting%20in%20generally%20higher%20flexibility.
+
+file:///C:/Users/M02555/OneDrive%20-%20Uniper%20SE/1.%20Thesis/Books/Pattern%20Recognition%20and%20Machine%20Learning%20-%20Bishop.pdf
+
+https://zilliz.com/ai-faq/what-are-some-popular-pretrained-sentence-transformer-models-and-how-do-they-differ-for-example-allminilml6v2-vs-allmpnetbasev2
+
+https://arxiv.org/pdf/2008.08567
+
+https://huggingface.co/transformers/v3.0.2/multilingual.html
+
+https://huggingface.co/google-bert/bert-base-multilingual-uncased
+
+https://arxiv.org/pdf/2008.08567
+
+https://huggingface.co/models?language=multilingual
+
+
+From iteration 4:
+Notes and References: 
+SVM: https://www.youtube.com/watch?v=_YPScrckx28
+xgboost', 'lightgbm', 'random_forest', 'ensemble'
+
