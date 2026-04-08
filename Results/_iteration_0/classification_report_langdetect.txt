@@ -1,13 +1,13 @@
 Dataset: langdetect
                     precision    recall  f1-score   support
 
-Non-Process Safety     0.8920    0.8600    0.8757       893
-    Process Safety     0.6291    0.6951    0.6604       305
+Non-Process Safety     0.8928    0.8498    0.8708       892
+    Process Safety     0.6160    0.7026    0.6565       306
 
-          accuracy                         0.8180      1198
-         macro avg     0.7605    0.7776    0.7681      1198
-      weighted avg     0.8251    0.8180    0.8209      1198
+          accuracy                         0.8122      1198
+         macro avg     0.7544    0.7762    0.7636      1198
+      weighted avg     0.8221    0.8122    0.8160      1198
 
-Accuracy: 0.8180
-Macro F1: 0.7681
-Weighted F1: 0.8209
+Accuracy: 0.8122
+Macro F1: 0.7636
+Weighted F1: 0.8160
