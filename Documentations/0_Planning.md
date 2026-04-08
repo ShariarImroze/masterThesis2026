@@ -92,3 +92,47 @@ Generate the same plots/figures with matching styles and labels.
 
 Ensure all random seeds and environment settings are set as in Iteration 0.
 
+
+From iteration 2: 
+
+Notes and References: 
+
+https://huggingface.co/transformers/v2.4.0/pretrained_models.htmlhttps://huggingface.co/transformers/v2.4.0/pretrained_models.html 
+
+which to use: TensoFlow or Pytorch?
+
+https://viso.ai/deep-learning/pytorch-vs-tensorflow/#:~:text=However%2C%20the%20core%20difference%20between,resulting%20in%20generally%20higher%20flexibility.
+
+A Brief Recap
+The answer to the question “What is better, PyTorch vs Tensorflow?” essentially depends on the use case and application.
+
+In general, TensorFlow and PyTorch implementations show equal accuracy. However, the training time of TensorFlow is substantially higher, but the memory usage was lower.
+
+PyTorch allows quicker prototyping than TensorFlow. However, TensorFlow may be a better option if custom features are needed in the neural network.
+
+TensorFlow treats the neural network as a static object. So, if you want to change the behavior of your model, you have to start from scratch. 
+
+With PyTorch, the neural network can be tweaked on the fly at run-time, making it easier to optimize the model.
+
+Another major difference lies in how developers go about debugging. Effective debugging with TensorFlow requires a special debugger tool to examine how the network nodes do calculations at each step. 
+
+PyTorch can be debugged using one of the many widely available Python debugging tools.
+
+Both PyTorch and TensorFlow provide ways to speed up model development and reduce the amount of boilerplate code. However, the core difference between PyTorch and TensorFlow is that PyTorch is more “Pythonic” and based on an object-oriented approach. 
+
+At the same time, TensorFlow provides more options to choose from, resulting in generally higher flexibility. For many developers familiar with Python, this is an important reason why PyTorch is better than TensorFlow.
+
+https://huggingface.co/transformers/v2.4.0/pretrained_models.html
+
+MODELS = {
+    'bert-base': 'bert-base-cased', # trained on only english text
+    'bert-large': 'bert-large-cased', # trained on only english text
+    'roberta-base': 'roberta-base', # trained on only english text - check
+    'roberta-large': 'roberta-large', # trained on only english text - check
+    'distilbert': 'distilbert-base-cased', # trained on only english text - check
+    'xlnet-base': 'xlnet-base-cased', # trained on only english text
+    'modernbert-base': 'answerdotai/ModernBERT-base',
+    'modernbert-large': 'answerdotai/ModernBERT-large'
+    # Add more models as needed
+}
+
