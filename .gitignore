@@ -185,6 +185,9 @@ cython_debug/
 /Datasets/
 /Master Dataset 34k/
 /Not in use Datasets/
+/Embeddings/
+/Results/
+
 
 Betas/
 NLP_LLMs/
