@@ -22,6 +22,9 @@
 \usepackage{pgfplots}
 \usepackage{graphicx}
 \usepackage{caption, ragged2e}
+\usepackage{subcaption}
+\usepackage{multirow}
+\usepackage{float}
 \usepackage{empheq}
 \usepackage{amssymb, amsthm}
 \usepackage[automark]{scrlayer-scrpage}
@@ -78,7 +81,7 @@
 \begin{titlepage}
 \newcommand{\trtitle}{Categorizing Incident Reports Using Traditional Machine Learning and Large Language Models: A Comparative Study}
 \newcommand{\trtype}{Master Thesis}
-\newcommand{\trdate}{Winter Term 2025/26}
+\newcommand{\trdate}{Winter Term 2025/26, \today}
 \newcommand{\trauthor}{Md Shariar Imroze Khan (Matriculation No: 220202354)}
 
 \newcommand{\trInstitute}{in the program \\ M. Sc. Mathematical Modelling, Simulation and Optimization \vspace{1em}}
@@ -103,13 +106,13 @@
   \vspace{2em}
   \trdate \\ [4em]
   \begin{tabular}{rl}
-    Supervisor A: & Prof. Dr. Andreas Mauthe\\
+    First Supervisor: & Prof. Dr. Andreas Mauthe\\
                 & {\footnotesize Institut für Wirtschafts- und Verwaltungsinformatik}\\
                 & {\footnotesize FG IT Security and Data Security}\\[0.8em]
-    Supervisor B: & Alexander Rosenbaum\\
+    Second Supervisor: & Alexander Rosenbaum\\
                 & {\footnotesize Institut für Wirtschafts- und Verwaltungsinformatik}\\
                 & {\footnotesize FG IT Security and Data Security}\\[0.8em]
-    Supervisor C: & Dr. Hugh Burnham-Slipper\\
+    Company Supervisor: & Dr. Hugh Burnham-Slipper\\
                 & {\footnotesize Uniper Kraftwerke GmbH}\\
 \end{tabular}
 
@@ -119,67 +122,39 @@
 
 \end{titlepage}
 
-% ============================================================================
-% ABSTRACT
-% ============================================================================
 \chapter*{Abstract}
 \addcontentsline{toc}{chapter}{Abstract}
 
 Incident reporting is a critical process for maintaining safety and operational efficiency across industries such as energy, mining, and healthcare. However, manual classification of incident reports remains prone to human error, inconsistency, and inefficiency. This thesis investigates the application of machine learning and large language models (LLMs) for automated classification of process safety incidents in multilingual industrial datasets.
 
-A comprehensive experimental framework was developed through seven iterative phases, progressively advancing from baseline BERT embeddings with Support Vector Machines to sophisticated LLM-based few-shot classification. The research evaluates traditional machine learning approaches (SVM, Random Forest, XGBoost, LightGBM) against transformer-based models (BERT, RoBERTa, DeBERTa, multilingual variants) across six country-specific datasets encompassing English, German, Swedish, and Dutch incident reports.
+A comprehensive experimental framework was developed through eight iterative phases, progressively advancing from a controlled BERT-based baseline with Support Vector Machines to more sophisticated multilingual transformer and LLM-based approaches. The research evaluates traditional machine learning approaches (SVM, Random Forest, XGBoost, LightGBM) against transformer-based models (BERT, RoBERTa, DeBERTa, multilingual variants) across four language-specific datasets, including English, German, Swedish, and Dutch incident reports derived from a harmonised master dataset.
 
-Key contributions include: (1) a robust preprocessing pipeline for multilingual incident data, (2) comparative benchmarking of more than 10 transformer architectures, (3) advanced class balancing strategies including SMOTE and language-aware undersampling, (4) ensemble methods combining multiple classifiers, and (5) LLM-based few-shot classification using Flan-T5 models.
+Key contributions include a detailed preprocessing pipeline for multilingual incident data, comparative benchmarking of more than 10 transformer architectures, advanced class balancing strategies including SMOTE and language-aware undersampling, ensemble methods combining multiple classifiers, and LLM-based few-shot classification using Flan-T5 models.
 
-Experimental results demonstrate that the baseline BERT \& SVM model achieves a macro F1-score of 0.79, with subsequent iterations improving performance through multilingual embeddings and advanced machine learning techniques. The study addresses four research questions concerning classification accuracy improvements, traditional ML versus LLM comparisons, hazard type extraction, and severity prediction capabilities.
+Experimental results show that Iteration~0 compared three alternative English subset construction strategies under a common BERT-base-uncased embedding pipeline with feature standardisation and an RBF-kernel SVM classifier. The manually curated English subset was retained as the official baseline and achieved an accuracy of 0.8112 and a macro F1-score of 0.7825. The automatically constructed Lingua-based and langdetect-based subsets achieved macro F1-scores of 0.7758 and 0.7914, respectively. Although the langdetect subset yielded the strongest automatic-subset performance, the manually curated English subset was retained as the official baseline because it provides the most controlled and auditable reference point for subsequent comparisons. Building on this baseline, later iterations improved performance through multilingual embeddings, stronger transformer architectures, and advanced machine learning techniques. The study addresses four research questions concerning classification accuracy improvements, traditional ML versus LLM comparisons, hazard type extraction, and a comprehensive severity prediction framework for the business case.
 
-\textbf{Keywords:} Incident Classification, Process Safety, Natural Language Processing, Machine Learning, Large Language Models, Transformer Models, Multilingual Text Classification, BERT, Few-Shot Learning
 
 \cleardoublepage
 
-% ============================================================================
-% GERMAN ABSTRACT (ZUSAMMENFASSUNG)
-% ============================================================================
 \chapter*{Zusammenfassung}
 \addcontentsline{toc}{chapter}{Zusammenfassung}
 
-Die Meldung von Vorfällen ist ein kritischer Prozess zur Aufrechterhaltung der Sicherheit und betrieblichen Effizienz in Branchen wie Energie, Bergbau und Gesundheitswesen. Die manuelle Klassifizierung von Vorfallberichten ist jedoch anfällig für menschliche Fehler, Inkonsistenzen und Ineffizienz. Diese Arbeit untersucht die Anwendung von maschinellem Lernen und großen Sprachmodellen (LLMs) für die automatisierte Klassifizierung von Prozesssicherheitsvorfällen in mehrsprachigen industriellen Datensätzen.
+Die Meldung von Vorfällen ist ein zentraler Prozess zur Gewährleistung von Sicherheit und betrieblicher Effizienz in Branchen wie der Energieversorgung, dem Bergbau und dem Gesundheitswesen. Die manuelle Klassifikation von Vorfallsberichten ist jedoch weiterhin anfällig für menschliche Fehler, Inkonsistenzen und Ineffizienz. Diese Arbeit untersucht den Einsatz von Machine Learning und Large Language Models (LLMs) zur automatisierten Klassifikation von Process-Safety-Vorfällen in mehrsprachigen industriellen Datensätzen.
 
-Ein umfassendes experimentelles Framework wurde durch sieben iterative Phasen entwickelt, das von grundlegenden BERT-Embeddings mit Support Vector Machines bis hin zur ausgefeilten LLM-basierten Few-Shot-Klassifikation fortschreitet. Die Forschung bewertet traditionelle maschinelle Lernansätze (SVM, Random Forest, XGBoost, LightGBM) im Vergleich zu transformerbasierten Modellen (BERT, RoBERTa, DeBERTa, mehrsprachige Varianten) über sechs länderspezifische Datensätze mit englischen, deutschen, schwedischen und niederländischen Vorfallberichten.
+Im Rahmen der Untersuchung wurde ein umfassendes experimentelles Framework in acht iterativen Phasen entwickelt, das sich schrittweise von einer kontrollierten BERT-basierten Baseline mit Support Vector Machines hin zu anspruchsvolleren mehrsprachigen Transformer- und LLM-basierten Ansätzen weiterentwickelte. Die Forschung vergleicht traditionelle Machine-Learning-Ansätze (SVM, Random Forest, XGBoost, LightGBM) mit transformerbasierten Modellen (BERT, RoBERTa, DeBERTa sowie mehrsprachigen Varianten) auf vier sprachspezifischen Datensätzen mit englischen, deutschen, schwedischen und niederländischen Vorfallsberichten, die aus einem harmonisierten Master-Datensatz abgeleitet wurden.
 
-Die wichtigsten Beiträge umfassen: (1) eine robuste Vorverarbeitungspipeline für mehrsprachige Vorfallsdaten, (2) vergleichendes Benchmarking von mehr als 10 Transformer-Architekturen, (3) fortgeschrittene Klassenausgleichsstrategien einschließlich SMOTE und sprachbewusstem Unterabtasten, (4) Ensemble-Methoden zur Kombination mehrerer Klassifikatoren und (5) LLM-basierte Few-Shot-Klassifikation mit Flan-T5-Modellen.
+Zu den zentralen Beiträgen gehören eine detaillierte Vorverarbeitungspipeline für mehrsprachige Vorfallsdaten, ein vergleichendes Benchmarking von mehr als 10 Transformer-Architekturen, fortgeschrittene Strategien zum Klassen-Balancing einschließlich SMOTE und sprachbewusstem Undersampling, Ensemble-Methoden zur Kombination mehrerer Klassifikatoren sowie eine LLM-basierte Few-Shot-Klassifikation unter Verwendung von Flan-T5-Modellen.
 
-Experimentelle Ergebnisse zeigen, dass das Basis-BERT \& SVM-Modell einen Makro-F1-Score von 0,79 erreicht, wobei nachfolgende Iterationen die Leistung durch mehrsprachige Embeddings und fortgeschrittene maschinelle Lerntechniken verbessern. Die Studie behandelt vier Forschungsfragen bezüglich Verbesserungen der Klassifikationsgenauigkeit, Vergleiche zwischen traditionellem ML und LLMs, Extraktion von Gefahrentypen und Vorhersage des Schweregrads.
-
-\textbf{Schlüsselwörter:} Vorfallklassifizierung, Prozesssicherheit, Verarbeitung natürlicher Sprache, Maschinelles Lernen, Große Sprachmodelle, Transformer-Modelle, Mehrsprachige Textklassifikation, BERT, Few-Shot Learning
+Die experimentellen Ergebnisse zeigen, dass in Iteration~0 drei alternative Strategien zur Bildung englischsprachiger Teilmengen unter einer gemeinsamen Pipeline aus BERT-base-uncased-Embeddings, Merkmalsstandardisierung und einem SVM-Klassifikator mit RBF-Kernel verglichen wurden. Der manuell kuratierte englische Teil-Datensatz wurde als offizielle Baseline beibehalten und erreichte eine Accuracy von 0{,}8112 sowie einen Macro-F1-Score von 0{,}7825. Die automatisch konstruierten Lingua- bzw. langdetect-basierten Teilmengen erreichten Macro-F1-Scores von 0{,}7758 bzw. 0{,}7914. Obwohl die langdetect-Teilmenge unter den automatischen Varianten die stärkste Leistung zeigte, wurde der manuell kuratierte englische Teil-Datensatz als offizielle Baseline beibehalten, da er den kontrolliertesten und am besten nachvollziehbaren Referenzpunkt für nachfolgende Vergleiche darstellt. Aufbauend auf dieser Baseline verbesserten nachfolgende Iterationen die Leistung durch mehrsprachige Embeddings, leistungsfähigere Transformer-Architekturen und fortgeschrittene Machine-Learning-Techniken. Die Arbeit behandelt vier Forschungsfragen zu Verbesserungen der Klassifikationsgenauigkeit, zum Vergleich traditioneller ML-Verfahren mit LLMs, zur Extraktion von Gefährdungstypen sowie zu einem umfassenden Framework zur Vorhersage von Schweregraden für den Business Case.
 
 \cleardoublepage
 
-% ============================================================================
-% DECLARATION OF AUTHORSHIP
-% ============================================================================
-\chapter*{Declaration of Authorship}
-\addcontentsline{toc}{chapter}{Declaration of Authorship}
-
-I hereby declare that this thesis titled ``\textit{Categorizing Incident Reports Using Traditional Machine Learning and Large Language Models: A Comparative Study}'' and the work presented in it are my own. I confirm that:
-
-\begin{itemize}
-    \item This work was done wholly while in candidature for a Master's degree at the University of Koblenz.
-    \item Where I have consulted the published work of others, this is always clearly attributed.
-    \item Where I have quoted from the work of others, the source is always given. With the exception of such quotations, this thesis is entirely my own work.
-    \item I have acknowledged all main sources of help.
-    \item Where the thesis is based on work done by myself jointly with others, I have made clear exactly what was done by others and what I have contributed myself.
-\end{itemize}
-
-\vspace{2cm}
-
-\noindent
-\begin{tabular}{@{}p{6cm}p{6cm}@{}}
-\rule{5cm}{0.4pt} & \rule{5cm}{0.4pt} \\
-Place, Date & Signature \\
-\end{tabular}
-
+\spacing{1.15}
+\tableofcontents
+\thispagestyle{empty}
+\singlespacing
 \cleardoublepage
+\pagenumbering{arabic}
 
 % ============================================================================
 % ACKNOWLEDGMENTS
@@ -189,13 +164,77 @@ Place, Date & Signature \\
 
 I would like to express my sincere gratitude to all those who have supported me throughout this research journey.
 
-First and foremost, I extend my deepest appreciation to my supervisors: Prof.\ Dr.\ Andreas Mauthe and Alexander Rosenbaum from the University of Koblenz, and Dr.\ Hugh Burnham-Slipper from Uniper Kraftwerke GmbH. Their expert guidance, constructive feedback, and continuous encouragement have been invaluable in shaping this research.
+First and foremost, I extend my deepest appreciation to my supervisors, \textbf{Prof.\ Dr.\ Andreas Mauthe} and \textbf{Alexander Rosenbaum} from the University of Koblenz, as well as \textbf{Dr.\ Hugh Burnham-Slipper} from Uniper Kraftwerke GmbH. Their expert guidance, constructive feedback, and continuous encouragement have been invaluable in shaping this research.
 
-I am particularly grateful to Uniper Kraftwerke GmbH for providing access to the industrial incident datasets that formed the foundation of this research. The opportunity to work with real-world safety data has been instrumental in ensuring the practical relevance of this work.
+I am particularly grateful to Uniper Kraftwerke GmbH for providing access to the industrial incident datasets that formed the foundation of this study. I would also like to thank my manager, \textbf{Craig Walker}, for his support and motivation throughout the thesis process. The opportunity to work with real-world safety data has been instrumental in ensuring the practical relevance of this work.
 
-I would also like to thank my colleagues and fellow researchers who provided valuable discussions and insights throughout this project.
+I would also like to thank my colleagues and fellow researchers, namely \textbf{Zahid Hasan Polash} and \textbf{Christopher Thiele}, for their valuable discussions and insights throughout this project.
 
 Finally, I extend my heartfelt thanks to my family and friends for their unwavering support, patience, and encouragement during my studies.
+
+\cleardoublepage
+
+% ============================================================================
+% ENGLISH VERSION
+% ============================================================================
+
+\chapter*{Declaration of authorship}
+\addcontentsline{toc}{chapter}{Declaration of authorship}
+
+I declare that I have written this thesis independently
+and have not used any sources or aids other than those indicated
+and that this thesis has not been submitted in the same or a similar form
+to any other examination authority and accepted by it as part of an examination.
+
+\vspace{10mm}
+
+\noindent
+\begin{tabular}{@{}p{0.82\linewidth}@{\hspace*{2ex}}r@{\hspace*{2ex}}r}
+I agree to the inclusion of this thesis in the library.
+& yes $\square$ & no $\square$ \\[1em]
+I agree to the publication of this thesis on the Internet.
+& yes $\square$ & no $\square$ \\
+\end{tabular}
+
+\vspace{20mm}
+
+\noindent
+\dotfill
+
+\noindent
+(Place, Date) \hspace{8.5cm} (Signature)
+
+\cleardoublepage
+
+% ============================================================================
+% EIDESSTATTLICHE ERKLÄRUNG / DECLARATION
+% ============================================================================
+
+\chapter*{Eidesstattliche Erklärung}
+\addcontentsline{toc}{chapter}{Eidesstattliche Erklärung}
+
+Ich versichere, dass ich die vorliegende Arbeit selbständig verfasst
+und keine anderen als die angegebenen Quellen und Hilfsmittel benutzt habe
+und dass die Arbeit in gleicher oder ähnlicher Form noch keiner anderen Prüfungsbehörde
+vorgelegen hat und von dieser als Teil einer Prüfungsleistung angenommen wurde.
+
+\vspace{10mm}
+
+\noindent
+\begin{tabular}{@{}p{0.82\linewidth}@{\hspace*{2ex}}r@{\hspace*{2ex}}r}
+Mit der Einstellung der Arbeit in die Bibliothek bin ich einverstanden.
+& ja $\square$ & nein $\square$ \\[1em]
+Der Veröffentlichung dieser Arbeit im Internet stimme ich zu.
+& ja $\square$ & nein $\square$ \\
+\end{tabular}
+
+\vspace{20mm}
+
+\noindent
+\dotfill
+
+\noindent
+(Ort, Datum) \hspace{8.5cm} (Unterschrift)
 
 \cleardoublepage
 
@@ -326,13 +365,6 @@ Finally, I extend my heartfelt thanks to my family and friends for their unwaver
 
 \cleardoublepage
 
-\spacing{1.15}
-\tableofcontents
-\thispagestyle{empty}
-\singlespacing
-\cleardoublepage
-\pagenumbering{arabic}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Introduction}
 \section{Introduction}
@@ -343,7 +375,7 @@ Process safety incidents, though infrequent, can have catastrophic consequences.
 
 Despite advancements in digital reporting protocols, manual classification of incidents remains prone to error. Human judgment introduces subjectivity, inconsistencies, and fatigue-related mistakes \cite{4_Kurian}. These challenges have been observed across construction \cite{Zhong2020}, oil and gas \cite{Sattari2021OilGas}, aviation \cite{Madeira2021}, mining \cite{8_Ganguli}, agriculture \cite{9_Kakhki}, and healthcare \cite{10_Mathew}. Such errors compromise the reliability of incident data, leading to flawed decision-making, suboptimal resource allocation, and delayed responses \cite{11_Mustapha}.
 
-This research proposes the application of machine learning and large language models (LLMs) to automate and improve the classification of text-based incident reports. The aim is to design a ML-Model that reduces errors arising from manual processes \cite{12_Silva}, improve efficiency and consistency in classification \cite{13_Bugalia}, and adapt dynamically to evolving business and regulatory requirements \cite{14_Chen}.
+This research proposes the application of machine learning and large language models (LLMs) to automate and improve the classification of text-based incident reports. The aim is to design an ML model that reduces errors arising from manual processes \cite{12_Silva}, improves efficiency and consistency in classification \cite{13_Bugalia}, and adapts dynamically to evolving business and regulatory requirements \cite{14_Chen}.
 
 Through the integration of classical ML techniques, modern deep learning approaches, and transformer-based language models, this research seeks to contribute to the development of scalable, explainable, and multilingual incident classification systems.
 
@@ -352,11 +384,11 @@ Through the integration of classical ML techniques, modern deep learning approac
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Motivation}
 
-Effective incident reporting is central to risk management, yet current systems face persistent challenges. Manual classification is subject to variability in human judgment, fatigue, inconsistent criteria, reducing data reliability and weakening safety interventions \cite{Sattari2021OilGas}. As industries grow more complex, incident datasets expand in volume and linguistic diversity, amplifying classification challenges \cite{13_Bugalia}.
+Effective incident reporting is central to risk management, yet current systems face persistent challenges. Manual classification is subject to variability in human judgment, fatigue, and inconsistent criteria, which reduces data reliability and weakens safety interventions \cite{Sattari2021OilGas}. As industries grow more complex, incident datasets expand in volume and linguistic diversity, amplifying classification challenges \cite{13_Bugalia}.
 
 Language barriers further complicate reporting, with multinational organizations dealing with reports in multiple languages and varying levels of detail \cite{macleod2024loss}. Short, ambiguous, or error-prone reports reduce the effectiveness of traditional classification methods, requiring advanced NLP approaches for meaningful analysis.
 
-Machine learning has shown promise in domains such as construction \cite{Zhong2020}, aviation \cite{Madeira2021}, mining \cite{8_Ganguli}, and healthcare \cite{islam2024}, where it consistently outperforms manual classification inaccuracies and  inefficiencies. ML also uncovers hidden patterns in near-miss and incident data, supporting proactive risk reduction \cite{Fang}.
+Machine learning has shown promise in domains such as construction \cite{Zhong2020}, aviation \cite{Madeira2021}, mining \cite{8_Ganguli}, and healthcare \cite{islam2024}, where it consistently outperforms manual classification inaccuracies and inefficiencies. ML also uncovers hidden patterns in near-miss and incident data, supporting proactive risk reduction \cite{Fang}.
 
 The rise of explainable AI frameworks enables organisations to balance predictive performance with interpretability, which is essential in safety-critical contexts \cite{sarkar2020review}. Furthermore, ML enables multilingual processing, severity prediction, and adaptation to evolving categories (e.g., WCM, leaks, fires), making it a transformative tool for safety management \cite{balasubramanian2021safeone}.
 
@@ -365,42 +397,58 @@ By adopting ML-driven classification systems, organisations can enhance decision
 \newpage
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Research Objectives} \label{chapterGeneral} 
+\section{Research Objectives, Questions, and Expected Outcomes}
+\label{chapterGeneral}
 
-The primary objective of this research is to address the shortcomings of manual incident reporting by developing an automated, machine learning–driven framework for incident classification. Specifically, the study aims to analyze the limitations of current manual reporting processes and identify sources of inconsistency, inefficiency, and error. Building on these insights, the research will focus on developing and training machine learning models that are capable of accurately classifying incident types and, where possible, predicting their severity. To evaluate effectiveness, the study will conduct a comparative analysis between traditional machine learning approaches and more advanced transformer-based methods, highlighting differences in accuracy, adaptability, and scalability. Finally, the framework will be validated in real-world applications to assess its practical utility, accuracy, and efficiency in supporting safety management and decision-making.
+This research aims to address the shortcomings of manual incident reporting by proposing and evaluating an automated, machine learning-driven framework for incident classification. Manual classification processes are often affected by human error, inconsistency, and inefficiency, particularly when incident reports are produced across multilingual and domain-specific contexts. To address these limitations, this study investigates whether machine learning and large language model (LLM)-based approaches can improve the reliability, scalability, and practical utility of incident classification.
 
-\newpage
+The research is guided by four core objectives. First, it seeks to analyse the limitations of current manual reporting processes and identify major sources of inconsistency, inefficiency, and error. Second, it aims to develop and evaluate models capable of accurately classifying incident types across multilingual datasets. Third, it investigates whether hazard types can be extracted automatically from incident titles and descriptions using LLM-based approaches. Fourth, it explores the suitability of a proposed classification framework for supporting incident severity prediction in a business-oriented use case.
 
-\section{Research Questions}
+Building upon Iteration~0, which compared three English subset construction strategies under a fixed BERT-base-uncased embedding pipeline with feature standardisation and an RBF-kernel SVM classifier, the manually curated English subset was retained as the official baseline. This official baseline achieved an accuracy of 0.8112 and a macro-average F1-score of 0.7825. The automatic Lingua-based and langdetect-based subsets achieved macro-average F1-scores of 0.7758 and 0.7914, respectively. Although the langdetect subset performed best among the automatically constructed English subsets, the manually curated subset was retained as the official baseline because it provides the most controlled and auditable reference point for later iterations and target setting. The study therefore addresses the following research questions with measurable performance targets in order to establish a clear link between the experimental evaluation and the broader objectives of improving classification reliability, interpretability, and scalability. The Lingua-based and langdetect-based subsets achieved macro-average F1-scores of 0.7758 and 0.7591, respectively. Since the manually curated subset delivered the strongest macro-F1 performance, it is adopted as the official baseline for subsequent comparisons and target setting. The study therefore addresses the following research questions with measurable performance targets in order to establish a clear link between the experimental evaluation and the broader objectives of improving classification reliability, interpretability, and scalability.
 
-Building upon the initial exploratory experiments using BERT embeddings and a linear SVM classifier, which achieved an overall accuracy of approximately 79\% and a macro-average F1-score of 0.76, the following research questions are refined to include measurable performance targets and evaluation parameters. These targets establish a clear link between experimental outcomes and the research objectives of improving incident classification reliability, scalability, and interpretability.
+\subsection{Research Questions}
+
+
+    \textbf{RQ1:} Can the classification of \textit{Process Safety} incidents across multilingual and domain-specific datasets be improved by at least \textbf{6.75 percentage points} in macro-average F1-score (from approximately 0.7825 to at least 0.85) compared with the baseline BERT \& SVM model?\\
+
+    \textbf{RQ2:} How do traditional machine learning models (e.g., SVM, XGBoost, LightGBM, Random Forest, and ensemble methods) compare with transformer-based and LLM-based models (e.g., BERT, RoBERTa, DeBERTa, GPT-based approaches, or LLaMA variants) in achieving \textbf{macro-F1 $\geq 0.7825$}?\\
+
+    \textbf{RQ3:} Can large language models (LLMs) be used to \textbf{extract and identify underlying hazard types from process safety incidents} (e.g., \textit{Fire/Explosion, Loss of Containment, Mechanical/Material Failure, Exposure to Toxic Substances}) based on incident \textit{titles and descriptions}, with at least \textbf{80\% precision} and \textbf{macro-F1 $\geq 0.7825$} across multilingual datasets?\\
+
+    \textbf{RQ4:} How suitable is a proposed classification framework for predicting incident severity levels (e.g., low, medium, severe) in the business case?\\
+
+
+\subsection{Expected Outcomes}
+
+The expected outcomes of this study are closely aligned with the research questions and serve as concrete evaluation targets for the proposed framework.
 
 \begin{enumerate}
-    \item \textbf{RQ1:} Can classification of \textit{Process Safety} incidents across multilingual and domain-specific datasets be improved by at least \textbf{five percentage points} in macro-average F1-score (from $\approx $0.76 to $\geq$ 0.81) compared with the current baseline BERT+SVM model?\\
-   
-    \item \textbf{RQ2:} How do traditional machine learning model (SVM, XGBoost, LightGBM, Random Forest, Ensemble learning) compare with transformer-based LLM models (e.g., gpt-3.5, LlaMA - 3.2) in achieving \textbf{macro-F1 $\geq$ 0.76}?\\
+    \item \textbf{Improved Process Safety classification:}  
+    Achieve \textbf{macro-F1 $\geq 0.85$} for Process Safety classification, improving upon the official Iteration~0 baseline result of 0.7825 obtained on the manually curated English subset. In addition, class-level \textbf{precision} and \textbf{recall} will be reported for the Process Safety class, together with robustness analyses across country- and domain-specific dataset shifts.
 
-    \item \textbf{RQ3:} Can large language models (LLMs) be used to \textbf{extract and identify underlying hazard types from process safety incidents} (e.g., \textit{Fire/Explosion, Loss of Containment, Mechanical/Material Failure, Exposure to Toxic Substances}) from incident \textit{titles and descriptions} with at least \textbf{80\% precision} and \textbf{macro-F1 $\geq$ 0.76} across multilingual datasets?\\
+    \item \textbf{Comparative benchmark of traditional and transformer-based models:}  
+    Provide a systematic benchmark comparing traditional machine learning and transformer-based approaches, with the expectation that at least one transformer-based or multilingual transformer-based method achieves \textbf{macro-F1 $\geq 0.85$}. The comparison will also consider computational efficiency, including \textbf{training time}, \textbf{peak memory usage}, and resource--performance trade-offs, supported by ablation studies on feature representations and document field selection.
 
-    \item \textbf{RQ4:} Can a proposed classification framework predict incident severity levels (e.g., low, medium, severe) for the business case?\\ 
+    \item \textbf{Hazard type extraction across multilingual datasets:}  
+    Demonstrate the feasibility of automatically extracting underlying hazard types from incident titles and descriptions with \textbf{macro-F1 $\geq 0.7825$} across multilingual corpora. The analysis will include per-language performance reporting and an error analysis of frequent class confusions, such as \textit{Loss of Containment} versus \textit{Mechanical Failure}.
 
+    \item \textbf{Severity prediction framework:}  
+    Propose and assess a multi-class severity classification framework for the business case, focusing on the categorisation of incidents into \textit{low}, \textit{medium}, and \textit{severe} severity levels. The emphasis is placed on evaluating the conceptual suitability and potential practical value of such a framework rather than claiming a production-ready implementation.
 \end{enumerate}
-
-\vspace{0.5em}
 
 \newpage
 
 \section{Thesis Structure}
 
-This thesis is organized into seven chapters as follows:
+This thesis is organized into six main chapters and an appendix as follows:
 
 \textbf{Chapter 1: Introduction} provides the context and motivation for automated incident classification, presents the research objectives and questions, and outlines the expected outcomes.
 
 \textbf{Chapter 2: Literature Review} surveys the evolution of AI and ML techniques for text processing, examines applications of NLP in incident classification across various industries, and identifies research gaps that this work addresses.
 
-\textbf{Chapter 3: Methodology} describes the research design, including data collection and preprocessing, the proposed dataset structure, and the iterative experimental framework spanning seven development phases.
+\textbf{Chapter 3: Methodology} describes the research design, including data collection and preprocessing, the proposed dataset structure, and the iterative experimental framework spanning eight development phases.
 
-\textbf{Chapter 4: Results} presents comprehensive experimental outcomes from all iterations, including performance metrics, comparative analyses, and ablation studies.
+\textbf{Chapter 4: Results} presents comprehensive experimental outcomes from all eight iterations, including performance metrics, comparative analyses, and ablation studies.
 
 \textbf{Chapter 5: Discussion} synthesizes findings in relation to the research questions, analyzes technical insights, discusses limitations, and outlines practical implications for deployment.
 
@@ -410,23 +458,6 @@ This thesis is organized into seven chapters as follows:
 
 \newpage
 
-\section{Expected Outcomes}
-
-\begin{enumerate}
-    \item \textbf{Improved Process Safety classification:}
-    Achieve \textbf{macro-F1 $\geq 0.81$} on Process Safety classification (from a baseline of $\approx 0.76$), with class-level \textbf{Precision} and \textbf{Recall} reported for the Process Safety class and robustness checks across dataset shifts (country/domain).
-
-    \item \textbf{Comparative benchmark of classical vs.\ transformer models:}
-    Deliver a head-to-head benchmark showing at least one transformer-based approach (e.g., BERT/RoBERTa or GPT-derived embeddings) reaches \textbf{macro-F1 $\geq 0.80$} while maintaining \textbf{training time} and \textbf{peak memory} \emph{no worse than} the established baseline, plus an ablation of feature choices (CLS vs.\ mean pooling, document fields included) and resource–performance trade-offs.
-
-    \item \textbf{Hazard type extraction (multilingual):}
-    Implement automatic extraction of underlying hazard types from titles/descriptions with \textbf{Macro-F1 $\geq 0.76$} across multilingual corpora, with per-language reporting and error analysis on frequent confusions (e.g., Loss of Containment vs.\ Mechanical Failure).
-
-    \item \textbf{Severity prediction:}
-    Propose a multi-class severity model (low/medium/severe) for the business case. 
-    %Propose a multi-class severity model (low/medium/severe) achieving \textbf{Accuracy $\geq 0.70$}, \textbf{Macro-F1 $\geq 0.70$}, and \textbf{Recall$_{\text{severe}} \geq 0.80$} for the high/critical class, including calibrated probability outputs and decision thresholds suitable for risk-sensitive triage.
-    
-\end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -511,19 +542,116 @@ This review highlights that although ML and NLP have advanced incident classific
 \chapter{Methodology}
 
 \section{Data Collection}
-Historical incident reports will be gathered from relevant industries, ensuring diversity in data sources. The collected data exhibits several quality issues: descriptions that are overly brief, spelling mistakes, and grammatical errors. A preliminary analysis will be conducted on misspelled words to determine effective correction methods prior to applying machine learning. Additionally, the dataset includes reports in multiple languages, complicating direct integration into a single model. Therefore, non-English incident reports will be translated into English to improve consistency and results.
+Historical incident reports were gathered from multiple internal Uniper HSSE reporting streams in order to ensure diversity in reporting scope, operational context, and incident type. The collected data exhibited several quality issues, including overly brief descriptions, spelling mistakes, grammatical irregularities, inconsistent reporting styles, and multilingual content. These characteristics motivated the need for a structured preprocessing pipeline before machine learning experiments were conducted. In addition, the presence of reports in multiple languages complicated direct integration into a single monolingual modelling pipeline and motivated the later development of language-specific and multilingual experiments.
 
 \section{Proposed Dataset}
-\begin{enumerate}
-    \item \textbf{Uniper HSSE Data:} HSSE data, Size 54000
-    
-    %\item \textbf{OSHA IMIS narratives:} Domain: Process/Health, Size 90000
-    %\item \textbf{MSHA injury narratives:} Mining HS/PS, Size 35000
-    %\item \textbf{Dutch Health Complaints:} Health Safety, Size 22000 /not needed
-    %\item \textbf{UK Environment Agency CICS summaries:} Env, Size 12000 /not needed
-\end{enumerate}
 
-Additional datasets will be incorporated during the dataset splitting phase to ensure balanced and comprehensive model evaluation.
+The dataset used in this thesis was not taken from a single precompiled table. Instead, it was constructed by integrating multiple raw reporting streams from the internal Uniper HSSE environment. This design decision was necessary because Process Safety incidents, general HSSE incidents, and near-hit / observation reports were originally stored in separate source tables with partially overlapping but not fully identical schemas. To build a consistent experimental corpus, these tables were harmonised and merged into a single master dataset before any language filtering, class formulation, or modelling was carried out.
+
+\subsection{Source Tables and Initial Data Integration}
+
+Four raw JSONL source tables were used to construct the master dataset. Each table represented a different operational reporting stream within the broader Uniper HSSE ecosystem.
+
+\begin{table}[h!]
+\centering
+\caption{Raw source tables used to construct the Uniper HSSE master dataset.}
+\label{tab:source_tables}
+\begin{tabular}{p{5.0cm}p{3.6cm}p{2.4cm}p{4.8cm}}
+\toprule
+\textbf{Source table / file} & \textbf{Reporting scope} & \textbf{Rows} & \textbf{Purpose in this study} \\
+\midrule
+\texttt{14K\_Reports\_RW\_ACTUALS\_PS.jsonl} & Process Safety reports & 14,432 & Preserved dedicated Process Safety cases for domain-relevant incident coverage \\
+\texttt{28k\_Reports\_RW\_ACTUALS\_ALL.jsonl} & General HSSE incident reports & 28,323 & Added broader operational incident coverage beyond PS-only records \\
+\texttt{30K\_Reports\_RW\_ACTUALS\_ALL\_v2.0.jsonl} & Updated general incident reports & 30,609 & Added supplementary incident data after schema harmonisation \\
+\texttt{700k\_reports\_RW\_ACTUALS\_NH\_OBS.jsonl} & Near hits and observations & 717,041 & Added large-scale near-hit and observation reporting context \\
+\midrule
+\textbf{Total before deduplication} & & \textbf{790,405} & Raw integrated input to the master dataset \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The first source table contained dedicated Process Safety records, while the second and third tables contained broader incident reports from the general HSSE reporting workflow. The fourth table, which was substantially larger than the others, contained near-hit and observation records. These four tables were concatenated to form the initial master dataset. Before deduplication, the combined table contained 790,405 rows.
+
+\subsection{Schema Harmonisation and Column Alignment}
+
+Because the four source tables were not fully identical in structure, a schema harmonisation step was required before merging. This was particularly important for ensuring that later preprocessing, embedding generation, and classification experiments operated on a consistent feature space.
+
+In the 700k near-hit / observation table, the field \texttt{DATETIME} was renamed to \texttt{CASE\_OCCURENCE\_DATE}. In the updated 30k incident table, \texttt{EMPLOYMENT\_CATEGORY} was renamed to \texttt{COMPANY\_INVOLVED\_TYPE}, and \texttt{HAZARD\_PHYSICAL\_SECURITY\_EVENT} was renamed to \texttt{HAZARD}. In addition, the column \texttt{IMM\_ACTION\_TAKEN\_RECOM} was added to the 30k table because it was missing there but available in the other reporting streams. Several columns that were not aligned with the common target schema were removed from the 30k table, namely \texttt{PERSONAL\_INJURIES}, \texttt{ACTUAL\_WORKDAYS\_LTA}, \texttt{COMPANY\_NAME}, \texttt{COMPANY\_TYPE}, \texttt{CASE\_APPROVED\_DATE}, \texttt{OUTSIDE\_LEGAL\_INFLUENCE}, and \texttt{RETURNED\_TO\_WORK\_DATE}.
+
+After harmonisation, all four tables were aligned to a common schema containing 36 columns. These columns were:
+\texttt{CASENO}, \texttt{COMPANY}, \texttt{FUNCTIONAL\_GROUP}, \texttt{FUNCTION}, \texttt{FUNCTIONAL\_AREA}, \texttt{FUNCTIONAL\_LOCATION}, \texttt{FUNCTIONAL\_SUB\_LOCATION}, \texttt{LOCATION\_SID}, \texttt{LOCATION\_SHORT}, \texttt{COUNTRY\_SHORT}, \texttt{SL\_COUNTRY}, \texttt{SL\_LOCATION\_LVL\_1}, \texttt{SL\_LOCATION\_LVL\_2}, \texttt{SL\_LOCATION\_LVL\_3}, \texttt{SL\_LOCATION\_LVL\_4}, \texttt{CASE\_OCCURENCE\_DATE}, \texttt{TITLE}, \texttt{COMPANY\_INVOLVED\_TYPE}, \texttt{CASE\_TYPE}, \texttt{CASE\_SEVERITY}, \texttt{CASE\_DESCRIPTION}, \texttt{STATUS}, \texttt{HAZARD}, \texttt{IMM\_ACTION\_TAKEN\_RECOM}, \texttt{FULL\_INVESTIGATION\_DONE}, \texttt{CREATED\_DATE}, \texttt{MODIFIED\_DATE}, \texttt{APPROVED\_WITHIN\_DEADLINE}, \texttt{CASE\_CLOSED\_DATE}, \texttt{CASES\_NO\_OF\_REGISTRATIONS}, \texttt{VALID\_FROM}, \texttt{VALID\_TO}, \texttt{POTENTIAL\_SEV\_LEVEL}, \texttt{RISK\_AREA}, \texttt{LEARNINGS\_ACTUAL\_SEVERITY}, and \texttt{LEARNINGS\_POTENTIAL\_RISK}.
+
+This harmonised schema ensured that the later master dataset was structurally consistent despite having been assembled from four different operational reporting streams.
+
+\subsection{Deduplication and Cleaning of the Master Dataset}
+
+After concatenation, duplicate handling was necessary because the same case could appear multiple times across reporting updates. Duplicates were identified using the unique case identifier \texttt{CASENO}. For each duplicated case, the most recent record was retained by sorting the dataset in descending order of \texttt{MODIFIED\_DATE} and keeping only the first occurrence. This step reduced the dataset from 790,405 rows to 34,926 unique incident records.
+
+A second cleaning step removed records with missing or empty values in fields that were considered essential for the downstream NLP and classification pipeline. Specifically, rows missing \texttt{TITLE}, \texttt{CASE\_DESCRIPTION}, \texttt{CASE\_TYPE}, or \texttt{HAZARD} were removed. After this filtering step, the final cleaned master dataset contained 34,576 records.
+
+\begin{table}[h!]
+\centering
+\caption{Dataset size reduction during construction of the master dataset.}
+\label{tab:dataset_reduction}
+\begin{tabular}{p{9cm}r}
+\toprule
+\textbf{Processing step} & \textbf{Records remaining} \\
+\midrule
+Raw merged dataset (4 source tables combined) & 790,405 \\
+After deduplication on \texttt{CASENO} (keeping latest \texttt{MODIFIED\_DATE}) & 34,926 \\
+After removing missing \texttt{TITLE} & 34,925 \\
+After removing missing \texttt{CASE\_DESCRIPTION} & 34,925 \\
+After removing missing \texttt{CASE\_TYPE} & 34,576 \\
+After removing missing \texttt{HAZARD} & 34,576 \\
+\midrule
+\textbf{Final cleaned master dataset} & \textbf{34,576} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The strong reduction from 790,405 raw rows to 34,576 cleaned records is not a data loss in the usual sense, but primarily the result of deduplication across repeated case updates and the removal of records that lacked the minimum textual and categorical information required for reliable supervised learning.
+
+\subsection{Distribution of Cases by Country and Case Type}
+
+The cleaned master dataset is highly unevenly distributed across countries. Germany and Sweden account for the largest shares of the final dataset, followed by the UK and the Netherlands, while several locations such as UAE, International, Russia, and Poland contribute only a very small number of records. This geographical imbalance is important because it directly affects the linguistic composition of the data and the robustness of country-specific experiments.
+
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}[t]{0.45\textwidth}
+        \vspace{0pt}
+        \centering
+        \includegraphics[width=\textwidth]{Results/_iteration_0/Number of Cases by Country.png}
+        \caption{Distribution of cleaned incident records by country.}
+        \label{fig:cases_by_country}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.54\textwidth}
+        \vspace{0pt}
+        \centering
+        \includegraphics[width=\textwidth]{Results/_iteration_0/Number of Cases by Case Type.png}
+        \caption{Distribution of cleaned incident records by case type.}
+        \label{fig:cases_by_case_type}
+    \end{subfigure}
+
+    \caption{Country-level and case-type distributions of the cleaned Uniper HSSE master dataset.}
+    \label{fig:dataset_distributions}
+\end{figure}
+
+Figure~\ref{fig:cases_by_country} shows that Germany contributes 14,951 records and Sweden 12,224 records, making these two countries the dominant sources of incident reports in the cleaned master dataset. The UK contributes 4,673 records and the Netherlands 1,990 records, while all remaining country groups contribute comparatively few cases. This imbalance has methodological consequences for multilingual modelling, since the effective representation of languages and reporting styles is not uniform across the corpus.
+
+Figure~\ref{fig:cases_by_case_type} shows that the case-type distribution is also strongly imbalanced. The largest class is \textit{Safety} with 25,164 records, followed by \textit{Process Safety} with 4,561 and \textit{Environment} with 2,768. The remaining categories are substantially smaller: \textit{Asset and Reputation damage/loss} (1,333), \textit{Operational loss} (456), \textit{Information Security} (186), \textit{Physical Security} (100), and \textit{Not classified} (8). This imbalance provides an important methodological justification for later binary reformulation, class balancing, and macro-F1-based evaluation.
+
+\subsection{Relationship to the Iteration~0 English Subsets}
+
+The cleaned master dataset served as the source pool for the English-language subsets used in Iteration~0. From this master dataset, three alternative English subsets were created using different subset construction strategies: a manually curated English subset, a \texttt{langdetect}-based subset, and a \texttt{lingua}-based subset. These yielded 4,713, 6,002, and 6,205 records, respectively. The manually curated English subset was later selected as the official Iteration~0 baseline because it achieved the strongest macro-F1 score in the initial BERT+SVM experiment.
+
+\subsection{External Datasets Explored but Not Included}
+
+In addition to the internal Uniper HSSE reporting data, several external datasets were explored during the early scoping phase of the thesis. These included OSHA IMIS narratives, MSHA injury narratives, Dutch health complaint datasets, and UK Environment Agency CICS summaries. Although these datasets were initially considered as potential supplements for enlarging the corpus or enriching category diversity, they were ultimately not included in the final experimental dataset.
+
+The main reason for exclusion was insufficient alignment with the structure and business context of the Uniper HSSE reporting environment. The external datasets differ substantially from the Uniper corpus in at least four ways. First, their label systems and incident taxonomies are defined for different regulatory or organisational settings, which makes direct category mapping unreliable. Second, the narrative style and reporting granularity differ from the internal Uniper HSSE reports, reducing comparability at the text level. Third, the domain emphasis of these external datasets is not fully consistent with the industrial Process Safety framing of this study; some are more strongly oriented toward occupational injury, public complaints, or environmental compliance narratives. Fourth, integrating them would have introduced substantial domain shift, which would have weakened the internal validity of the comparative experiments.
+
+For these reasons, the final thesis experiments were restricted to the harmonised Uniper HSSE master dataset and the language-specific subsets derived from it. This ensured that the classification task remained closely aligned with the actual business case, the internal reporting taxonomy, and the multilingual incident-reporting environment relevant to the thesis objectives.
 
 %------------------Table-------------------------
 \begin{table}[h!]
@@ -554,371 +682,360 @@ NIL & \textbf{Title:} Safety Walk Betrieb\newline \textbf{Description:} 47319 An
 \end{table}
 
 \section{Data Preprocessing}
-Before modeling, several preprocessing steps will be applied to improve data quality:
+
+Before modelling, several preprocessing steps were applied to improve data quality and prepare the incident narratives for downstream machine learning experiments:
+
 \begin{itemize}
-    \item \textit{Data Anonymization:} Remove or mask any sensitive or business-critical information to protect confidentiality.
-    \item \textit{Cleaning and Class balancing} Cleaning data according to standard processes (eg. NaN value removal, special characters removal etc.) after that consider class balancing for the classification task was considered. 
-    \item \textit{Tokenization and Lemmatization:} Break down text into tokens (e.g., words), converting all text to lowercase for uniformity. Reduce words to their base forms to normalize different word inflections.
-    \item \textit{Dataset Splitting:} Divide the dataset into training and test sets.\\
+    \item \textit{Data Anonymization:} Sensitive or business-critical information was removed or masked where necessary in order to protect confidentiality and reduce the risk of exposing internal operational details.
+    
+    \item \textit{Cleaning and Class Balancing:} Standard cleaning operations were applied, including the removal of invalid or incomplete entries, the treatment of missing values, and the normalisation of inconsistent textual content where appropriate. Because the classification task exhibits substantial class imbalance, class balancing strategies were later considered as part of the modelling pipeline.
+    
+    \item \textit{Tokenization and Lemmatization:} Text was segmented into tokens and standardised for NLP processing. Where relevant, words were reduced to their base forms to minimise variation caused by inflectional differences.
+    
+    \item \textit{Dataset Splitting:} The cleaned dataset was divided into training and test subsets in order to enable reproducible model training and evaluation.
 \end{itemize}
 
-Table~\ref{tab:rawdata} presents representative examples of raw incident reports drawn from industrial datasets. These examples highlight common data quality challenges encountered in real-world reporting, including multilingual descriptions, overly brief or incomplete narratives, grammatical errors, and the use of context-specific abbreviations. Such inconsistencies illustrate the complexity of preparing incident reports for automated analysis and emphasize the need for robust preprocessing techniques to ensure reliable machine learning outcomes.
+\newpage
+
+Table~\ref{tab:rawdata} presents representative examples of raw incident reports drawn from the industrial dataset. These examples highlight common data quality challenges encountered in real-world reporting, including multilingual descriptions, overly brief or incomplete narratives, grammatical errors, and the use of context-specific abbreviations. Together with the dataset-level imbalances shown in Figure~\ref{fig:dataset_distributions}, these issues illustrate the complexity of preparing incident reports for automated analysis and reinforce the need for robust preprocessing before reliable machine learning models can be trained.
 
 \section{Model Development}
-A variety of supervised machine learning algorithms such as decision trees, random forests, SVMs will be trained and evaluated for incident classification. Additionally, the approach will integrate advanced techniques to enhance performance and adaptability:
 
-\section{Iteration 0: Baseline BERT+SVM Implementation}
+The model development strategy of this thesis follows an iterative experimental design. Rather than directly moving to advanced multilingual transformers or large language models, the research begins with a controlled baseline implementation and then progressively introduces additional complexity in later iterations. This approach makes it possible to identify the effect of individual methodological choices, isolate the contribution of specific components, and build a reproducible performance trajectory from a simple baseline to more advanced architectures.
 
-\subsection{Overview and Methodology}
+The development process starts with a baseline binary classification setting in which incident reports are classified as either \textit{Process Safety} or \textit{Non-Process Safety}. The binary formulation was chosen intentionally, because Process Safety incidents represent the most business-critical class and therefore provide a focused first benchmark before moving to more complex multi-class and multilingual settings.
 
-As a preliminary exploration of the cleaned incident data, a binary text classification experiment was conducted to predict whether an incident is a \textbf{Process Safety} case or not, using the incident's textual fields. This baseline approach combines a pre-trained transformer language model (BERT) for feature extraction with a linear Support Vector Machine (SVM) for classification. The goal of Iteration~0 is to establish a performance benchmark (Macro F1-score) against which subsequent improvements can be measured, in line with \textbf{RQ1} (which targets a 5 percentage point increase in Macro F1 over the initial baseline of $\sim$0.76).
+Iteration~0 serves as the experimental foundation of the thesis. It establishes the first end-to-end implementation pipeline, starting from cleaned and merged incident reports, continuing through English subset construction, exploratory data analysis, text embedding generation, and classifier training, and ending with an evaluation of three alternative English-language subset construction strategies. The strongest-performing strategy is then adopted as the official baseline for subsequent iterations.
 
-Rather than using all available data (over 54,000 incidents in multiple languages), the baseline focuses on a monolingual subset to eliminate language variance. Specifically, only records with English text were retained. This filtering yields an \textbf{English-only dataset} of 7,920 incidents with four key fields: \texttt{CASENO} (unique case ID), \texttt{CASE\_TYPE} (incident category), \texttt{TITLE} (brief incident summary), and \texttt{CASE\_DESCRIPTION} (detailed narrative). Table~\ref{tab:category_distribution} shows the distribution of incident categories in this subset.
+\section{Iteration 0: Baseline Implementation}
+
+\section{Iteration 0: Baseline Implementation}
+
+\subsection{Overview and Motivation}
+Iteration~0 establishes the foundational experimental pipeline for this thesis. Its primary objective is to create a reproducible and auditable baseline for Process Safety classification, and to rigorously evaluate how different English-language subset construction strategies affect downstream model performance. This baseline serves as the reference point for all subsequent methodological improvements and research targets.
+
+\subsection{Experimental Scope and Subset Construction}
+Three alternative English subset construction strategies were implemented and compared under an otherwise fixed modelling pipeline:
+\begin{enumerate}
+    \item \textbf{Manual English subset}: Formed by combining country-level files considered relevant for an English-language baseline (UK, UAE, Russia, Poland).
+    \item \textbf{\texttt{langdetect}-based English subset}: Constructed automatically using probabilistic language detection (restricted to English, German, Swedish, Dutch, Hungarian).
+    \item \textbf{\texttt{lingua}-based English subset}: Constructed automatically using a high-speed language detector over the same target language set.
+\end{enumerate}
+
+All three subsets were processed identically after construction. This allowed the baseline experiment to isolate the impact of English subset construction while keeping feature extraction and classification fixed.
+
+\subsection{Integration with the Master Dataset}
+
+Iteration~0 operates on the cleaned master dataset (34,576 records after deduplication and removal of missing values). The three English subsets were derived as follows:
+\begin{itemize}
+    \item \textbf{Manual}: 4,713 records (UK, UAE, Russia, Poland)
+    \item \textbf{langdetect}: 6,014 records (automatic detection)
+    \item \textbf{lingua}: 6,205 records (automatic detection)
+\end{itemize}
+
+\subsection{Exploratory Text Analysis}
+
+Before modelling, an exploratory analysis of text length and lexical sparsity was performed in order to understand the quality of the available report narratives and the potential limitations for transformer-based embedding generation.
+
+\subsubsection{Character Count Analysis}
+
+For the full cleaned master dataset, the character-length statistics were:
+
+\begin{itemize}
+    \item \textbf{Title length:} minimum 3, maximum 662, mean 54.7086, median 46
+    \item \textbf{Description length:} minimum 1, maximum 6,583, mean 140.0750, median 82
+    \item \textbf{Combined text length:} minimum 6, maximum 6,708, mean 194.7836, median 140
+\end{itemize}
+
+These values show that incident titles are usually short, while descriptions vary substantially, with a long right tail of very detailed reports.
+
+\subsubsection{Word Count Analysis}
+
+The word-count statistics were:
+
+\begin{itemize}
+    \item \textbf{Title word count:} minimum 1, maximum 92, mean 7.9015, median 6
+    \item \textbf{Description word count:} minimum 1, maximum 953, mean 21.2266, median 12
+    \item \textbf{Combined word count:} minimum 2, maximum 969, mean 29.1281, median 20
+\end{itemize}
+
+These results indicate that a large proportion of reports are relatively short, which is relevant for embedding quality and later classification performance.
+
+\subsubsection{Low Word Count Analysis}
+
+A dedicated low-word-count analysis was performed to estimate the proportion of narratives with very limited semantic content.
+
+For word count thresholds of 3, 5, and 10 words, the following proportions were observed:
 
 \begin{table}[h!]
 \centering
-\caption{Distribution of Incident Categories in the English-only Dataset}
-\label{tab:category_distribution}
-\begin{tabular}{@{}l r@{}}
+\caption{Low word count analysis for the cleaned master dataset.}
+\label{tab:iter0_low_word_count}
+\begin{tabular}{lrrr}
 \toprule
-\textbf{Category} & \textbf{Number of Cases} \\
+\textbf{Threshold} & \textbf{Title} & \textbf{Description} & \textbf{Combined Text} \\
 \midrule
-Safety & 4,672 \\
-Process Safety & 2,055 \\
-Environment & 685 \\
-Asset and Reputation Damage/Loss & 207 \\
-Operational Loss & 193 \\
-Information Security & 21 \\
-Physical Security & 14 \\
-Not Classified & 3 \\
+$\leq 3$ words  & 6,374 (18.4348\%) & 3,263 (9.4372\%) & 267 (0.7722\%) \\
+$\leq 5$ words  & 13,952 (40.3517\%) & 7,189 (20.7919\%) & 1,230 (3.5574\%) \\
+$\leq 10$ words & 26,613 (76.9696\%) & 15,432 (44.6321\%) & 7,288 (21.0782\%) \\
 \bottomrule
 \end{tabular}
 \end{table}
 
+The very high proportion of short titles and relatively short descriptions highlights an important limitation of the raw data: some reports provide only weak semantic signal for contextual embedding models. This observation is relevant for interpreting baseline performance and motivates later experiments with alternative subset construction strategies and more robust multilingual representations.
 
-Clearly, the dataset is multi-class and heavily imbalanced, with \emph{Safety} incidents being the most common. \emph{Process Safety} cases account for only about 26\% of the data (2,055 out of 7,920). For the purposes of a simple binary classification demo, the focus was narrowed to distinguishing \textbf{Process Safety (PS) vs. Non-Process Safety} incidents. All categories other than "Process Safety" are grouped together as the negative class. A new binary label was created: $\texttt{binary\_label} = 1$ if $\texttt{CASE\_TYPE} = $ \emph{Process Safety}, and $0$ otherwise. Thus, in this baseline dataset, 2,055 instances are positive class (PS incidents) and 5,865 are negative class (all other types). This framing aligns with the project’s objective of identifying Process Safety events (typically the most critical incidents).
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}[b]{0.95\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Images/iteration_0_figures/word_count_distribution.png}
+        \caption{Histogram-based word count distribution for titles and descriptions.}
+        \label{fig:iter0_word_count_hist}
+    \end{subfigure}
 
-To preserve as much incident information as possible for modeling, the \texttt{TITLE} and \texttt{CASE\_DESCRIPTION} fields for each record were concatenated into a single text. The title provides a concise summary and the description provides details; combining them ensures the model can learn from the full textual context. Formally, for each incident $i$:
+    \vspace{1em}
 
-\begin{equation}
-\text{Input}_i = \text{Title}_i \oplus \text{``.''} \oplus \text{Case\_Description}_i~,
-\end{equation}
+    \begin{subfigure}[b]{0.95\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Images/iteration_0_figures/word_count_distribution_log_scale.png}
+        \caption{Line graph of title and description word count frequencies on a logarithmic scale.}
+        \label{fig:iter0_word_count_log}
+    \end{subfigure}
 
-where $\oplus$ denotes string concatenation and the period adds a separator between title and description. This yields a single descriptive text per incident, which will be used as the input to the language model.
+    \caption{Exploratory word count analysis for the cleaned master dataset used in Iteration~0.}
+    \label{fig:iter0_word_count_analysis}
+\end{figure}
 
-\subsubsection{Data Preparation Pipeline}
+Figures~\ref{fig:iter0_word_count_hist} and \ref{fig:iter0_word_count_log} further illustrate the strong right-skew in the text-length distribution. Most titles are very short, while description lengths vary widely and include a long tail of highly detailed reports.
 
-The master dataset was constructed through several preprocessing steps to consolidate multiple sources and filter down to the English subset used in Iteration~0:
+\subsection{Binary Classification Formulation}
 
-\begin{enumerate}
-\item \textbf{Data Loading and Integration}: Three distinct source datasets were merged to form a comprehensive master list of incidents:
-\begin{itemize}
-\item \textbf{Process Safety reports} (file: \texttt{RW\_ACTUALS\_PS.csv})
-\item \textbf{All incidents reports} (file: \texttt{RW\_ACTUALS\_ALL.csv})
-\item \textbf{Near-miss and observations} (file: \texttt{RW\_ACTUALS\_NH\_OBS.csv})
-\end{itemize}
-These were concatenated into a single DataFrame (aligning common columns) to yield a master list of 54,750 incident records.
-
-The option for creating containers in Azure Blob Storage to ingest data directly from Snowflake and thereby avoid relying on intermediate .csv exports was also explored. However, this approach was not adopted in the current pipeline because intermittent inconsistencies in the total number of incident reports likely caused by Snowflake data refresh schedules could not be fully resolved. This integration option will be revisited in future work as part of developing a robust, closed-loop data ingestion and model update workflow.  
-
-\item \textbf{Data Type Standardization}: Column types were standardized to enforce data integrity:
-\begin{itemize}
-    \item Integer IDs/counts (e.g., \texttt{CASENO}, \texttt{LOCATION\_SID}, \texttt{CASES\_NO\_OF\_REGISTRATIONS}) were converted to integer type.
-    \item Date fields (\texttt{CASE\_OCCURENCE\_DATE}, \texttt{CREATED\_DATE}, \texttt{MODIFIED\_DATE}, \texttt{CASE\_CLOSED\_DATE}) were parsed to proper date objects.
-    \item DateTime fields (\texttt{VALID\_FROM}, \texttt{VALID\_TO}) were parsed to datetime objects.
-    \item Textual/categorical fields (e.g., \texttt{TITLE}, \texttt{CASE\_DESCRIPTION}, \texttt{CASE\_TYPE}, locations, severity, etc.) were kept as strings.
-\end{itemize}
-
-\item \textbf{Data Cleaning}: Basic cleaning operations were applied:
-\begin{itemize}
-    \item Duplicate entries (identical \texttt{CASENO}) were dropped, keeping only the latest record per case (based on \texttt{MODIFIED\_DATE}).
-    \item Records missing critical text fields (\texttt{TITLE} or \texttt{CASE\_DESCRIPTION}) were removed.
-    \item Rows that were entirely empty (all fields NaN) were discarded.
-    \item Column alignment: only columns common to all three source files were retained to ensure a consistent schema across merged data.
-\end{itemize}
-
-\item \textbf{Language Filtering}: To ensure linguistic consistency with the chosen model (English BERT), an automated language detection was performed on each record’s text:
-\begin{itemize}
-    \item Both the \texttt{TITLE} and \texttt{CASE\_DESCRIPTION} were analyzed using a language detection library.
-    \item Only records where \emph{both} fields were identified as English (\texttt{'en'}) were retained.
-    \item This step removed all non-English incidents (e.g., those reported in Spanish, French, etc.), yielding a monolingual subset.
-\end{itemize}
-
-\item \textbf{Feature Construction}: From the filtered English records, a minimal working dataset was created with only the essential fields for modeling: \texttt{CASENO}, \texttt{TITLE}, \texttt{CASE\_DESCRIPTION}, and \texttt{CASE\_TYPE}. The \texttt{TITLE} and \texttt{CASE\_DESCRIPTION} of each case were concatenated (with a period delimiter) to form a single text string (\texttt{text\_features}), as described above. This ensures each sample is represented by a unified text input that includes both summary and detailed description.
-\end{enumerate}
-
-The outcome of these steps is a cleansed, English-only dataset ready for NLP processing. The final dataset (\texttt{english\_dataset\_minimal.csv}) contains 7,920 records (approximately 14.47\% of the master dataset). By focusing on English text, issues with multilingual modeling in the baseline were avoided, at the cost of excluding a large portion of data.
-
-\subsubsection{Language Detection Methodology}
-
-To implement the language filter, the \texttt{langdetect} library was used. Both the Title and Description of each incident were checked, and records were kept only if \emph{both} fields were classified as English. The Python code snippet below illustrates this process:
-
-\begin{lstlisting}[language=Python, caption=Language Detection Implementation]
-from langdetect import detect, LangDetectException
-
-def detect_language(text):
-    """
-    Detect language of text. Returns 'en' for English.
-    Returns None if detection fails or text is empty.
-    """
-    try:
-        if pd.isna(text) or str(text).strip() == '':
-            return None
-        return detect(str(text))
-    except LangDetectException:
-        return None
-
-# Determine language for Title and Description fields
-master_df['title_lang'] = master_df['TITLE'].apply(detect_language)
-master_df['description_lang'] = master_df['CASE_DESCRIPTION'].apply(detect_language)
-
-# Filter dataset to only English entries (both Title and Description)
-english_df = master_df[
-    (master_df['title_lang'] == 'en') &
-    (master_df['description_lang'] == 'en')
-].copy()
-
-# Create a minimal dataset with key fields
-english_dataset_minimal = english_df[
-    ['CASENO', 'TITLE', 'CASE_DESCRIPTION', 'CASE_TYPE']
-].copy()
-
-# Save the English-only dataset (for reuse in modeling)
-english_dataset_minimal.to_csv('english_dataset_minimal.csv', index=False)
-\end{lstlisting}
-
-Applying this filter dramatically reduced the dataset size. Table~\ref{tab:language-detection} summarizes the effect of language filtering:
-
-\begin{table}[h]
-\centering
-\caption{Language Detection Results}
-\label{tab:language-detection}
-\begin{tabular}{lrc}
-\toprule
-\textbf{Metric} & \textbf{Count} & \textbf{Percentage} \\
-\midrule
-Total Master Dataset Records & 54,750 & 100\% \\
-English Records (Both Fields) & 7,920 & 14.47\% \\
-Non-English Records (Excluded) & 46,830 & 85.53\% \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\textbf{Implications of Language Filtering:}
-
-\begin{itemize}
-\item \textbf{Model Compatibility}: Restricting to English ensures all text can be processed by the BERT \emph{base-uncased} model (which is English-only).
-\item \textbf{Data Reduction}: Approximately \textbf{85.5\%} of the total records were excluded for not being English. This is a significant loss of data.
-\item \textbf{Geographic Bias}: English-language reports are likely biased towards regions like the UK, North America, and some international operations.
-\item \textbf{Need for Multilingual Capability}: The large proportion of excluded data underlines the importance of extending the model to multiple languages in future iterations.
-\item \textbf{Baseline Validity}: The English-only subset provides a controlled baseline to prove the concept. The baseline results are still meaningful, but they represent a lower bound on performance since much of the data were set aside.
-\end{itemize}
-
-After filtering, the English dataset retains the multi-class category distribution shown earlier in Table~\ref{tab:case_distribution}. As mentioned, this resultd in a binary outcome for modeling: \textbf{Process Safety (positive class)} versus \textbf{Non-Process Safety (negative class)}.
-
-\subsubsection{Binary Classification Formulation}
-
-Formally, the classification task is defined as follows:
+After constructing the three English subsets, each record was reformulated as a binary classification instance. Let $y_i$ denote the target label of report $i$. The label was defined as:
 
 \begin{equation}
 y_i =
 \begin{cases}
-1, & \text{if CASE\_TYPE}_i = \text{``Process Safety''},\\
-0, & \text{otherwise (Non-Process Safety).}
+1, & \text{if } \texttt{CASE\_TYPE}_i = \text{Process Safety},\\[0.5em]
+0, & \text{otherwise}.
 \end{cases}
 \end{equation}
 
-In other words, if an incident’s category is \emph{Process Safety}, it is labelled as 1; any other category is labeled 0. This yields 2,055 positive examples and 5,865 negative examples in the dataset.
+This binary formulation collapses all non-Process-Safety categories into a single negative class and yields the first operational baseline for the business problem.
 
-\subsection{BERT-base-Uncased for Text Embeddings}
-
-To transform the incident texts into numerical features for the classifier, a pre-trained \textbf{BERT-base-uncased} language model \cite{devlin2018bert} was used. BERT (Bidirectional Encoder Representations from Transformers) is a transformer model that produces contextual embeddings for text. Using BERT’s embeddings provides a rich, 768-dimensional representation of each incident’s text.
-
-\subsubsection{Model Specifications}
-
-The base version of BERT (uncased, English) was used:
+The class distributions in the three English subsets were:
 
 \begin{itemize}
-\item 12 Transformer encoder layers, 12 self-attention heads, hidden size 768.
-\item Vocabulary: 30,522 WordPiece tokens (all lowercase).
-\item Input formatting: [CLS] at start, [SEP] at end, max length 512 tokens.
-\item Pre-training corpora: BooksCorpus and English Wikipedia.
-\item Uncased model: all text is lowercased before tokenization.
+    \item \textbf{manual:} 1,409 Process Safety and 3,304 Non-Process Safety records
+    \item \textbf{langdetect:} 1,526 Process Safety and 4,488 Non-Process Safety records
+    \item \textbf{lingua:} 1,522 Process Safety and 4,683 Non-Process Safety records
 \end{itemize}
 
-\paragraph{Embedding Generation Pipeline} For each incident’s combined text, the [CLS] embedding is extracted from the last BERT layer:
+The combined text feature for each record was created as:
 
 \begin{equation}
-\mathbf{h}_{\text{[CLS]}} = \text{BERT}_{L=12}\big([\texttt{[CLS]}] \oplus \text{tokens} \oplus [\texttt{[SEP]}]\big)[0] \in \mathbb{R}^{768}.
+\texttt{text\_features}_i = \texttt{TITLE}_i \oplus \text{``.''} \oplus \texttt{CASE\_DESCRIPTION}_i,
 \end{equation}
 
-The following code was used:
+where $\oplus$ denotes string concatenation. This ensures that both the concise title and the richer narrative description contribute to the document representation.
 
-\begin{lstlisting}[language=Python, caption=BERT Embedding Extraction]
-from transformers import AutoTokenizer, AutoModel
-import torch
-from tqdm import tqdm
-import numpy as np
+\subsection{BERT Embedding Generation}
 
-# Initialize tokenizer and model for BERT-base-uncased
-tokenizer = AutoTokenizer.from_pretrained('bert-base-uncased')
-model = AutoModel.from_pretrained('bert-base-uncased')
+For all three English subsets, contextual document representations were generated using the pre-trained \texttt{bert-base-uncased} transformer model. The tokenizer and model were loaded from Hugging Face Transformers, and the model was used in evaluation mode.
 
-def get_bert_embeddings(texts, max_length=512):
-    """
-    Convert a list of text strings into BERT [CLS] embeddings.
-    Returns a NumPy array of shape (len(texts), 768).
-    """
-    embeddings = []
-    batch_size = 8  # use small batches to fit in memory
-    for i in tqdm(range(0, len(texts), batch_size),
-                  desc="Generating BERT embeddings"):
-        batch_texts = texts[i:i + batch_size]
-        # Tokenize and pad/truncate to max_length
-        inputs = tokenizer(
-            batch_texts,
-            padding=True,
-            truncation=True,
-            max_length=max_length,
-            return_tensors="pt"
-        )
-        # Forward pass without gradient calculation (inference mode)
-        with torch.no_grad():
-            outputs = model(**inputs)
-            # outputs.last_hidden_state shape: (batch_size, seq_len, 768)
-            cls_embeddings = outputs.last_hidden_state[:, 0, :].numpy()
-            embeddings.extend(cls_embeddings)
-    return np.array(embeddings)
+The implementation used:
+\begin{itemize}
+    \item \textbf{model:} \texttt{bert-base-uncased}
+    \item \textbf{pooling strategy:} \texttt{[CLS]} token embedding from the final hidden layer
+    \item \textbf{embedding dimension:} 768
+    \item \textbf{batch size:} 8
+    \item \textbf{maximum sequence length:} 512 tokens
+    \item \textbf{device:} CPU in the recorded notebook run
+\end{itemize}
 
-# Prepare the input texts (concatenated Title and Description)
-texts = english_dataset_minimal['TITLE'] + '. ' + \
-        english_dataset_minimal['CASE_DESCRIPTION']
-X = get_bert_embeddings(texts.tolist())  # shape: (7920, 768)
-\end{lstlisting}
-
-\subsubsection{Classification Model: Linear Support Vector Machine}
-
-With BERT embeddings computed, the next task was to train a \textbf{linear SVM} with the following parameters: Kernel: linear, Regularization parameter: $C = 1.0$, Class weighting: \texttt{class\_weight = 'balanced'}, Random state: 42. 
-
-An 80/20 stratified train/test split was used.
-
-The optimization objective is:
+Formally, the document embedding was defined as:
 
 \begin{equation}
-\begin{aligned}
-\min_{\mathbf{w}, b} \quad & \frac{1}{2}\lVert\mathbf{w}\rVert^2 + C \sum_{i=1}^{N} w_{y_i}\,\xi_i \\
-\text{s.t.} \quad & y_i(\mathbf{w}^\top \mathbf{x}_i + b) \ge 1 - \xi_i, \quad \xi_i \ge 0,\; i = 1,\dots,N~,
-\end{aligned}
+\mathbf{h}_{\text{[CLS]}} = \text{BERT}\big([\texttt{[CLS]}] \oplus \text{tokens} \oplus [\texttt{[SEP]}]\big)[0] \in \mathbb{R}^{768}.
 \end{equation}
 
-where $w_{y_i}$ are the class weights.
+The generated embedding matrices had the following dimensions:
 
-\subsection{Experimental Results}
+\begin{itemize}
+    \item \textbf{manual:} $(4713, 768)$
+    \item \textbf{langdetect:} $(6014, 768)$
+    \item \textbf{lingua:} $(6205, 768)$
+\end{itemize}
 
-\subsubsection{Dataset Characteristics}
+Embeddings and labels were saved as \texttt{.npy} files for reproducibility and reuse in later experiments.
 
-\begin{table}[h]
+\subsection{Classifier Training and Evaluation Pipeline}
+
+
+For each English subset, the following pipeline was applied:
+\begin{enumerate}
+    \item 80/20 stratified train--test split
+    \item Standardisation of embedding features using \texttt{StandardScaler}
+    \item Training an SVM classifier (RBF kernel, \texttt{class\_weight='balanced'})
+    \item Evaluation using accuracy, macro-F1, weighted-F1, classification reports, and confusion matrices
+\end{enumerate}
+
+The train--test split counts were:
+
+\begin{table}[h!]
 \centering
-\caption{Iteration 0 Dataset Distribution and Statistics}
-\label{tab:iter0-dataset-stats}
-\begin{tabular}{lrr}
+\caption{Train--test split statistics for the three Iteration~0 English subsets.}
+\label{tab:iter0_train_test_split}
+\begin{tabular}{lrrrr}
 \toprule
-\textbf{Characteristic} & \textbf{Count} & \textbf{Percentage} \\
+\textbf{Subset} & \textbf{Train} & \textbf{Test} & \textbf{Train PS / Non-PS} & \textbf{Test PS / Non-PS} \\
 \midrule
-\textbf{Total Samples (English subset)} & 7,920 & 100.00\% \\
-\quad Training Samples & 6,336 & 80.00\% \\
-\quad Testing Samples & 1,584 & 20.00\% \\
-\midrule
-\textbf{Training Set Distribution} & & \\
-\quad Non-Process Safety & 4,692 & 74.05\% \\
-\quad Process Safety & 1,644 & 25.95\% \\
-\midrule
-\textbf{Testing Set Distribution} & & \\
-\quad Non-Process Safety & 1,173 & 74.05\% \\
-\quad Process Safety & 411 & 25.95\% \\
+manual     & 3,770 &   943 & 1,127 / 2,643 & 282 / 661 \\
+langdetect & 4,811 & 1,203 & 1,221 / 3,590 & 305 / 898 \\
+lingua     & 4,964 & 1,241 & 1,218 / 3,746 & 304 / 937 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-\subsubsection{Classification Performance Metrics}
+\subsubsection{Actual Implemented Classifier}
 
-\begin{table}[h]
+
+\textbf{Pipeline summary:} \textit{BERT-base-uncased [CLS] embeddings $\rightarrow$ StandardScaler $\rightarrow$ RBF SVM classifier}
+
+\subsection{Iteration~0 Results}
+
+Table~\ref{tab:iter0_comparison_summary} summarises the final performance of the three English subset construction strategies under the common BERT+SVM pipeline.
+
+\begin{table}[h!]
 \centering
-\caption{Iteration 0 Performance Metrics (BERT-base-uncased \& Linear SVM)}
-\label{tab:iter0-metrics}
-\begin{tabular}{lccc}
+\caption{Comparison of the three English subset construction strategies in Iteration~0.}
+\label{tab:iter0_comparison_summary}
+\begin{tabular}{lrrrrrr}
 \toprule
-\textbf{Metric} & \textbf{Non-PS} & \textbf{Process Safety} & \textbf{Macro Avg} \\
+\textbf{Subset} & \textbf{Total} & \textbf{Accuracy} & \textbf{Macro-F1} & \textbf{Weighted-F1} & \textbf{Best?} \\
 \midrule
-Precision & 0.9305 & 0.6186 & 0.7746 \\
-Recall    & 0.8218 & 0.8248 & 0.8233 \\
-F1-Score  & 0.8728 & 0.7070 & \textbf{0.7899} \\
-\midrule
-Support (Test Samples) & 1,173 & 411 & 1,584 \\
+manual     & 4,713 & 0.8112 & 0.7825 & 0.8143 &  \\
+langdetect & 6,014 & \textbf{0.8379} & \textbf{0.7914} & \textbf{0.8400} & $\checkmark$ \\
+lingua     & 6,205 & 0.8251 & 0.7758 & 0.8295 &  \\
 \bottomrule
 \end{tabular}
 \end{table}
+
+The results show that the \texttt{langdetect}-based English subset is the strongest-performing baseline according to both accuracy and macro-F1. The \texttt{manual} subset performs second best, while the \texttt{lingua} subset, despite being the largest, performs slightly worse on the main evaluation metric.
+
+\subsubsection{Detailed Classification Reports}
+
+\begin{table}[h!]
+\centering
+\caption{Per-class performance across the three English subset construction strategies.}
+\label{tab:iter0_per_class_metrics}
+\begin{tabular}{llcccc}
+\toprule
+\textbf{Subset} & \textbf{Class} & \textbf{Precision} & \textbf{Recall} & \textbf{F1-score} & \textbf{Support} \\
+\midrule
+\multirow{2}{*}{manual}
+    & Non-Process Safety & 0.8864 & 0.8381 & 0.8616 & 661 \\
+    & Process Safety     & 0.6635 & 0.7482 & 0.7033 & 282 \\
+\midrule
+\multirow{2}{*}{langdetect}
+    & Non-Process Safety & 0.9026 & 0.8775 & 0.8899 & 898 \\
+    & Process Safety     & 0.6667 & 0.7213 & 0.6929 & 305 \\
+\midrule
+\multirow{2}{*}{lingua}
+    & Non-Process Safety & 0.9063 & 0.8570 & 0.8810 & 937 \\
+    & Process Safety     & 0.6225 & 0.7270 & 0.6707 & 304 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+These results indicate that the best subset is not determined solely by minority-class recall. The manual subset achieves the strongest Process Safety F1-score (0.7033), but the \texttt{langdetect} subset achieves substantially stronger overall balance across both classes, which leads to the highest macro-F1 (0.7914). This is why \texttt{langdetect} becomes the preferred baseline when the notebook output is treated as final.
 
 \subsubsection{Confusion Matrix Analysis}
 
-\begin{table}[h]
-\centering
-\caption{Iteration 0 Confusion Matrix (Test Set, $n=1584$)}
-\label{tab:iter0-confusion}
-\begin{tabular}{lcc}
-\toprule
-\textbf{Actual $\downarrow$ / Predicted $\rightarrow$} & \textbf{Non-PS} & \textbf{Process Safety} \\
-\midrule
-\textbf{Non-Process Safety} & 964 \textit{(True Negative)} & 209 \textit{(False Positive)} \\
-\textbf{Process Safety}     & 72 \textit{(False Negative)} & 339 \textit{(True Positive)} \\
-\bottomrule
-\end{tabular}
-\end{table}
+The confusion matrices for the three subset construction strategies are shown in Figure~\ref{fig:iter0_confusion_matrices}. They provide a direct view of the trade-off between false positives and false negatives across the three English baselines.
 
-\begin{table}[h]
-\centering
-\caption{Iteration 0 Summary of Test Performance}
-\label{tab:iter0-summary}
-\begin{tabular}{lc}
-\toprule
-\textbf{Metric} & \textbf{Value} \\
-\midrule
-Overall Accuracy       & 0.8226 (82.26\%) \\
-\textbf{Macro F1-Score} & \textbf{0.7899} \\
-Weighted F1-Score      & 0.8298 \\
-\midrule
-True Negatives (TN) & 964 \\
-False Positives (FP) & 209 \\
-False Negatives (FN) & 72 \\
-True Positives (TP) & 339 \\
-\midrule
-False Positive Rate (FPR) & 17.82\% \\
-False Negative Rate (FNR) & 17.52\% \\
-\midrule
-Specificity (Non-PS recall) & 0.8218 \\
-Sensitivity (PS recall)     & 0.8248 \\
-\bottomrule
-\end{tabular}
-\end{table}
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}[b]{0.95\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Images/iteration_0_figures/confusion_matrix_manual.png}
+        \caption{Manual English subset: TN=554, FP=107, FN=71, TP=211.}
+        \label{fig:iter0_cm_manual}
+    \end{subfigure}
 
-\subsubsection{Gap to RQ1 Target}
+    \vspace{1em}
 
-\begin{table}[h]
+    \begin{subfigure}[b]{0.95\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Images/iteration_0_figures/confusion_matrix_langdetect.png}
+        \caption{Langdetect English subset. Replace this figure with the regenerated version matching the latest notebook output (TN=788, FP=110, FN=85, TP=220).}
+        \label{fig:iter0_cm_langdetect}
+    \end{subfigure}
+
+    \vspace{1em}
+
+    \begin{subfigure}[b]{0.95\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{Images/iteration_0_figures/confusion_matrix_lingua.png}
+        \caption{Lingua English subset: TN=803, FP=134, FN=83, TP=221.}
+        \label{fig:iter0_cm_lingua}
+    \end{subfigure}
+
+    \caption{Confusion matrices for the three English subset construction strategies in Iteration~0.}
+    \label{fig:iter0_confusion_matrices}
+\end{figure}
+
+For the \texttt{manual} subset, the classifier correctly identifies 554 Non-Process Safety and 211 Process Safety reports, while producing 107 false positives and 71 false negatives.
+
+For the \texttt{langdetect} subset, the latest notebook output reports 788 true negatives, 110 false positives, 85 false negatives, and 220 true positives.
+
+For the \texttt{lingua} subset, the classifier correctly identifies 803 Non-Process Safety and 221 Process Safety reports, while producing 134 false positives and 83 false negatives.
+
+\subsection{Selection of the Official Iteration~0 Baseline}
+
+
+\textbf{Official Iteration~0 Baseline:}
+The \texttt{langdetect}-based English subset is the official baseline, achieving the highest accuracy (0.8379), macro-F1 (0.7914), and weighted-F1 (0.8400) in the latest notebook implementation. The pipeline is:
+\begin{quote}
+\textit{English subset constructed using \texttt{langdetect}, encoded with BERT-base-uncased [CLS] embeddings, scaled with StandardScaler, and classified using an RBF-kernel SVM.}
+\end{quote}
+
+\subsection{Gap to Research Target}
+
+
+\textbf{Gap to Research Target:}
+The macro-F1 of the official Iteration~0 baseline (0.7914) is 5.86 percentage points below the RQ1 target of 0.85:
+\begin{equation}
+0.85 - 0.7914 = 0.0586
+\end{equation}
+
+\begin{table}[h!]
 \centering
-\caption{Performance Gap Analysis for RQ1}
-\label{tab:iter0-gap}
+\caption{Gap between the Iteration~0 subset strategies and the RQ1 target.}
+\label{tab:iter0_gap_analysis}
 \begin{tabular}{lccc}
 \toprule
-\textbf{Metric} & \textbf{Current (Iter~0)} & \textbf{RQ1 Target} & \textbf{Gap} \\
+\textbf{Subset} & \textbf{Macro-F1} & \textbf{RQ1 Target} & \textbf{Gap} \\
 \midrule
-Macro F1-Score & 0.7899 & $\geq$ 0.8100 & +0.0201 \\
+manual     & 0.7825 & 0.85 & 0.0675 \\
+langdetect & 0.7914 & 0.85 & 0.0586 \\
+lingua     & 0.7758 & 0.85 & 0.0742 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-(Discussion sections omitted here for brevity; you can keep your existing text as-is around these tables and equations.)
+\subsection{Summary of Iteration~0}
 
-\section{Further Implementation and Testing}
+\subsection{Summary and Implications}
+Iteration~0 establishes a robust, reproducible baseline for Process Safety classification. Key findings:
+\begin{itemize}
+    \item The method of English subset construction has a material impact on classification performance.
+    \item Short and low-information narratives are a significant data-quality constraint for embedding-based models.
+    \item The pipeline of BERT-base-uncased [CLS] embeddings, feature scaling, and RBF SVM yields a strong, transparent baseline.
+    \item The langdetect-based English subset is the official baseline, with macro-F1 = 0.7914.
+    \item The gap to the research target (macro-F1 $\geq$ 0.85) is 5.86 percentage points, motivating further methodological improvements in subsequent iterations.
+\end{itemize}
+
+This baseline provides a clear, auditable reference for all later experiments, which will build upon and extend this methodology toward stronger transformer architectures, multilingual modelling, class balancing, ensemble learning, and LLM-based approaches.
 
 \subsection{Iteration 1: BERT-base-cased Baseline Implementation}
 
@@ -2600,6 +2717,215 @@ Flan-T5-Large (Iter 7) & 0.0135 & 0.71\% & No \\
     \item \textbf{Hybrid Approaches:} Combining LLM-generated features with traditional classifiers warrants investigation
 \end{itemize}
 
+\subsubsection{RQ4: Incident Severity Prediction Framework}
+\label{sec:rq4_methodology}
+
+\paragraph{Objective}
+Research Question 4 asks: Can a proposed classification framework predict incident severity levels (e.g., low, medium, high) for the business case? Unlike the binary Process Safety vs.\ Non-Process Safety classification addressed in Iterations~0--7, severity prediction introduces an ordinal, multi-class dimension that poses distinct methodological challenges. Rather than implementing and benchmarking a full severity prediction pipeline, this section provides the intellectual foundation and detailed framework proposal that future work can build upon. The discussion is grounded in: (a) an empirical analysis of severity-related fields in the actual Uniper HSSE dataset, (b) a thorough review of severity prediction approaches deployed across construction, mining, energy, transportation, and healthcare industries, and (c) a proposed multi-component framework that integrates the best-performing techniques from Iterations~1--4 with ordinal-aware classification strategies.
+
+\paragraph{Why Severity Prediction Matters}
+In process safety management, not all incidents are equal. A minor gas turbine trip that is quickly resolved carries fundamentally different risk implications than a loss-of-containment event leading to a fire or explosion. Yet the binary PS/NPS classifier developed in earlier iterations treats all process safety incidents identically, regardless of their actual or potential consequence. Severity prediction enables three practical capabilities that binary classification cannot: (1) priority-based triage, where critical incidents are immediately escalated to senior management while minor events follow standard review workflows; (2) resource allocation optimisation, where investigation teams and remediation budgets are directed proportionally to incident severity; and (3) regulatory compliance, where organisations can demonstrate risk-proportionate response capabilities to auditors and regulators.
+
+% -------------------------------------------------------
+% 2. DATASET ANALYSIS
+% -------------------------------------------------------
+\paragraph{Severity-Related Fields in the Uniper Dataset}
+The Process Safety subset of the Uniper HSSE dataset (\texttt{RW\_ACTUALS\_PS}) contains 14{,}432 records with 36 columns, including four distinct fields that capture severity information, each with different coverage, granularity, and interpretation.
+
+\begin{table}[H]
+\centering
+\caption{Severity-related fields in the Uniper HSSE dataset}
+\label{tab:severity_fields}
+\begin{tabular}{llll}
+\toprule
+\textbf{Field} & \textbf{Coverage} & \textbf{Values} & \textbf{Notes} \\
+\midrule
+\texttt{CASE\_SEVERITY}           & 100\%  & L2--L6, Not Selected & Primary field; L2=lowest, L6=highest. 14.8\% unlabelled. \\
+\texttt{POTENTIAL\_SEV\_LEVEL}    & 48.5\% & Very Low--Very High  & Prospective assessment; over half missing. \\
+\texttt{LEARNINGS\_ACTUAL\_SEV}   & 23.8\% & Low, Medium, Severe  & Post-investigation; only populated for investigated cases. \\
+\texttt{RISK\_AREA}               & 44.3\% & Low/Medium/High Risk & Risk category; missing for the majority of records. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The \texttt{CASE\_SEVERITY} field provides the most complete severity annotation. Its distribution is heavily skewed toward the lowest severity level (L2), which accounts for 67.6\% of all records. Higher-severity incidents (L4--L6) collectively represent only 7.2\% of the data, presenting a severe class imbalance challenge.
+
+\paragraph{Proposed Three-Tier Severity Mapping}
+For practical deployment, the original five severity levels are consolidated into a three-tier scheme that balances granularity with statistical feasibility:
+
+\begin{table}[H]
+\centering
+\caption{Three-tier severity mapping for the Uniper dataset}
+\label{tab:three_tier}
+\begin{tabular}{llll}
+\toprule
+\textbf{Tier} & \textbf{Original Levels} & \textbf{Count (\%)} & \textbf{Business Interpretation} \\
+\midrule
+Low    & L2         & 9{,}757 (79.4\%) & Near-misses, minor equipment issues, no significant consequence. \\
+Medium & L3         & 1{,}494 (12.2\%) & Contained releases, equipment damage requiring repair, partial shutdowns. \\
+High   & L4, L5, L6 & 1{,}043 (8.5\%)  & Fires, explosions, LOPC, injuries, emergency shutdowns, regulatory events. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+This mapping yields 12{,}294 labelled records (excluding 2{,}138 \textit{Not Selected} entries). The 79:12:9 class ratio presents a severe imbalance challenge that must be addressed through the SMOTE and cost-sensitive strategies validated in Iterations~4--6. An important empirical observation is that higher-severity incidents tend to have longer textual descriptions: more severe events trigger more detailed reporting, formal investigation documentation, and comprehensive corrective action descriptions. Germany (DE) contributes 43.3\% of records, followed by the UK (28.2\%) and Netherlands (15.8\%); notably, the UK shows a disproportionate share of L6 incidents (177 of 226 total), which must be accounted for in model training.
+
+% -------------------------------------------------------
+% 3. LITERATURE REVIEW
+% -------------------------------------------------------
+\paragraph{Related Work: Severity Prediction Across Industries}
+
+\textit{Traditional ML approaches.}
+Support Vector Machines and gradient boosting methods have been extensively applied to incident severity classification. Sattari et al.~\cite{sattari2021} demonstrated that Linear SVM achieved 85.68\% accuracy for process safety management element classification in oil and gas incident reports. More recent work~\cite{SR2025} developed ML models for severity prediction in Saudi Arabian construction sites, testing six algorithms on 203 incidents; XGBoost achieved 89\% accuracy, confirming the superiority of gradient boosting methods. A feature-optimised Random Forest trained on 66{,}405 OSHA records~\cite{PMC2022} achieved 0.895 accuracy, with feature importance analysis revealing that structured metadata fields (analogous to the HAZARD and FUNCTIONAL\_AREA fields in the Uniper dataset) carry substantial predictive power. An explainable ML pipeline~\cite{SD2025} applied to 2{,}645 OSHA mining investigation reports achieved Random Forest F1 of 0.94 and AUC of 0.95, integrating SMOTETomek balancing, Bayesian hyperparameter optimisation, and SHAP explanations.
+
+\textit{Deep learning approaches.}
+CNNs applied to incident text use convolutional filters to detect severity-indicative n-grams such as ``explosion'', ``hospitalisation'', or ``emergency shutdown''~\cite{wang2025bert}. Bidirectional LSTM networks process incident text sequentially, capturing how narrative context evolves throughout the description; an attention layer learns to weight the most severity-relevant portions of the text. A hybrid CNN-RNN model~\cite{ArXiv2024} achieved the best performance among deep learning approaches for crash severity classification by combining CNN's local feature extraction with RNN's sequential context modelling.
+
+\textit{Transformer-based approaches.}
+Fine-tuned BERT achieved F-scores above 89\% for classifying 10 incident types and 4 severity levels in patient safety reports, significantly outperforming CNNs~\cite{wang2025bert}. A German-language study~\cite{MDPI2025} applied GBERT to classify 617 critical incident reports from a university hospital into risk categories, outperforming TF-IDF baselines despite a small, imbalanced dataset. BERT-based NLP models for insurance claim severity modelling~\cite{Variance2023} showed that contextual embeddings improve severity prediction stability compared to traditional NLP features.
+
+\textit{LLM-based approaches.}
+Nouri et al.~\cite{Nouri2024} applied a GPT-4-based pipeline for hazard analysis and risk assessment in automotive systems, emphasising the ongoing necessity of expert validation. GPT-based models for process safety management in oil and gas operations~\cite{SPE2024} achieved over 95\% reduction in analysis time for maintenance action classification, though direct zero-shot classification underperformed trained models---consistent with the Iteration~7 finding of this thesis. The most promising direction is hybrid approaches where LLMs serve as feature extractors feeding into trained classifiers, mirroring the successful \textit{embeddings~+ classifier} paradigm that achieved 0.89 macro F1 in Iteration~4.
+
+\textit{Ordinal regression.}
+Standard multi-class classification treats severity labels as unordered categories, penalising a misclassification of High as Low identically to High as Medium. The COnsistent RAnk Logits (CORAL) framework~\cite{Cao2020} addresses this by transforming ordinal targets into binary subtasks while guaranteeing rank consistency. The subsequent CORN framework~\cite{Shi2023} improved upon CORAL by predicting conditional probabilities, achieving better performance on multiple benchmarks. A PMC study~\cite{PMC2021} on imbalanced crash severity data used one-vs-all binary decomposition with isotonic regression for calibration and per-class threshold optimisation, significantly outperforming standard classification.
+
+% -------------------------------------------------------
+% 4. PROPOSED FRAMEWORK
+% -------------------------------------------------------
+\paragraph{Proposed Framework Architecture}
+The proposed framework extends the binary classification pipeline from Iterations~1--4 into a multi-task architecture with three output heads: (1)~PS vs.\ Non-PS classification (the existing task), (2)~severity prediction (Low/Medium/High), and (3)~hazard type identification. The shared transformer backbone enables transfer learning between tasks. The framework comprises five modular components, each of which can be evaluated independently or combined incrementally.
+
+\textit{Component 1: Feature Engineering.}
+Four feature categories are combined. Text embeddings are generated by concatenating TITLE and CASE\_DESCRIPTION and encoding with a multilingual transformer (E5-large-instruct or paraphrase-multilingual-mpnet-base-v2) using mean pooling, producing 768-dimensional vectors. Binary keyword features are extracted via regex matching across all four languages (English, German, Dutch, Swedish), covering fire/explosion terms (fire, brand, Feuer, explosion), loss-of-containment terms (leak, spill, Leckage, lekkage), emergency shutdown terms (ESD, Not-Aus, noodstop), injury terms (injury, fatality, Verletzung), and equipment failure terms (crack, rupture, corrosion). Structured metadata features include HAZARD, FUNCTIONAL\_AREA, COUNTRY\_SHORT, and COMPANY\_INVOLVED\_TYPE, one-hot encoded as categorical features. Text statistics features include description length (characters and words), title length, and sentence count.
+
+\textit{Component 2: Traditional ML Classifiers.}
+The following multi-class classifiers are recommended based on Iteration~4 results:
+
+\begin{table}[H]
+\centering
+\caption{Recommended traditional ML classifiers for severity prediction}
+\label{tab:severity_classifiers}
+\begin{tabular}{lll}
+\toprule
+\textbf{Classifier} & \textbf{Key Configuration} & \textbf{Rationale} \\
+\midrule
+LightGBM        & \texttt{objective='multiclass'}, \texttt{n\_estimators=300}, \texttt{lr=0.05} & Best performer in Iteration~4; native multi-class. \\
+XGBoost         & \texttt{objective='multi:softprob'}, \texttt{n\_estimators=300}              & Calibrated probability outputs. \\
+Random Forest   & \texttt{n\_estimators=300}, \texttt{class\_weight='balanced\_subsample'}      & SHAP-compatible; interpretable importances. \\
+Soft Voting Ensemble & Probability-weighted vote over LightGBM + XGBoost + RF              & Leverages probability estimates for ordinal decisions. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textit{Component 3: Deep Learning Approaches.}
+A 1D Text-CNN with multiple filter sizes (3, 4, 5 tokens) captures severity-indicative n-grams with low computational cost. A BiLSTM with attention processes incident narratives bidirectionally and highlights which tokens most influenced the severity prediction, providing both performance and interpretability. Fine-tuned multilingual BERT (starting from multilingual-e5-large-instruct, as identified in Iteration~3) adapts internal representations specifically for severity discrimination using an ordinal-aware loss function.
+
+\textit{Component 4: Ordinal Regression Integration.}
+The CORAL framework is applied to neural network classifiers by transforming the three-class prediction into two binary subtasks---\textit{Is severity $>$ Low?} and \textit{Is severity $>$ Medium?}---with shared backbone weights and independent output bias terms, guaranteeing rank consistency. For gradient boosting classifiers, a cumulative binary decomposition trains two independent binary classifiers whose outputs are combined to assign the final severity tier, enabling independent threshold optimisation for the High-severity boundary.
+
+\textit{Component 5: LLM-Based Feature Enrichment.}
+Based on the Iteration~7 finding that direct few-shot LLM classification fails for this domain, the recommended LLM strategy is feature enrichment rather than direct classification. LLMs extract structured severity indicators from unstructured text (e.g., \textit{Were people injured? Was there a fire? Was containment lost?}) which become binary input features for gradient boosting classifiers. For very long incident descriptions, LLMs generate severity-focused summaries that fit within BERT's 512-token limit. LLMs can also generate synthetic incident descriptions for the rare High severity class, subject to domain expert validation.
+
+% -------------------------------------------------------
+% 5. CLASS BALANCING
+% -------------------------------------------------------
+\paragraph{Class Balancing Strategy}
+The 79:12:9 class distribution presents a more severe imbalance challenge than the binary PS/NPS classification. Table~\ref{tab:severity_balancing} adapts the strategies validated in Iterations~4--6 to the three-class setting.
+
+\begin{table}[H]
+\centering
+\caption{Class balancing strategies adapted from Iterations~4--6 for severity prediction}
+\label{tab:severity_balancing}
+\begin{tabular}{llll}
+\toprule
+\textbf{Strategy} & \textbf{Iteration Result} & \textbf{Severity Adaptation} & \textbf{Expected Outcome} \\
+\midrule
+Conservative SMOTE (0.7) & Best overall F1 (0.89) & Oversample Medium and High to 70\% of Low & Best precision-recall balance \\
+Aggressive SMOTE (1.0)   & High recall (0.92), lower precision & Full 1:1:1 balancing & Maximum High recall \\
+Language-aware undersample & High precision (0.81) & Undersample Low per language stratum & Preserves language balance \\
+Cost-sensitive weights   & Used across all iterations & $w_\text{High} = 10 \times N_\text{total} / (3 \times N_\text{High})$ & Penalise missed High incidents \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% -------------------------------------------------------
+% 6. EXPLAINABILITY
+% -------------------------------------------------------
+\paragraph{Explainability for Safety-Critical Severity Predictions}
+In safety-critical applications, a severity prediction is only useful if stakeholders can understand and trust it. Two complementary explainability approaches are recommended. SHAP values decompose each prediction into additive feature contributions, showing exactly how much each input feature pushed the prediction toward a particular severity class; for gradient boosting classifiers, SHAP computation is extremely efficient via TreeSHAP. For transformer-based models, attention weights identify which tokens in the incident description the model focused on when making its prediction, enabling safety managers to verify that the model attends to consequence descriptions rather than spurious correlations. Calibrated probability outputs enable a confidence-based routing system: predictions with maximum class probability above~0.80 are auto-accepted; predictions between~0.50 and~0.80 are presented as suggestions for human review; predictions below~0.50 are flagged as uncertain and routed entirely to human classification.
+
+% -------------------------------------------------------
+% 7. IMPLEMENTATION ROADMAP
+% -------------------------------------------------------
+\paragraph{Implementation Roadmap}
+The proposed framework is designed for incremental implementation across four phases.
+
+\textit{Phase~1 --- Baseline Severity Classifier (2--4 weeks):} Reuse Iteration~4 embeddings (mean pooling, multilingual E5/mBERT) with \texttt{CASE\_SEVERITY} as the three-tier target. Train LightGBM, XGBoost, and Random Forest with SMOTE~(0.7) balancing. Evaluate with stratified 5-fold cross-validation and integrate SHAP explanations.
+
+\textit{Phase~2 --- Ordinal Regression Enhancement (2--3 weeks):} Implement cumulative binary decomposition and CORAL output layer. Optimise per-boundary thresholds to maximise High-severity recall ($\geq 0.80$).
+
+\textit{Phase~3 --- Deep Learning Models (3--4 weeks):} Implement and evaluate Text-CNN, BiLSTM+Attention, and fine-tuned multilingual BERT. Integrate ordinal loss functions (CORAL/CORN) with deep learning architectures.
+
+\textit{Phase~4 --- LLM Feature Enrichment and Multi-Task Learning (2--3 weeks):} Develop LLM-based structured severity indicator extraction. Implement multi-task learning combining PS classification and severity prediction. Evaluate data augmentation via LLM-generated synthetic High-severity examples.
+
+% -------------------------------------------------------
+% 8. EVALUATION STRATEGY
+% -------------------------------------------------------
+\paragraph{Evaluation Strategy and Metrics}
+
+\begin{table}[H]
+\centering
+\caption{Primary evaluation metrics for the severity prediction framework}
+\label{tab:severity_metrics}
+\begin{tabular}{llll}
+\toprule
+\textbf{Metric} & \textbf{Target} & \textbf{Purpose} & \textbf{Rationale} \\
+\midrule
+Macro F1-Score       & $\geq 0.70$ & Balanced per-class performance  & Primary metric per RQ4; treats all severity classes equally. \\
+Overall Accuracy     & $\geq 0.70$ & General correctness             & Complements F1; can be misleading with imbalanced data. \\
+Recall (High)        & $\geq 0.80$ & Minimise missed critical incidents & Safety-critical: missing High severity is worse than a false alarm. \\
+Mean Absolute Error  & $< 0.10$    & Ordinal error magnitude         & Penalises extreme misclassifications (Low predicted as High). \\
+Quadratic Weighted Kappa & $\geq 0.60$ & Ordinal agreement           & Measures prediction-label agreement weighted by squared distance. \\
+Adjacent Accuracy    & $\geq 0.90$ & Extreme misclassification rate  & Proportion of predictions within one severity level of true label. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% -------------------------------------------------------
+% 9. EXPECTED OUTCOMES
+% -------------------------------------------------------
+\paragraph{Expected Outcomes}
+
+\begin{table}[H]
+\centering
+\caption{Projected outcomes per implementation phase for RQ4}
+\label{tab:rq4_outcomes}
+\begin{tabular}{llllll}
+\toprule
+\textbf{Phase} & \textbf{Macro F1} & \textbf{Accuracy} & \textbf{Recall(High)} & \textbf{MAE} & \textbf{Meets RQ4?} \\
+\midrule
+Phase~1: Baseline ML    & 0.68--0.74 & 0.72--0.78 & 0.65--0.75 & 0.30--0.40 & Possible \\
+Phase~2: Ordinal        & 0.70--0.76 & 0.74--0.80 & 0.72--0.82 & 0.25--0.35 & Likely \\
+Phase~3: Deep Learning  & 0.73--0.80 & 0.76--0.82 & 0.75--0.85 & 0.20--0.30 & Likely \\
+Phase~4: Multi-Task     & 0.75--0.82 & 0.78--0.84 & 0.78--0.88 & 0.18--0.25 & Likely \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The projections are conservative because severity prediction is inherently harder than binary classification: three classes introduce more confusion boundaries, the High severity class contains only approximately 1{,}043 samples, and severity labels carry inherent subjectivity from different reporters and countries. Key risk factors include insufficient High-severity samples for reliable deep learning training, label noise from inconsistent severity assessment across countries, and the possibility that severity information is underspecified in brief incident descriptions.
+
+% -------------------------------------------------------
+% 10. LIMITATIONS
+% -------------------------------------------------------
+\paragraph{Limitations}
+
+\textit{Data limitations.} Different reporters and countries apply severity ratings inconsistently; no inter-annotator agreement study exists for the \texttt{CASE\_SEVERITY} field. The High severity class contains only 1{,}043 examples, yielding approximately 830 training examples after splitting, which may be insufficient for deep learning approaches. The 14.8\% of records with \texttt{CASE\_SEVERITY} = `Not Selected' are excluded; if these are systematically different from labelled records, the model may not generalise to incoming unlabelled data.
+
+\textit{Methodological limitations.} The mapping of L2--L6 to Low/Medium/High assumes equal spacing between categories, which may not hold in practice. Reporting practices and severity assessment criteria may change over time, creating temporal drift. Generating SMOTE synthetic samples in 768-dimensional embedding space may create unrealistic data points that introduce noise.
+
+\textit{Evaluation limitations.} The \texttt{CASE\_SEVERITY} labels are assumed correct without independent re-annotation. Unless full $k$-fold cross-validation is implemented, results may be sensitive to the particular train/test split. Calibrated probability thresholds may not generalise across deployment contexts.
+
 % ============================================================================
 % CHAPTER: RESULTS
 % ============================================================================
@@ -2850,6 +3176,11 @@ Flan-T5-Large (few-shot) & 0.8554 & 0.0135 & 0.71\% & None \\
 \end{tabular}
 \end{table}
 
+\subsection{RQ4: Severity Prediction --- Projected Outcomes}
+\label{sec:rq4_results}
+
+The severity prediction framework described in Section~\ref{sec:rq4_methodology} was not experimentally implemented within the scope of this thesis. Based on the empirical characteristics of the Uniper HSSE dataset and published benchmarks in comparable domains, Table~\ref{tab:rq4_outcomes} summarises the projected outcomes for each implementation phase. Phase~1 (gradient boosting baseline) is projected to achieve macro F1 of 0.68--0.74 with High-severity recall of 0.65--0.75. Incorporating ordinal regression in Phase~2 and deep learning architectures in Phase~3 is projected to bring macro F1 to 0.73--0.80 and High-severity recall to 0.75--0.85. The full multi-task framework in Phase~4 is projected to achieve macro F1 of 0.75--0.82, meeting the RQ4 target of macro F1 $\geq 0.70$ and approaching the $\text{Recall}_\text{High} \geq 0.80$ target. The key risk factors constraining these projections are the scarcity of the High-severity class ($\sim$1{,}043 samples) and cross-country label inconsistency in the \texttt{CASE\_SEVERITY} field.
+
 % ============================================================================
 % CHAPTER: DISCUSSION
 % ============================================================================
@@ -2936,20 +3267,34 @@ The 80\% precision target was \textbf{not achieved} with current few-shot approa
     \item Hybrid approaches combining LLM features with trained classifiers
 \end{enumerate}
 
-\subsection{RQ4: Severity Prediction}
+\subsubsection{RQ4: Severity Prediction}
 
-\textbf{Research Question:} Can the proposed framework predict incident severity levels?
+\textbf{Research Question:} How suitable is a proposed classification framework for predicting incident severity levels (e.g., low, medium, severe) in the business case?
 
-\textbf{Finding: Not directly addressed in current experiments.}
+\textbf{Finding:} A comprehensive framework is proposed; full experimental validation is identified as the primary direction for future work.
 
-The current research focused on binary classification (Process Safety vs. Non-Process Safety). Severity prediction represents a natural extension requiring:
-\begin{itemize}
-    \item Multi-class classification framework (low/medium/severe)
-    \item Severity-labeled training data
-    \item Calibrated probability outputs for risk-sensitive triage
-\end{itemize}
+Rather than implementing and benchmarking a full severity prediction pipeline, this thesis contributes a detailed framework proposal grounded in empirical analysis of the Uniper HSSE dataset and a systematic literature review, as described in Section~\ref{sec:rq4_methodology}. The \texttt{CASE\_SEVERITY} field provides 12{,}294 usable labelled records in a three-tier Low/Medium/High scheme with a 79:12:9 class ratio, confirming that the data required for severity prediction exists within the current dataset and is accessible without additional data collection.
 
-This remains an open research direction for future work.
+The proposed framework integrates five components: multi-source feature engineering combining text embeddings, severity-indicative keyword indicators, structured metadata, and text statistics; gradient boosting classifiers (LightGBM, XGBoost, Random Forest) with SMOTE balancing as the primary baseline; deep learning architectures (Text-CNN, BiLSTM+Attention, fine-tuned multilingual BERT) for capturing complex text patterns; ordinal regression layers (CORAL/cumulative link models) for respecting the natural ordering of severity levels; and LLM-based feature enrichment for extracting structured severity indicators from unstructured text.
+
+The feasibility of meeting the RQ4 targets (macro F1 $\geq 0.70$, $\text{Recall}_\text{High} \geq 0.80$) is supported by published benchmarks in comparable domains. XGBoost achieved 89\% accuracy for construction severity prediction~\cite{SR2025}; fine-tuned BERT achieved F-scores above 89\% for patient safety severity classification~\cite{wang2025bert}; and a Random Forest pipeline on mining incident data achieved F1 of 0.94 with SHAP explainability~\cite{SD2025}. Phase~2--4 of the proposed framework, in particular the soft voting ensemble with ordinal threshold optimisation and fine-tuned multilingual BERT, are projected to reach these targets.
+
+The primary risk factors are: (a) the scarcity of the High severity class ($\sim$1{,}043 training examples), which may limit deep learning approaches; (b) cross-country label inconsistency in severity ratings, which introduces label noise; and (c) the inherent difficulty of the three-class ordinal problem compared to the binary classification addressed in Iterations~0--7. Full experimental validation and an inter-annotator agreement study on the \texttt{CASE\_SEVERITY} field are the recommended next steps, detailed in Section~\ref{sec:future_work}.
+
+%\subsection{RQ4: Severity Prediction}
+
+%\textbf{Research Question:} Can the proposed framework predict incident severity levels?
+
+%\textbf{Finding: Not directly addressed in current experiments.}
+
+%The current research focused on binary classification (Process Safety vs. Non-Process Safety). Severity prediction represents a natural extension requiring:
+%\begin{itemize}
+%    \item Multi-class classification framework (low/medium/severe)
+%    \item Severity-labeled training data
+%    \item Calibrated probability outputs for risk-sensitive triage
+%\end{itemize}
+
+%This remains an open research direction for future work.
 
 \section{Key Technical Findings}
 
@@ -3083,7 +3428,7 @@ This thesis investigated the application of machine learning and large language 
 RQ1: Improve PS classification by 5+ points macro F1 & $\geq 0.81$ & \textbf{0.8923} Yes \\
 RQ2: Compare Traditional ML vs. LLM & -- & ML > LLM Yes \\
 RQ3: Hazard extraction with 80\% precision & $\geq 0.80$ & 0.12 No \\
-RQ4: Severity prediction &  & Not addressed \\
+RQ4: Severity prediction framework & Framework proposed (Section~\ref{sec:rq4_methodology}); Phase~2--4 projected to meet macro F1 $\geq 0.70$ and $\text{Recall}_\text{High} \geq 0.80$ & Future work \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -3106,7 +3451,7 @@ While significant progress was achieved, several limitations warrant future inve
 
 \begin{itemize}
     \item \textbf{LLM Performance:} Few-shot LLM classification requires substantial improvement through fine-tuning or advanced prompting
-    \item \textbf{Severity Prediction:} Multi-class severity classification remains unaddressed
+    \item \textbf{Severity Prediction:} A comprehensive multi-class severity prediction framework (Low/Medium/High) has been proposed in Section~\ref{sec:rq4_methodology}, grounded in empirical analysis of the Uniper dataset and a systematic literature review. Full experimental implementation and validation remain as the primary direction for future work.
     \item \textbf{Explainability:} Current models lack transparency; SHAP/LIME integration would enhance trust
     \item \textbf{Generalization:} Results specific to energy sector; validation in other industries needed
 \end{itemize}
