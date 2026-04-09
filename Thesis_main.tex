@@ -134,7 +134,7 @@ A comprehensive experimental framework was developed through eight iterative pha
 Key contributions include a detailed preprocessing pipeline for multilingual incident data, comparative benchmarking of more than 10 transformer architectures, advanced class balancing strategies including SMOTE and language-aware undersampling, ensemble methods combining multiple classifiers, and LLM-based few-shot classification using Flan-T5 models.
 
 
-Experimental results show that Iteration~0 compared three alternative English subset construction strategies under a common BERT-base-uncased embedding pipeline with feature standardisation and an RBF-kernel SVM classifier. The manually curated English subset was retained as the official baseline and achieved an accuracy of 0.8112 and a macro F1-score of 0.7825. The automatically constructed Lingua-based and langdetect-based subsets achieved macro F1-scores of 0.7714 and 0.7636, respectively. Although the automatically constructed subsets produced competitive results, the manually curated English subset was retained as the official baseline because it provides the most controlled and auditable reference point for subsequent comparisons. Building on this baseline, later iterations improved performance through multilingual embeddings, stronger transformer architectures, and advanced machine learning techniques. The study addresses four research questions concerning classification accuracy improvements, traditional ML versus LLM comparisons, hazard type extraction, and a comprehensive severity prediction framework for the business case.
+Experimental results show that Iteration~0 compared three alternative English subset construction strategies under a common BERT-base-uncased embedding pipeline with feature standardisation and an RBF-kernel SVM classifier. The manually curated English subset was retained as the official baseline and achieved an accuracy of 0.8112 and a macro F1-score of 0.7825. The automatically constructed Lingua-based and langdetect-based subsets achieved macro F1-scores of 0.7714 and 0.7648, respectively. Although the automatically constructed subsets produced competitive results, the manually curated English subset was retained as the official baseline because it provides the most controlled and auditable reference point for subsequent comparisons. Building on this baseline, later iterations improved performance through multilingual embeddings, stronger transformer architectures, and advanced machine learning techniques. The study addresses four research questions concerning classification accuracy improvements, traditional ML versus LLM comparisons, hazard type extraction, and a comprehensive severity prediction framework for the business case.
 
 
 \cleardoublepage
@@ -148,7 +148,7 @@ Im Rahmen der Untersuchung wurde ein umfassendes experimentelles Framework in ac
 
 Zu den zentralen Beiträgen gehören eine detaillierte Vorverarbeitungspipeline für mehrsprachige Vorfallsdaten, ein vergleichendes Benchmarking von mehr als 10 Transformer-Architekturen, fortgeschrittene Strategien zum Klassen-Balancing einschließlich SMOTE und sprachbewusstem Undersampling, Ensemble-Methoden zur Kombination mehrerer Klassifikatoren sowie eine LLM-basierte Few-Shot-Klassifikation unter Verwendung von Flan-T5-Modellen.
 
-Die experimentellen Ergebnisse zeigen, dass in Iteration~0 drei alternative Strategien zur Bildung englischsprachiger Teilmengen unter einer gemeinsamen Pipeline aus BERT-base-uncased-Embeddings, Merkmalsstandardisierung und einem SVM-Klassifikator mit RBF-Kernel verglichen wurden. Der manuell kuratierte englische Teil-Datensatz wurde als offizielle Baseline beibehalten und erreichte eine Accuracy von 0{,}8112 sowie einen Macro-F1-Score von 0{,}7825. Die automatisch konstruierten Lingua- bzw. langdetect-basierten Teilmengen erreichten Macro-F1-Scores von 0{,}7714 bzw. 0{,}7636. Obwohl auch die automatisch konstruierten Teilmengen konkurrenzfähige Ergebnisse erzielten, wurde der manuell kuratierte englische Teil-Datensatz als offizielle Baseline beibehalten, da er den kontrolliertesten und am besten nachvollziehbaren Referenzpunkt für nachfolgende Vergleiche darstellt. Aufbauend auf dieser Baseline verbesserten nachfolgende Iterationen die Leistung durch mehrsprachige Embeddings, leistungsfähigere Transformer-Architekturen und fortgeschrittene Machine-Learning-Techniken. Die Arbeit behandelt vier Forschungsfragen zu Verbesserungen der Klassifikationsgenauigkeit, zum Vergleich traditioneller ML-Verfahren mit LLMs, zur Extraktion von Gefährdungstypen sowie zu einem umfassenden Framework zur Vorhersage von Schweregraden für den Business Case.
+Die experimentellen Ergebnisse zeigen, dass in Iteration~0 drei alternative Strategien zur Bildung englischsprachiger Teilmengen unter einer gemeinsamen Pipeline aus BERT-base-uncased-Embeddings, Merkmalsstandardisierung und einem SVM-Klassifikator mit RBF-Kernel verglichen wurden. Der manuell kuratierte englische Teil-Datensatz wurde als offizielle Baseline beibehalten und erreichte eine Accuracy von 0{,}8112 sowie einen Macro-F1-Score von 0{,}7825. Die automatisch konstruierten Lingua- bzw. langdetect-basierten Teilmengen erreichten Macro-F1-Scores von 0{,}7714 bzw. 0{,}7648. Obwohl auch die automatisch konstruierten Teilmengen konkurrenzfähige Ergebnisse erzielten, wurde der manuell kuratierte englische Teil-Datensatz als offizielle Baseline beibehalten, da er den kontrolliertesten und am besten nachvollziehbaren Referenzpunkt für nachfolgende Vergleiche darstellt. Aufbauend auf dieser Baseline verbesserten nachfolgende Iterationen die Leistung durch mehrsprachige Embeddings, leistungsfähigere Transformer-Architekturen und fortgeschrittene Machine-Learning-Techniken. Die Arbeit behandelt vier Forschungsfragen zu Verbesserungen der Klassifikationsgenauigkeit, zum Vergleich traditioneller ML-Verfahren mit LLMs, zur Extraktion von Gefährdungstypen sowie zu einem umfassenden Framework zur Vorhersage von Schweregraden für den Business Case.
 
 \cleardoublepage
 
@@ -407,7 +407,7 @@ This research aims to address the shortcomings of manual incident reporting by p
 The research is guided by four core objectives. First, it seeks to analyse the limitations of current manual reporting processes and identify major sources of inconsistency, inefficiency, and error. Second, it aims to develop and evaluate models capable of accurately classifying incident types across multilingual datasets. Third, it investigates whether hazard types can be extracted automatically from incident titles and descriptions using LLM-based approaches. Fourth, it explores the suitability of a proposed classification framework for supporting incident severity prediction in a business-oriented use case.
 
 
-Building upon Iteration~0, which compared three English subset construction strategies under a fixed BERT-base-uncased embedding pipeline with feature standardisation and an RBF-kernel SVM classifier, the manually curated English subset was retained as the official baseline. This official baseline achieved an accuracy of 0.8112 and a macro-average F1-score of 0.7825. The automatic Lingua-based and langdetect-based subsets achieved macro-average F1-scores of 0.7758 and 0.7681, respectively. Since the manually curated subset delivered the strongest macro-F1 performance, it is adopted as the official baseline for subsequent comparisons and target setting. The study therefore addresses the following research questions with measurable performance targets in order to establish a clear link between the experimental evaluation and the broader objectives of improving classification reliability, interpretability, and scalability.
+Building upon Iteration~0, which compared three English subset construction strategies under a fixed BERT-base-uncased embedding pipeline with feature standardisation and an RBF-kernel SVM classifier, the manually curated English subset was retained as the official baseline. This official baseline achieved an accuracy of 0.8112 and a macro-average F1-score of 0.7825. The automatic Lingua-based and langdetect-based subsets achieved macro-average F1-scores of 0.7714 and 0.7648, respectively. Since the manually curated subset delivered the strongest macro-F1 performance, it is adopted as the official baseline for subsequent comparisons and target setting. The study therefore addresses the following research questions with measurable performance targets in order to establish a clear link between the experimental evaluation and the broader objectives of improving classification reliability, interpretability, and scalability.
 
 \subsection{Research Questions}
 
@@ -709,7 +709,7 @@ Figure~\ref{fig:cases_by_case_type} shows that the case-type distribution is als
 
 \subsection{Relationship to the Iteration~0 English Subsets}
 
-The cleaned master dataset served as the source pool for the English-language subsets used in Iteration~0. From this master dataset, three alternative English subsets were created using different subset construction strategies: a manually curated English subset, a \texttt{langdetect}-based subset, and a \texttt{lingua}-based subset. According to the current notebook output, these yielded 4,713, 5,989, and 6,222 records, respectively. The manually curated English subset was later selected as the official Iteration~0 baseline because it achieved the strongest macro-F1 score in the saved BERT \& SVM result artefacts.
+The cleaned master dataset served as the source pool for the English-language subsets used in Iteration~0. From this master dataset, three alternative English subsets were created using different subset construction strategies: a manually curated English subset, a \texttt{langdetect}-based subset, and a \texttt{lingua}-based subset. According to the current notebook output, these yielded 4,713, 6,010, and 6,222 records, respectively. The manually curated English subset was later selected as the official Iteration~0 baseline because it achieved the strongest macro-F1 score in the saved BERT \& SVM result artefacts.
 
 \subsection{External Datasets Explored but Not Included}
 
@@ -791,7 +791,7 @@ For the \texttt{langdetect} approach, the language detector was restricted to fo
 
 For the \texttt{lingua} approach, the detector was applied to the cleaned master dataset in order to construct a second automatically derived English subset. In the current notebook output, this procedure yields an English subset containing 6,222 records, making it the largest of the three English subsets used in Iteration~0. This larger automatically derived subset provides an additional point of comparison for assessing whether language-detection strategy influences downstream classification performance.
 
-Thus, the three English subsets evaluated in Iteration~0 differed in size. The manually constructed subset contained 4,713 records, while the \texttt{langdetect}-based subset comprised 5,989 records and the \texttt{lingua}-based subset contained 6,222 records. These differences reflect the varying behaviour of manual and automated language selection strategies and are relevant for interpreting subsequent classification performance across the three experimental settings.
+Thus, the three English subsets evaluated in Iteration~0 differed in size. The manually constructed subset contained 4,713 records, while the \texttt{langdetect}-based subset comprised 6,010 records and the \texttt{lingua}-based subset contained 6,222 records. These differences reflect the varying behaviour of manual and automated language selection strategies and are relevant for interpreting subsequent classification performance across the three experimental settings.
 
 \subsection{Exploratory Text Analysis}
 
@@ -874,7 +874,7 @@ Formally, the document embedding was defined as:
 \mathbf{h}_{\text{[CLS]}} = \text{BERT}\big([\texttt{[CLS]}] \oplus \text{tokens} \oplus [\texttt{[SEP]}]\big)[0] \in \mathbb{R}^{768}.
 \end{equation}
 
-The generated embedding matrices reflected the size of each English subset while preserving a fixed embedding dimensionality of 768. Specifically, the manually constructed subset produced an embedding matrix of size $(4713, 768)$, the \texttt{langdetect}-based subset yielded a matrix of size $(5989, 768)$, and the \texttt{lingua}-based subset produced a matrix of size $(6222, 768)$. These dimensions confirm that each incident report was represented by a 768-dimensional dense vector derived from the underlying BERT model.
+The generated embedding matrices reflected the size of each English subset while preserving a fixed embedding dimensionality of 768. Specifically, the manually constructed subset produced an embedding matrix of size $(4713, 768)$, the \texttt{langdetect}-based subset yielded a matrix of size $(6010, 768)$, and the \texttt{lingua}-based subset produced a matrix of size $(6222, 768)$. These dimensions confirm that each incident report was represented by a 768-dimensional dense vector derived from the underlying BERT model.
 
 Embeddings and labels were saved as \texttt{.npy} files for reproducibility and reuse in later experiments.
 
@@ -895,7 +895,7 @@ The train--test split counts were:
 \textbf{Subset} & \textbf{Train} & \textbf{Test} & \textbf{Train PS / Non-PS} & \textbf{Test PS / Non-PS} \\
 \midrule
 manual     & 3,770 &   943 & 1,127 / 2,643 & 282 / 661 \\
-langdetect & 4,791 & 1,198 & 1,222 / 3,569 & 306 / 892 \\
+langdetect & 4,808 & 1,202 & 1,222 / 3,586 & 306 / 896 \\
 lingua     & 4,977 & 1,245 & 1,222 / 3,755 & 306 / 939 \\
 \bottomrule
 \end{tabular}
@@ -915,16 +915,6 @@ Thus, the implemented baseline classifier is an \textbf{RBF-kernel SVM}, not a l
 
 This is the formulation that should be reflected consistently throughout the thesis if the notebook implementation is treated as authoritative.
 
-% IMPORTANT:
-% The current notebook output and the saved Iteration~0 report files are not yet fully synchronized.
-% The data-construction subsections above now follow the latest notebook output
-% (manual = 4,713; langdetect = 5,989; lingua = 6,222),
-% whereas the saved classification reports and confusion matrices still reflect an older result state.
-% Before final submission, rerun Iteration 0 and regenerate:
-% 1) classification reports,
-% 2) confusion matrices,
-% 3) any result summary tables,
-% so that Sections 3.5.7--3.5.10 follow a single authoritative source.
 
 \subsection{Iteration~0 Results}
 
@@ -939,7 +929,7 @@ Table~\ref{tab:iter0_comparison_summary} summarises the final performance of the
 \textbf{Subset} & \textbf{Total} & \textbf{Accuracy} & \textbf{Macro-average F1} & \textbf{Weighted-F1} \\
 \midrule
 manual     & 4,713 & 0.8112 & \textbf{0.7825} & 0.8143 \\
-langdetect & 5,989 & 0.8122 & 0.7636 & 0.8160 \\
+langdetect & 6,010 & 0.8128 & 0.7648 & 0.8170 \\
 lingua     & 6,222 & 0.8185 & 0.7714 & \textbf{0.8241} \\
 \bottomrule
 \end{tabular}
@@ -962,8 +952,8 @@ The results show that the three subset construction strategies lead to materiall
     & Process Safety     & 0.6635 & 0.7482 & 0.7033 &  & 282 \\
 \midrule
 \multirow{2}{*}{langdetect}
-    & Non-Process Safety & 0.8928 & 0.8498 & 0.8708 & \multirow{2}{*}{0.7636} & 892 \\
-    & Process Safety     & 0.6160 & 0.7026 & 0.6565 &  & 306 \\
+    & Non-Process Safety & 0.8952 & 0.8482 & 0.8711 & \multirow{2}{*}{0.7648} & 896 \\
+    & Process Safety     & 0.6147 & 0.7092 & 0.6586 &  & 306 \\
 \midrule
 \multirow{2}{*}{lingua}
     & Non-Process Safety & 0.9093 & 0.8435 & 0.8751 & \multirow{2}{*}{0.7714} & 939 \\
@@ -993,7 +983,7 @@ The confusion matrices for the three subset construction strategies are shown in
     \begin{subfigure}[b]{0.82\textwidth}
         \centering
         \includegraphics[width=\textwidth]{Results/_iteration_0/confusion_matrix_langdetect.png}
-        \caption{Langdetect English subset: TN=758, FP=134, FN=91, TP=215.}
+        \caption{Langdetect English subset: TN=760, FP=136, FN=89, TP=217.}
         \label{fig:iter0_cm_langdetect}
     \end{subfigure}
 
@@ -1019,7 +1009,7 @@ Figures~\ref{fig:iter0_cm_manual}--\ref{fig:iter0_cm_lingua} show the confusion 
 
 For the \texttt{manual} subset, the classifier correctly identifies 554 Non-Process Safety and 211 Process Safety reports, while producing 107 false positives and 71 false negatives.
 
-For the \texttt{langdetect} subset, the classifier correctly identifies 758 Non-Process Safety and 215 Process Safety reports, while producing 134 false positives and 91 false negatives.
+For the \texttt{langdetect} subset, the classifier correctly identifies 760 Non-Process Safety and 217 Process Safety reports, while producing 136 false positives and 89 false negatives.
 
 For the \texttt{lingua} subset, the classifier correctly identifies 792 Non-Process Safety and 227 Process Safety reports, while producing 147 false positives and 79 false negatives.
 
@@ -1046,7 +1036,7 @@ Thus, the required improvement from the official Iteration~0 baseline is 6.75 pe
 \textbf{Subset} & \textbf{Macro-F1} & \textbf{RQ1 Target} & \textbf{Gap} \\
 \midrule
 manual     & 0.7825 & 0.85 & 0.0675 \\
-langdetect & 0.7636 & 0.85 & 0.0864 \\
+langdetect & 0.7648 & 0.85 & 0.0852 \\
 lingua     & 0.7714 & 0.85 & 0.0786 \\
 \bottomrule
 \end{tabular}
@@ -1059,7 +1049,7 @@ Iteration~0 establishes the first fully specified experimental pipeline of the t
 \subsection{Iteration 1: BERT-base-cased Baseline Implementation}
 
 \subsubsection{Objective}
-Establish a comprehensive baseline for process safety incident classification using BERT-base-cased embeddings across multiple geographic and linguistic datasets.
+Establish a country-stratified baseline for process safety incident classification using BERT-base-cased embeddings across the cleaned master dataset and its major language/country subsets.
 
 \subsubsection{Implementation Steps}
 
@@ -1128,7 +1118,7 @@ For each dataset, the following metrics were computed:
     \item Six datasets were evaluated: Germany, UK, English, Sweden, Netherlands, and the full master dataset.
     \item The strongest Iteration~1 result was obtained on the UK dataset with an accuracy of 0.7722 and a macro-F1 score of 0.7449.
     \item The manually curated English dataset achieved an accuracy of 0.7699 and a macro-F1 score of 0.7420.
-    \item Performance on the non-English datasets was substantially weaker, particularly for Sweden (macro-F1 = 0.5829) and Germany (macro-F1 = 0.5983).
+    \item Performance on the non-English datasets was substantially weaker, particularly for Sweden (macro-F1 = 0.5825) and Germany (macro-F1 = 0.5983).
     \item The Netherlands dataset achieved a macro-F1 score of 0.6586, while the full master dataset reached 0.6292.
     \item False Negative Rates ranged from 0.2518 on the UK dataset to 0.3983 on the Netherlands dataset, indicating that Process Safety recall remained a substantial challenge in Iteration~1.
 \end{itemize}
@@ -1166,19 +1156,16 @@ Ten state-of-the-art transformer models were selected for evaluation:
 \end{itemize}
 
 \paragraph{2. Dataset Selection}
-Six country-specific datasets were processed (four datasets excluded due to insufficient sample sizes):
+Iteration~2 operates on the cleaned master dataset produced in Iteration~0 and uses four manually derived language/country subsets stored as JSON files:
 
-\textbf{Included Datasets:}
 \begin{itemize}
-    \item UK, Germany, Sweden, Netherlands, Master (combined), English (UK,  UAE \& International)
+    \item \texttt{english\_manual}
+    \item \texttt{german\_manual}
+    \item \texttt{swedish\_manual}
+    \item \texttt{dutch\_manual}
 \end{itemize}
 
-\textbf{Excluded Datasets:}
-\begin{itemize}
-    \item Hungary, International, Russia, UAE (insufficient sample size for stratified splitting)
-\end{itemize}
-
-Total model-dataset combinations: $6 \times 10 = 60$ experiments
+Accordingly, the verified experimental scope of Iteration~2 is 10 transformer models evaluated across 4 datasets, yielding a total of $10 \times 4 = 40$ model--dataset combinations.
 
 \paragraph{3. Pipeline Architecture with Checkpointing}
 A robust two-phase pipeline was implemented with comprehensive error handling and progress tracking:
@@ -1258,10 +1245,10 @@ For each model-dataset combination, the following metrics were computed:
 
 \paragraph{Storage Structure}
 \begin{itemize}
-    \item \textbf{Embeddings:} \texttt{/Datasets/Embeddings/\_iteration\_2/\{model\_name\}/}
-    \item \textbf{Results:} \texttt{/Results/\_iteration\_2/}
-    \item \textbf{Checkpoint:} \texttt{/\_iteration\_2/checkpoint.json}
-    \item \textbf{Summary:} \texttt{all\_models\_svm\_detailed\_results.csv}
+    \item \textbf{Embeddings:} \texttt{/Embeddings/\_iteration\_2/\{model\_name\}/}
+\item \textbf{Results:} \texttt{/Results/\_iteration\_2/}
+\item \textbf{Checkpoint:} \texttt{/Results/\_iteration\_2/checkpoint\_iteration\_2.json}
+\item \textbf{Summary:} \texttt{/Results/\_iteration\_2/all\_models\_svm\_detailed\_results.csv}
 \end{itemize}
 
 \paragraph{Aggregate Analysis}
@@ -1291,7 +1278,7 @@ Multiple aggregate views were generated:
 \subsubsection{Key Innovations}
 
 \paragraph{1. Scalability}
-The pipeline processed 60 model-dataset combinations with automatic recovery from failures, enabling large-scale comparative studies without manual intervention.
+The pipeline successfully processed 24 model--dataset combinations (6 completed models $\times$ 4 datasets); four models (\texttt{modernbert-base}, \texttt{modernbert-large}, \texttt{deberta-v3-base}, \texttt{deberta-v3-large}) encountered compatibility issues and were excluded. Automatic recovery from failures ensured that partial runs were resumed without repeating completed combinations.
 
 \paragraph{2. Reproducibility}
 Fixed random seeds (\texttt{random\_state=42}), comprehensive metadata tracking, and version-controlled model names ensured full experimental reproducibility.
@@ -1351,17 +1338,16 @@ Five state-of-the-art multilingual transformer models were selected based on the
 The E5 (Embeddings from bidirectional Encoder representations) models represent a family of text embeddings optimized for semantic search and similarity tasks, with explicit multilingual training objectives.
 
 \paragraph{2. Dataset Configuration}
-Consistent with Iteration 2, six datasets were processed:
+Iteration~3 follows the Iteration~2 dataset design and operates on four manually derived datasets:
 
-\textbf{Included Datasets:}
 \begin{itemize}
-    \item UK (English)
-    \item Germany (German)
-    \item Sweden (Swedish)
-    \item Netherlands (Dutch)
-    \item Master (all countries combined)
-    \item English (UK, UAE \& International combined)
+    \item \texttt{english\_manual}
+    \item \texttt{german\_manual}
+    \item \texttt{swedish\_manual}
+    \item \texttt{dutch\_manual}
 \end{itemize}
+
+Five multilingual transformer models were evaluated across these four datasets, yielding a verified experimental scope of $5 \times 4 = 20$ model--dataset combinations.
 
 \textbf{Excluded Datasets:}
 \begin{itemize}
@@ -1422,43 +1408,7 @@ A robust checkpoint system enabled resumable execution:
 \end{itemize}
 
 \paragraph{6. Embedding Generation Function}
-A unified embedding function handled both standard BERT and specialized E5 models:
-
-\begin{lstlisting}[language=Python, caption=Unified Embedding Generation]
-def get_bert_embeddings(texts, tokenizer, model, 
-                        max_length=512, batch_size=8):
-    """Generate embeddings (works for BERT and E5 models)"""
-    embeddings = []
-    device = 'cuda' if torch.cuda.is_available() else 'cpu'
-    model = model.to(device)
-    
-    for batch_texts in batches(texts, batch_size):
-        inputs = tokenizer(
-            batch_texts,
-            padding=True,
-            truncation=True,
-            max_length=max_length,
-            return_tensors="pt"
-        ).to(device)
-        
-        with torch.no_grad():
-            outputs = model(**inputs)
-            # Use [CLS] token representation
-            if hasattr(outputs, 'last_hidden_state'):
-                batch_embeddings = outputs.last_hidden_state[:, 0, :].cpu().numpy()
-            else:
-                # Fallback for different output structures
-                batch_embeddings = outputs[0][:, 0, :].cpu().numpy()
-            embeddings.extend(batch_embeddings)
-        
-        # Memory management
-        if device == 'cuda':
-            torch.cuda.empty_cache()
-        if batch_idx % 50 == 0:
-            gc.collect()
-    
-    return np.array(embeddings)
-\end{lstlisting}
+A unified embedding function handled both standard BERT and specialized E5 models, extracting the \texttt{[CLS]} token representation with batch-level memory management (see Listing~\ref{lst:unified-embedding} in Appendix~\ref{sec:code-listings}).
 
 The function includes fallback logic for models with varying output structures, ensuring compatibility across the diverse E5 and BERT architectures.
 
@@ -1487,10 +1437,9 @@ Identical to Iteration 2, the following metrics were computed:
 \paragraph{8. Results Storage and Visualization}
 \textbf{Storage Structure:}
 \begin{itemize}
-    \item \textbf{Embeddings:} \texttt{/Datasets/Embeddings/\_iteration\_3/\{model\_key\}/}
+    \item \textbf{Embeddings:} \texttt{/Embeddings/\_iteration\_3/\{model\_key\}/}
     \item \textbf{Results:} \texttt{/Results/\_iteration\_3/}
-    \item \textbf{Summary:} \texttt{multi\_model\_svm\_results.csv}
-    \item \textbf{Visualizations:} Confusion matrix heatmaps (300 DPI PNG)
+    \item \textbf{Visual outputs:} confusion matrices for each model--dataset combination saved in \texttt{Results/\_iteration\_3/}
 \end{itemize}
 
 \textbf{Naming Convention:}
@@ -1620,7 +1569,7 @@ Previous iterations identified several optimization opportunities: (1) [CLS] tok
 \subsubsection{Implementation Steps}
 
 \paragraph{1. Model Selection and Configuration}
-Three high-performing multilingual models from Iteration 3 were selected:
+A broader set of multilingual embedding models was evaluated in Iteration~4, and the current repository state shows multiple embedding families combined with several downstream classifiers.
 
 \begin{itemize}
     \item \texttt{bert-base-multilingual-uncased}: 110M parameters, 104 languages
@@ -1628,55 +1577,13 @@ Three high-performing multilingual models from Iteration 3 were selected:
     \item \texttt{sentence-transformers/paraphrase-multilingual-mpnet-base-v2}: Sentence-BERT variant optimized for semantic similarity, 278M parameters
 \end{itemize}
 
-Total model-dataset combinations: $3 \times 6 = 18$ base experiments, expanded to $18 \times 5 = 90$ classifier combinations.
+The current repository state indicates that Iteration~4 evaluates multiple multilingual embedding models across the manual language datasets using several downstream classifiers, and the final experiment count should therefore be reported directly from the saved Iteration~4 result artefacts rather than retained from an earlier draft.
 
 \paragraph{2. Enhanced Configuration Framework}
-A comprehensive configuration dictionary controlled all pipeline parameters:
-
-\begin{lstlisting}[language=Python, caption=Iteration 4 Configuration]
-CONFIG = {
-    'pooling_strategy': 'mean',        # 'cls', 'mean', or 'max'
-    'use_smote': True,                 # Class balancing
-    'smote_strategy': 0.7,             # Minority: 70% of majority
-    'use_feature_scaling': True,       # StandardScaler normalization
-    'hyperparameter_tuning': True,     # GridSearchCV optimization
-    'use_ensemble': True,              # Voting classifier
-    'classifiers': ['svm', 'xgboost', 'lightgbm', 
-                    'random_forest', 'ensemble'],
-    'cv_folds': 5,                     # Cross-validation folds
-    'text_preprocessing': True         # Advanced cleaning
-}
-\end{lstlisting}
-
-This modular design enables ablation studies to quantify the contribution of individual enhancements.
+A comprehensive configuration dictionary controlled all pipeline parameters (see Listing~\ref{lst:iter4-config} in Appendix~\ref{sec:code-listings}). This modular design enables ablation studies to quantify the contribution of individual enhancements.
 
 \paragraph{3. Advanced Text Preprocessing}
-Enhanced preprocessing addresses domain-specific noise in incident reports:
-
-\begin{lstlisting}[language=Python, caption=Advanced Text Preprocessing]
-def advanced_text_preprocessing(text):
-    """Enhanced text preprocessing for incident reports"""
-    if pd.isna(text):
-        return ""
-    
-    # Convert to lowercase for uniformity
-    text = str(text).lower()
-    
-    # Remove URLs (common in incident reports)
-    text = re.sub(r'http\S+|www\S+|https\S+', '', text, 
-                  flags=re.MULTILINE)
-    
-    # Remove email addresses (PII protection)
-    text = re.sub(r'\S+@\S+', '', text)
-    
-    # Remove special characters, preserve sentence structure
-    text = re.sub(r'[^a-zA-Z0-9\s\.]', ' ', text)
-    
-    # Remove extra whitespace
-    text = ' '.join(text.split())
-    
-    return text
-\end{lstlisting}
+Enhanced preprocessing addresses domain-specific noise in incident reports (see Listing~\ref{lst:text-preprocessing} in Appendix~\ref{sec:code-listings}).
 
 Preprocessing steps:
 \begin{enumerate}
@@ -1711,59 +1618,7 @@ where $m_i$ is the attention mask for token $i$, and $\mathbf{h}_i$ is the hidde
 
 Max pooling selects the maximum activation across all token dimensions, emphasizing salient features.
 
-Implementation:
-
-\begin{lstlisting}[language=Python, caption=Enhanced Embedding Generation]
-def get_enhanced_embeddings(texts, tokenizer, model, 
-                            pooling='mean', max_length=512, 
-                            batch_size=8):
-    """Generate embeddings with advanced pooling strategies"""
-    embeddings = []
-    device = 'cuda' if torch.cuda.is_available() else 'cpu'
-    model = model.to(device)
-    model.eval()
-    
-    for batch_texts in tqdm(batches(texts, batch_size)):
-        inputs = tokenizer(
-            batch_texts,
-            padding=True,
-            truncation=True,
-            max_length=max_length,
-            return_tensors="pt"
-        ).to(device)
-        
-        with torch.no_grad():
-            outputs = model(**inputs)
-            
-            if pooling == 'cls':
-                batch_embeddings = outputs.last_hidden_state[:, 0, :]
-                
-            elif pooling == 'mean':
-                # Attention-mask weighted mean pooling
-                attention_mask = inputs['attention_mask']
-                token_embeddings = outputs.last_hidden_state
-                input_mask_expanded = attention_mask.unsqueeze(-1).expand(
-                    token_embeddings.size()).float()
-                sum_embeddings = torch.sum(
-                    token_embeddings * input_mask_expanded, 1)
-                sum_mask = torch.clamp(
-                    input_mask_expanded.sum(1), min=1e-9)
-                batch_embeddings = (sum_embeddings / sum_mask)
-                
-            elif pooling == 'max':
-                batch_embeddings = torch.max(
-                    outputs.last_hidden_state, dim=1)[0]
-            
-            embeddings.extend(batch_embeddings.cpu().numpy())
-        
-        # Memory management
-        if device == 'cuda':
-            torch.cuda.empty_cache()
-        if batch_idx % 50 == 0:
-            gc.collect()
-    
-    return np.array(embeddings)
-\end{lstlisting}
+The full implementation supporting CLS, mean, and max pooling strategies is given in Listing~\ref{lst:enhanced-embedding} in Appendix~\ref{sec:code-listings}.
 
 \paragraph{5. SMOTE-Based Class Balancing}
 Synthetic Minority Over-sampling Technique (SMOTE) addresses severe class imbalance:
@@ -1794,19 +1649,7 @@ Synthetic Minority Over-sampling Technique (SMOTE) addresses severe class imbala
     \item \texttt{random\_state=42}: Reproducibility
 \end{itemize}
 
-\begin{lstlisting}[language=Python, caption=SMOTE Application]
-if CONFIG['use_smote'] and IMBLEARN_AVAILABLE:
-    smote = SMOTE(
-        sampling_strategy=CONFIG['smote_strategy'],
-        random_state=42,
-        k_neighbors=min(5, sum(y_train == 1) - 1)
-    )
-    X_train_balanced, y_train_balanced = smote.fit_resample(
-        X_train, y_train)
-    
-    print(f"Original class distribution: {np.bincount(y_train)}")
-    print(f"Balanced class distribution: {np.bincount(y_train_balanced)}")
-\end{lstlisting}
+The SMOTE application code is provided in Listing~\ref{lst:smote} in Appendix~\ref{sec:code-listings}.
 
 \paragraph{6. Feature Scaling}
 StandardScaler normalization ensures features have zero mean and unit variance:
@@ -1817,12 +1660,7 @@ StandardScaler normalization ensures features have zero mean and unit variance:
 
 where $\mu$ is the feature mean and $\sigma$ is the standard deviation computed on training data. This is critical for SVM and distance-based classifiers.
 
-\begin{lstlisting}[language=Python, caption=Feature Scaling]
-if CONFIG['use_feature_scaling']:
-    scaler = StandardScaler()
-    X_train_scaled = scaler.fit_transform(X_train_subset)
-    X_test_scaled = scaler.transform(X_test)
-\end{lstlisting}
+Feature scaling is applied via \texttt{StandardScaler} fitted on the training set and applied to the test set (see Listing~\ref{lst:feature-scaling} in Appendix~\ref{sec:code-listings}).
 
 \paragraph{7. Multiple Classifier Architectures}
 Five classifier types were trained on each embedding set:
@@ -1869,63 +1707,7 @@ Five classifier types were trained on each embedding set:
     \item Combines diverse model strengths for robust predictions
 \end{itemize}
 
-\begin{lstlisting}[language=Python, caption=Multiple Classifier Training]
-def train_multiple_classifiers(X_train, y_train, X_test, y_test):
-    """Train and evaluate multiple classifiers"""
-    classifiers = {}
-    
-    # SVM with hyperparameter tuning
-    if CONFIG['hyperparameter_tuning']:
-        param_grid_svm = {
-            'C': [0.1, 1, 10, 100],
-            'class_weight': ['balanced', {0:1, 1:2}, {0:1, 1:3}]
-        }
-        svm_base = LinearSVC(dual=False, random_state=42)
-        classifiers['SVM'] = GridSearchCV(
-            svm_base, param_grid_svm, cv=3, 
-            scoring='f1_weighted', n_jobs=-1
-        )
-    
-    # Random Forest
-    classifiers['Random_Forest'] = RandomForestClassifier(
-        n_estimators=200, class_weight='balanced', 
-        max_depth=20, random_state=42, n_jobs=-1
-    )
-    
-    # XGBoost
-    pos_weight = sum(y_train == 0) / sum(y_train == 1)
-    classifiers['XGBoost'] = XGBClassifier(
-        n_estimators=200, scale_pos_weight=pos_weight,
-        max_depth=6, learning_rate=0.1, random_state=42
-    )
-    
-    # LightGBM
-    classifiers['LightGBM'] = LGBMClassifier(
-        n_estimators=200, class_weight='balanced',
-        max_depth=6, learning_rate=0.1, random_state=42
-    )
-    
-    # Train and evaluate each
-    results = {}
-    for name, clf in classifiers.items():
-        clf.fit(X_train, y_train)
-        y_pred = clf.predict(X_test)
-        results[name] = evaluate_classifier(y_test, y_pred, clf)
-    
-    # Create voting ensemble
-    if CONFIG['use_ensemble']:
-        ensemble_classifiers = list(classifiers.items())[:3]
-        voting_clf = VotingClassifier(
-            estimators=ensemble_classifiers, voting='hard'
-        )
-        voting_clf.fit(X_train, y_train)
-        y_pred = voting_clf.predict(X_test)
-        results['Voting_Ensemble'] = evaluate_classifier(
-            y_test, y_pred, voting_clf
-        )
-    
-    return results
-\end{lstlisting}
+The full multi-classifier training function, including SVM with GridSearchCV, Random Forest, XGBoost, LightGBM, and the Voting Ensemble, is given in Listing~\ref{lst:multi-classifier} in Appendix~\ref{sec:code-listings}.
 
 \paragraph{8. Comprehensive Evaluation Metrics}
 Extended metric suite beyond Iteration 3:
@@ -1989,62 +1771,14 @@ Four-panel comprehensive evaluation for each classifier:
     \item X-axis range [0, 1] for standardization
 \end{itemize}
 
-\begin{lstlisting}[language=Python, caption=Comprehensive Visualization]
-def comprehensive_evaluation(results, X_test, y_test):
-    """Generate comprehensive evaluation visualizations"""
-    for clf_name, result in results.items():
-        fig, axes = plt.subplots(2, 2, figsize=(15, 12))
-        
-        # Confusion Matrix
-        cm = confusion_matrix(y_test, result['y_pred'])
-        sns.heatmap(cm, annot=True, fmt='d', cmap='Blues',
-                   xticklabels=['Non-PS', 'PS'],
-                   yticklabels=['Non-PS', 'PS'], ax=axes[0, 0])
-        axes[0, 0].set_title(f'Confusion Matrix\n{clf_name}')
-        
-        # ROC Curve
-        if result['y_proba'] is not None:
-            fpr, tpr, _ = roc_curve(y_test, result['y_proba'])
-            axes[0, 1].plot(fpr, tpr, 
-                          label=f'AUC = {result["roc_auc"]:.3f}')
-            axes[0, 1].plot([0, 1], [0, 1], 'k--')
-            axes[0, 1].set_title('ROC Curve')
-            axes[0, 1].legend()
-            
-            # Precision-Recall Curve
-            precision, recall, _ = precision_recall_curve(
-                y_test, result['y_proba'])
-            axes[1, 0].plot(recall, precision,
-                          label=f'AP = {result["avg_precision"]:.3f}')
-            axes[1, 0].set_title('Precision-Recall Curve')
-            axes[1, 0].legend()
-        
-        # Metrics Bar Chart
-        metrics = {
-            'Accuracy': result['accuracy'],
-            'F1 (weighted)': result['f1_weighted'],
-            'F1 (PS)': result['f1_ps'],
-            'Precision (PS)': result['precision_ps'],
-            'Recall (PS)': result['recall_ps']
-        }
-        axes[1, 1].barh(list(metrics.keys()), 
-                       list(metrics.values()))
-        axes[1, 1].set_xlim([0, 1])
-        axes[1, 1].set_title('Performance Metrics')
-        
-        plt.tight_layout()
-        plt.savefig(f'eval_{clf_name}.png', dpi=300)
-        plt.show()
-\end{lstlisting}
+The four-panel evaluation function (confusion matrix, ROC curve, precision-recall curve, metrics bar chart) is provided in Listing~\ref{lst:visualization} in Appendix~\ref{sec:code-listings}.
 
 \paragraph{10. Results Storage and Management}
 \textbf{Storage Structure:}
 \begin{itemize}
-    \item \textbf{Embeddings:} \texttt{/Datasets/Embeddings/\_iteration\_4/\{model\}/}
-    \item \textbf{Results:} \texttt{/Results/\_iteration\_4/}
-    \item \textbf{Summary CSV:} \texttt{iteration\_4\_comprehensive\_results.csv}
-    \item \textbf{Visualizations:} \texttt{eval\_\{dataset\}\_\{model\}\_\{classifier\}.png}
-    \item \textbf{Comparison Charts:} \texttt{iteration\_4\_performance\_comparison.png}
+    \item \textbf{Embeddings:} \texttt{/Embeddings/\_iteration\_4/\{model\}/}
+\item \textbf{Results:} \texttt{/Results/\_iteration\_4/}
+\item \textbf{Visual outputs:} classifier-specific confusion matrices saved using the pattern \texttt{cm\_\{dataset\}\_\{model\}\_\{classifier\}.png}
 \end{itemize}
 
 \textbf{Pickle File Contents:}
@@ -2231,31 +1965,7 @@ Previous iterations demonstrated that despite improvements in overall accuracy a
 \subsubsection{Implementation Steps}
 
 \paragraph{1. Enhanced Configuration}
-Key configuration changes from Iteration 4:
-
-\begin{lstlisting}[language=Python, caption=Iteration 5 Configuration]
-CONFIG = {
-    # Embedding strategy (unchanged)
-    'pooling_strategy': 'mean',
-    'text_preprocessing': True,
-    'use_feature_scaling': True,
-    
-    # AGGRESSIVE CLASS BALANCING (Key Changes)
-    'use_smote': True,
-    'smote_strategy': 'auto',  # Full 1:1 balancing (was 0.7)
-    'use_undersampling': True,  # NEW: Undersample majority
-    'undersample_strategy': 0.8,  # majority = 0.8 * minority
-    'combine_smote_tomek': True,  # Clean overlapping samples
-    
-    # NEW: Threshold optimization for PS recall
-    'optimize_threshold': True,
-    'target_ps_recall': 0.95,  # Aim for 95% PS recall
-    
-    # NEW: Aggressive class weights
-    'aggressive_class_weights': True,
-    'ps_weight_multiplier': 10,  # 10x weight on PS incidents
-}
-\end{lstlisting}
+Key configuration changes from Iteration~4 are shown in Listing~\ref{lst:iter5-config} in Appendix~\ref{sec:code-listings}. The most significant changes are full 1:1 SMOTE balancing (\texttt{smote\_strategy='auto'}), combined SMOTETomek resampling, threshold optimisation targeting 95\% PS recall, and a 10$\times$ class weight multiplier on Process Safety incidents.
 
 \paragraph{2. Full SMOTE Oversampling}
 Unlike Iteration 4's conservative SMOTE strategy (minority at 70\% of majority), Iteration 5 employs full 1:1 balancing:
@@ -2275,38 +1985,12 @@ N_{\text{majority}}^{\text{final}} = 0.8 \times N_{\text{minority}}^{\text{after
 
 The SMOTETomek combination further cleans overlapping samples near the decision boundary:
 
-\begin{lstlisting}[language=Python, caption=SMOTETomek Implementation]
-from imblearn.combine import SMOTETomek
-
-smotetomek = SMOTETomek(
-    smote=SMOTE(sampling_strategy='auto', random_state=42),
-    tomek=TomekLinks()
-)
-X_resampled, y_resampled = smotetomek.fit_resample(X_train, y_train)
-\end{lstlisting}
+The SMOTETomek implementation is provided in Listing~\ref{lst:smotetomek} in Appendix~\ref{sec:code-listings}.
 
 \paragraph{4. Threshold Optimization}
 Rather than using the default 0.5 classification threshold, Iteration 5 optimizes the threshold to achieve target recall:
 
-\begin{lstlisting}[language=Python, caption=Threshold Optimization]
-def optimize_threshold_for_recall(y_true, y_proba, target_recall=0.95):
-    """Find threshold achieving target recall for minority class"""
-    thresholds = np.linspace(0.1, 0.9, 100)
-    best_threshold = 0.5
-    best_f1 = 0
-    
-    for thresh in thresholds:
-        y_pred = (y_proba >= thresh).astype(int)
-        recall = recall_score(y_true, y_pred, pos_label=1)
-        
-        if recall >= target_recall:
-            f1 = f1_score(y_true, y_pred, pos_label=1)
-            if f1 > best_f1:
-                best_f1 = f1
-                best_threshold = thresh
-    
-    return best_threshold
-\end{lstlisting}
+The threshold optimisation function is provided in Listing~\ref{lst:threshold-opt} in Appendix~\ref{sec:code-listings}.
 
 \paragraph{5. Aggressive Class Weights}
 Class weights are amplified beyond the standard balanced weighting:
@@ -2363,37 +2047,7 @@ Iteration 5's aggressive SMOTE oversampling raised concerns about synthetic samp
 \paragraph{1. Language-Aware Sampling Strategy}
 Unlike previous iterations that treated the dataset as a single corpus, Iteration 6 performs stratified sampling within each language:
 
-\begin{lstlisting}[language=Python, caption=Language-Aware Undersampling]
-def language_aware_undersample(df, target_ratio=1.0):
-    """
-    Undersample to achieve target ratio within each language.
-    Select longest descriptions (most informative).
-    """
-    balanced_dfs = []
-    
-    for language in df['LANGUAGE'].unique():
-        lang_df = df[df['LANGUAGE'] == language]
-        
-        # Count per class
-        ps_count = len(lang_df[lang_df['binary_label'] == 1])
-        nps_count = len(lang_df[lang_df['binary_label'] == 0])
-        
-        # Target: equal classes within language
-        target_per_class = min(ps_count, nps_count)
-        
-        # Select longest descriptions (most informative)
-        ps_samples = (lang_df[lang_df['binary_label'] == 1]
-                     .assign(text_len=lambda x: x['text_features'].str.len())
-                     .nlargest(target_per_class, 'text_len'))
-        
-        nps_samples = (lang_df[lang_df['binary_label'] == 0]
-                      .assign(text_len=lambda x: x['text_features'].str.len())
-                      .nlargest(target_per_class, 'text_len'))
-        
-        balanced_dfs.extend([ps_samples, nps_samples])
-    
-    return pd.concat(balanced_dfs, ignore_index=True)
-\end{lstlisting}
+The language-aware undersampling function, which selects the longest incident descriptions within each language-class stratum, is provided in Listing~\ref{lst:lang-undersample} in Appendix~\ref{sec:code-listings}.
 
 \paragraph{2. Selection of Longest Text}
 The key insight of Iteration 6 is that longer incident descriptions typically contain more detailed information about the incident context, enabling better classification:
@@ -2428,18 +2082,7 @@ To compensate for reduced training data, strong regularization is applied:
 \paragraph{5. RBF Kernel SVM}
 Iteration 6 introduces non-linear SVM with RBF kernel:
 
-\begin{lstlisting}[language=Python, caption=RBF Kernel SVM]
-from sklearn.svm import SVC
-
-svm_rbf = SVC(
-    kernel='rbf',
-    C=1.0,
-    gamma='scale',
-    class_weight='balanced',
-    probability=True,  # Enable probability estimates
-    random_state=42
-)
-\end{lstlisting}
+The RBF kernel SVM configuration is given in Listing~\ref{lst:rbf-svm} in Appendix~\ref{sec:code-listings}.
 
 The RBF kernel can capture non-linear decision boundaries in the embedding space:
 
@@ -2505,33 +2148,7 @@ Two Flan-T5 variants were selected for evaluation:
 Flan-T5 models were chosen for their strong performance on classification tasks and explicit instruction-following training.
 
 \paragraph{2. Process Safety Definition}
-A comprehensive definition was developed to guide LLM classification:
-
-\begin{lstlisting}[language=Python, caption=Process Safety Definition]
-PROCESS_SAFETY_DEFINITION = """
-A Process Safety Incident is ANY incident involving:
-1. Equipment failures, trips, or malfunctions 
-   (GT trip, pump trip, boiler trip, valve failure)
-2. Leaks, spills, or releases of process materials 
-   (oil, gas, water, chemicals, steam from equipment)
-3. Pressure deviations (high/low pressure events)
-4. Emergency shutdowns (ESD, Not-Aus, noodstop)
-5. Fire, explosion, or rupture
-6. Loss of containment from process equipment
-7. Contamination events (wrong substance in system)
-8. Equipment damage (cracks, splits, corrosion)
-9. Unplanned unit outages or trips
-10. Any incident with potential for harm to people, 
-    environment, or equipment FROM PROCESS SYSTEMS
-
-A Non-Process Safety Incident includes:
-- Personal injuries NOT caused by process equipment failure
-- Minor spills of non-process materials (paint, office supplies)
-- Administrative matters, training, onboarding issues
-- Occupational safety incidents (slips, trips, falls)
-- Vehicle/driving incidents
-"""
-\end{lstlisting}
+A comprehensive definition was developed to guide LLM classification (see Listing~\ref{lst:ps-definition} in Appendix~\ref{sec:code-listings}). It enumerates ten categories of Process Safety incidents (equipment failures, leaks, pressure deviations, ESDs, fire/explosion, loss of containment, contamination, equipment damage, unplanned outages, and process-system harm potential) alongside four categories of Non-Process Safety incidents.
 
 \paragraph{3. Few-Shot Example Selection}
 Language-specific few-shot examples were curated from actual incident reports:
@@ -2555,101 +2172,13 @@ Swedish & 1 & 2 & 3 \\
 Examples were selected to represent diverse incident types within each class, ensuring coverage of edge cases.
 
 \paragraph{4. Prompt Engineering}
-The few-shot prompt template combines the Process Safety definition with labeled examples:
-
-\begin{lstlisting}[language=Python, caption=Few-Shot Prompt Construction]
-def build_few_shot_prompt(title, description, language='English'):
-    """Build few-shot classification prompt"""
-    examples = FEW_SHOT_EXAMPLES.get(language, 
-                                     FEW_SHOT_EXAMPLES['English'])
-    
-    prompt = f"""
-{PROCESS_SAFETY_DEFINITION}
-
-Based on the definition above, classify the following incident.
-
-Examples:
-"""
-    # Add Process Safety examples
-    for ex in examples['process_safety'][:2]:
-        prompt += f"""
-Title: {ex['title']}
-Description: {ex['description']}
-Classification: Process Safety
-"""
-    
-    # Add Non-Process Safety examples
-    for ex in examples['non_process_safety'][:2]:
-        prompt += f"""
-Title: {ex['title']}
-Description: {ex['description']}
-Classification: Non-Process Safety
-"""
-    
-    # Add target incident
-    prompt += f"""
-Now classify this incident:
-Title: {title}
-Description: {description}
-Classification:"""
-    
-    return prompt
-\end{lstlisting}
+The few-shot prompt template combines the Process Safety definition with labeled examples (see Listing~\ref{lst:few-shot-prompt} in Appendix~\ref{sec:code-listings}). The prompt prepends the definition, then includes two PS and two NPS examples per language, followed by the target incident.
 
 \paragraph{5. Inference Pipeline}
-Batch inference was implemented with checkpointing for large-scale evaluation:
-
-\begin{lstlisting}[language=Python, caption=LLM Inference Pipeline]
-def classify_with_llm(texts, model, tokenizer, batch_size=8):
-    """Classify incidents using LLM few-shot prompting"""
-    predictions = []
-    
-    for i in tqdm(range(0, len(texts), batch_size)):
-        batch = texts[i:i + batch_size]
-        
-        inputs = tokenizer(
-            batch, 
-            return_tensors="pt",
-            padding=True,
-            truncation=True,
-            max_length=512
-        ).to(device)
-        
-        with torch.no_grad():
-            outputs = model.generate(
-                **inputs,
-                max_new_tokens=10,
-                num_beams=1,
-                do_sample=False
-            )
-        
-        decoded = tokenizer.batch_decode(
-            outputs, skip_special_tokens=True)
-        
-        # Parse predictions
-        for response in decoded:
-            if 'process safety' in response.lower():
-                predictions.append(1)
-            else:
-                predictions.append(0)
-        
-        # Memory management
-        torch.cuda.empty_cache()
-    
-    return predictions
-\end{lstlisting}
+Batch inference was implemented with checkpointing for large-scale evaluation. The pipeline tokenises each prompt, calls \texttt{model.generate} with greedy decoding (\texttt{num\_beams=1}), and parses the response string for the phrase \textit{``process safety''} to assign a binary label (see Listing~\ref{lst:llm-inference} in Appendix~\ref{sec:code-listings}).
 
 \paragraph{6. Multilingual Support}
-The pipeline automatically detects incident language and selects appropriate few-shot examples:
-
-\begin{lstlisting}[language=Python, caption=Language-Aware Classification]
-LANGUAGE_FILES = {
-    'English': ['RW_ACTUALS_English.csv', 'RW_ACTUALS_UK.csv'],
-    'German': ['RW_ACTUALS_Germany.csv'],
-    'Dutch': ['RW_ACTUALS_Netherlands.csv'],
-    'Swedish': ['RW_ACTUALS_Sweden.csv']
-}
-\end{lstlisting}
+The pipeline routes each dataset file to the appropriate language-specific few-shot example bank (see Listing~\ref{lst:lang-files} in Appendix~\ref{sec:code-listings}).
 
 \subsubsection{Results Summary}
 
@@ -2965,7 +2494,7 @@ The baseline BERT-base-uncased + Linear SVM model established the performance be
 \textbf{Subset} & \textbf{Total} & \textbf{Accuracy} & \textbf{Macro-average F1} & \textbf{Weighted-F1} \\
 \midrule
 manual     & 4,713 & 0.8112 & \textbf{0.7825} & 0.8143 \\
-langdetect & 5,989 & 0.8122 & 0.7636 & 0.8160 \\
+langdetect & 6,010 & 0.8128 & 0.7648 & 0.8170 \\
 lingua     & 6,222 & 0.8185 & 0.7714 & \textbf{0.8241} \\
 \bottomrule
 \end{tabular}
@@ -2993,7 +2522,7 @@ BERT-base-cased embeddings were evaluated across six country-specific datasets.
 Germany     & 14,951 & 0.7379 & 0.5983 & 0.3313 \\
 UK          & 4,673  & 0.7722 & 0.7449 & 0.2518 \\
 English     & 4,713  & 0.7699 & 0.7420 & 0.2624 \\
-Sweden      & 12,224 & 0.7951 & 0.5829 & 0.3548 \\
+Sweden      & 12,224 & 0.7947 & 0.5825 & 0.3548 \\
 Netherlands & 1,990  & 0.6985 & 0.6586 & 0.3983 \\
 Master      & 34,576 & 0.7514 & 0.6292 & 0.3279 \\
 \bottomrule
@@ -3011,113 +2540,187 @@ Master      & 34,576 & 0.7514 & 0.6292 & 0.3279 \\
 
 \section{Iteration 2: Multi-Model Comparison}
 
-Ten transformer architectures were compared across six datasets (60 experiments total).
+Iteration~2 extends the Iteration~1 baseline by evaluating six completed transformer architectures across four manually derived datasets (\texttt{english\_manual}, \texttt{german\_manual}, \texttt{swedish\_manual}, and \texttt{dutch\_manual}), yielding 24 model--dataset combinations. Four of the originally planned ten models (\texttt{modernbert-base}, \texttt{modernbert-large}, \texttt{deberta-v3-base}, \texttt{deberta-v3-large}) encountered compatibility issues and were excluded. All per-run metrics are exported to \texttt{Results/\_iteration\_2/all\_models\_svm\_detailed\_results.csv}.
 
 \begin{table}[htbp]
 \centering
-\caption{Iteration 2 Model Performance Summary (Mean $\pm$ Std across datasets)}
+\caption{Iteration~2 model performance summary: mean $\pm$ standard deviation across four datasets (\texttt{english\_manual}, \texttt{german\_manual}, \texttt{swedish\_manual}, \texttt{dutch\_manual}).}
 \label{tab:results-iter2-models}
 \begin{tabular}{@{}lcccc@{}}
 \toprule
 \textbf{Model} & \textbf{Params} & \textbf{Accuracy} & \textbf{Macro F1} & \textbf{PS F1} \\
 \midrule
-bert-base-cased & 110M & 0.856 $\pm$ 0.021 & 0.862 $\pm$ 0.018 & 0.784 $\pm$ 0.025 \\
-bert-large-cased & 340M & 0.861 $\pm$ 0.019 & 0.867 $\pm$ 0.016 & 0.792 $\pm$ 0.022 \\
-roberta-base & 125M & 0.863 $\pm$ 0.018 & 0.869 $\pm$ 0.015 & 0.798 $\pm$ 0.021 \\
-roberta-large & 355M & \textbf{0.871 $\pm$ 0.016} & \textbf{0.876 $\pm$ 0.014} & \textbf{0.812 $\pm$ 0.019} \\
-distilbert-base-cased & 66M & 0.842 $\pm$ 0.024 & 0.851 $\pm$ 0.021 & 0.768 $\pm$ 0.028 \\
-xlnet-base-cased & 110M & 0.858 $\pm$ 0.020 & 0.864 $\pm$ 0.017 & 0.789 $\pm$ 0.024 \\
+bert-base-cased       & 110M & 0.7540 $\pm$ 0.0585 & 0.6230 $\pm$ 0.0696 & 0.4135 $\pm$ 0.1713 \\
+bert-large-cased      & 340M & 0.7499 $\pm$ 0.0874 & 0.6005 $\pm$ 0.0548 & 0.3698 $\pm$ 0.1414 \\
+roberta-base          & 125M & 0.7603 $\pm$ 0.0413 & 0.6538 $\pm$ 0.0768 & 0.4726 $\pm$ 0.1714 \\
+roberta-large         & 355M & \textbf{0.7830 $\pm$ 0.0465} & \textbf{0.6654 $\pm$ 0.0698} & \textbf{0.4787 $\pm$ 0.1683} \\
+distilbert-base-cased &  66M & 0.7723 $\pm$ 0.0354 & 0.6518 $\pm$ 0.0689 & 0.4562 $\pm$ 0.1644 \\
+xlnet-base-cased      & 110M & 0.7279 $\pm$ 0.0794 & 0.5873 $\pm$ 0.0584 & 0.3608 $\pm$ 0.1502 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{Iteration~2 per-dataset averages across all six completed models.}
+\label{tab:results-iter2-datasets}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+\textbf{Dataset} & \textbf{Accuracy} & \textbf{Macro F1} & \textbf{PS F1} \\
+\midrule
+english\_manual  & 0.7621 $\pm$ 0.0310 & 0.7342 $\pm$ 0.0333 & 0.6481 $\pm$ 0.0426 \\
+german\_manual   & 0.7738 $\pm$ 0.0187 & 0.6086 $\pm$ 0.0302 & 0.3544 $\pm$ 0.0525 \\
+swedish\_manual  & 0.8265 $\pm$ 0.0224 & 0.5588 $\pm$ 0.0067 & 0.2153 $\pm$ 0.0196 \\
+dutch\_manual    & 0.6692 $\pm$ 0.0394 & 0.6197 $\pm$ 0.0515 & 0.4833 $\pm$ 0.0792 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \textbf{Key Findings:}
 \begin{itemize}
-    \item RoBERTa-large achieves highest average performance (Macro F1 = 0.876)
-    \item Model scale correlates with performance: large variants outperform base
-    \item DistilBERT provides efficient alternative with moderate performance trade-off
-    \item All models exceed baseline (Iteration 0) performance
+    \item RoBERTa-large achieves the highest average macro F1 (0.6654) and accuracy (0.7830) across all four datasets, with roberta-base as a close second (macro F1 = 0.6538).
+    \item The best single model--dataset combination is \texttt{roberta-base} on \texttt{english\_manual}, achieving a macro F1 of 0.7698 and accuracy of 0.7953.
+    \item No Iteration~2 combination reaches the RQ1 target of macro F1 $\geq 0.85$; the English-only best (0.7698) also falls below the Iteration~0 baseline of 0.7825, indicating that switching from BERT-base-uncased to cased variants and RoBERTa architectures alone is insufficient.
+    \item Performance on non-English datasets is substantially weaker, particularly for Swedish (average macro F1 = 0.5588 across models), reflecting the language mismatch of English-pretrained embeddings applied to multilingual incident reports.
+    \item DistilBERT (66M parameters) achieves competitive average macro F1 (0.6518) relative to larger models, making it an efficient alternative when computational resources are constrained.
+    \item The large standard deviations in PS F1 (0.14--0.17) across all models confirm that Process Safety recall is a persistent challenge on non-English datasets.
 \end{itemize}
 
 \section{Iteration 3: Multilingual Model Results}
 
-Five multilingual transformer models were evaluated to address language mismatch issues.
+Five multilingual transformer models were evaluated across four language-specific datasets (\texttt{english\_manual}, \texttt{german\_manual}, \texttt{swedish\_manual}, \texttt{dutch\_manual}), yielding 20 model--dataset combinations.
 
 \begin{table}[htbp]
 \centering
-\caption{Iteration 3 Multilingual Model Performance by Dataset}
+\caption{Iteration~3 full results: accuracy, macro F1, and PS F1 for all five multilingual models across four datasets.}
 \label{tab:results-iter3}
-\begin{tabular}{@{}llccc@{}}
+\small
+\begin{tabular}{@{}llcccc@{}}
 \toprule
-\textbf{Model} & \textbf{Dataset} & \textbf{Accuracy} & \textbf{Macro F1} & \textbf{PS F1} \\
+\textbf{Model} & \textbf{Dataset} & \textbf{Accuracy} & \textbf{Macro F1} & \textbf{Prec PS} & \textbf{Rec PS} \\
 \midrule
-\multirow{4}{*}{mBERT-uncased} & UK & 0.8634 & 0.8712 & 0.7923 \\
- & Germany & 0.8521 & 0.8598 & 0.7812 \\
- & Sweden & 0.8412 & 0.8523 & 0.7698 \\
- & Netherlands & 0.8478 & 0.8567 & 0.7756 \\
+\multirow{4}{*}{mBERT-uncased}
+ & english\_manual  & 0.7656 & 0.7412 & 0.5822 & 0.7660 \\
+ & german\_manual   & 0.8024 & 0.6553 & 0.3163 & 0.6717 \\
+ & swedish\_manual  & 0.8090 & 0.5583 & 0.1518 & 0.4387 \\
+ & dutch\_manual    & 0.6960 & 0.6672 & 0.4908 & 0.6780 \\
 \midrule
-\multirow{4}{*}{E5-large-instruct} & UK & \textbf{0.8812} & \textbf{0.8889} & \textbf{0.8234} \\
- & Germany & 0.8634 & 0.8712 & 0.7956 \\
- & Sweden & 0.8523 & 0.8623 & 0.7812 \\
- & Netherlands & 0.8589 & 0.8678 & 0.7889 \\
+\multirow{4}{*}{mBERT-cased}
+ & english\_manual  & 0.7550 & 0.7262 & 0.5718 & 0.7199 \\
+ & german\_manual   & 0.8031 & 0.6421 & 0.3032 & 0.5964 \\
+ & swedish\_manual  & 0.8245 & 0.5453 & 0.1337 & 0.3226 \\
+ & dutch\_manual    & 0.6608 & 0.6196 & 0.4430 & 0.5593 \\
+\midrule
+\multirow{4}{*}{E5-base}
+ & english\_manual  & 0.7741 & \textbf{0.7456} & 0.6000 & 0.7340 \\
+ & german\_manual   & 0.8101 & 0.6534 & 0.3179 & 0.6205 \\
+ & swedish\_manual  & 0.8474 & 0.5668 & 0.1615 & 0.3355 \\
+ & dutch\_manual    & 0.7085 & 0.6674 & 0.5071 & 0.6017 \\
+\midrule
+\multirow{4}{*}{E5-large}
+ & english\_manual  & 0.7646 & 0.7354 & 0.5862 & 0.7234 \\
+ & german\_manual   & 0.8342 & 0.6517 & 0.3340 & 0.4970 \\
+ & swedish\_manual  & \textbf{0.8822} & 0.5660 & 0.1724 & 0.2258 \\
+ & dutch\_manual    & 0.6859 & 0.6168 & 0.4685 & 0.4407 \\
+\midrule
+\multirow{4}{*}{E5-large-instruct}
+ & english\_manual  & 0.7731 & 0.7407 & 0.6037 & 0.7021 \\
+ & german\_manual   & 0.8352 & 0.6700 & 0.3517 & 0.5753 \\
+ & swedish\_manual  & 0.8720 & 0.5670 & 0.1681 & 0.2581 \\
+ & dutch\_manual    & 0.7462 & 0.6995 & 0.5691 & 0.5932 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{Iteration~3 model performance summary: mean $\pm$ standard deviation across four datasets.}
+\label{tab:results-iter3-models}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+\textbf{Model} & \textbf{Accuracy} & \textbf{Macro F1} & \textbf{PS F1} \\
+\midrule
+mBERT-uncased       & 0.7683 $\pm$ 0.0449 & 0.6555 $\pm$ 0.0650 & 0.4716 $\pm$ 0.1643 \\
+mBERT-cased         & 0.7609 $\pm$ 0.0630 & 0.6333 $\pm$ 0.0645 & 0.4307 $\pm$ 0.1628 \\
+E5-base             & 0.7851 $\pm$ 0.0512 & 0.6583 $\pm$ 0.0634 & 0.4623 $\pm$ 0.1646 \\
+E5-large            & 0.7917 $\pm$ 0.0740 & 0.6425 $\pm$ 0.0617 & 0.4242 $\pm$ 0.1610 \\
+E5-large-instruct   & \textbf{0.8066 $\pm$ 0.0496} & \textbf{0.6693 $\pm$ 0.0642} & \textbf{0.4676 $\pm$ 0.1707} \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \textbf{Key Findings:}
 \begin{itemize}
-    \item E5-large-instruct achieves best multilingual performance
-    \item Non-English datasets show improved performance with multilingual models vs. monolingual (Iteration 2)
-    \item Germany dataset improves from 0.8645 (monolingual) to 0.8712 (multilingual)
+    \item \texttt{intfloat/multilingual-e5-large-instruct} achieves the highest average macro F1 (0.6693) and accuracy (0.8066) across all four datasets.
+    \item The best single combination is \texttt{E5-base} on \texttt{english\_manual} with macro F1 = 0.7456 and accuracy = 0.7741.
+    \item No Iteration~3 combination reaches the RQ1 target of macro F1 $\geq 0.85$.
+    \item Compared to Iteration~2, multilingual models show marginal improvement on non-English datasets: German average macro F1 rises from 0.6086 (Iteration~2) to 0.6545 (Iteration~3), and Dutch from 0.6197 to 0.6541.
+    \item Swedish remains the hardest dataset across all models (average macro F1 = 0.5607), driven by severe class imbalance and low PS recall (0.23--0.44).
+    \item English performance is virtually unchanged between iterations (0.7342 in Iteration~2 vs.\ 0.7378 in Iteration~3), confirming that multilingual pretraining does not hurt English classification.
+    \item Scaling from E5-base to E5-large does not consistently improve macro F1, suggesting that model size alone is not the bottleneck.
 \end{itemize}
 
 \section{Iteration 4: Advanced ML Techniques}
 
-Comprehensive evaluation of enhanced techniques: mean pooling, SMOTE, multiple classifiers.
+Iteration~4 evaluated eight multilingual embedding models combined with four classifiers (LinearSVC, Random Forest, XGBoost, LightGBM) across four language-specific datasets, yielding 128 model--classifier--dataset combinations. All experiments used mean pooling, SMOTE oversampling (ratio 0.7), feature scaling, and hyperparameter tuning via grid search. The Voting Ensemble was configured in code but its results were not captured in the output CSV, so only the four base classifiers are reported.
 
 \begin{table}[htbp]
 \centering
-\caption{Iteration 4 Classifier Comparison (Mean across models and datasets)}
+\caption{Iteration~4 classifier comparison: mean accuracy, macro F1, PS F1, and PS recall averaged across all 8 embedding models and 4 datasets (32 runs per classifier).}
 \label{tab:results-iter4-classifiers}
 \begin{tabular}{@{}lcccc@{}}
 \toprule
 \textbf{Classifier} & \textbf{Accuracy} & \textbf{Macro F1} & \textbf{PS F1} & \textbf{PS Recall} \\
 \midrule
-Linear SVM & 0.8623 & 0.8712 & 0.7923 & 0.8134 \\
-Random Forest & 0.8534 & 0.8623 & 0.7812 & 0.7956 \\
-XGBoost & 0.8712 & 0.8834 & 0.8123 & 0.8345 \\
-LightGBM & \textbf{0.8734} & \textbf{0.8856} & \textbf{0.8178} & 0.8312 \\
-Voting Ensemble & 0.8698 & 0.8823 & 0.8089 & \textbf{0.8423} \\
+LinearSVC     & 0.7610 & 0.6421 & 0.4449 & 0.5865 \\
+Random Forest & 0.8431 & 0.6810 & 0.4598 & 0.4001 \\
+LightGBM      & 0.8329 & 0.6973 & 0.5021 & 0.5232 \\
+XGBoost       & \textbf{0.8366} & \textbf{0.7011} & \textbf{0.5072} & \textbf{0.5231} \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-\textbf{Ablation Study Results:}
+\begin{table}[htbp]
+\centering
+\caption{Iteration~4 best result per dataset and overall top-10 combinations.}
+\label{tab:results-iter4-best}
+\begin{tabular}{@{}llllccc@{}}
+\toprule
+\textbf{Dataset} & \textbf{Embedding model} & \textbf{Clf} & \textbf{Macro F1} & \textbf{Acc} & \textbf{Prec PS} & \textbf{Rec PS} \\
+\midrule
+english\_manual  & snowflake-arctic-embed-l-v2.0           & XGBoost & \textbf{0.8043} & 0.8378 & 0.7380 & 0.7092 \\
+german\_manual   & intfloat/multilingual-e5-large-instruct & XGBoost & 0.7426          & 0.8927 & 0.5147 & 0.5813 \\
+dutch\_manual    & Alibaba-NLP/gte-multilingual-base       & XGBoost & 0.7439          & 0.7940 & 0.6731 & 0.5932 \\
+swedish\_manual  & Alibaba-NLP/gte-multilingual-base       & XGBoost & 0.6438          & 0.8920 & 0.2811 & 0.4516 \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \begin{table}[htbp]
 \centering
-\caption{Iteration 4 Ablation Study: Impact of Individual Techniques}
-\label{tab:results-iter4-ablation}
+\caption{Iteration~4 per-dataset averages across all 32 model--classifier combinations.}
+\label{tab:results-iter4-datasets}
 \begin{tabular}{@{}lccc@{}}
 \toprule
-\textbf{Configuration} & \textbf{Macro F1} & \textbf{PS Recall} & \textbf{$\Delta$ vs Baseline} \\
+\textbf{Dataset} & \textbf{Accuracy} & \textbf{Macro F1} & \textbf{PS F1} \\
 \midrule
-Baseline (CLS + LinearSVC) & 0.8712 & 0.8134 & -- \\
-+ Mean Pooling & 0.8789 & 0.8234 & +0.0077 \\
-+ SMOTE (0.7) & 0.8834 & 0.8456 & +0.0122 \\
-+ Feature Scaling & 0.8823 & 0.8389 & +0.0111 \\
-+ Hyperparameter Tuning & 0.8856 & 0.8478 & +0.0144 \\
-+ All Techniques & \textbf{0.8923} & \textbf{0.8612} & \textbf{+0.0211} \\
+english\_manual  & 0.8050 & \textbf{0.7629} & \textbf{0.6636} \\
+dutch\_manual    & 0.7519 & 0.6865 & 0.5448 \\
+german\_manual   & 0.8522 & 0.6761 & 0.4382 \\
+swedish\_manual  & 0.8645 & 0.5960 & 0.2673 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \textbf{Key Findings:}
 \begin{itemize}
-    \item LightGBM achieves highest macro F1 (0.8856)
-    \item SMOTE provides largest individual improvement (+0.0122 macro F1)
-    \item Combined techniques achieve 0.8923 macro F1, exceeding RQ1 target
-    \item Voting ensemble provides highest PS recall (84.23\%)
+    \item XGBoost achieves the highest average macro F1 (0.7011) across all model--dataset combinations, followed closely by LightGBM (0.6973); both substantially outperform LinearSVC (0.6421).
+    \item The best single combination is \texttt{snowflake-arctic-embed-l-v2.0} + XGBoost on \texttt{english\_manual}, achieving macro F1 = 0.8043 and accuracy = 0.8378 — the strongest result across all iterations up to this point.
+    \item No Iteration~4 combination reaches the RQ1 target of macro F1 $\geq 0.85$; the best result (0.8043) is 2.43 percentage points below the target.
+    \item English remains the strongest dataset (average macro F1 = 0.7629); Swedish is consistently the weakest (0.5960), driven by severe class imbalance and low PS recall.
+    \item Random Forest achieves high accuracy (0.8431) but low PS recall (0.4001), indicating a strong bias toward the majority class despite SMOTE oversampling.
+    \item LinearSVC shows the lowest accuracy (0.7610) but the highest PS recall (0.5865) among classifiers, reflecting a more aggressive minority-class bias.
+    \item The Voting Ensemble results were not captured in the output CSV and are therefore not reported.
 \end{itemize}
 
 \section{Iteration 5 and 6: Class Balancing Experiments}
@@ -3130,19 +2733,17 @@ Baseline (CLS + LinearSVC) & 0.8712 & 0.8134 & -- \\
 \toprule
 \textbf{Strategy} & \textbf{Macro F1} & \textbf{PS Recall} & \textbf{PS Precision} & \textbf{Approach} \\
 \midrule
-Iter 4 (SMOTE 0.7) & 0.8856 & 0.8312 & 0.7923 & Synthetic \\
-Iter 5 (Full SMOTE) & 0.8234 & \textbf{0.9234} & 0.6512 & Synthetic \\
-Iter 6 (Undersampling) & \textbf{0.7750} & 0.7856 & \textbf{0.8123} & Real only \\
+Iter 4 (SMOTE 0.7) & 0.8043 & 0.7092 & 0.7380 & Synthetic \\
+Iter 5 (Full SMOTE) & TBD & TBD & TBD & Synthetic \\
+Iter 6 (Undersampling) & TBD & TBD & TBD & Real only \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \textbf{Key Findings:}
 \begin{itemize}
-    \item Full SMOTE (Iteration 5) maximizes PS recall (92.34\%) but sacrifices precision
-    \item Language-aware undersampling (Iteration 6) maintains precision but reduces recall
-    \item Trade-off exists between recall-focused vs. precision-focused strategies
-    \item Best overall balance: Iteration 4's conservative SMOTE (0.7 ratio)
+    \item Iteration~4 best result (macro F1 = 0.8043, \texttt{snowflake-arctic-embed-l-v2.0} + XGBoost on \texttt{english\_manual}) serves as the reference for class balancing comparisons.
+    \item Results for Iterations~5 and~6 are pending completion of those pipelines and will be filled in during final revision.
 \end{itemize}
 
 \section{Iteration 7: LLM Classification Results}
@@ -3155,10 +2756,10 @@ Iter 6 (Undersampling) & \textbf{0.7750} & 0.7856 & \textbf{0.8123} & Real only 
 \toprule
 \textbf{Approach} & \textbf{Accuracy} & \textbf{Macro F1} & \textbf{PS Recall} & \textbf{Training} \\
 \midrule
-BERT + SVM (Iter 0) & 0.8226 & 0.7899 & 82.48\% & Required \\
-RoBERTa-large + SVM (Iter 2) & 0.8712 & 0.8760 & 81.23\% & Required \\
-LightGBM Ensemble (Iter 4) & 0.8734 & 0.8856 & 83.12\% & Required \\
-Flan-T5-Large (few-shot) & 0.8554 & 0.0135 & 0.71\% & None \\
+BERT-base-uncased + RBF SVM (Iter~0)   & 0.8112 & 0.7825 & 74.82\% & Required \\
+roberta-base + LinearSVC (Iter~2)      & 0.7953 & 0.7698 & 77.30\% & Required \\
+snowflake-arctic + XGBoost (Iter~4)    & 0.8378 & 0.8043 & 70.92\% & Required \\
+Flan-T5-Large (few-shot, Iter~7)       & 0.8554 & 0.0135 & 0.71\%  & None \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -3181,13 +2782,13 @@ Flan-T5-Large (few-shot) & 0.8554 & 0.0135 & 0.71\% & None \\
 \toprule
 \textbf{Iteration} & \textbf{Best Macro F1} & \textbf{Best PS F1} & \textbf{RQ1 Met?} & \textbf{Key Innovation} \\
 \midrule
-0 & 0.7899 & 0.7070 & No & Baseline BERT \& SVM \\
+0 & 0.7825 & 0.7033 & No & Baseline BERT \& SVM \\
 1 & 0.7449 & 0.6614 & No & Country stratification \\
-2 & 0.8760 & 0.8120 & Yes & Multi-model comparison \\
-3 & 0.8889 & 0.8234 & Yes & Multilingual embeddings \\
-4 & \textbf{0.8923} & \textbf{0.8612} & Yes & Advanced ML techniques \\
-5 & 0.8234 & 0.7856 & Yes & Aggressive SMOTE \\
-6 & 0.7750 & 0.7123 & No & Language-aware undersampling \\
+2 & 0.7698 & 0.6932 & No & Multi-model comparison \\
+3 & 0.7456 & 0.6603 & No & Multilingual embeddings \\
+4 & \textbf{0.8043} & \textbf{0.7028} & No & Advanced ML + mean pooling \\
+5 & TBD   & TBD   & TBD & Aggressive SMOTE \\
+6 & TBD   & TBD   & TBD & Language-aware undersampling \\
 7 & 0.0135 & 0.0135 & No & LLM few-shot \\
 \bottomrule
 \end{tabular}
@@ -3211,24 +2812,27 @@ This chapter synthesizes the experimental findings, addresses the research quest
 
 \textbf{Research Question:} Can classification of Process Safety incidents be improved by at least 6.75 percentage points in macro-average F1-score (from 0.7825 to at least 0.85)?
 
-\textbf{Finding: Yes, the target was exceeded.}
+\textbf{Finding: Not yet achieved. The best result to date is 0.8043, which is 2.43 percentage points below the target of 0.85.}
 
-The official Iteration~0 baseline, based on the manually curated English subset, achieved a macro F1-score of 0.7825.
+The official Iteration~0 baseline, based on the manually curated English subset, achieved a macro F1-score of 0.7825. Subsequent iterations improved upon this, but the RQ1 target of $\geq 0.85$ has not yet been reached:
 
 \begin{itemize}
-    \item Iteration 1 (country stratification): 0.7449 macro F1 on the best-performing UK dataset
-    \item Iteration 3 (multilingual): 0.8889 macro F1
-    \item Iteration 4 (advanced ML): \textbf{0.8923 macro F1}
+    \item Iteration~1 (country stratification, BERT-base-cased): best macro F1 = 0.7449 (UK dataset)
+    \item Iteration~2 (monolingual BERT family): best macro F1 = 0.7698 (\texttt{roberta-base}, \texttt{english\_manual})
+    \item Iteration~3 (multilingual models): best macro F1 = 0.7456 (\texttt{E5-base}, \texttt{english\_manual})
+    \item Iteration~4 (mean pooling + SMOTE + XGBoost/LightGBM): best macro F1 = \textbf{0.8043} (\texttt{snowflake-arctic-embed-l-v2.0} + XGBoost, \texttt{english\_manual})
 \end{itemize}
 
-The best-performing configuration achieved a \textbf{10.97 percentage point improvement} over the official Iteration~0 baseline of 0.7825, thereby exceeding the RQ1 target of 0.85.
+The best result achieved so far (macro F1 = 0.8043) represents a \textbf{2.18 percentage point improvement} over the Iteration~0 baseline of 0.7825, and falls 2.43 percentage points short of the RQ1 target of 0.85. The factors that have driven the strongest improvements are:
 
 \begin{enumerate}
-    \item Superior embedding models (RoBERTa-large, E5-large-instruct)
-    \item Mean pooling strategies capturing document-level semantics
-    \item SMOTE-based class balancing improving minority class performance
-    \item Gradient boosting classifiers (LightGBM, XGBoost) outperform linear SVM
+    \item Advanced embedding models with broader multilingual pretraining (e.g., \texttt{snowflake-arctic-embed-l-v2.0}, \texttt{Alibaba-NLP/gte-multilingual-base})
+    \item Mean pooling instead of CLS-token representation
+    \item SMOTE oversampling (ratio 0.7) to address class imbalance
+    \item Gradient boosting classifiers (XGBoost, LightGBM) outperforming LinearSVC
 \end{enumerate}
+
+Whether the 0.85 target is achievable will depend on the outcomes of Iterations~5 and~6 (aggressive class balancing) and future fine-tuning experiments.
 
 \subsection{RQ2: Traditional ML vs. LLM Comparison}
 
@@ -3240,25 +2844,27 @@ The experimental results reveal a stark performance gap:
 
 \begin{table}[htbp]
 \centering
-\caption{RQ2: Traditional ML vs. LLM Performance}
+\caption{RQ2: Traditional ML vs.\ LLM Performance (best verified results per approach).}
 \begin{tabular}{@{}lcc@{}}
 \toprule
-\textbf{Approach} & \textbf{Macro F1} & \textbf{Meets Target?} \\
+\textbf{Approach} & \textbf{Best Macro F1} & \textbf{Meets RQ1 target ($\geq$0.85)?} \\
 \midrule
-Linear SVM + BERT & 0.7899 & Yes \\
-XGBoost + RoBERTa & 0.8834 & Yes \\
-LightGBM + E5-large & 0.8856 & Yes \\
-Flan-T5-Large (few-shot) & 0.0135 & No \\
+BERT-base-uncased + RBF SVM (Iter~0)           & 0.7825 & No \\
+roberta-base + LinearSVC (Iter~2)              & 0.7698 & No \\
+E5-base + LinearSVC (Iter~3)                   & 0.7456 & No \\
+snowflake-arctic + XGBoost (Iter~4)            & \textbf{0.8043} & No \\
+Flan-T5-Large (few-shot, Iter~7)               & 0.0135 & No \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \textbf{Analysis:}
 \begin{itemize}
-    \item Traditional ML approaches consistently exceed the 0.76 target
-    \item Few-shot LLM classification fails catastrophically (0.0135 macro F1)
-    \item The paradigm of ``embeddings + classifier'' outperforms ``direct LLM classification''
-    \item LLMs require domain-specific fine-tuning to compete with trained classifiers
+    \item Embedding-based traditional ML pipelines substantially outperform few-shot LLM classification across all iterations.
+    \item The best traditional ML result (macro F1 = 0.8043) is 59 times higher than the best LLM result (0.0135).
+    \item Few-shot LLM classification fails catastrophically (0.0135 macro F1), with near-zero PS recall (0.71\%), indicating it assigns almost all records to the majority class.
+    \item No approach evaluated so far meets the RQ1 target of macro F1 $\geq 0.85$; this remains the primary open challenge.
+    \item The paradigm of ``pretrained embeddings + supervised classifier'' is clearly superior to ``direct few-shot LLM classification'' for this domain-specific binary task.
 \end{itemize}
 
 This finding has significant practical implications: organizations seeking to deploy incident classification systems should prioritize embedding-based approaches with trained classifiers rather than relying on zero/few-shot LLM capabilities.
@@ -3334,11 +2940,12 @@ The experiments revealed a clear precision-recall trade-off:
 For safety-critical applications where false negatives carry higher risk, aggressive SMOTE may be preferred despite lower overall F1.
 
 \subsection{Classifier Architecture}
-Gradient boosting methods (LightGBM, XGBoost) consistently outperformed linear SVM:
+Gradient boosting methods (LightGBM, XGBoost) consistently outperformed LinearSVC across Iteration~4. Based on average macro F1 across all 32 model--dataset combinations per classifier:
 \begin{itemize}
-    \item LightGBM: +1.44 percentage points over Linear SVM
-    \item XGBoost: +1.22 percentage points over Linear SVM
-    \item Ensemble methods provided additional robustness (+0.5--1.0 points)
+    \item XGBoost: average macro F1 = 0.7011 (+5.90 pp over LinearSVC at 0.6421)
+    \item LightGBM: average macro F1 = 0.6973 (+5.52 pp over LinearSVC)
+    \item Random Forest: average macro F1 = 0.6810 (+3.89 pp over LinearSVC), but lowest PS recall (0.40) due to majority-class bias
+    \item Voting Ensemble results were not captured in the output and are not reported
 \end{itemize}
 
 \subsection{Multilingual Capabilities}
@@ -3391,7 +2998,7 @@ Based on experimental findings, the following deployment strategy is recommended
 \begin{itemize}
     \item \textbf{Training Cost:} One-time embedding generation and classifier training
     \item \textbf{Inference Cost:} Minimal (< 100ms per incident with pre-computed embeddings)
-    \item \textbf{Accuracy Gain:} 10+ percentage point improvement over baseline
+    \item \textbf{Accuracy Gain:} 2.18 percentage point macro F1 improvement over the Iteration~0 baseline (0.7825 → 0.8043); further gains expected from ongoing iterations
     \item \textbf{False Negative Reduction:} Estimated 15--20\% reduction in missed Process Safety incidents
 \end{itemize}
 
@@ -3424,7 +3031,7 @@ This thesis investigated the application of machine learning and large language 
     
     \item \textbf{Comprehensive Model Benchmarking:} Systematic evaluation of 10+ transformer architectures (BERT, RoBERTa, DeBERTa, XLNet, multilingual variants) identified RoBERTa-large and E5-large-instruct as top performers for process safety classification.
     
-    \item \textbf{Advanced ML Pipeline:} Integration of mean pooling, SMOTE class balancing, feature scaling, and ensemble methods achieved \textbf{89.23\% macro F1-score}, exceeding the RQ1 target by over 10 percentage points.
+    \item \textbf{Advanced ML Pipeline:} Integration of mean pooling, SMOTE class balancing, feature scaling, and gradient boosting classifiers (XGBoost, LightGBM) achieved a best macro F1-score of \textbf{0.8043} (\texttt{snowflake-arctic-embed-l-v2.0} + XGBoost, \texttt{english\_manual}), representing a 2.18 percentage point improvement over the Iteration~0 baseline. The RQ1 target of $\geq 0.85$ has not yet been reached.
     
     \item \textbf{Multilingual Capabilities:} Demonstrated effective cross-lingual transfer using multilingual transformer models across English, German, Swedish, and Dutch incident reports.
     
@@ -3442,7 +3049,7 @@ This thesis investigated the application of machine learning and large language 
 \toprule
 \textbf{Research Question} & \textbf{Target} & \textbf{Achieved} \\
 \midrule
-RQ1: Improve PS classification by 5+ points macro F1 & $\geq 0.81$ & \textbf{0.8923} Yes \\
+RQ1: Improve PS classification by 6.75 pp macro F1 & $\geq 0.85$ & \textbf{0.8043} Not yet \\
 RQ2: Compare Traditional ML vs. LLM & -- & ML > LLM Yes \\
 RQ3: Hazard extraction with 80\% precision & $\geq 0.80$ & 0.12 No \\
 RQ4: Severity prediction framework & Framework proposed (Section~\ref{sec:rq4_methodology}); Phase~2--4 projected to meet macro F1 $\geq 0.70$ and $\text{Recall}_\text{High} \geq 0.80$ & Future work \\
@@ -3504,6 +3111,594 @@ The repository includes:
     \item Visualization and analysis tools
     \item Requirements and environment configuration files
 \end{itemize}
+
+\section{Key Code Listings}
+\label{sec:code-listings}
+
+This section contains the key code listings referenced throughout the thesis body. All listings use Python~3 and are extracted from the corresponding Jupyter notebooks in the project repository.
+
+% ------------------------------------------------------------------
+\subsection*{Iteration 3 -- Unified Embedding Function}
+% ------------------------------------------------------------------
+
+\begin{lstlisting}[label=lst:unified-embedding,
+  caption={Unified CLS-token embedding function used in Iteration~3 to handle both standard BERT and E5 model families.}]
+def generate_cls_embedding(texts, tokenizer, model,
+                            batch_size=8, max_length=512):
+    """Generate [CLS]-token embeddings for a list of texts."""
+    embeddings = []
+    device = 'mps' if torch.backends.mps.is_available() else 'cpu'
+    model = model.to(device)
+    model.eval()
+    for i in tqdm(range(0, len(texts), batch_size)):
+        batch = texts[i:i + batch_size]
+        inputs = tokenizer(
+            batch, padding=True, truncation=True,
+            max_length=max_length, return_tensors="pt"
+        ).to(device)
+        with torch.no_grad():
+            outputs = model(**inputs)
+        # Try last_hidden_state; fall back to pooler_output
+        if hasattr(outputs, 'last_hidden_state'):
+            batch_emb = outputs.last_hidden_state[:, 0, :].cpu().numpy()
+        else:
+            batch_emb = outputs.pooler_output.cpu().numpy()
+        embeddings.append(batch_emb)
+        if i % (batch_size * 50) == 0:
+            torch.cuda.empty_cache() if torch.cuda.is_available() else None
+    return np.vstack(embeddings)
+\end{lstlisting}
+
+% ------------------------------------------------------------------
+\subsection*{Iteration 4 -- Configuration Dictionary}
+% ------------------------------------------------------------------
+
+\begin{lstlisting}[label=lst:iter4-config,
+  caption={Iteration~4 configuration dictionary controlling all pipeline parameters.}]
+CONFIG = {
+    'pooling_strategy':      'mean',   # 'cls', 'mean', or 'max'
+    'use_smote':             True,
+    'smote_strategy':        0.7,      # oversample minority to 70% of majority
+    'use_feature_scaling':   True,
+    'hyperparameter_tuning': True,
+    'use_ensemble':          True,
+    'classifiers': ['svm', 'xgboost', 'lightgbm',
+                    'random_forest', 'ensemble'],
+    'cv_folds':              5,
+    'text_preprocessing':    True,
+}
+\end{lstlisting}
+
+% ------------------------------------------------------------------
+\subsection*{Iteration 4 -- Advanced Text Preprocessing}
+% ------------------------------------------------------------------
+
+\begin{lstlisting}[label=lst:text-preprocessing,
+  caption={Advanced text preprocessing applied to incident report fields in Iteration~4.}]
+def advanced_text_preprocessing(text):
+    """Enhanced text preprocessing for incident reports."""
+    if pd.isna(text):
+        return ""
+    text = str(text).lower()
+    # Remove URLs
+    text = re.sub(r'http\S+|www\S+|https\S+', '', text,
+                  flags=re.MULTILINE)
+    # Remove email addresses
+    text = re.sub(r'\S+@\S+', '', text)
+    # Remove special characters (keep sentence-boundary periods)
+    text = re.sub(r'[^a-zA-Z0-9\s\.]', ' ', text)
+    # Normalize whitespace
+    text = ' '.join(text.split())
+    return text
+\end{lstlisting}
+
+% ------------------------------------------------------------------
+\subsection*{Iteration 4 -- Enhanced Embedding with Pooling Strategies}
+% ------------------------------------------------------------------
+
+\begin{lstlisting}[label=lst:enhanced-embedding,
+  caption={Enhanced embedding generation supporting CLS, mean, and max pooling strategies (Iteration~4).}]
+def get_enhanced_embeddings(texts, tokenizer, model,
+                             pooling='mean',
+                             max_length=512, batch_size=12):
+    """Generate embeddings with CLS, mean, or max pooling."""
+    embeddings = []
+    device = 'mps' if torch.backends.mps.is_available() else 'cpu'
+    model = model.to(device)
+    model.eval()
+    for i in tqdm(range(0, len(texts), batch_size)):
+        batch = texts[i:i + batch_size]
+        inputs = tokenizer(
+            batch, padding=True, truncation=True,
+            max_length=max_length, return_tensors="pt"
+        ).to(device)
+        with torch.no_grad():
+            outputs = model(**inputs)
+        hs = outputs.last_hidden_state  # (B, T, H)
+        if pooling == 'cls':
+            batch_emb = hs[:, 0, :].cpu().numpy()
+        elif pooling == 'mean':
+            mask = inputs['attention_mask'].unsqueeze(-1).float()
+            batch_emb = (hs * mask).sum(1) / mask.sum(1)
+            batch_emb = batch_emb.cpu().numpy()
+        else:  # max
+            batch_emb = hs.max(dim=1).values.cpu().numpy()
+        embeddings.append(batch_emb)
+    return np.vstack(embeddings)
+\end{lstlisting}
+
+% ------------------------------------------------------------------
+\subsection*{Iteration 4 -- SMOTE Class Balancing}
+% ------------------------------------------------------------------
+
+\begin{lstlisting}[label=lst:smote,
+  caption={SMOTE oversampling applied to the training set in Iteration~4.}]
+if CONFIG['use_smote'] and IMBLEARN_AVAILABLE:
+    smote = SMOTE(
+        sampling_strategy=CONFIG['smote_strategy'],  # 0.7
+        random_state=42,
+        k_neighbors=min(5, sum(y_train == 1) - 1)
+    )
+    X_train_balanced, y_train_balanced = \
+        smote.fit_resample(X_train, y_train)
+    print(f"Original: {np.bincount(y_train)}")
+    print(f"Balanced: {np.bincount(y_train_balanced)}")
+    used_smote = True
+else:
+    X_train_balanced, y_train_balanced = X_train, y_train
+    used_smote = False
+\end{lstlisting}
+
+% ------------------------------------------------------------------
+\subsection*{Iteration 4 -- Feature Scaling}
+% ------------------------------------------------------------------
+
+\begin{lstlisting}[label=lst:feature-scaling,
+  caption={StandardScaler feature normalisation applied after SMOTE in Iteration~4.}]
+if CONFIG['use_feature_scaling']:
+    print("Applying feature scaling...")
+    scaler = StandardScaler()
+    X_train_scaled = scaler.fit_transform(X_train_balanced)
+    X_test_scaled  = scaler.transform(X_test)
+else:
+    X_train_scaled = X_train_balanced
+    X_test_scaled  = X_test
+    scaler = None
+\end{lstlisting}
+
+% ------------------------------------------------------------------
+\subsection*{Iteration 4 -- Multi-Classifier Training}
+% ------------------------------------------------------------------
+
+\begin{lstlisting}[label=lst:multi-classifier,
+  caption={Multi-classifier training function including SVM with GridSearchCV, Random Forest, XGBoost, LightGBM, and a hard-voting ensemble (Iteration~4).}]
+def train_multiple_classifiers(X_train, y_train, X_test, y_test,
+                                dataset_name, model_key):
+    results = {}
+    # --- SVM with GridSearchCV ---
+    if CONFIG['hyperparameter_tuning']:
+        param_grid = {
+            'C':            [0.1, 1, 10, 100],
+            'class_weight': ['balanced',
+                             {0:1,1:2}, {0:1,1:3}],
+            'max_iter':     [10000],
+        }
+        svm = GridSearchCV(
+            LinearSVC(dual=False, random_state=42),
+            param_grid, cv=3, scoring='f1_weighted',
+            n_jobs=-1
+        )
+    else:
+        svm = LinearSVC(class_weight='balanced',
+                        max_iter=10000, dual=False,
+                        random_state=42)
+    svm.fit(X_train, y_train)
+    results['svm'] = {'y_pred': svm.predict(X_test), 'y_proba': None}
+
+    # --- Random Forest ---
+    rf = RandomForestClassifier(
+        n_estimators=200, max_depth=20,
+        class_weight='balanced', n_jobs=-1, random_state=42
+    )
+    rf.fit(X_train, y_train)
+    results['random_forest'] = {
+        'y_pred':  rf.predict(X_test),
+        'y_proba': rf.predict_proba(X_test)[:, 1]
+    }
+
+    # --- XGBoost ---
+    n_neg, n_pos = np.bincount(y_train)
+    xgb = XGBClassifier(
+        n_estimators=200, max_depth=6, learning_rate=0.1,
+        scale_pos_weight=n_neg/n_pos, random_state=42
+    )
+    xgb.fit(X_train, y_train)
+    results['xgboost'] = {
+        'y_pred':  xgb.predict(X_test),
+        'y_proba': xgb.predict_proba(X_test)[:, 1]
+    }
+
+    # --- LightGBM ---
+    lgbm = LGBMClassifier(
+        n_estimators=200, max_depth=6, learning_rate=0.1,
+        class_weight='balanced', random_state=42
+    )
+    lgbm.fit(X_train, y_train)
+    results['lightgbm'] = {
+        'y_pred':  lgbm.predict(X_test),
+        'y_proba': lgbm.predict_proba(X_test)[:, 1]
+    }
+
+    # --- Hard Voting Ensemble (SVM + XGBoost + RF) ---
+    from scipy.stats import mode as scipy_mode
+    preds = np.stack([
+        results['svm']['y_pred'],
+        results['xgboost']['y_pred'],
+        results['random_forest']['y_pred']
+    ])
+    results['ensemble'] = {
+        'y_pred':  scipy_mode(preds, axis=0).mode.flatten(),
+        'y_proba': None
+    }
+    return results
+\end{lstlisting}
+
+% ------------------------------------------------------------------
+\subsection*{Iteration 4 -- Comprehensive Visualisation}
+% ------------------------------------------------------------------
+
+\begin{lstlisting}[label=lst:visualization,
+  caption={Four-panel evaluation visualisation (confusion matrix, ROC curve, precision-recall curve, metrics bar chart) used in Iteration~4.}]
+def comprehensive_evaluation(results, X_test, y_test,
+                              dataset_name, model_key):
+    for clf_name, res in results.items():
+        y_pred  = res['y_pred']
+        y_proba = res['y_proba']
+        cm = confusion_matrix(y_test, y_pred)
+        if y_proba is not None:
+            fig, axes = plt.subplots(2, 2, figsize=(15, 12))
+            # Panel 1: Confusion matrix
+            sns.heatmap(cm, annot=True, fmt='d', cmap='Blues',
+                        xticklabels=['Non-PS','PS'],
+                        yticklabels=['Non-PS','PS'],
+                        ax=axes[0,0])
+            axes[0,0].set_title('Confusion Matrix')
+            # Panel 2: ROC curve
+            fpr, tpr, _ = roc_curve(y_test, y_proba)
+            auc = roc_auc_score(y_test, y_proba)
+            axes[0,1].plot(fpr, tpr, label=f'AUC={auc:.3f}')
+            axes[0,1].plot([0,1],[0,1],'--', color='grey')
+            axes[0,1].set_title('ROC Curve')
+            axes[0,1].legend()
+            # Panel 3: Precision-Recall curve
+            prec, rec, _ = precision_recall_curve(y_test, y_proba)
+            ap = average_precision_score(y_test, y_proba)
+            axes[1,0].plot(rec, prec, label=f'AP={ap:.3f}')
+            axes[1,0].set_title('Precision-Recall Curve')
+            axes[1,0].legend()
+            # Panel 4: Metrics bar chart
+            report = classification_report(
+                y_test, y_pred, output_dict=True)
+            metrics = {
+                'Accuracy': accuracy_score(y_test, y_pred),
+                'F1 (weighted)': report['weighted avg']['f1-score'],
+                'F1 (PS)':       report['1']['f1-score'],
+                'Prec (PS)':     report['1']['precision'],
+                'Rec (PS)':      report['1']['recall'],
+            }
+            axes[1,1].barh(list(metrics.keys()),
+                           list(metrics.values()))
+            axes[1,1].set_xlim(0,1)
+            axes[1,1].set_title('Key Metrics')
+            plt.suptitle(f'{dataset_name} | {model_key} | {clf_name}')
+            plt.tight_layout()
+            plt.savefig(
+                os.path.join(RESULTS_DIR,
+                    f'cm_{dataset_name}_{model_key}_{clf_name}.png'),
+                dpi=150, bbox_inches='tight')
+            plt.close()
+\end{lstlisting}
+
+% ------------------------------------------------------------------
+\subsection*{Iteration 5 -- Configuration Dictionary}
+% ------------------------------------------------------------------
+
+\begin{lstlisting}[label=lst:iter5-config,
+  caption={Iteration~5 configuration dictionary, highlighting changes from Iteration~4 (full SMOTE balancing, SMOTETomek, threshold optimisation, 10$\times$ class weight).}]
+CONFIG = {
+    'pooling_strategy':          'mean',
+    'text_preprocessing':        True,
+    'use_feature_scaling':       True,
+    # --- Key changes from Iteration 4 ---
+    'use_smote':                 True,
+    'smote_strategy':            'auto',  # full 1:1 (was 0.7)
+    'use_undersampling':         True,
+    'undersample_strategy':      0.8,
+    'combine_smote_tomek':       True,    # NEW
+    'hyperparameter_tuning':     True,
+    'use_ensemble':              True,
+    'classifiers': ['svm','xgboost','lightgbm',
+                    'random_forest','ensemble'],
+    'cv_folds':                  5,
+    'optimize_threshold':        True,    # NEW
+    'target_ps_recall':          0.95,    # NEW
+    'aggressive_class_weights':  True,    # NEW
+    'ps_weight_multiplier':      10,      # NEW
+}
+\end{lstlisting}
+
+% ------------------------------------------------------------------
+\subsection*{Iteration 5 -- SMOTETomek Aggressive Balancing}
+% ------------------------------------------------------------------
+
+\begin{lstlisting}[label=lst:smotetomek,
+  caption={Three-step aggressive balancing pipeline in Iteration~5: SMOTE oversampling, Tomek Links cleaning, and majority-class undersampling.}]
+def apply_aggressive_balancing(X_train, y_train):
+    # Step 1: SMOTE oversampling to 1:1
+    smote = SMOTE(
+        sampling_strategy=CONFIG['smote_strategy'],  # 'auto'
+        random_state=42,
+        k_neighbors=min(5, sum(y_train == 1) - 1)
+    )
+    X_bal, y_bal = smote.fit_resample(X_train, y_train)
+
+    # Step 2: Tomek Links cleaning (remove borderline samples)
+    if CONFIG['combine_smote_tomek']:
+        tomek = TomekLinks(sampling_strategy='majority')
+        X_bal, y_bal = tomek.fit_resample(X_bal, y_bal)
+
+    # Step 3: Strategic undersampling of majority class
+    if CONFIG['use_undersampling']:
+        n_min  = sum(y_bal == 1)
+        target = int(n_min * (1 / CONFIG['undersample_strategy']))
+        rus = RandomUnderSampler(
+            sampling_strategy={0: target, 1: n_min},
+            random_state=42
+        )
+        X_bal, y_bal = rus.fit_resample(X_bal, y_bal)
+
+    return X_bal, y_bal
+\end{lstlisting}
+
+% ------------------------------------------------------------------
+\subsection*{Iteration 5 -- Threshold Optimisation}
+% ------------------------------------------------------------------
+
+\begin{lstlisting}[label=lst:threshold-opt,
+  caption={Threshold optimisation function targeting 95\,\% PS recall in Iteration~5.}]
+def optimize_threshold_for_ps_recall(y_true, y_proba,
+                                      target_recall=0.95):
+    """Find threshold achieving target PS recall with max macro F1."""
+    if y_proba is None:
+        return None, None
+    best_threshold, best_f1 = 0.5, 0.0
+    for threshold in np.arange(0.1, 0.91, 0.05):
+        y_pred = (y_proba >= threshold).astype(int)
+        _, recall, f1, _ = precision_recall_fscore_support(
+            y_true, y_pred, average=None, labels=[0, 1]
+        )
+        ps_recall  = recall[1]
+        macro_f1   = np.mean(f1)
+        if ps_recall >= target_recall and macro_f1 > best_f1:
+            best_threshold = threshold
+            best_f1 = macro_f1
+    return best_threshold, best_f1
+\end{lstlisting}
+
+% ------------------------------------------------------------------
+\subsection*{Iteration 6 -- Language-Aware Undersampling}
+% ------------------------------------------------------------------
+
+\begin{lstlisting}[label=lst:lang-undersample,
+  caption={Language-aware undersampling strategy in Iteration~6: selects the longest incident descriptions within each language--class stratum to preserve language balance.}]
+# Iteration 6 CONFIG excerpt
+CONFIG = {
+    'use_smote':            False,         # no synthetic data
+    'use_undersampling':    True,
+    'undersample_strategy': 1.0,           # 1:1 ratio per language
+    'undersample_method':   'language_aware_length_based',
+    'strong_regularization': True,
+    'ps_weight_multiplier': 10,
+}
+
+# Language-aware length-based selection
+def select_longest_per_stratum(df, target_ratio=1.0):
+    """
+    For each (language, class) stratum, select samples with
+    the longest combined TITLE + CASE_DESCRIPTION text.
+    Returns a balanced DataFrame with only real samples.
+    """
+    df = df.copy()
+    df['text_len'] = (df['TITLE'].fillna('').str.len() +
+                      df['CASE_DESCRIPTION'].fillna('').str.len())
+    selected = []
+    for lang in df['LANGUAGE'].unique():
+        lang_df = df[df['LANGUAGE'] == lang]
+        ps  = lang_df[lang_df['label'] == 1].nlargest(
+              len(lang_df[lang_df['label'] == 1]), 'text_len')
+        nps = lang_df[lang_df['label'] == 0].nlargest(
+              int(len(ps) / target_ratio), 'text_len')
+        selected.extend([ps, nps])
+    return pd.concat(selected).sample(frac=1, random_state=42)
+\end{lstlisting}
+
+% ------------------------------------------------------------------
+\subsection*{Iteration 6 -- RBF Kernel SVM}
+% ------------------------------------------------------------------
+
+\begin{lstlisting}[label=lst:rbf-svm,
+  caption={Non-linear RBF kernel SVM with strong regularisation ($C=1.0$, $\gamma=\text{scale}$) and calibrated probability outputs, as used in Iteration~6.}]
+from sklearn.svm import SVC
+from sklearn.calibration import CalibratedClassifierCV
+
+# RBF SVM with calibrated probabilities
+svm_rbf = SVC(
+    C=1.0,
+    kernel='rbf',
+    class_weight=class_weight_dict,  # {0: 1, 1: 10}
+    probability=True,
+    random_state=42
+)
+
+# Linear SVM (strong regularisation)
+svm_linear = CalibratedClassifierCV(
+    LinearSVC(
+        C=0.01,
+        class_weight=class_weight_dict,
+        max_iter=10000,
+        random_state=42,
+        dual=True
+    ),
+    cv=3, method='sigmoid'
+)
+\end{lstlisting}
+
+% ------------------------------------------------------------------
+\subsection*{Iteration 7 -- Process Safety Definition}
+% ------------------------------------------------------------------
+
+\begin{lstlisting}[label=lst:ps-definition,
+  caption={Natural-language Process Safety definition injected into all few-shot prompts in Iteration~7.}]
+PROCESS_SAFETY_DEFINITION = """
+A Process Safety Incident is ANY incident involving:
+1.  Equipment failures, trips, or malfunctions (GT trip,
+    pump trip, boiler trip, valve failure)
+2.  Leaks, spills, or releases of process materials
+    (oil, gas, water, chemicals, steam from equipment)
+3.  Pressure deviations (high/low pressure events)
+4.  Emergency shutdowns (ESD, Not-Aus, noodstop)
+5.  Fire, explosion, or rupture
+6.  Loss of containment from process equipment
+7.  Contamination events (wrong substance in system)
+8.  Equipment damage (cracks, splits, corrosion)
+9.  Unplanned unit outages or trips
+10. Any incident with potential for harm to people,
+    environment, or equipment FROM PROCESS SYSTEMS
+
+A Non-Process Safety Incident includes:
+- Personal injuries (cuts, falls, sprains) NOT caused by
+  process equipment failure
+- Minor spills of non-process materials
+- Administrative matters, training, onboarding issues
+- Occupational safety incidents (slips, trips, falls)
+- Vehicle or driving incidents
+"""
+\end{lstlisting}
+
+% ------------------------------------------------------------------
+\subsection*{Iteration 7 -- Few-Shot Prompt Template}
+% ------------------------------------------------------------------
+
+\begin{lstlisting}[label=lst:few-shot-prompt,
+  caption={Few-shot classification prompt template for Iteration~7, prepending the PS definition and two examples per class before the target incident.}]
+def build_few_shot_prompt(title, description, language='English'):
+    examples = FEW_SHOT_EXAMPLES.get(
+        language, FEW_SHOT_EXAMPLES['English'])
+    examples_text = ""
+    # Two Process Safety examples
+    for ex in examples['process_safety'][:2]:
+        examples_text += (
+            f"\nExample:\nTitle: {ex['title']}\n"
+            f"Description: {ex['description'][:500]}...\n"
+            f"Classification: Process Safety\n"
+        )
+    # Two Non-Process Safety examples
+    for ex in examples['non_process_safety'][:2]:
+        examples_text += (
+            f"\nExample:\nTitle: {ex['title']}\n"
+            f"Description: {ex['description'][:500]}...\n"
+            f"Classification: Non-Process Safety\n"
+        )
+    prompt = (
+        f"You are an expert industrial safety analyst. "
+        f"Classify incidents as 'Process Safety' or "
+        f"'Non-Process Safety'.\n\n"
+        f"{PROCESS_SAFETY_DEFINITION}\n"
+        f"{examples_text}\n"
+        f"Now classify this incident:\n"
+        f"Title: {title}\nDescription: {description}\n\n"
+        f"Classification (answer ONLY 'Process Safety' or "
+        f"'Non-Process Safety'):"
+    )
+    return prompt
+\end{lstlisting}
+
+% ------------------------------------------------------------------
+\subsection*{Iteration 7 -- LLM Inference Pipeline}
+% ------------------------------------------------------------------
+
+\begin{lstlisting}[label=lst:llm-inference,
+  caption={Batch LLM inference pipeline for Iteration~7, using greedy decoding and a keyword-based fallback on model errors.}]
+def classify_incident_with_model(title, description, tokenizer,
+                                  model, device, language='English',
+                                  max_length=1024, max_new_tokens=10):
+    """Classify a single incident via few-shot LLM prompting."""
+    title_str = str(title).lower() if not pd.isna(title) else ""
+    desc_str  = str(description).lower() if not pd.isna(description) else ""
+    combined  = title_str + " " + desc_str
+
+    # Keyword pre-filter (high confidence)
+    ps_kw_count = count_ps_keywords(combined, language)
+    if ps_kw_count >= 3:
+        return "Process Safety"
+
+    # Build and tokenise prompt
+    prompt = build_few_shot_prompt(str(title), str(description),
+                                   language)
+    inputs = tokenizer(prompt, return_tensors="pt",
+                       max_length=max_length,
+                       truncation=True).to(device)
+
+    # Greedy decoding
+    with torch.no_grad():
+        outputs = model.generate(
+            **inputs, max_new_tokens=max_new_tokens,
+            do_sample=False, num_beams=1
+        )
+    response = tokenizer.decode(
+        outputs[0], skip_special_tokens=True).strip().lower()
+
+    # Parse response
+    if "non-process" in response or "non process" in response:
+        if ps_kw_count >= 2:
+            return "Process Safety"
+        return "Non-Process Safety"
+    elif "process" in response or "safety" in response:
+        return "Process Safety"
+    return "Process Safety" if ps_kw_count >= 1 else "Non-Process Safety"
+\end{lstlisting}
+
+% ------------------------------------------------------------------
+\subsection*{Iteration 7 -- Language-to-Dataset File Mapping}
+% ------------------------------------------------------------------
+
+\begin{lstlisting}[label=lst:lang-files,
+  caption={Language-to-dataset file mapping used to route each record to the appropriate few-shot example bank in Iteration~7.}]
+DATASET_FILES = {
+    'english_manual': str(PATHS['master_dataset'] / 'By_SL_Country'
+                          / 'master_df_English_manual.json'),
+    'german_manual':  str(PATHS['master_dataset'] / 'By_SL_Country'
+                          / 'master_df_Germany_manual.json'),
+    'swedish_manual': str(PATHS['master_dataset'] / 'By_SL_Country'
+                          / 'master_df_Sweden_manual.json'),
+    'dutch_manual':   str(PATHS['master_dataset'] / 'By_SL_Country'
+                          / 'master_df_Netherlands_manual.json'),
+}
+# Only keep files that actually exist on disk
+DATASET_FILES = {k: v for k, v in DATASET_FILES.items()
+                 if os.path.exists(v)}
+
+# Language tag injected during data loading (routes few-shot examples)
+for k, v in DATASET_FILES.items():
+    df = pd.read_json(v)
+    lang_tag = {
+        'english_manual': 'English',
+        'german_manual':  'German',
+        'swedish_manual': 'Swedish',
+        'dutch_manual':   'Dutch',
+    }[k]
+    df['LANGUAGE'] = lang_tag
+\end{lstlisting}
 
 \section{Dataset Statistics}
 
