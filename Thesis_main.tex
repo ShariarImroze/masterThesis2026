@@ -36,6 +36,8 @@
 \usepackage{xcolor} 
 \usepackage{hyperref}
 
+\usepackage{array}
+
 \hypersetup{
     colorlinks=true,
     linkcolor=blue,
@@ -131,7 +133,8 @@ A comprehensive experimental framework was developed through eight iterative pha
 
 Key contributions include a detailed preprocessing pipeline for multilingual incident data, comparative benchmarking of more than 10 transformer architectures, advanced class balancing strategies including SMOTE and language-aware undersampling, ensemble methods combining multiple classifiers, and LLM-based few-shot classification using Flan-T5 models.
 
-Experimental results show that Iteration~0 compared three alternative English subset construction strategies under a common BERT-base-uncased embedding pipeline with feature standardisation and an RBF-kernel SVM classifier. The manually curated English subset was retained as the official baseline and achieved an accuracy of 0.8112 and a macro F1-score of 0.7825. The automatically constructed Lingua-based and langdetect-based subsets achieved macro F1-scores of 0.7758 and 0.7914, respectively. Although the langdetect subset yielded the strongest automatic-subset performance, the manually curated English subset was retained as the official baseline because it provides the most controlled and auditable reference point for subsequent comparisons. Building on this baseline, later iterations improved performance through multilingual embeddings, stronger transformer architectures, and advanced machine learning techniques. The study addresses four research questions concerning classification accuracy improvements, traditional ML versus LLM comparisons, hazard type extraction, and a comprehensive severity prediction framework for the business case.
+
+Experimental results show that Iteration~0 compared three alternative English subset construction strategies under a common BERT-base-uncased embedding pipeline with feature standardisation and an RBF-kernel SVM classifier. The manually curated English subset was retained as the official baseline and achieved an accuracy of 0.8112 and a macro F1-score of 0.7825. The automatically constructed Lingua-based and langdetect-based subsets achieved macro F1-scores of 0.7714 and 0.7636, respectively. Although the automatically constructed subsets produced competitive results, the manually curated English subset was retained as the official baseline because it provides the most controlled and auditable reference point for subsequent comparisons. Building on this baseline, later iterations improved performance through multilingual embeddings, stronger transformer architectures, and advanced machine learning techniques. The study addresses four research questions concerning classification accuracy improvements, traditional ML versus LLM comparisons, hazard type extraction, and a comprehensive severity prediction framework for the business case.
 
 
 \cleardoublepage
@@ -145,7 +148,7 @@ Im Rahmen der Untersuchung wurde ein umfassendes experimentelles Framework in ac
 
 Zu den zentralen Beiträgen gehören eine detaillierte Vorverarbeitungspipeline für mehrsprachige Vorfallsdaten, ein vergleichendes Benchmarking von mehr als 10 Transformer-Architekturen, fortgeschrittene Strategien zum Klassen-Balancing einschließlich SMOTE und sprachbewusstem Undersampling, Ensemble-Methoden zur Kombination mehrerer Klassifikatoren sowie eine LLM-basierte Few-Shot-Klassifikation unter Verwendung von Flan-T5-Modellen.
 
-Die experimentellen Ergebnisse zeigen, dass in Iteration~0 drei alternative Strategien zur Bildung englischsprachiger Teilmengen unter einer gemeinsamen Pipeline aus BERT-base-uncased-Embeddings, Merkmalsstandardisierung und einem SVM-Klassifikator mit RBF-Kernel verglichen wurden. Der manuell kuratierte englische Teil-Datensatz wurde als offizielle Baseline beibehalten und erreichte eine Accuracy von 0{,}8112 sowie einen Macro-F1-Score von 0{,}7825. Die automatisch konstruierten Lingua- bzw. langdetect-basierten Teilmengen erreichten Macro-F1-Scores von 0{,}7758 bzw. 0{,}7914. Obwohl die langdetect-Teilmenge unter den automatischen Varianten die stärkste Leistung zeigte, wurde der manuell kuratierte englische Teil-Datensatz als offizielle Baseline beibehalten, da er den kontrolliertesten und am besten nachvollziehbaren Referenzpunkt für nachfolgende Vergleiche darstellt. Aufbauend auf dieser Baseline verbesserten nachfolgende Iterationen die Leistung durch mehrsprachige Embeddings, leistungsfähigere Transformer-Architekturen und fortgeschrittene Machine-Learning-Techniken. Die Arbeit behandelt vier Forschungsfragen zu Verbesserungen der Klassifikationsgenauigkeit, zum Vergleich traditioneller ML-Verfahren mit LLMs, zur Extraktion von Gefährdungstypen sowie zu einem umfassenden Framework zur Vorhersage von Schweregraden für den Business Case.
+Die experimentellen Ergebnisse zeigen, dass in Iteration~0 drei alternative Strategien zur Bildung englischsprachiger Teilmengen unter einer gemeinsamen Pipeline aus BERT-base-uncased-Embeddings, Merkmalsstandardisierung und einem SVM-Klassifikator mit RBF-Kernel verglichen wurden. Der manuell kuratierte englische Teil-Datensatz wurde als offizielle Baseline beibehalten und erreichte eine Accuracy von 0{,}8112 sowie einen Macro-F1-Score von 0{,}7825. Die automatisch konstruierten Lingua- bzw. langdetect-basierten Teilmengen erreichten Macro-F1-Scores von 0{,}7714 bzw. 0{,}7636. Obwohl auch die automatisch konstruierten Teilmengen konkurrenzfähige Ergebnisse erzielten, wurde der manuell kuratierte englische Teil-Datensatz als offizielle Baseline beibehalten, da er den kontrolliertesten und am besten nachvollziehbaren Referenzpunkt für nachfolgende Vergleiche darstellt. Aufbauend auf dieser Baseline verbesserten nachfolgende Iterationen die Leistung durch mehrsprachige Embeddings, leistungsfähigere Transformer-Architekturen und fortgeschrittene Machine-Learning-Techniken. Die Arbeit behandelt vier Forschungsfragen zu Verbesserungen der Klassifikationsgenauigkeit, zum Vergleich traditioneller ML-Verfahren mit LLMs, zur Extraktion von Gefährdungstypen sowie zu einem umfassenden Framework zur Vorhersage von Schweregraden für den Business Case.
 
 \cleardoublepage
 
@@ -367,7 +370,6 @@ Der Veröffentlichung dieser Arbeit im Internet stimme ich zu.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Introduction}
-\section{Introduction}
 
 Incident reporting is a critical process in industries such as healthcare, aviation, energy, mining, construction, and information technology. Accurate classification and analysis of incident reports are essential for maintaining safety, ensuring operational efficiency, and meeting regulatory requirements enforced by agencies such as OSHA and the U.S. Chemical Safety Board \cite{1_Baybutt}.
 
@@ -404,7 +406,8 @@ This research aims to address the shortcomings of manual incident reporting by p
 
 The research is guided by four core objectives. First, it seeks to analyse the limitations of current manual reporting processes and identify major sources of inconsistency, inefficiency, and error. Second, it aims to develop and evaluate models capable of accurately classifying incident types across multilingual datasets. Third, it investigates whether hazard types can be extracted automatically from incident titles and descriptions using LLM-based approaches. Fourth, it explores the suitability of a proposed classification framework for supporting incident severity prediction in a business-oriented use case.
 
-Building upon Iteration~0, which compared three English subset construction strategies under a fixed BERT-base-uncased embedding pipeline with feature standardisation and an RBF-kernel SVM classifier, the manually curated English subset was retained as the official baseline. This official baseline achieved an accuracy of 0.8112 and a macro-average F1-score of 0.7825. The automatic Lingua-based and langdetect-based subsets achieved macro-average F1-scores of 0.7758 and 0.7914, respectively. Although the langdetect subset performed best among the automatically constructed English subsets, the manually curated subset was retained as the official baseline because it provides the most controlled and auditable reference point for later iterations and target setting. The study therefore addresses the following research questions with measurable performance targets in order to establish a clear link between the experimental evaluation and the broader objectives of improving classification reliability, interpretability, and scalability. The Lingua-based and langdetect-based subsets achieved macro-average F1-scores of 0.7758 and 0.7591, respectively. Since the manually curated subset delivered the strongest macro-F1 performance, it is adopted as the official baseline for subsequent comparisons and target setting. The study therefore addresses the following research questions with measurable performance targets in order to establish a clear link between the experimental evaluation and the broader objectives of improving classification reliability, interpretability, and scalability.
+
+Building upon Iteration~0, which compared three English subset construction strategies under a fixed BERT-base-uncased embedding pipeline with feature standardisation and an RBF-kernel SVM classifier, the manually curated English subset was retained as the official baseline. This official baseline achieved an accuracy of 0.8112 and a macro-average F1-score of 0.7825. The automatic Lingua-based and langdetect-based subsets achieved macro-average F1-scores of 0.7758 and 0.7681, respectively. Since the manually curated subset delivered the strongest macro-F1 performance, it is adopted as the official baseline for subsequent comparisons and target setting. The study therefore addresses the following research questions with measurable performance targets in order to establish a clear link between the experimental evaluation and the broader objectives of improving classification reliability, interpretability, and scalability.
 
 \subsection{Research Questions}
 
@@ -413,28 +416,14 @@ Building upon Iteration~0, which compared three English subset construction stra
 
     \textbf{RQ2:} How do traditional machine learning models (e.g., SVM, XGBoost, LightGBM, Random Forest, and ensemble methods) compare with transformer-based and LLM-based models (e.g., BERT, RoBERTa, DeBERTa, GPT-based approaches, or LLaMA variants) in achieving \textbf{macro-F1 $\geq 0.7825$}?\\
 
-    \textbf{RQ3:} Can large language models (LLMs) be used to \textbf{extract and identify underlying hazard types from process safety incidents} (e.g., \textit{Fire/Explosion, Loss of Containment, Mechanical/Material Failure, Exposure to Toxic Substances}) based on incident \textit{titles and descriptions}, with at least \textbf{80\% precision} and \textbf{macro-F1 $\geq 0.7825$} across multilingual datasets?\\
+    \textbf{RQ3:} Can large language models (LLMs) be used to \textbf{extract and identify underlying hazard types from process safety incidents} (e.g., \textit{Fire/Explosion, Loss of Containment, Mechanical/Material Failure, Exposure to Toxic Substances}) based on incident \textit{titles and descriptions}, with \textbf{macro-F1 $\geq 0.7825$} across multilingual datasets?\\
 
     \textbf{RQ4:} How suitable is a proposed classification framework for predicting incident severity levels (e.g., low, medium, severe) in the business case?\\
 
 
 \subsection{Expected Outcomes}
 
-The expected outcomes of this study are closely aligned with the research questions and serve as concrete evaluation targets for the proposed framework.
-
-\begin{enumerate}
-    \item \textbf{Improved Process Safety classification:}  
-    Achieve \textbf{macro-F1 $\geq 0.85$} for Process Safety classification, improving upon the official Iteration~0 baseline result of 0.7825 obtained on the manually curated English subset. In addition, class-level \textbf{precision} and \textbf{recall} will be reported for the Process Safety class, together with robustness analyses across country- and domain-specific dataset shifts.
-
-    \item \textbf{Comparative benchmark of traditional and transformer-based models:}  
-    Provide a systematic benchmark comparing traditional machine learning and transformer-based approaches, with the expectation that at least one transformer-based or multilingual transformer-based method achieves \textbf{macro-F1 $\geq 0.85$}. The comparison will also consider computational efficiency, including \textbf{training time}, \textbf{peak memory usage}, and resource--performance trade-offs, supported by ablation studies on feature representations and document field selection.
-
-    \item \textbf{Hazard type extraction across multilingual datasets:}  
-    Demonstrate the feasibility of automatically extracting underlying hazard types from incident titles and descriptions with \textbf{macro-F1 $\geq 0.7825$} across multilingual corpora. The analysis will include per-language performance reporting and an error analysis of frequent class confusions, such as \textit{Loss of Containment} versus \textit{Mechanical Failure}.
-
-    \item \textbf{Severity prediction framework:}  
-    Propose and assess a multi-class severity classification framework for the business case, focusing on the categorisation of incidents into \textit{low}, \textit{medium}, and \textit{severe} severity levels. The emphasis is placed on evaluating the conceptual suitability and potential practical value of such a framework rather than claiming a production-ready implementation.
-\end{enumerate}
+The expected outcomes of this study are closely aligned with the research questions and serve as concrete evaluation targets for the proposed framework. First, the study aims to achieve \textbf{macro-F1 $\geq 0.85$} for Process Safety classification, thereby improving upon the official Iteration~0 baseline result of 0.7825 obtained on the manually curated English subset. In addition, class-level \textbf{precision} and \textbf{recall} will be reported for the Process Safety class, together with robustness analyses across country- and domain-specific dataset shifts. Second, the study seeks to provide a systematic benchmark comparing traditional machine learning and transformer-based approaches, with the expectation that at least one transformer-based or multilingual transformer-based method achieves \textbf{macro-F1 $\geq 0.85$}. This comparison will also consider computational efficiency, including \textbf{training time}, \textbf{peak memory usage}, and resource--performance trade-offs, supported by ablation studies on feature representations and document field selection. Third, the study aims to demonstrate the feasibility of automatically extracting underlying hazard types from incident titles and descriptions with \textbf{macro-F1 $\geq 0.7825$} across multilingual corpora. The analysis will include per-language performance reporting and an error analysis of frequent class confusions, such as \textit{Loss of Containment} versus \textit{Mechanical Failure}. Finally, the study proposes and assesses a multi-class severity classification framework for the business case, focusing on the categorisation of incidents into \textit{low}, \textit{medium}, and \textit{severe} severity levels. The emphasis is placed on evaluating the conceptual suitability and potential practical value of such a framework rather than claiming a production-ready implementation.
 
 \newpage
 
@@ -546,26 +535,47 @@ Historical incident reports were gathered from multiple internal Uniper HSSE rep
 
 \section{Proposed Dataset}
 
-The dataset used in this thesis was not taken from a single precompiled table. Instead, it was constructed by integrating multiple raw reporting streams from the internal Uniper HSSE environment. This design decision was necessary because Process Safety incidents, general HSSE incidents, and near-hit / observation reports were originally stored in separate source tables with partially overlapping but not fully identical schemas. To build a consistent experimental corpus, these tables were harmonised and merged into a single master dataset before any language filtering, class formulation, or modelling was carried out.
+The dataset used in this thesis was not taken from a single precompiled table. Instead, it was constructed by integrating multiple raw reporting streams from the internal Uniper HSSE environment. This design decision was necessary because Process Safety incidents, general HSSE incidents, and near-hit/observation reports were originally stored in separate source tables with partially overlapping but not fully identical schemas. To build a consistent experimental corpus, these tables were harmonised and merged into a single master dataset before any language filtering, class formulation, or modelling was carried out.
 
 \subsection{Source Tables and Initial Data Integration}
 
 Four raw JSONL source tables were used to construct the master dataset. Each table represented a different operational reporting stream within the broader Uniper HSSE ecosystem.
 
-\begin{table}[h!]
+\begin{table}[htbp]
 \centering
 \caption{Raw source tables used to construct the Uniper HSSE master dataset.}
 \label{tab:source_tables}
-\begin{tabular}{p{5.0cm}p{3.6cm}p{2.4cm}p{4.8cm}}
+\small
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{p{4.8cm}p{3.4cm}p{1.8cm}p{5.0cm}}
 \toprule
 \textbf{Source table / file} & \textbf{Reporting scope} & \textbf{Rows} & \textbf{Purpose in this study} \\
 \midrule
-\texttt{14K\_Reports\_RW\_ACTUALS\_PS.jsonl} & Process Safety reports & 14,432 & Preserved dedicated Process Safety cases for domain-relevant incident coverage \\
-\texttt{28k\_Reports\_RW\_ACTUALS\_ALL.jsonl} & General HSSE incident reports & 28,323 & Added broader operational incident coverage beyond PS-only records \\
-\texttt{30K\_Reports\_RW\_ACTUALS\_ALL\_v2.0.jsonl} & Updated general incident reports & 30,609 & Added supplementary incident data after schema harmonisation \\
-\texttt{700k\_reports\_RW\_ACTUALS\_NH\_OBS.jsonl} & Near hits and observations & 717,041 & Added large-scale near-hit and observation reporting context \\
+\texttt{14K\_Reports RW\_ ACTUALS\_PS.jsonl} 
+& Process Safety reports 
+& 14,432 
+& Preserved dedicated Process Safety cases for domain-relevant incident coverage. \\
+
+\texttt{28k\_Reports RW\_ ACTUALS\_ALL.jsonl} 
+& General HSSE incident reports 
+& 28,323 
+& Added broader operational incident coverage beyond PS-only records. \\
+
+\texttt{30K\_Reports RW\_ ACTUALS\_ALL\_v2.0.jsonl} 
+& Updated general incident reports 
+& 30,609 
+& Added supplementary incident data after schema harmonisation. \\
+
+\texttt{700k\_reports RW\_ ACTUALS\_NH\_OBS.jsonl} 
+& Near hits and observations 
+& 717,041 
+& Added large-scale near-hit and observation reporting context. \\
+
 \midrule
-\textbf{Total before deduplication} & & \textbf{790,405} & Raw integrated input to the master dataset \\
+\textbf{Total before deduplication} 
+& 
+& \textbf{790,405} 
+& Raw integrated input to the master dataset. \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -576,12 +586,76 @@ The first source table contained dedicated Process Safety records, while the sec
 
 Because the four source tables were not fully identical in structure, a schema harmonisation step was required before merging. This was particularly important for ensuring that later preprocessing, embedding generation, and classification experiments operated on a consistent feature space.
 
-In the 700k near-hit / observation table, the field \texttt{DATETIME} was renamed to \texttt{CASE\_OCCURENCE\_DATE}. In the updated 30k incident table, \texttt{EMPLOYMENT\_CATEGORY} was renamed to \texttt{COMPANY\_INVOLVED\_TYPE}, and \texttt{HAZARD\_PHYSICAL\_SECURITY\_EVENT} was renamed to \texttt{HAZARD}. In addition, the column \texttt{IMM\_ACTION\_TAKEN\_RECOM} was added to the 30k table because it was missing there but available in the other reporting streams. Several columns that were not aligned with the common target schema were removed from the 30k table, namely \texttt{PERSONAL\_INJURIES}, \texttt{ACTUAL\_WORKDAYS\_LTA}, \texttt{COMPANY\_NAME}, \texttt{COMPANY\_TYPE}, \texttt{CASE\_APPROVED\_DATE}, \texttt{OUTSIDE\_LEGAL\_INFLUENCE}, and \texttt{RETURNED\_TO\_WORK\_DATE}.
+To harmonise the source tables prior to integration, several schema adjustments were applied. In the 700k near-hit and observation table, the field \texttt{DATETIME} was renamed to \texttt{CASE\_OCCURENCE\_DATE}. In the updated 30k incident table, \texttt{EMPLOYMENT\_CATEGORY} was renamed to \texttt{COMPANY\_INVOLVED\_TYPE}, and \texttt{HAZARD\_PHYSICAL\_SECURITY\_EVENT} was renamed to \texttt{HAZARD}. In addition, the column \texttt{IMM\_ACTION\_TAKEN\_RECOM} was added to the 30k table because it was missing there but present in the other reporting streams. Several columns that did not fit the common target schema were removed from the 30k table, namely \texttt{PERSONAL\_INJURIES}, \texttt{ACTUAL\_WORKDAYS\_LTA}, \texttt{COMPANY\_NAME}, \texttt{COMPANY\_TYPE}, \texttt{CASE\_APPROVED\_DATE}, \texttt{OUTSIDE\_LEGAL\_INFLUENCE}, and \texttt{RETURNED\_TO\_WORK\_DATE}.
 
-After harmonisation, all four tables were aligned to a common schema containing 36 columns. These columns were:
-\texttt{CASENO}, \texttt{COMPANY}, \texttt{FUNCTIONAL\_GROUP}, \texttt{FUNCTION}, \texttt{FUNCTIONAL\_AREA}, \texttt{FUNCTIONAL\_LOCATION}, \texttt{FUNCTIONAL\_SUB\_LOCATION}, \texttt{LOCATION\_SID}, \texttt{LOCATION\_SHORT}, \texttt{COUNTRY\_SHORT}, \texttt{SL\_COUNTRY}, \texttt{SL\_LOCATION\_LVL\_1}, \texttt{SL\_LOCATION\_LVL\_2}, \texttt{SL\_LOCATION\_LVL\_3}, \texttt{SL\_LOCATION\_LVL\_4}, \texttt{CASE\_OCCURENCE\_DATE}, \texttt{TITLE}, \texttt{COMPANY\_INVOLVED\_TYPE}, \texttt{CASE\_TYPE}, \texttt{CASE\_SEVERITY}, \texttt{CASE\_DESCRIPTION}, \texttt{STATUS}, \texttt{HAZARD}, \texttt{IMM\_ACTION\_TAKEN\_RECOM}, \texttt{FULL\_INVESTIGATION\_DONE}, \texttt{CREATED\_DATE}, \texttt{MODIFIED\_DATE}, \texttt{APPROVED\_WITHIN\_DEADLINE}, \texttt{CASE\_CLOSED\_DATE}, \texttt{CASES\_NO\_OF\_REGISTRATIONS}, \texttt{VALID\_FROM}, \texttt{VALID\_TO}, \texttt{POTENTIAL\_SEV\_LEVEL}, \texttt{RISK\_AREA}, \texttt{LEARNINGS\_ACTUAL\_SEVERITY}, and \texttt{LEARNINGS\_POTENTIAL\_RISK}.
+After harmonisation, all four source tables were aligned to a common schema containing 36 columns. This standardised structure ensured that the resulting master dataset remained internally consistent despite being assembled from four distinct operational reporting streams.
 
-This harmonised schema ensured that the later master dataset was structurally consistent despite having been assembled from four different operational reporting streams.
+\begin{table}[htbp]
+\centering
+\caption{Common harmonised schema of the integrated Uniper HSSE master dataset.}
+\label{tab:harmonised_schema}
+\small
+\renewcommand{\arraystretch}{1.15}
+\begin{tabular}{p{0.47\textwidth}p{0.47\textwidth}}
+\toprule
+\textbf{Schema fields (1--18)} & \textbf{Schema fields (19--36)} \\
+\midrule
+\texttt{CASENO} &
+\texttt{CASE\_TYPE} \\
+
+\texttt{COMPANY} &
+\texttt{CASE\_SEVERITY} \\
+
+\texttt{FUNCTIONAL\_GROUP} &
+\texttt{CASE\_DESCRIPTION} \\
+
+\texttt{FUNCTION} &
+\texttt{STATUS} \\
+
+\texttt{FUNCTIONAL\_AREA} &
+\texttt{HAZARD} \\
+
+\texttt{FUNCTIONAL\_LOCATION} &
+\texttt{IMM\_ACTION\_TAKEN\_RECOM} \\
+
+\texttt{FUNCTIONAL\_SUB\_LOCATION} &
+\texttt{FULL\_INVESTIGATION\_DONE} \\
+
+\texttt{LOCATION\_SID} &
+\texttt{CREATED\_DATE} \\
+
+\texttt{LOCATION\_SHORT} &
+\texttt{MODIFIED\_DATE} \\
+
+\texttt{COUNTRY\_SHORT} &
+\texttt{APPROVED\_WITHIN\_DEADLINE} \\
+
+\texttt{SL\_COUNTRY} &
+\texttt{CASE\_CLOSED\_DATE} \\
+
+\texttt{SL\_LOCATION\_LVL\_1} &
+\texttt{CASES\_NO\_OF\_REGISTRATIONS} \\
+
+\texttt{SL\_LOCATION\_LVL\_2} &
+\texttt{VALID\_FROM} \\
+
+\texttt{SL\_LOCATION\_LVL\_3} &
+\texttt{VALID\_TO} \\
+
+\texttt{SL\_LOCATION\_LVL\_4} &
+\texttt{POTENTIAL\_SEV\_LEVEL} \\
+
+\texttt{CASE\_OCCURENCE\_DATE} &
+\texttt{RISK\_AREA} \\
+
+\texttt{TITLE} &
+\texttt{LEARNINGS\_ACTUAL\_SEVERITY} \\
+
+\texttt{COMPANY\_INVOLVED\_TYPE} &
+\texttt{LEARNINGS\_POTENTIAL\_RISK} \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \subsection{Deduplication and Cleaning of the Master Dataset}
 
@@ -617,24 +691,16 @@ The cleaned master dataset is highly unevenly distributed across countries. Germ
 
 \begin{figure}[htbp]
     \centering
-    \begin{subfigure}[t]{0.45\textwidth}
-        \vspace{0pt}
-        \centering
-        \includegraphics[width=\textwidth]{Results/_iteration_0/Number of Cases by Country.png}
-        \caption{Distribution of cleaned incident records by country.}
-        \label{fig:cases_by_country}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[t]{0.54\textwidth}
-        \vspace{0pt}
-        \centering
-        \includegraphics[width=\textwidth]{Results/_iteration_0/Number of Cases by Case Type.png}
-        \caption{Distribution of cleaned incident records by case type.}
-        \label{fig:cases_by_case_type}
-    \end{subfigure}
+    \includegraphics[width=0.85\textwidth]{Results/_iteration_0/Number of Cases by Country.png}
+    \caption{Distribution of cleaned incident records by country.}
+    \label{fig:cases_by_country}
+\end{figure}
 
-    \caption{Country-level and case-type distributions of the cleaned Uniper HSSE master dataset.}
-    \label{fig:dataset_distributions}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.85\textwidth]{Results/_iteration_0/Number of Cases by Case Type.png}
+    \caption{Distribution of cleaned incident records by case type.}
+    \label{fig:cases_by_case_type}
 \end{figure}
 
 Figure~\ref{fig:cases_by_country} shows that Germany contributes 14,951 records and Sweden 12,224 records, making these two countries the dominant sources of incident reports in the cleaned master dataset. The UK contributes 4,673 records and the Netherlands 1,990 records, while all remaining country groups contribute comparatively few cases. This imbalance has methodological consequences for multilingual modelling, since the effective representation of languages and reporting styles is not uniform across the corpus.
@@ -643,7 +709,7 @@ Figure~\ref{fig:cases_by_case_type} shows that the case-type distribution is als
 
 \subsection{Relationship to the Iteration~0 English Subsets}
 
-The cleaned master dataset served as the source pool for the English-language subsets used in Iteration~0. From this master dataset, three alternative English subsets were created using different subset construction strategies: a manually curated English subset, a \texttt{langdetect}-based subset, and a \texttt{lingua}-based subset. These yielded 4,713, 6,002, and 6,205 records, respectively. The manually curated English subset was later selected as the official Iteration~0 baseline because it achieved the strongest macro-F1 score in the initial BERT+SVM experiment.
+The cleaned master dataset served as the source pool for the English-language subsets used in Iteration~0. From this master dataset, three alternative English subsets were created using different subset construction strategies: a manually curated English subset, a \texttt{langdetect}-based subset, and a \texttt{lingua}-based subset. According to the current notebook output, these yielded 4,713, 5,989, and 6,222 records, respectively. The manually curated English subset was later selected as the official Iteration~0 baseline because it achieved the strongest macro-F1 score in the saved BERT \& SVM result artefacts.
 
 \subsection{External Datasets Explored but Not Included}
 
@@ -697,7 +763,7 @@ Before modelling, several preprocessing steps were applied to improve data quali
 
 \newpage
 
-Table~\ref{tab:rawdata} presents representative examples of raw incident reports drawn from the industrial dataset. These examples highlight common data quality challenges encountered in real-world reporting, including multilingual descriptions, overly brief or incomplete narratives, grammatical errors, and the use of context-specific abbreviations. Together with the dataset-level imbalances shown in Figure~\ref{fig:dataset_distributions}, these issues illustrate the complexity of preparing incident reports for automated analysis and reinforce the need for robust preprocessing before reliable machine learning models can be trained.
+Table~\ref{tab:rawdata} presents representative examples of raw incident reports drawn from the industrial dataset. These examples highlight common data quality challenges encountered in real-world reporting, including multilingual descriptions, overly brief or incomplete narratives, grammatical errors, and the use of context-specific abbreviations. Together with the dataset-level imbalances shown in Figures~\ref{fig:cases_by_country} and~\ref{fig:cases_by_case_type}, these issues illustrate the complexity of preparing incident reports for automated analysis and reinforce the need for robust preprocessing before reliable machine learning models can be trained.
 
 \section{Model Development}
 
@@ -705,33 +771,27 @@ The model development strategy of this thesis follows an iterative experimental 
 
 The development process starts with a baseline binary classification setting in which incident reports are classified as either \textit{Process Safety} or \textit{Non-Process Safety}. The binary formulation was chosen intentionally, because Process Safety incidents represent the most business-critical class and therefore provide a focused first benchmark before moving to more complex multi-class and multilingual settings.
 
-Iteration~0 serves as the experimental foundation of the thesis. It establishes the first end-to-end implementation pipeline, starting from cleaned and merged incident reports, continuing through English subset construction, exploratory data analysis, text embedding generation, and classifier training, and ending with an evaluation of three alternative English-language subset construction strategies. The strongest-performing strategy is then adopted as the official baseline for subsequent iterations.
+Iteration~0 serves as the experimental foundation of the thesis. It establishes the first end-to-end implementation pipeline, starting from cleaned and merged incident reports, continuing through English subset construction, exploratory data analysis, text embedding generation, and classifier training, and ending with an evaluation of three alternative English-language subset construction strategies. The strongest class-balanced strategy is then adopted as the official baseline for subsequent iterations.
 
 \section{Iteration 0: Baseline Implementation}
 
-\section{Iteration 0: Baseline Implementation}
+\subsection{Objective and Experimental Scope}
 
-\subsection{Overview and Motivation}
-Iteration~0 establishes the foundational experimental pipeline for this thesis. Its primary objective is to create a reproducible and auditable baseline for Process Safety classification, and to rigorously evaluate how different English-language subset construction strategies affect downstream model performance. This baseline serves as the reference point for all subsequent methodological improvements and research targets.
-
-\subsection{Experimental Scope and Subset Construction}
-Three alternative English subset construction strategies were implemented and compared under an otherwise fixed modelling pipeline:
-\begin{enumerate}
-    \item \textbf{Manual English subset}: Formed by combining country-level files considered relevant for an English-language baseline (UK, UAE, Russia, Poland).
-    \item \textbf{\texttt{langdetect}-based English subset}: Constructed automatically using probabilistic language detection (restricted to English, German, Swedish, Dutch, Hungarian).
-    \item \textbf{\texttt{lingua}-based English subset}: Constructed automatically using a high-speed language detector over the same target language set.
-\end{enumerate}
-
-All three subsets were processed identically after construction. This allowed the baseline experiment to isolate the impact of English subset construction while keeping feature extraction and classification fixed.
+The purpose of Iteration~0 was to establish a reproducible baseline for Process Safety classification and to evaluate whether the method used to construct the English-language subset materially influences downstream model performance. Rather than relying on a single English subset, three alternative strategies were implemented and compared within an otherwise fixed modelling pipeline. The first strategy used a \textbf{manual English subset}, created by combining country-level files that were considered appropriate for an English-language baseline. The second strategy used a \textbf{\texttt{langdetect}-based English subset}, generated automatically through probabilistic language detection. The third strategy used a \textbf{\texttt{lingua}-based English subset}, generated automatically through a restricted high-speed language detector. After construction, all three subsets were processed identically. This experimental design made it possible to isolate the effect of English subset construction while keeping feature extraction and classification constant.
 
 \subsection{Integration with the Master Dataset}
 
-Iteration~0 operates on the cleaned master dataset (34,576 records after deduplication and removal of missing values). The three English subsets were derived as follows:
-\begin{itemize}
-    \item \textbf{Manual}: 4,713 records (UK, UAE, Russia, Poland)
-    \item \textbf{langdetect}: 6,014 records (automatic detection)
-    \item \textbf{lingua}: 6,205 records (automatic detection)
-\end{itemize}
+Iteration~0 operates on the cleaned master dataset introduced in the Proposed Dataset section. The full merged and cleaned master dataset contains 34,576 records after deduplication and removal of entries with missing \texttt{TITLE}, \texttt{CASE\_DESCRIPTION}, \texttt{CASE\_TYPE}, or \texttt{HAZARD}. From this cleaned dataset, English-language subsets were derived using three alternative strategies.
+
+The manually constructed English subset was created by merging the country-level files corresponding to the United Kingdom, the United Arab Emirates, Russia, and Poland. In total, this subset comprised 4,673 records from the UK, 29 records from the UAE, 10 records from Russia, and 1 record from Poland. The resulting aggregation produced a manually curated English-language dataset of 4,713 records intended to support the baseline classification experiments.
+
+The two automatic language detection approaches were then applied to the entire cleaned master dataset using the concatenated \texttt{TITLE} + \texttt{CASE\_DESCRIPTION} text.
+
+For the \texttt{langdetect} approach, the language detector was restricted to four target languages, namely English, German, Swedish, and Dutch. Any cases for which the detector did not produce a confident assignment within this predefined set were mapped to the category \texttt{Unknown}. The resulting language distribution in the current notebook output showed that German was the most frequent language with 15,188 records, followed by Swedish with 9,794 records and English with 5,989 records. Dutch accounted for 1,990 records, while 1,615 records remained in the \texttt{Unknown} category. This distribution shows that the \texttt{langdetect} procedure captured substantial multilingual variation in the dataset while also preserving a separate category for uncertain or ambiguous predictions.
+
+For the \texttt{lingua} approach, the detector was applied to the cleaned master dataset in order to construct a second automatically derived English subset. In the current notebook output, this procedure yields an English subset containing 6,222 records, making it the largest of the three English subsets used in Iteration~0. This larger automatically derived subset provides an additional point of comparison for assessing whether language-detection strategy influences downstream classification performance.
+
+Thus, the three English subsets evaluated in Iteration~0 differed in size. The manually constructed subset contained 4,713 records, while the \texttt{langdetect}-based subset comprised 5,989 records and the \texttt{lingua}-based subset contained 6,222 records. These differences reflect the varying behaviour of manual and automated language selection strategies and are relevant for interpreting subsequent classification performance across the three experimental settings.
 
 \subsection{Exploratory Text Analysis}
 
@@ -739,27 +799,12 @@ Before modelling, an exploratory analysis of text length and lexical sparsity wa
 
 \subsubsection{Character Count Analysis}
 
-For the full cleaned master dataset, the character-length statistics were:
+For the full cleaned master dataset, the character-length statistics indicate clear differences between the title, description, and combined text fields. Incident titles were comparatively short, with a minimum length of 3 characters, a maximum of 662 characters, a mean length of 54.7086 characters, and a median of 46 characters. By contrast, the case descriptions exhibited substantially greater variation, ranging from 1 character to 6,583 characters, with a mean of 140.0750 characters and a median of 82 characters. When the title and description fields were combined, the resulting text length ranged from 6 to 6,708 characters, with a mean of 194.7836 characters and a median of 140 characters. Overall, these statistics show that incident titles are generally concise, whereas descriptions vary considerably in length and display a pronounced right-skewed distribution, indicating the presence of a subset of particularly detailed incident reports.
 
-\begin{itemize}
-    \item \textbf{Title length:} minimum 3, maximum 662, mean 54.7086, median 46
-    \item \textbf{Description length:} minimum 1, maximum 6,583, mean 140.0750, median 82
-    \item \textbf{Combined text length:} minimum 6, maximum 6,708, mean 194.7836, median 140
-\end{itemize}
-
-These values show that incident titles are usually short, while descriptions vary substantially, with a long right tail of very detailed reports.
 
 \subsubsection{Word Count Analysis}
 
-The word-count statistics were:
-
-\begin{itemize}
-    \item \textbf{Title word count:} minimum 1, maximum 92, mean 7.9015, median 6
-    \item \textbf{Description word count:} minimum 1, maximum 953, mean 21.2266, median 12
-    \item \textbf{Combined word count:} minimum 2, maximum 969, mean 29.1281, median 20
-\end{itemize}
-
-These results indicate that a large proportion of reports are relatively short, which is relevant for embedding quality and later classification performance.
+The word-count statistics further confirm the concise nature of many incident reports in the cleaned master dataset. For the title field, the number of words ranged from a minimum of 1 to a maximum of 92, with a mean of 7.9015 words and a median of 6 words. The description field was notably longer and more variable, ranging from 1 to 953 words, with a mean of 21.2266 words and a median of 12 words. When both title and description were combined, the resulting text length ranged from 2 to 969 words, with a mean of 29.1281 words and a median of 20 words. Taken together, these results indicate that a substantial proportion of incident reports are relatively short, particularly at the title level, which is an important consideration for embedding quality, contextual representation, and subsequent classification performance.
 
 \subsubsection{Low Word Count Analysis}
 
@@ -786,27 +831,12 @@ The very high proportion of short titles and relatively short descriptions highl
 
 \begin{figure}[htbp]
     \centering
-    \begin{subfigure}[b]{0.95\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{Images/iteration_0_figures/word_count_distribution.png}
-        \caption{Histogram-based word count distribution for titles and descriptions.}
-        \label{fig:iter0_word_count_hist}
-    \end{subfigure}
-
-    \vspace{1em}
-
-    \begin{subfigure}[b]{0.95\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{Images/iteration_0_figures/word_count_distribution_log_scale.png}
-        \caption{Line graph of title and description word count frequencies on a logarithmic scale.}
-        \label{fig:iter0_word_count_log}
-    \end{subfigure}
-
-    \caption{Exploratory word count analysis for the cleaned master dataset used in Iteration~0.}
-    \label{fig:iter0_word_count_analysis}
+    \includegraphics[width=0.95\textwidth]{Results/_iteration_0/Word Count Distribution - (Log Scale).png}
+    \caption{Word count distribution for titles and descriptions on a logarithmic scale.}
+    \label{fig:iter0_word_count_log}
 \end{figure}
 
-Figures~\ref{fig:iter0_word_count_hist} and \ref{fig:iter0_word_count_log} further illustrate the strong right-skew in the text-length distribution. Most titles are very short, while description lengths vary widely and include a long tail of highly detailed reports.
+Figure~\ref{fig:iter0_word_count_log} further illustrates the strong right-skew in the text-length distribution. Most titles are very short, while description lengths vary widely and include a long tail of highly detailed reports.
 
 \subsection{Binary Classification Formulation}
 
@@ -822,13 +852,7 @@ y_i =
 
 This binary formulation collapses all non-Process-Safety categories into a single negative class and yields the first operational baseline for the business problem.
 
-The class distributions in the three English subsets were:
-
-\begin{itemize}
-    \item \textbf{manual:} 1,409 Process Safety and 3,304 Non-Process Safety records
-    \item \textbf{langdetect:} 1,526 Process Safety and 4,488 Non-Process Safety records
-    \item \textbf{lingua:} 1,522 Process Safety and 4,683 Non-Process Safety records
-\end{itemize}
+The class distributions across the three English subsets reveal a consistent imbalance between Process Safety and Non-Process Safety records. In the manually constructed English subset, the dataset comprised 1,409 Process Safety cases and 3,304 Non-Process Safety cases. For the \texttt{langdetect}-based subset, the class distribution consisted of 1,528 Process Safety records and 4,461 Non-Process Safety records. Similarly, the \texttt{lingua}-based subset contained 1,528 Process Safety records and 4,694 Non-Process Safety records. Overall, all three subsets were characterised by a substantially larger number of Non-Process Safety cases, highlighting the class imbalance that must be taken into account during model training and evaluation.
 
 The combined text feature for each record was created as:
 
@@ -842,15 +866,7 @@ where $\oplus$ denotes string concatenation. This ensures that both the concise 
 
 For all three English subsets, contextual document representations were generated using the pre-trained \texttt{bert-base-uncased} transformer model. The tokenizer and model were loaded from Hugging Face Transformers, and the model was used in evaluation mode.
 
-The implementation used:
-\begin{itemize}
-    \item \textbf{model:} \texttt{bert-base-uncased}
-    \item \textbf{pooling strategy:} \texttt{[CLS]} token embedding from the final hidden layer
-    \item \textbf{embedding dimension:} 768
-    \item \textbf{batch size:} 8
-    \item \textbf{maximum sequence length:} 512 tokens
-    \item \textbf{device:} CPU in the recorded notebook run
-\end{itemize}
+The implementation employed the \texttt{bert-base-uncased} model, using the \texttt{[CLS]} token representation from the final hidden layer as the pooling strategy to obtain a fixed-length document embedding. This produced embeddings of dimensionality 768. During embedding generation, a batch size of 8 was used, and the maximum input sequence length was set to 512 tokens. The recorded notebook execution was performed on a CPU.
 
 Formally, the document embedding was defined as:
 
@@ -858,26 +874,15 @@ Formally, the document embedding was defined as:
 \mathbf{h}_{\text{[CLS]}} = \text{BERT}\big([\texttt{[CLS]}] \oplus \text{tokens} \oplus [\texttt{[SEP]}]\big)[0] \in \mathbb{R}^{768}.
 \end{equation}
 
-The generated embedding matrices had the following dimensions:
-
-\begin{itemize}
-    \item \textbf{manual:} $(4713, 768)$
-    \item \textbf{langdetect:} $(6014, 768)$
-    \item \textbf{lingua:} $(6205, 768)$
-\end{itemize}
+The generated embedding matrices reflected the size of each English subset while preserving a fixed embedding dimensionality of 768. Specifically, the manually constructed subset produced an embedding matrix of size $(4713, 768)$, the \texttt{langdetect}-based subset yielded a matrix of size $(5989, 768)$, and the \texttt{lingua}-based subset produced a matrix of size $(6222, 768)$. These dimensions confirm that each incident report was represented by a 768-dimensional dense vector derived from the underlying BERT model.
 
 Embeddings and labels were saved as \texttt{.npy} files for reproducibility and reuse in later experiments.
 
 \subsection{Classifier Training and Evaluation Pipeline}
 
+For each English subset, an identical train--test pipeline was applied in order to ensure a fair comparison across the three dataset construction strategies. First, the data were divided using an 80/20 stratified train--test split in order to preserve the class distribution in both partitions. Next, the embedding features were standardised using \texttt{StandardScaler}. The standardised embeddings were then used to train an SVM classifier. Finally, model performance was evaluated using accuracy, macro-F1, weighted-F1, detailed classification reports, and confusion matrices.
 
-For each English subset, the following pipeline was applied:
-\begin{enumerate}
-    \item 80/20 stratified train--test split
-    \item Standardisation of embedding features using \texttt{StandardScaler}
-    \item Training an SVM classifier (RBF kernel, \texttt{class\_weight='balanced'})
-    \item Evaluation using accuracy, macro-F1, weighted-F1, classification reports, and confusion matrices
-\end{enumerate}
+%%%%%%% The following needs to be corrected. Kept as a place holder for now. %%%
 
 The train--test split counts were:
 
@@ -890,37 +895,57 @@ The train--test split counts were:
 \textbf{Subset} & \textbf{Train} & \textbf{Test} & \textbf{Train PS / Non-PS} & \textbf{Test PS / Non-PS} \\
 \midrule
 manual     & 3,770 &   943 & 1,127 / 2,643 & 282 / 661 \\
-langdetect & 4,811 & 1,203 & 1,221 / 3,590 & 305 / 898 \\
-lingua     & 4,964 & 1,241 & 1,218 / 3,746 & 304 / 937 \\
+langdetect & 4,791 & 1,198 & 1,222 / 3,569 & 306 / 892 \\
+lingua     & 4,977 & 1,245 & 1,222 / 3,755 & 306 / 939 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
+%%%%%%%%%% The above needs to be corrected %%%%%%%%%%%
+
 \subsubsection{Actual Implemented Classifier}
 
+The notebook implementation employed \texttt{sklearn.svm.SVC} as the classifier, using an \texttt{rbf} kernel and a regularisation parameter of $C = 1.0$. To account for class imbalance, the model was configured with \texttt{class\_weight='balanced'}. In addition, a fixed random state of 42 was used to ensure reproducibility of the experimental procedure.
 
-\textbf{Pipeline summary:} \textit{BERT-base-uncased [CLS] embeddings $\rightarrow$ StandardScaler $\rightarrow$ RBF SVM classifier}
+Thus, the implemented baseline classifier is an \textbf{RBF-kernel SVM}, not a linear SVM. Since the notebook also scales the embeddings before training, the effective Iteration~0 classifier is more precisely described as:
+
+\begin{quote}
+\textit{BERT-base-uncased [CLS] embeddings + StandardScaler + RBF SVM}
+\end{quote}
+
+This is the formulation that should be reflected consistently throughout the thesis if the notebook implementation is treated as authoritative.
+
+% IMPORTANT:
+% The current notebook output and the saved Iteration~0 report files are not yet fully synchronized.
+% The data-construction subsections above now follow the latest notebook output
+% (manual = 4,713; langdetect = 5,989; lingua = 6,222),
+% whereas the saved classification reports and confusion matrices still reflect an older result state.
+% Before final submission, rerun Iteration 0 and regenerate:
+% 1) classification reports,
+% 2) confusion matrices,
+% 3) any result summary tables,
+% so that Sections 3.5.7--3.5.10 follow a single authoritative source.
 
 \subsection{Iteration~0 Results}
 
-Table~\ref{tab:iter0_comparison_summary} summarises the final performance of the three English subset construction strategies under the common BERT+SVM pipeline.
+Table~\ref{tab:iter0_comparison_summary} summarises the final performance of the three English subset construction strategies under the common BERT \& SVM pipeline.
 
 \begin{table}[h!]
 \centering
 \caption{Comparison of the three English subset construction strategies in Iteration~0.}
 \label{tab:iter0_comparison_summary}
-\begin{tabular}{lrrrrrr}
+\begin{tabular}{lrrrr}
 \toprule
-\textbf{Subset} & \textbf{Total} & \textbf{Accuracy} & \textbf{Macro-F1} & \textbf{Weighted-F1} & \textbf{Best?} \\
+\textbf{Subset} & \textbf{Total} & \textbf{Accuracy} & \textbf{Macro-average F1} & \textbf{Weighted-F1} \\
 \midrule
-manual     & 4,713 & 0.8112 & 0.7825 & 0.8143 &  \\
-langdetect & 6,014 & \textbf{0.8379} & \textbf{0.7914} & \textbf{0.8400} & $\checkmark$ \\
-lingua     & 6,205 & 0.8251 & 0.7758 & 0.8295 &  \\
+manual     & 4,713 & 0.8112 & \textbf{0.7825} & 0.8143 \\
+langdetect & 5,989 & 0.8122 & 0.7636 & 0.8160 \\
+lingua     & 6,222 & 0.8185 & 0.7714 & \textbf{0.8241} \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-The results show that the \texttt{langdetect}-based English subset is the strongest-performing baseline according to both accuracy and macro-F1. The \texttt{manual} subset performs second best, while the \texttt{lingua} subset, despite being the largest, performs slightly worse on the main evaluation metric.
+The results show that the three subset construction strategies lead to materially different performance profiles. The manually constructed subset achieves the highest macro-average F1-score and therefore provides the strongest class-balanced baseline. By contrast, the \texttt{lingua}-based subset attains the highest accuracy and weighted-F1, while the \texttt{langdetect}-based subset performs below both alternatives on macro-average F1.
 
 \subsubsection{Detailed Classification Reports}
 
@@ -928,85 +953,89 @@ The results show that the \texttt{langdetect}-based English subset is the strong
 \centering
 \caption{Per-class performance across the three English subset construction strategies.}
 \label{tab:iter0_per_class_metrics}
-\begin{tabular}{llcccc}
+\begin{tabular}{llccccc}
 \toprule
-\textbf{Subset} & \textbf{Class} & \textbf{Precision} & \textbf{Recall} & \textbf{F1-score} & \textbf{Support} \\
+\textbf{Subset} & \textbf{Class} & \textbf{Precision} & \textbf{Recall} & \textbf{F1-score} & \textbf{Macro-average F1} & \textbf{Support} \\
 \midrule
 \multirow{2}{*}{manual}
-    & Non-Process Safety & 0.8864 & 0.8381 & 0.8616 & 661 \\
-    & Process Safety     & 0.6635 & 0.7482 & 0.7033 & 282 \\
+    & Non-Process Safety & 0.8864 & 0.8381 & 0.8616 & \multirow{2}{*}{0.7825} & 661 \\
+    & Process Safety     & 0.6635 & 0.7482 & 0.7033 &  & 282 \\
 \midrule
 \multirow{2}{*}{langdetect}
-    & Non-Process Safety & 0.9026 & 0.8775 & 0.8899 & 898 \\
-    & Process Safety     & 0.6667 & 0.7213 & 0.6929 & 305 \\
+    & Non-Process Safety & 0.8928 & 0.8498 & 0.8708 & \multirow{2}{*}{0.7636} & 892 \\
+    & Process Safety     & 0.6160 & 0.7026 & 0.6565 &  & 306 \\
 \midrule
 \multirow{2}{*}{lingua}
-    & Non-Process Safety & 0.9063 & 0.8570 & 0.8810 & 937 \\
-    & Process Safety     & 0.6225 & 0.7270 & 0.6707 & 304 \\
+    & Non-Process Safety & 0.9093 & 0.8435 & 0.8751 & \multirow{2}{*}{0.7714} & 939 \\
+    & Process Safety     & 0.6070 & 0.7418 & 0.6676 &  & 306 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-These results indicate that the best subset is not determined solely by minority-class recall. The manual subset achieves the strongest Process Safety F1-score (0.7033), but the \texttt{langdetect} subset achieves substantially stronger overall balance across both classes, which leads to the highest macro-F1 (0.7914). This is why \texttt{langdetect} becomes the preferred baseline when the notebook output is treated as final.
+These results indicate that the strongest subset is not determined solely by raw accuracy. The manual subset achieves the highest macro-average F1-score and the strongest Process Safety F1-score, which makes it the most appropriate official baseline when class-balanced performance is prioritised. Although the \texttt{lingua}-based subset achieves slightly higher overall accuracy and weighted-F1, its macro-average F1 remains below that of the manual subset.
 
 \subsubsection{Confusion Matrix Analysis}
 
-The confusion matrices for the three subset construction strategies are shown in Figure~\ref{fig:iter0_confusion_matrices}. They provide a direct view of the trade-off between false positives and false negatives across the three English baselines.
+The confusion matrices for the three subset construction strategies are shown in Figures~\ref{fig:iter0_confusion_matrices_a} and~\ref{fig:iter0_confusion_matrices_b}. They provide a direct view of the trade-off between false positives and false negatives across the three English baselines.
 
-\begin{figure}[htbp]
+\begin{figure}[p]
     \centering
-    \begin{subfigure}[b]{0.95\textwidth}
+
+    \begin{subfigure}[b]{0.82\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{Images/iteration_0_figures/confusion_matrix_manual.png}
+        \includegraphics[width=\textwidth]{Results/_iteration_0/confusion_matrix_manual.png}
         \caption{Manual English subset: TN=554, FP=107, FN=71, TP=211.}
         \label{fig:iter0_cm_manual}
     \end{subfigure}
 
     \vspace{1em}
 
-    \begin{subfigure}[b]{0.95\textwidth}
+    \begin{subfigure}[b]{0.82\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{Images/iteration_0_figures/confusion_matrix_langdetect.png}
-        \caption{Langdetect English subset. Replace this figure with the regenerated version matching the latest notebook output (TN=788, FP=110, FN=85, TP=220).}
+        \includegraphics[width=\textwidth]{Results/_iteration_0/confusion_matrix_langdetect.png}
+        \caption{Langdetect English subset: TN=758, FP=134, FN=91, TP=215.}
         \label{fig:iter0_cm_langdetect}
     \end{subfigure}
 
-    \vspace{1em}
+    \caption{Confusion matrices for the manual and \texttt{langdetect}-based English subset construction strategies in Iteration~0.}
+    \label{fig:iter0_confusion_matrices_a}
+\end{figure}
 
-    \begin{subfigure}[b]{0.95\textwidth}
+\begin{figure}[p]
+    \centering
+
+    \begin{subfigure}[b]{0.82\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{Images/iteration_0_figures/confusion_matrix_lingua.png}
-        \caption{Lingua English subset: TN=803, FP=134, FN=83, TP=221.}
+        \includegraphics[width=\textwidth]{Results/_iteration_0/confusion_matrix_lingua.png}
+        \caption{Lingua English subset: TN=792, FP=147, FN=79, TP=227.}
         \label{fig:iter0_cm_lingua}
     \end{subfigure}
 
-    \caption{Confusion matrices for the three English subset construction strategies in Iteration~0.}
-    \label{fig:iter0_confusion_matrices}
+    \caption{Confusion matrix for the \texttt{lingua}-based English subset construction strategy in Iteration~0.}
+    \label{fig:iter0_confusion_matrices_b}
 \end{figure}
+
+Figures~\ref{fig:iter0_cm_manual}--\ref{fig:iter0_cm_lingua} show the confusion matrices obtained for the three English subset construction strategies in Iteration~0. Presenting these matrices across two dedicated float pages improves readability and ensures that all axis labels, cell counts, and colour scales remain fully visible in the compiled thesis.
 
 For the \texttt{manual} subset, the classifier correctly identifies 554 Non-Process Safety and 211 Process Safety reports, while producing 107 false positives and 71 false negatives.
 
-For the \texttt{langdetect} subset, the latest notebook output reports 788 true negatives, 110 false positives, 85 false negatives, and 220 true positives.
+For the \texttt{langdetect} subset, the classifier correctly identifies 758 Non-Process Safety and 215 Process Safety reports, while producing 134 false positives and 91 false negatives.
 
-For the \texttt{lingua} subset, the classifier correctly identifies 803 Non-Process Safety and 221 Process Safety reports, while producing 134 false positives and 83 false negatives.
+For the \texttt{lingua} subset, the classifier correctly identifies 792 Non-Process Safety and 227 Process Safety reports, while producing 147 false positives and 79 false negatives.
 
 \subsection{Selection of the Official Iteration~0 Baseline}
 
-
-\textbf{Official Iteration~0 Baseline:}
-The \texttt{langdetect}-based English subset is the official baseline, achieving the highest accuracy (0.8379), macro-F1 (0.7914), and weighted-F1 (0.8400) in the latest notebook implementation. The pipeline is:
-\begin{quote}
-\textit{English subset constructed using \texttt{langdetect}, encoded with BERT-base-uncased [CLS] embeddings, scaled with StandardScaler, and classified using an RBF-kernel SVM.}
-\end{quote}
+According to the saved Iteration~0 classification reports, the manually constructed English subset represents the strongest baseline when macro-average F1 is used as the primary model selection criterion. This configuration achieved an accuracy of 0.8112, a macro-F1 score of 0.7825, and a weighted-F1 score of 0.8143. Although the \texttt{lingua}-based subset obtained slightly higher accuracy and weighted-F1, the manual subset provided the best class-balanced performance and is therefore retained as the official Iteration~0 baseline. The corresponding baseline configuration consists of a manually constructed English subset, encoded using BERT-base-uncased \texttt{[CLS]} embeddings, standardised with \texttt{StandardScaler}, and classified using an RBF-kernel SVM.
 
 \subsection{Gap to Research Target}
 
+Using the official Iteration~0 baseline, the gap to the RQ1 target of 0.85 is:
 
-\textbf{Gap to Research Target:}
-The macro-F1 of the official Iteration~0 baseline (0.7914) is 5.86 percentage points below the RQ1 target of 0.85:
 \begin{equation}
-0.85 - 0.7914 = 0.0586
+0.85 - 0.7825 = 0.0675.
 \end{equation}
+
+Thus, the required improvement from the official Iteration~0 baseline is 6.75 percentage points in macro-average F1.
 
 \begin{table}[h!]
 \centering
@@ -1017,25 +1046,15 @@ The macro-F1 of the official Iteration~0 baseline (0.7914) is 5.86 percentage po
 \textbf{Subset} & \textbf{Macro-F1} & \textbf{RQ1 Target} & \textbf{Gap} \\
 \midrule
 manual     & 0.7825 & 0.85 & 0.0675 \\
-langdetect & 0.7914 & 0.85 & 0.0586 \\
-lingua     & 0.7758 & 0.85 & 0.0742 \\
+langdetect & 0.7636 & 0.85 & 0.0864 \\
+lingua     & 0.7714 & 0.85 & 0.0786 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \subsection{Summary of Iteration~0}
 
-\subsection{Summary and Implications}
-Iteration~0 establishes a robust, reproducible baseline for Process Safety classification. Key findings:
-\begin{itemize}
-    \item The method of English subset construction has a material impact on classification performance.
-    \item Short and low-information narratives are a significant data-quality constraint for embedding-based models.
-    \item The pipeline of BERT-base-uncased [CLS] embeddings, feature scaling, and RBF SVM yields a strong, transparent baseline.
-    \item The langdetect-based English subset is the official baseline, with macro-F1 = 0.7914.
-    \item The gap to the research target (macro-F1 $\geq$ 0.85) is 5.86 percentage points, motivating further methodological improvements in subsequent iterations.
-\end{itemize}
-
-This baseline provides a clear, auditable reference for all later experiments, which will build upon and extend this methodology toward stronger transformer architectures, multilingual modelling, class balancing, ensemble learning, and LLM-based approaches.
+Iteration~0 establishes the first fully specified experimental pipeline of the thesis and provides the initial empirical reference point for subsequent model development. The results show, first, that the method used to construct the English-language subset has a measurable impact on downstream classification performance. Second, they indicate that short and low-information incident narratives constitute an important data-quality limitation for embedding-based classification, as such reports provide only restricted semantic context for representation learning. Third, the experiments demonstrate that BERT-based document embeddings combined with an SVM classifier already yield a strong baseline for the binary Process Safety classification task. Finally, among the three English subset construction strategies evaluated in Iteration~0, the manually constructed English subset provides the strongest class-balanced baseline when assessed using macro-average F1. Taken together, this baseline implementation serves as the methodological reference point for all subsequent iterations, which progressively extend the experimental framework toward stronger transformer architectures, multilingual modelling, improved class-balancing strategies, ensemble methods, and LLM-based approaches.
 
 \subsection{Iteration 1: BERT-base-cased Baseline Implementation}
 
@@ -1045,19 +1064,19 @@ Establish a comprehensive baseline for process safety incident classification us
 \subsubsection{Implementation Steps}
 
 \paragraph{1. Data Consolidation and Preparation}
-Three raw datasets were consolidated and cleaned:
+Iteration~1 did not construct a new master dataset from raw reporting streams. Instead, it operated on the cleaned master dataset established in Iteration~0. This cleaned master dataset contained 34,576 incident records after deduplication and the removal of entries with missing \texttt{TITLE}, \texttt{CASE\_DESCRIPTION}, \texttt{CASE\_TYPE}, or \texttt{HAZARD}.
+
+For country-stratified evaluation, six datasets were processed:
 \begin{itemize}
-    \item \texttt{RW\_ACTUALS\_PS}: 14,672 records
-    \item \texttt{RW\_ACTUALS\_ALL}: 28,193 records  
-    \item \texttt{RW\_ACTUALS\_NH\_OBS}: 900,482 records
+    \item Germany: 14,951 records
+    \item UK: 4,673 records
+    \item English: 4,713 records
+    \item Sweden: 12,224 records
+    \item Netherlands: 1,990 records
+    \item Master: 34,576 records
 \end{itemize}
 
-After removing duplicates, null values, and blank key fields (\texttt{CASENO}, \texttt{CASE\_DESCRIPTION}, \texttt{TITLE}), a master dataset of 54,750 valid incident records was created. The dataset was then stratified by country:
-\begin{itemize}
-    \item UK, Germany, Sweden, Netherlands, UAE, International (individual datasets)
-    \item English (combined UK, UAE & International: 4,483 records)
-    \item Master (all countries: 54,750 records)
-\end{itemize}
+The English dataset corresponds to the manually curated English subset already introduced in Iteration~0.
 
 \paragraph{2. Feature Engineering}
 \begin{itemize}
@@ -1097,7 +1116,7 @@ For each dataset, the following metrics were computed:
 
 \subsubsection{Results and Outputs}
 \begin{itemize}
-    \item \textbf{Embeddings:} Saved in \texttt{/Datasets/Embeddings/\_iteration\_1/bert-base-cased/}
+    \item \textbf{Embeddings:} Saved in \texttt{/Embeddings/\_iteration\_1/bert-base-cased/}
     \item \textbf{Naming convention:} \texttt{\{dataset\}\_bert-base-cased\_embeddings.pkl}
     \item \textbf{Visualizations:} Confusion matrix heatmaps (300 DPI PNG files)
     \item \textbf{Summary:} CSV file with all metrics across datasets
@@ -1106,12 +1125,12 @@ For each dataset, the following metrics were computed:
 
 \subsubsection{Key Outcomes}
 \begin{itemize}
-    \item Successfully evaluated 6 datasets with macro F1-scores ranging from 0.86 to 0.89
-    \item All evaluated datasets exceeded the target threshold of 0.81
-    \item Best performance: UK dataset (Macro F1 = 0.8872)
-    \item Multilingual capability demonstrated with non-English datasets (German, Swedish, Dutch)
-    \item False Negative Rates ranged from 15.1\% to 21.4\%, highlighting areas for improvement
-    \item Established reproducible pipeline with fixed random seeds and comprehensive metadata tracking
+    \item Six datasets were evaluated: Germany, UK, English, Sweden, Netherlands, and the full master dataset.
+    \item The strongest Iteration~1 result was obtained on the UK dataset with an accuracy of 0.7722 and a macro-F1 score of 0.7449.
+    \item The manually curated English dataset achieved an accuracy of 0.7699 and a macro-F1 score of 0.7420.
+    \item Performance on the non-English datasets was substantially weaker, particularly for Sweden (macro-F1 = 0.5829) and Germany (macro-F1 = 0.5983).
+    \item The Netherlands dataset achieved a macro-F1 score of 0.6586, while the full master dataset reached 0.6292.
+    \item False Negative Rates ranged from 0.2518 on the UK dataset to 0.3983 on the Netherlands dataset, indicating that Process Safety recall remained a substantial challenge in Iteration~1.
 \end{itemize}
 
 \subsection{Iteration 2: Multi-Model Comparative Evaluation}
@@ -2939,27 +2958,24 @@ The baseline BERT-base-uncased + Linear SVM model established the performance be
 
 \begin{table}[htbp]
 \centering
-\caption{Iteration 0 Baseline Performance (English Dataset, $n=7,920$)}
+\caption{Iteration 0 baseline performance across the three English subset construction strategies.}
 \label{tab:results-iter0}
-\begin{tabular}{@{}lccc@{}}
+\begin{tabular}{lrrrr}
 \toprule
-\textbf{Metric} & \textbf{Non-PS} & \textbf{Process Safety} & \textbf{Macro Avg} \\
+\textbf{Subset} & \textbf{Total} & \textbf{Accuracy} & \textbf{Macro-average F1} & \textbf{Weighted-F1} \\
 \midrule
-Precision & 0.9305 & 0.6186 & 0.7746 \\
-Recall & 0.8218 & 0.8248 & 0.8233 \\
-F1-Score & 0.8728 & 0.7070 & \textbf{0.7899} \\
-Support & 1,173 & 411 & 1,584 \\
-\midrule
-\multicolumn{3}{l}{Overall Accuracy} & 0.8226 \\
+manual     & 4,713 & 0.8112 & \textbf{0.7825} & 0.8143 \\
+langdetect & 5,989 & 0.8122 & 0.7636 & 0.8160 \\
+lingua     & 6,222 & 0.8185 & 0.7714 & \textbf{0.8241} \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \textbf{Key Observations:}
 \begin{itemize}
-    \item Macro F1-score of 0.7899 exceeds the initial target baseline of 0.76
-    \item Process Safety recall (82.48\%) demonstrates strong minority class detection
-    \item Gap to RQ1 target ($\geq 0.81$): +0.0201 points needed
+    \item The manually curated English subset achieved the strongest class-balanced baseline with a macro F1-score of 0.7825.
+    \item The \texttt{lingua}-based subset achieved the highest accuracy (0.8185) and weighted-F1 (0.8241), but not the highest macro-F1.
+    \item The gap from the official Iteration~0 baseline to the RQ1 target of 0.85 is 0.0675 macro-F1 points.
 \end{itemize}
 
 \section{Iteration 1: Country-Stratified Results}
@@ -2968,28 +2984,29 @@ BERT-base-cased embeddings were evaluated across six country-specific datasets.
 
 \begin{table}[htbp]
 \centering
-\caption{Iteration 1 Results by Dataset (BERT-base-cased + Linear SVM)}
+\caption{Iteration~1 results by dataset (BERT-base-cased + Linear SVM).}
 \label{tab:results-iter1}
-\begin{tabular}{@{}lcccccc@{}}
+\begin{tabular}{@{}lcccc@{}}
 \toprule
-\textbf{Dataset} & \textbf{Samples} & \textbf{PS \%} & \textbf{Accuracy} & \textbf{Macro F1} & \textbf{PS F1} & \textbf{FNR} \\
+\textbf{Dataset} & \textbf{Samples} & \textbf{Accuracy} & \textbf{Macro F1} & \textbf{FNR} \\
 \midrule
-UK & 3,245 & 24.3\% & 0.8721 & \textbf{0.8872} & 0.8156 & 15.1\% \\
-Germany & 18,432 & 12.8\% & 0.8634 & 0.8645 & 0.7892 & 18.3\% \\
-Sweden & 8,921 & 15.2\% & 0.8512 & 0.8598 & 0.7723 & 19.8\% \\
-Netherlands & 6,234 & 18.7\% & 0.8456 & 0.8623 & 0.7845 & 17.9\% \\
-English & 4,483 & 22.1\% & 0.8698 & 0.8734 & 0.8012 & 16.2\% \\
-Master & 54,750 & 13.9\% & 0.8234 & 0.8456 & 0.7534 & 21.4\% \\
+Germany     & 14,951 & 0.7379 & 0.5983 & 0.3313 \\
+UK          & 4,673  & 0.7722 & 0.7449 & 0.2518 \\
+English     & 4,713  & 0.7699 & 0.7420 & 0.2624 \\
+Sweden      & 12,224 & 0.7951 & 0.5829 & 0.3548 \\
+Netherlands & 1,990  & 0.6985 & 0.6586 & 0.3983 \\
+Master      & 34,576 & 0.7514 & 0.6292 & 0.3279 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \textbf{Key Findings:}
 \begin{itemize}
-    \item All datasets exceeded the RQ1 target of macro F1 $\geq 0.81$
-    \item Best performance: UK dataset (Macro F1 = 0.8872)
-    \item False Negative Rates range from 15.1\% to 21.4\%
-    \item English-language datasets show stronger performance than non-English
+    \item No Iteration~1 dataset reached the RQ1 target of macro F1 $\geq 0.85$.
+    \item The strongest result was obtained on the UK dataset with a macro-F1 score of 0.7449.
+    \item The manually curated English dataset performed similarly, with a macro-F1 score of 0.7420.
+    \item The non-English datasets showed substantially weaker class-balanced performance, particularly Sweden and Germany.
+    \item These results indicate that country-stratified evaluation is informative, but that the BERT-base-cased + Linear SVM configuration did not yet provide a sufficiently strong multilingual baseline in Iteration~1.
 \end{itemize}
 
 \section{Iteration 2: Multi-Model Comparison}
@@ -3165,7 +3182,7 @@ Flan-T5-Large (few-shot) & 0.8554 & 0.0135 & 0.71\% & None \\
 \textbf{Iteration} & \textbf{Best Macro F1} & \textbf{Best PS F1} & \textbf{RQ1 Met?} & \textbf{Key Innovation} \\
 \midrule
 0 & 0.7899 & 0.7070 & No & Baseline BERT \& SVM \\
-1 & 0.8872 & 0.8156 & Yes & Country stratification \\
+1 & 0.7449 & 0.6614 & No & Country stratification \\
 2 & 0.8760 & 0.8120 & Yes & Multi-model comparison \\
 3 & 0.8889 & 0.8234 & Yes & Multilingual embeddings \\
 4 & \textbf{0.8923} & \textbf{0.8612} & Yes & Advanced ML techniques \\
@@ -3192,25 +3209,25 @@ This chapter synthesizes the experimental findings, addresses the research quest
 
 \subsection{RQ1: Classification Improvement Target}
 
-\textbf{Research Question:} Can classification of Process Safety incidents be improved by at least five percentage points in macro-average F1-score (from $\approx$0.76 to $\geq$0.81)?
+\textbf{Research Question:} Can classification of Process Safety incidents be improved by at least 6.75 percentage points in macro-average F1-score (from 0.7825 to at least 0.85)?
 
 \textbf{Finding: Yes, the target was exceeded.}
 
-The baseline BERT+SVM model achieved a macro F1-score of 0.7899, already surpassing the initial 0.76 baseline. Subsequent iterations demonstrated consistent improvements:
+The official Iteration~0 baseline, based on the manually curated English subset, achieved a macro F1-score of 0.7825.
 
 \begin{itemize}
-    \item Iteration 1 (country stratification): 0.8872 macro F1
+    \item Iteration 1 (country stratification): 0.7449 macro F1 on the best-performing UK dataset
     \item Iteration 3 (multilingual): 0.8889 macro F1
     \item Iteration 4 (advanced ML): \textbf{0.8923 macro F1}
 \end{itemize}
 
-The best-performing configuration achieved a \textbf{10.2 percentage point improvement} over the original 0.76 baseline, substantially exceeding the 5-point target. This improvement was driven by:
+The best-performing configuration achieved a \textbf{10.97 percentage point improvement} over the official Iteration~0 baseline of 0.7825, thereby exceeding the RQ1 target of 0.85.
 
 \begin{enumerate}
     \item Superior embedding models (RoBERTa-large, E5-large-instruct)
     \item Mean pooling strategies capturing document-level semantics
     \item SMOTE-based class balancing improving minority class performance
-    \item Gradient boosting classifiers (LightGBM, XGBoost) outperforming linear SVM
+    \item Gradient boosting classifiers (LightGBM, XGBoost) outperform linear SVM
 \end{enumerate}
 
 \subsection{RQ2: Traditional ML vs. LLM Comparison}
@@ -3392,8 +3409,8 @@ Based on experimental findings, the following deployment strategy is recommended
 \begin{enumerate}
     \item Develop explainable AI methods (SHAP, LIME) for classification transparency
     \item Investigate active learning for efficient labeling of uncertain samples
-    \item Explore multi-task learning combining classification with entity extraction
-    \item Design real-time classification pipeline with continuous model updates
+    \item Explore multi-task learning, combining classification with entity extraction
+    \item Design a real-time classification pipeline with continuous model updates
 \end{enumerate}
 
 \chapter{Conclusion}
@@ -3403,7 +3420,7 @@ Based on experimental findings, the following deployment strategy is recommended
 This thesis investigated the application of machine learning and large language models for automated classification of process safety incidents in multilingual industrial datasets. Through seven iterative experimental phases, a comprehensive framework was developed and evaluated, yielding the following key contributions:
 
 \begin{enumerate}
-    \item \textbf{Robust Baseline Establishment:} A BERT-based embedding pipeline with SVM classification achieved 78.99\% macro F1-score on English incident reports, establishing a strong foundation for subsequent improvements.
+    \item \textbf{Robust Baseline Establishment:} A BERT-based embedding pipeline with feature standardisation and an RBF-kernel SVM classifier achieved a macro F1-score of 0.7825 on the manually curated English subset, establishing the official Iteration~0 baseline.
     
     \item \textbf{Comprehensive Model Benchmarking:} Systematic evaluation of 10+ transformer architectures (BERT, RoBERTa, DeBERTa, XLNet, multilingual variants) identified RoBERTa-large and E5-large-instruct as top performers for process safety classification.
     

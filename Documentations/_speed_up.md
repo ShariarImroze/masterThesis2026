@@ -2,7 +2,7 @@
  Find the line:
 BATCH_SIZE = 4
  Change it to:
-BATCH_SIZE = 16
+BATCH_SIZE = 12
  If you get memory errors, try BATCH_SIZE = 8 or BATCH_SIZE = 12.
 
 2. Use PyTorch MPS Backend (if available)
@@ -39,14 +39,9 @@ with ProcessPoolExecutor(max_workers=4) as executor:  # Adjust 4 to your CPU cor
 
 4. Lower Data Size for Debugging
  For quick tests, set:
-MAX_SAMPLES_SVM = 5000
- Restore to MAX_SAMPLES_SVM = 60000 for full runs.
+MAX_SAMPLES_SVM = 6000
+ Restore to MAX_SAMPLES_SVM = 6000 for full runs.
 
 5. Update PyTorch and Transformers
  In your terminal, run:
 pip install --upgrade torch torchvision torchaudio transformers
-
-6. Run as a Script for Long Jobs
- Copy your notebook code to a .py file (e.g., run_iteration2.py).
- Run in terminal:
-python run_iteration2.py

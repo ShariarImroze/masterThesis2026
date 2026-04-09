@@ -1,171 +1,205 @@
-Combined master_df (before removing duplicates): (790405, 36)
-Total records before deduplication: 790,405
+Review and standardize the notebooks from Iteration 0 to Iteration 8 sequentially.
 
-Per-source record counts:
-  14K (PS):           14,432
-  28K (ALL):          28,323
-  30K (ALL v2):       30,609
-  700K (NH_OBS):     717,041
-  ───────────────────────────────────
-  Total:             790,405
+Your task is to use `_iteration_0.ipynb` and `_iteration_1.ipynb` as the canonical reference and then check `_Iteration_2.ipynb` through `_iteration_8.ipynb` against it.
 
-Total columns: 36
-Columns: ['CASENO', 'COMPANY', 'FUNCTIONAL_GROUP', 'FUNCTION', 'FUNCTIONAL_AREA', 'FUNCTIONAL_LOCATION', 'FUNCTIONAL_SUB_LOCATION', 'LOCATION_SID', 'LOCATION_SHORT', 'COUNTRY_SHORT', 'SL_COUNTRY', 'SL_LOCATION_LVL_1', 'SL_LOCATION_LVL_2', 'SL_LOCATION_LVL_3', 'SL_LOCATION_LVL_4', 'CASE_OCCURENCE_DATE', 'TITLE', 'COMPANY_INVOLVED_TYPE', 'CASE_TYPE', 'CASE_SEVERITY', 'CASE_DESCRIPTION', 'STATUS', 'HAZARD', 'IMM_ACTION_TAKEN_RECOM', 'FULL_INVESTIGATION_DONE', 'CREATED_DATE', 'MODIFIED_DATE', 'APPROVED_WITHIN_DEADLINE', 'CASE_CLOSED_DATE', 'CASES_NO_OF_REGISTRATIONS', 'VALID_FROM', 'VALID_TO', 'POTENTIAL_SEV_LEVEL', 'RISK_AREA', 'LEARNINGS_ACTUAL_SEVERITY', 'LEARNINGS_POTENTIAL_RISK']
+Important:
+- Do not skip directly to general comments.
+- Start with Iteration 0 first.
+- Check each markdown and comments for accuracy and consistency with code
+- Find inconsistencies in Iteration 0 to Iteration 8, such as:
+  - incorrect directory paths
+  - use of `cuda` instead of `mps`
+  - use of `.csv` instead of `.json`
+  - inconsistent output naming or folder structure
+- Then move notebook by notebook from Iteration 1 to Iteration 8.
+- Give me the corrections here in chat one by one, in sequence.
+- Do not summarize vaguely. Be specific and actionable.
 
+Main objective:
+Make Iterations 0 to 8 consistent with Iteration 0 in terms of structure, preprocessing logic, file handling, language mapping, outputs, and reproducibility.
 
+Reference notebook:
+- `_iteration_0.ipynb`
+- `_iteration_1.ipynb`
 
+Reference master dataset from Iteration 0:
+- `/Users/shariarimrozekhan/Documents/GitHub/masterThesis2026/Master Dataset 34k/master_df.json`
 
-International
-Unknown 
+General rules:
+1. Iteration 0 and Iteration 1 are the source of truth.
+2. Data cleaning and preprocessing already completed in Iteration 0 do not need to be reimplemented differently in later notebooks.
+3. All later iterations should follow the same conventions unless a change is explicitly required by the experiment.
+4. Replace all `.csv` usage with `.json` where applicable, consistent with Iteration 0.
+5. Use Apple MPS instead of CUDA when available.
+6. Keep outputs, paths, naming, comments, and markdown style consistent.
 
+Workflow:
+Step 1: Review Iteration 0
+- Open `_iteration_0.ipynb`
+- Note:
+  - key steps
+  - code structure
+  - data loading
+  - preprocessing flow
+  - column naming
+  - language code handling
+  - feature engineering
+  - model input preparation
+  - training/evaluation structure
+  - output file naming
+  - folder structure
+  - plot and metric saving conventions
+  - markdown/comment style
+  - random seeds and reproducibility settings
 
-UK
-Russia
-Poland
-UAE
+Step 2: Check Iteration 0 for internal inconsistencies
+Find and report issues such as:
+- wrong file paths
+- wrong device selection
+- mixed file formats (`.csv` vs `.json`)
+- inconsistent variable naming
+- inconsistent result paths
+- mismatched comments/markdown
+- anything that should be corrected before using Iteration 0 as the template
 
-Germany
-Sweden
-NetherLands
-Hungary
+Step 3: Compare each later notebook against the previous one. Eg., compare Iteration 1 against Iteration 0, then Iteration 2 against Iteration 1, and so on. For each notebook, check the same aspects as in Step 1 and report any inconsistencies or deviations from the established structure and logic of the previous notebook.
+- data loading
+- file paths and formats
+- preprocessing and feature creation
+- language code handling
+- model input preparation
+- model training
+- evaluation
+- saving outputs
+- markdown explanations
+- code comments
+- reproducibility settings
 
-International
-Unknown
+Step 4: Standardize all later notebooks
+For each notebook, adapt code from Iteration 0 where necessary so that the following are consistent:
+- data loading structure
+- use of `master_df.json`
+- same column names
+- same language code mapping
+- same preprocessing assumptions
+- same feature creation patterns
+- same output folder structure
+- same file naming conventions
+- same style of markdown and code comments
+- same random seed/environment setup
 
-Make Iterations 1 to 8 consistent with Iteration 0, follow these steps:
+Step 5: Report corrections in chat
+For each notebook, give corrections in this format:
+- Notebook name
+- Section name
+- Problem found
+- Exact correction needed
+- Replacement code or instruction
+- Why this correction is needed
 
-Review Iteration 0: Open _iteration_0.ipynb and note the key steps, code structure, data preprocessing, column naming, language code handling, and output formats.
+Do this one by one, starting with Iteration 0, then Iteration 1, then Iteration 2, and so on until Iteration 8.
 
-Compare Structure: For each of _Iteration_1.ipynb to _iteration_8.ipynb, compare:
+Checklist to apply to every notebook:
 
-Data loading (file paths, formats). Use the master_df output from iteration_0: /Users/shariarimrozekhan/Documents/GitHub/masterThesis2026/Master Dataset 34k/master_df.json
-Data cleaning and preprocessing steps can be skipped as I already did in in iretation_0
-Feature engineering and model input preparation
-Model training, evaluation, and output cells
-Output file naming and saving conventions
-Standardize Language Handling: Ensure all notebooks use the same mapping for language codes (e.g., "English" → "EN", "German" → "DE", etc.) and apply it to the same column.
-
-Unify Preprocessing: Make sure all data cleaning, missing value handling, and feature creation steps are identical.
-
-Consistent Outputs: All result files, plots, and metrics should be saved in the same format and folder structure as in Iteration 0.
-
-Code Comments and Markdown: Ensure markdown explanations and code comments are clear and follow the same style as Iteration 0.
-
-Instructions:
-
-Open _iteration_0.ipynb and one of the other iteration notebooks side by side.
-For each section (data load, preprocessing, modeling, output), copy or adapt code from Iteration 0 to the other notebook, replacing or updating as needed.
-Pay special attention to language code replacement and any custom functions or mappings.
-Repeat for all notebooks from Iteration 1 to 8.
-Test each notebook by running all cells to ensure outputs match the style and structure of Iteration 0.
-
-Checklist: 
 1. Data Loading
+- Use the same file paths and formats as Iteration 0
+- Use:
+  `/Users/shariarimrozekhan/Documents/GitHub/masterThesis2026/Master Dataset 34k/master_df.json`
+- Ensure the same columns are loaded and in the same order
+- Replace `.csv` with `.json` wherever needed
 
-Use the same file paths and formats as in Iteration 0.
-Ensure the same columns are loaded and in the same order.
 2. Data Preprocessing
+- Follow Iteration 0 preprocessing assumptions
+- Do not introduce different cleaning logic unless required by the experiment
+- Use the same missing-value handling and type conversions
+- Use the same language code mapping on the same column
+- Standardize column names and required columns
 
-Apply identical cleaning steps (e.g., missing value handling, type conversions).
-Use the same language code mapping (e.g., "English" → "EN", etc.).
-Standardize column names and ensure all required columns are present.
 3. Feature Engineering
+- Create features the same way as in Iteration 0 unless the iteration explicitly requires a different experimental setup
+- Reuse the same feature extraction functions or code blocks when possible
 
-Create features in the same way as Iteration 0.
-Use the same functions or code blocks for feature extraction.
-4. Model Training & Evaluation
+4. Model Training and Evaluation
+- Keep the same training/evaluation structure and style as Iteration 0
+- Use the same metric calculation style
+- Preserve consistency in reporting accuracy, macro-F1, weighted-F1, confusion matrix, etc.
 
-Use the same model type, parameters, and training process.
-Evaluate using the same metrics and methods.
 5. Output Consistency
+- Save all results, predictions, metrics, and plots in the same format and folder structure style as Iteration 0
+- Use consistent naming conventions
 
-Save results (e.g., predictions, metrics, plots) in the same format and folder structure.
-Use consistent file naming conventions.
-6. Code Structure & Comments
+6. Code Structure and Comments
+- Organize code cells in the same logical order as Iteration 0
+- Use similar markdown explanations and code comments
 
-Organize code cells in the same logical order.
-Use similar markdown explanations and code comments for clarity.
 7. Visualizations
+- Generate plots/figures in the same style
+- Keep labels, captions, naming, and save locations consistent
 
-Generate the same plots/figures with matching styles and labels.
 8. Reproducibility
+- Use the same random seeds and environment settings as Iteration 0
 
-Ensure all random seeds and environment settings are set as in Iteration 0.
+Required technical changes to apply where relevant:
 
-
-From iteration 2: 
-
-Notes and References: 
-
-https://huggingface.co/transformers/v2.4.0/pretrained_models.htmlhttps://huggingface.co/transformers/v2.4.0/pretrained_models.html 
-
-which to use: TensoFlow or Pytorch?
-
-https://viso.ai/deep-learning/pytorch-vs-tensorflow/#:~:text=However%2C%20the%20core%20difference%20between,resulting%20in%20generally%20higher%20flexibility.
-
-A Brief Recap
-The answer to the question “What is better, PyTorch vs Tensorflow?” essentially depends on the use case and application.
-
-In general, TensorFlow and PyTorch implementations show equal accuracy. However, the training time of TensorFlow is substantially higher, but the memory usage was lower.
-
-PyTorch allows quicker prototyping than TensorFlow. However, TensorFlow may be a better option if custom features are needed in the neural network.
-
-TensorFlow treats the neural network as a static object. So, if you want to change the behavior of your model, you have to start from scratch. 
-
-With PyTorch, the neural network can be tweaked on the fly at run-time, making it easier to optimize the model.
-
-Another major difference lies in how developers go about debugging. Effective debugging with TensorFlow requires a special debugger tool to examine how the network nodes do calculations at each step. 
-
-PyTorch can be debugged using one of the many widely available Python debugging tools.
-
-Both PyTorch and TensorFlow provide ways to speed up model development and reduce the amount of boilerplate code. However, the core difference between PyTorch and TensorFlow is that PyTorch is more “Pythonic” and based on an object-oriented approach. 
-
-At the same time, TensorFlow provides more options to choose from, resulting in generally higher flexibility. For many developers familiar with Python, this is an important reason why PyTorch is better than TensorFlow.
-
-https://huggingface.co/transformers/v2.4.0/pretrained_models.html
-
-MODELS = {
-    'bert-base': 'bert-base-cased', # trained on only english text
-    'bert-large': 'bert-large-cased', # trained on only english text
-    'roberta-base': 'roberta-base', # trained on only english text - check
-    'roberta-large': 'roberta-large', # trained on only english text - check
-    'distilbert': 'distilbert-base-cased', # trained on only english text - check
-    'xlnet-base': 'xlnet-base-cased', # trained on only english text
-    'modernbert-base': 'answerdotai/ModernBERT-base',
-    'modernbert-large': 'answerdotai/ModernBERT-large'
-    # Add more models as needed
-}
+A. Increase batch size for embeddings
+Find:
+`BATCH_SIZE = X`
+Change to:
+`BATCH_SIZE = 12`
 
 
-from iteration 3:
+B. Use PyTorch MPS backend instead of CUDA
+Change device selection from:
+`device = 'cuda' if torch.cuda.is_available() else 'cpu'`
+to:
+`device = 'mps' if torch.backends.mps.is_available() else 'cpu'`
 
-Notes and References: 
+C. Parallelize model/dataset processing where appropriate
+Add:
+`from concurrent.futures import ProcessPoolExecutor`
 
-https://cholakovit.com/en/ai/embeddings/sentence-transformers
+Then adapt the main loop using a structure like this:
 
-https://arxiv.org/pdf/2002.06652
+def process_one(args):
+    model_key, model_name, dataset_name, json_file = args
+    tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True)
+    model = AutoModel.from_pretrained(model_name, trust_remote_code=True)
+    pkl_file = process_dataset(json_file, model_name, model_key, tokenizer, model, dataset_name=dataset_name)
+    result = train_svm_and_evaluate(pkl_file)
+    return result
 
-https://viso.ai/deep-learning/pytorch-vs-tensorflow/#:~:text=However%2C%20the%20core%20difference%20between,resulting%20in%20generally%20higher%20flexibility.
+tasks = []
+for model_key, model_name in MODELS.items():
+    for dataset_name, json_file in json_files:
+        item_key = (model_key, dataset_name)
+        if item_key not in processed_items:
+            tasks.append((model_key, model_name, dataset_name, json_file))
 
-file:///C:/Users/M02555/OneDrive%20-%20Uniper%20SE/1.%20Thesis/Books/Pattern%20Recognition%20and%20Machine%20Learning%20-%20Bishop.pdf
+with ProcessPoolExecutor(max_workers=4) as executor:
+    all_results = list(executor.map(process_one, tasks))
 
-https://zilliz.com/ai-faq/what-are-some-popular-pretrained-sentence-transformer-models-and-how-do-they-differ-for-example-allminilml6v2-vs-allmpnetbasev2
+Important:
+- Ensure everything inside `process_one` is self-contained
+- Avoid reliance on mutable global state
 
-https://arxiv.org/pdf/2008.08567
+D. Lower data size for debugging
+For quick debugging runs, set:
+`MAX_SAMPLES_SVM = 6000`
 
-https://huggingface.co/transformers/v3.0.2/multilingual.html
+E. Environment update recommendation
+Where relevant, note this terminal command:
+`pip install --upgrade torch torchvision torchaudio transformers`
 
-https://huggingface.co/google-bert/bert-base-multilingual-uncased
+Output requirement:
+- Go notebook by notebook, in order
+- Start with Iteration 0
+- Give corrections one by one in chat
+- Be explicit
+- Do not skip issues
+- Do not just say “looks fine”
+- Show exact fixes
 
-https://arxiv.org/pdf/2008.08567
 
-https://huggingface.co/models?language=multilingual
-
-
-From iteration 4:
-Notes and References: 
-SVM: https://www.youtube.com/watch?v=_YPScrckx28
-xgboost', 'lightgbm', 'random_forest', 'ensemble'
 
 Overall, **the approach is directionally correct**, but in its current form it is still **methodologically vulnerable**. The repository now contains notebooks `_iteration_0.ipynb` through `_iteration_8.ipynb`. Iteration 0 establishes the English baseline; Iteration 1 moves to country-stratified BERT-base-cased experiments; Iteration 2 loads the cleaned 34,576-record master dataset and evaluates multiple transformer models on manual English/German/Swedish/Dutch subsets; Iteration 7 is a multilingual few-shot LLM PS/NPS pipeline; and Iteration 8 explicitly targets RQ3 through hazard-type classification with a Flan-T5-based setup. ([GitHub][1])
 
@@ -293,3 +327,54 @@ The **single most important action now** is to make every chapter defend the sam
 [4]: https://raw.githubusercontent.com/ShariarImroze/masterThesis2026/main/_Iterations/_iteration_7.ipynb "raw.githubusercontent.com"
 
 
+
+
+
+Suggestins from the supervisor:
+On Thursday, March 05, 2026 16:43 CET, "Alexander Rosenbaum" <arosenbaum@uni-koblenz.de> wrote:
+
+Dear Shariar,
+I've already skimmed through your draft and a meeting would definitely better than writing things down in an email, but let's see, here are my thoughts.
+
+The methodology part needs to be revised, we need to distinguish between methodology and pure results. Even though, the approach “Results A: Discussion A; Results B: Discussion B” is absolutely valid, we should try to decouple it from the methodology a bit. However, I also see that you have a section Results and Discussion covering evaluation results specifically.
+
+- Seperate results and discussions from methodology entirely?
+
+Also, you're not using always the same metrics, sometimes they are written as a formula, sometimes not. Sometimes we have “expected outcomes”, sometimes not. Metrics should definitely go into methodology together with the specs of your working machine. Perhaps it's even better to have a chapter methodology and on the other hand a chapter “Iteration procedure” or some kind of logging chapter despite being a bit uncommon in a master's thesis.
+
+- Could you explain which metics specifically? 
+
+Basically you just need a uniform restructuring of your methodology part, at best with some tables, and then consistency. My suggestion would be to introduce the used models in another section, either in methodology or background, although a place in methodology should be appropriate. Do you always motivate the use of certain arquitectures in certain iterations?
+
+- Unclear which models you mean, but I will check and make sure to motivate the use of each architecture in the respective iteration.
+
+I see that you systematically log everything and document the most important information of the respective iteration, however, the consistency in the presentation of the structure makes it a bit hard to follow, also with regard to the listings. It would be better to put used hyparameters in a list or a table. (I have started using tables)
+
+  Finally, I think it is adequate to indicate at the beginning that
+
+  you ran 8 (or n) iterations
+  with network A and B
+  using these techniques X and Y
+  with the objective based on RQ1 or whatever Research Questions fits here best
+  Then you describe the iterations.
+  And then perhaps the results.
+
+- Results should go into a separate chapter or can I discuss results in methodology? I felt to keep the flow I should discuss the results immediately after the respective iteration, but I can also move it to a separate chapter if that is the norm. 
+
+Additionally, don't forget the framing: Why is your work important and why do you change sometimes aspects in the subsequent iteration?
+
+We should meet and have a chat, that's a bit more effective than writing emails. 
+
+A few things in advance:
+
+Formally, you need the Eidesstattliche Erklärung in German, it is written in our template and you can just copy it.
+Furthermore, it is not necessary to put every chapter on a new page, you can use the free space if the chapter doesn't cover the entire page.
+I'd say you can fuse 1.4, 1.3 and 1.6
+After every chapter, there should be at least one sentence
+3.2, here you should skip the 1. and either exchange it for a bulletpoint or begin a new sentence introducing the dataset's name and contents. It says, size 54000, but it is unclear what kind of data it contains (tabular, images, etc., labeled, unlabeled etc.) I suppose, Table 3.1 is related to the dataset, so in 3.2 you can easily point to the table as a reference and example.
+3.4's description should be more thorough, but as it is a draft this is ok for now
+
+Hope that helps a bit.
+
+Best regards
+Alex
