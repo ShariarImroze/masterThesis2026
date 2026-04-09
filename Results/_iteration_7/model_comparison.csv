@@ -1,2 +1,0 @@
-Model,Accuracy,Macro F1,PS Precision,PS Recall,PS F1,NPS Precision,NPS Recall,NPS F1,False Pos,False Neg
-flan-t5-large,72.27%,61.30%,30.76%,60.13%,40.70%,90.86%,74.55%,81.90%,13062,3847
