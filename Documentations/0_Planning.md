@@ -326,6 +326,130 @@ The **single most important action now** is to make every chapter defend the sam
 [3]: https://raw.githubusercontent.com/ShariarImroze/masterThesis2026/main/_Iterations/_iteration_8.ipynb "raw.githubusercontent.com"
 [4]: https://raw.githubusercontent.com/ShariarImroze/masterThesis2026/main/_Iterations/_iteration_7.ipynb "raw.githubusercontent.com"
 
+Overall, your research questions are **good for a Master’s thesis**. They are relevant, applied, methodologically rich, and clearly tied to an industrial business case. In their current form, I would rate them as **strong but slightly overextended**: they are ambitious enough for a high-quality thesis, but two of them would benefit from sharper scoping to make the thesis easier to defend as a coherent, finished piece of work.
+
+## Overall assessment
+
+Your set of research questions has several clear strengths.
+
+First, the questions are **topically relevant and academically defensible**. Automated classification of multilingual incident reports is a legitimate NLP and applied machine learning problem with clear scientific and practical value. The comparison between traditional ML pipelines and LLM-based approaches is also timely and appropriate.
+
+Second, the questions are **empirically testable**. RQ1 and RQ2 are especially strong because they define measurable performance criteria, comparative baselines, and evaluation metrics. That is exactly what a Master’s thesis needs: a question that can be answered through a systematic experimental design.
+
+Third, the questions are **well aligned with the structure of your thesis**. Iteration 0 establishes the baseline, Iterations 1–4 support RQ1 and RQ2, Iteration 7 connects to RQ2 and partly to RQ3, and the severity framework addresses RQ4. This is good from an examination perspective, because the supervisor can see how the experiments map to the stated objectives.
+
+The main concern is that the overall set is **very broad**. In effect, you are trying to answer four substantial questions:
+
+1. performance improvement over baseline,
+2. traditional ML vs. LLM comparison,
+3. hazard type extraction,
+4. severity prediction.
+
+That is close to the scope of a small research program rather than a narrowly bounded Master’s thesis. It is still acceptable, but only if you make very clear that not all questions are addressed at the same level of empirical depth.
+
+## Evaluation of each research question
+
+### RQ1
+
+This is your strongest question.
+
+It is clear, measurable, and tightly connected to the core contribution of the thesis. It asks whether classification performance can be improved beyond a defined baseline by a specified margin. That makes it easy to operationalize, easy to evaluate, and easy to discuss.
+
+Why it works well:
+
+* it has a **clear baseline**,
+* it has a **quantitative target**,
+* it directly motivates the iterative experimental pipeline,
+* it is narrow enough to be answered convincingly.
+
+For a Master’s thesis, this is exactly the kind of primary research question that works well.
+
+### RQ2
+
+This is also strong, but it needs a clearer boundary.
+
+As a comparative question, it is very appropriate for a Master’s thesis because it allows you to evaluate different modelling paradigms under a shared benchmark. It is also intellectually interesting, because it tests whether newer LLM-based approaches actually outperform more conventional supervised pipelines in a domain-specific classification problem.
+
+Why it is good:
+
+* it is comparative rather than purely descriptive,
+* it fits your experimental design,
+* it has practical relevance,
+* it naturally supports critical discussion rather than just performance reporting.
+
+The slight weakness is that “transformer-based and LLM-based models” covers a very large space. In your thesis, the actual comparison is not between all possible LLMs and all possible transformers, but between the specific families you tested. So in the final wording, it should remain tightly grounded in the evaluated models.
+
+### RQ3
+
+This is the weakest of the four in its current form, not because it is unimportant, but because it risks becoming a **second thesis inside the thesis**.
+
+Hazard-type extraction is not just another binary classification task. It implies:
+
+* a different label space,
+* a different annotation logic,
+* potentially different evaluation metrics,
+* a different experimental setup from PS vs. Non-PS classification.
+
+That means RQ3 is conceptually distinct from RQ1 and RQ2. If you do not fully implement it with dedicated data, labels, experiments, and error analysis, it may appear underdeveloped compared to the first two questions.
+
+For a Master’s thesis, RQ3 is still acceptable if you position it as an **exploratory or secondary extension** rather than a co-equal central question. Otherwise, examiners may ask why it did not receive the same empirical depth as RQ1.
+
+### RQ4
+
+RQ4 is good in terms of relevance, but currently it reads more like a **framework-design question** than a fully executable research question.
+
+That is not inherently a problem. Many Master’s theses include one conceptual or forward-looking question, especially when industrial constraints limit implementation. But the issue is that RQ4 is structurally different from the other three:
+
+* RQ1–RQ3 are framed as empirical model-performance questions,
+* RQ4 is framed as suitability of a proposed framework.
+
+This creates asymmetry. If RQ4 is not experimentally validated, it should be explicitly presented as a **conceptual design and feasibility question**, not as though it is being tested at the same level as RQ1 and RQ2.
+
+In other words, RQ4 is valid, but it should be treated as a **proposal and future-work contribution**, not as a fully parallel experimental question unless you actually run the severity experiments.
+
+## Are they good enough for a high-grade Master’s thesis?
+
+Yes, they are good enough. In fact, the overall set is stronger than average in terms of applied relevance and methodological substance. The main issue is not quality but **scope management**.
+
+A very good Master’s thesis usually has:
+
+* one primary question,
+* one or two supporting comparative questions,
+* optional exploratory extensions.
+
+Your thesis currently has:
+
+* one strong primary question: **RQ1**,
+* one strong supporting question: **RQ2**,
+* one ambitious extension: **RQ3**,
+* one conceptual framework question: **RQ4**.
+
+That can work well, but only if the hierarchy is made explicit.
+
+## What I would recommend academically
+
+I would treat the questions as follows:
+
+* **RQ1** should be the central question of the thesis.
+* **RQ2** should be the main comparative secondary question.
+* **RQ3** should be framed as an exploratory extension.
+* **RQ4** should be framed as a conceptual framework and future empirical direction, unless you fully implement it.
+
+That would make the thesis feel much more coherent and defensible. At the moment, the risk is that supervisors may feel the thesis is doing too many things at once.
+
+## Final judgment
+
+For a Master’s thesis topic, your research questions are **substantively strong, relevant, and ambitious**. I would summarize them like this:
+
+* **RQ1:** excellent
+* **RQ2:** very good
+* **RQ3:** good, but too broad unless reduced or explicitly secondary
+* **RQ4:** good as a conceptual framework question, weaker if presented as fully empirical without full implementation
+
+So the overall verdict is: **very good research questions, but the thesis will become significantly stronger if you present them in a clearer hierarchy rather than as four equally weighted empirical questions.**
+
+I can also help you turn them into a **tighter final thesis-ready version** that sounds more academic and easier to defend.
+
 
 
 
