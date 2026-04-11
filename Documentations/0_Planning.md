@@ -502,3 +502,485 @@ Hope that helps a bit.
 
 Best regards
 Alex
+
+
+Plan for each Itration:
+
+# Iteration 9 — Step-by-Step Description
+
+## Overall purpose
+
+Iteration 9 is designed to answer **RQ3** by testing whether a large language model can infer **underlying process-safety hazard types** from incident report text, specifically from the combination of:
+
+- `TITLE`
+- `CASE_DESCRIPTION`
+
+The iteration does **not** directly classify the original raw `HAZARD` strings as they appear in the dataset, because those raw labels are too heterogeneous, sparse, and inconsistent. Instead, it constructs a **reviewed reduced hazard taxonomy** and evaluates the model against that fixed label space.
+
+## Step 1 — Import libraries and initialise the runtime
+
+The notebook first imports all required libraries for:
+
+- data handling (`pandas`, `numpy`)
+- model loading (`transformers`, `torch`)
+- topic modelling (`BERTopic`, `sentence-transformers`)
+- evaluation (`scikit-learn`)
+- visualisation (`plotly`)
+- progress tracking (`tqdm`)
+
+It also:
+
+- fixes the random seed for reproducibility
+- suppresses warnings for cleaner notebook output
+- enables MPS fallback for Apple Silicon systems
+
+This ensures the whole experiment is reproducible and compatible with your MacBook Air M4.
+
+## Step 2 — Detect the hardware and choose the model profile
+
+The notebook checks whether PyTorch can use the Apple Silicon GPU through `mps`.
+
+Then it sets a **runtime mode**:
+
+- `DEBUG_MODE=True`  
+  uses `google/flan-t5-base` for faster experimentation
+
+- `DEBUG_MODE=False`  
+  uses `google/flan-t5-large` for the final experiment
+
+It also sets conservative token limits so inference remains stable on a laptop.
+
+This step is important because the same notebook supports both:
+- fast debugging
+- final thesis-grade inference
+
+## Step 3 — Detect the project root and define paths
+
+The notebook then tries to locate the project root automatically, using the folder structure of your repository.
+
+It defines paths for:
+
+- the master dataset folder
+- the iteration 9 results folder
+- artifact output
+- metrics output
+- figure output
+
+This allows the notebook to save everything in a structured and reproducible way.
+
+## Step 4 — Define the fixed hazard taxonomy
+
+Iteration 9 uses a **reduced hazard taxonomy** such as:
+
+- Equipment Failure
+- Leak/Spill/Release
+- Fire/Explosion
+- Overpressure/Process Upset
+- Corrosion/Material Degradation
+- Instrumentation/Control Failure
+- Mechanical/Structural Failure
+- Toxic Exposure/Gas Release
+- Human/Procedure Deviation
+- Storage/Transfer/Handling Failure
+- Utility/System Failure
+- Other/Unclear
+
+This taxonomy is the **final supervised label space**.
+
+That means the model is not allowed to generate arbitrary hazard labels. It must assign each case to exactly one of these predefined categories.
+
+## Step 5 — Load the dataset
+
+The notebook tries to load data in this order:
+
+1. `Master Dataset 34k/master_df.json`
+2. fallback: `Dataset Preprocessing Step 1.xlsx`
+
+This makes the notebook robust to small differences in your local project structure.
+
+## Step 6 — Filter to process safety incidents
+
+If the dataset contains a `CASE_TYPE` column, the notebook automatically filters:
+
+- only `CASE_TYPE == "Process Safety"`
+
+This is a crucial methodological step, because RQ3 is specifically about **process safety hazards**, not all incident types.
+
+After filtering, only the relevant columns are retained, typically:
+
+- `CASENO`
+- `SL_COUNTRY`
+- `CASE_OCCURENCE_DATE`
+- `TITLE`
+- `CASE_DESCRIPTION`
+- `HAZARD`
+
+## Step 7 — Clean the text and build the model input
+
+The notebook standardises the text by:
+
+- removing excess whitespace
+- converting missing text to empty strings
+- cleaning `TITLE`, `CASE_DESCRIPTION`, `HAZARD`, and `SL_COUNTRY`
+
+Then it creates a combined text field:
+
+```text
+Title: ...
+Description: ...
+```
+
+This combined field becomes the actual classifier input.
+
+A unique `text_id` is also created so duplicate `(TITLE, CASE_DESCRIPTION)` pairs can be detected.
+
+This is important because many incidents may share identical or near-identical text.
+
+## Step 8 — Count the raw hazard labels
+
+The notebook computes the frequency distribution of the original raw `HAZARD` column.
+
+This shows the scale of the label-noise problem:
+- many hazard strings
+- many rare values
+- inconsistent wording across records
+
+The count table is saved so it can be inspected during taxonomy construction.
+
+## Step 9 — Deduplicate texts
+
+The notebook creates a dataset of **unique texts** using `text_id`.
+
+This serves two purposes:
+
+1. it reduces computational cost
+2. it prevents repeated LLM inference for duplicate incidents
+
+This is especially important on a laptop, because LLM inference is expensive.
+
+## Step 10 — Use BERTopic for exploratory hazard consolidation
+
+At this stage, BERTopic is run on the raw `HAZARD` strings.
+
+Its role is **exploratory**, not supervisory.
+
+What BERTopic does here:
+- embeds the raw hazard descriptions
+- clusters semantically similar hazard strings
+- provides topic groupings that help identify recurring hazard themes
+
+This helps transform a noisy raw hazard field into something that can be **reviewed and consolidated**.
+
+However, BERTopic topic IDs are **not** treated as ground truth.
+
+That is a very important correction compared with weaker designs.
+
+## Step 11 — Save BERTopic outputs
+
+The notebook saves:
+
+- topic summaries
+- topic assignments for raw hazards
+
+These files serve as supporting material for manual review.
+
+In practice, they help answer questions such as:
+- which raw hazard strings appear semantically similar?
+- which clusters correspond to stable process-safety themes?
+- where are the ambiguous or mixed groups?
+
+## Step 12 — Create the hazard review template
+
+Using the raw hazard counts and BERTopic assignments, the notebook builds a **review template**.
+
+This template includes:
+- raw hazard string
+- frequency
+- suggested topic ID
+- empty columns for reviewed category
+- review notes
+- review status
+
+This template is saved to disk.
+
+This is the bridge between:
+- noisy raw labels
+- reviewed fixed gold labels
+
+## Step 13 — Human review of the mapping
+
+This is the most important supervision step in Iteration 9.
+
+You are expected to review the generated template and assign each raw hazard string to one final category from the fixed taxonomy.
+
+For example:
+- various leak-related raw hazard strings may all map to `Leak/Spill/Release`
+- ignition, burning, or blast-related hazards may map to `Fire/Explosion`
+- unclear cases may map to `Other/Unclear`
+
+This produces `hazard_mapping_reviewed.csv`.
+
+That reviewed file is the source of the **gold-standard hazard labels** used in evaluation.
+
+## Step 14 — Automatic bootstrap if the reviewed mapping is missing
+
+In the latest version of the notebook, if `hazard_mapping_reviewed.csv` is missing, the notebook can automatically create a **provisional mapping** from the template using heuristic keyword rules.
+
+This bootstrap mapping is only meant to:
+- prevent the notebook from crashing
+- allow the pipeline to run end-to-end
+
+It is **not** the final thesis-grade ground truth.
+
+Before reporting final RQ3 results, that auto-generated mapping should be manually reviewed.
+
+## Step 15 — Create the gold label column
+
+Once the reviewed mapping is available, the notebook merges it back into the filtered process-safety dataframe.
+
+This creates a new column:
+
+- `gold_hazard`
+
+This column is now the final supervised target used for:
+- splitting
+- classification
+- evaluation
+
+If a hazard string is not matched, it is assigned to:
+- `Other/Unclear`
+
+## Step 16 — Build a leakage-safe train/validation/test split
+
+The notebook then creates splits using:
+
+- grouped splitting by `text_id`
+- stratification by `gold_hazard`
+
+This is extremely important.
+
+Why?
+Because if the same text appears in both train and test sets, the evaluation would be artificially inflated.
+
+So Iteration 9 ensures:
+- no duplicated text leaks across splits
+- class balance is preserved as much as possible
+
+The resulting split assignment is saved to disk.
+
+## Step 17 — Load the Flan-T5 model
+
+The notebook loads:
+
+- tokenizer
+- Flan-T5 model
+
+on the selected device:
+- `mps` if available
+- otherwise CPU
+
+For Apple Silicon stability, it uses `float32`.
+
+This is more conservative than CUDA workflows, but appropriate for your hardware.
+
+## Step 18 — Pre-tokenise the candidate labels
+
+Because the hazard taxonomy is fixed, the notebook tokenises each label once and stores it in memory.
+
+This avoids repeated tokenisation during inference and makes the classification loop more efficient.
+
+## Step 19 — Build the classification prompt
+
+For each incident text, the notebook builds a structured prompt that:
+
+- states the model’s role as a process safety hazard classifier
+- lists all allowed hazard categories
+- includes the incident text
+- asks for exactly one category
+
+This ensures the task is explicit and constrained.
+
+## Step 20 — Score only the allowed labels
+
+This is one of the most important methodological decisions in Iteration 9.
+
+The model is **not** allowed to freely generate arbitrary text.
+
+Instead, for each incident:
+- the notebook computes a score for each allowed label
+- compares those scores
+- selects the highest-scoring label
+
+This produces:
+- `pred_label`
+- `pred_confidence`
+- `score_margin`
+- top-3 labels and probabilities
+
+This approach is much more stable than unconstrained generation because it:
+- prevents invented labels
+- enforces taxonomy consistency
+- improves reproducibility
+
+## Step 21 — Run a smoke test
+
+Before full inference, the notebook classifies one example text.
+
+This verifies that:
+- the model is loaded correctly
+- the scoring function works
+- the prompt structure is valid
+
+This is a practical debugging step.
+
+## Step 22 — Run checkpointed inference on unique texts
+
+The notebook then classifies all unique texts in the split file.
+
+Important details:
+- only unique texts are processed
+- predictions are saved every fixed number of cases
+- previous predictions can be resumed from checkpoint
+- memory is cleared after each prediction
+
+This is particularly useful on your MacBook Air M4, because it protects against:
+- interrupted runs
+- memory accumulation
+- repeated work
+
+The outputs are saved as:
+- checkpoint prediction file
+- final unique-text prediction file
+
+## Step 23 — Join predictions back to the full dataset
+
+The notebook merges the unique-text predictions back into the full dataframe.
+
+This allows subsequent analysis at full row level, including:
+- country breakdowns
+- error analysis
+- descriptive plots
+
+## Step 24 — Compute overall test metrics
+
+The notebook evaluates only on the **test split**.
+
+It calculates:
+
+- accuracy
+- macro precision
+- macro recall
+- macro F1
+- weighted F1
+
+It also creates a full per-class classification report.
+
+This is the main quantitative evidence for RQ3.
+
+## Step 25 — Generate confusion matrices
+
+Two confusion matrices are created:
+
+1. raw count confusion matrix
+2. row-normalised confusion matrix
+
+These show:
+- which hazard classes are predicted correctly
+- which classes are systematically confused
+
+This is very useful for the thesis discussion chapter.
+
+## Step 26 — Compute country-wise performance
+
+The notebook then evaluates performance separately by country, provided there are enough test samples.
+
+This supports the multilingual and cross-country dimension of RQ3.
+
+For each sufficiently large country subset, it computes:
+- macro precision
+- macro recall
+- macro F1
+- accuracy
+
+This helps assess whether the model generalises consistently across linguistic and national contexts.
+
+## Step 27 — Plot confidence and class distributions
+
+Several visualisations are created, including:
+
+- histogram of prediction confidence
+- gold vs predicted class distribution
+- predicted hazard categories by country
+
+These figures help diagnose:
+- class imbalance
+- overprediction of certain hazard types
+- uncertainty structure
+- cross-country distribution shifts
+
+## Step 28 — Build an error analysis file
+
+Finally, the notebook extracts all misclassified test cases and saves them for manual review.
+
+This file includes:
+- case number
+- country
+- title
+- description
+- raw hazard
+- gold hazard
+- predicted hazard
+- confidence
+- score margin
+
+This is essential for qualitative analysis in the thesis.
+
+You can inspect:
+- high-confidence errors
+- ambiguous incidents
+- taxonomy overlap
+- multilingual failures
+- weak text descriptions
+
+## Step 29 — Save all outputs
+
+Iteration 9 saves three groups of outputs:
+
+### Artifacts
+These include:
+- BERTopic outputs
+- raw hazard counts
+- reviewed mapping files
+- split assignments
+- full predictions
+- error analysis
+
+### Metrics
+These include:
+- overall metrics JSON
+- classification report CSV
+- country-level metric table
+
+### Figures
+These include:
+- confusion matrices
+- confidence histogram
+- class distribution charts
+- country hazard distribution charts
+
+# Conceptual summary of Iteration 9
+
+In one sentence:
+
+**Iteration 9 transforms noisy raw hazard descriptions into a reviewed fixed taxonomy, then uses Flan-T5 to classify incident text into that taxonomy, and finally evaluates the results rigorously on a leakage-safe test split.**
+
+# Why this version is methodologically stronger
+
+Compared with weaker alternatives, this version is stronger because:
+
+1. it does **not** treat raw `HAZARD` strings as directly reliable labels
+2. it does **not** treat BERTopic clusters as ground truth
+3. it uses a **reviewed reduced taxonomy**
+4. it avoids free-text label hallucination by using **candidate-label scoring**
+5. it uses **grouped splitting** to avoid duplicate-text leakage
+6. it supports both **quantitative** and **qualitative** RQ3 analysis
