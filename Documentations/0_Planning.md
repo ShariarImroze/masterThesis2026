@@ -984,3 +984,6 @@ Compared with weaker alternatives, this version is stronger because:
 4. it avoids free-text label hallucination by using **candidate-label scoring**
 5. it uses **grouped splitting** to avoid duplicate-text leakage
 6. it supports both **quantitative** and **qualitative** RQ3 analysis
+
+
+go through iteration 0 to iteration 9 and list inconsistencies, errors. check which iteration has been designed to answer/solve which research question. Give suggestions for imporving the results and fix errors, bugs. I tried to use iteration 0 - 6 for RQ1. Iteration 7 and 8 for RQ2, iteration 9 for RQ3. I am not doing any implementation for RQ4. Do not fix bugs rather list them in details. I need the list of what needs to be fixed and then fix them later one by one. 

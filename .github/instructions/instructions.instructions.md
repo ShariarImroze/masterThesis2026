@@ -60,6 +60,18 @@ Overall Tone:
 
 Use these instructions when generating, editing, or refactoring code for this repository.
 
+# 0. Markdown instructions file structure
+
+- Markdown cells are very important for documentation and clarity. Use them generously to explain the purpose of code sections, the reasoning behind choices, and the interpretation of results.
+- Use clear headers in markdown to structure the notebook, particularly for iteration sections. For example:
+
+# =============================================================================
+# SECTION TITLE — ITERATION X
+# Details about what this iteration does, why it is important, and how it fits into the overall iteration.
+# =============================================================================
+
+- Add a markdown cell before each cell block to explain its purpose and the logic behind it.
+
 ---
 
 # 1. Project identity and coding posture
