@@ -187,6 +187,7 @@ cython_debug/
 /Not in use Datasets/
 /Embeddings/
 /Tests/
+/_old_iteration_files/
 
 Betas/
 NLP_LLMs/
