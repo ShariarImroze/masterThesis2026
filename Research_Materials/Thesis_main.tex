@@ -84,9 +84,10 @@
 \newcommand{\trtitle}{Categorizing Incident Reports Using Traditional Machine Learning and Large Language Models: A Comparative Study}
 \newcommand{\trtype}{Master Thesis}
 \newcommand{\trdate}{Winter Term 2025/26, \today}
+% \newcommand{\trdate}{Winter Term 2025/26, 20 April 2026} use a fixed date
 \newcommand{\trauthor}{Md Shariar Imroze Khan (Matriculation No: 220202354)}
 
-\newcommand{\trInstitute}{in the program \\ M. Sc. Mathematical Modelling, Simulation and Optimization \vspace{1em}}
+\newcommand{\trInstitute}{submitted in the degree programme \\ M.Sc.\ Mathematical Modelling, Simulation and Optimization \vspace{1em}}
 \newcommand{\trUniversity}{Faculty 3: Mathematics / Natural Sciences\\ University of Koblenz}
 
 \begin{flushright}
@@ -129,7 +130,7 @@
 
 Incident reporting is a critical process for maintaining safety and operational efficiency across industries such as energy, mining, and healthcare. However, manual classification of incident reports remains prone to human error, inconsistency, and inefficiency. This thesis investigates the application of machine learning and large language models (LLMs) for automated classification of process safety incidents in multilingual industrial datasets.
 
-A comprehensive experimental framework was developed through eight iterative phases, progressively advancing from a controlled BERT-based baseline with Support Vector Machines to more sophisticated multilingual transformer and LLM-based approaches. The research evaluates traditional machine learning approaches (SVM, Random Forest, XGBoost, LightGBM) against transformer-based models (BERT, RoBERTa, DeBERTa, multilingual variants) across four language-specific datasets, including English, German, Swedish, and Dutch incident reports derived from a harmonised master dataset.
+A comprehensive experimental framework was developed across Iterations~0--8, progressively advancing from a controlled BERT-based baseline with Support Vector Machines to more sophisticated multilingual transformer and LLM-based approaches. Iteration~8 is retained as a placeholder for a final integrated refinement stage that combines the strongest findings from the earlier experiments; no empirical results are reported for this stage in the present thesis.
 
 Key contributions include a detailed preprocessing pipeline for multilingual incident data, comparative benchmarking of more than 10 transformer architectures, advanced class balancing strategies including SMOTE and language-aware undersampling, ensemble methods combining multiple classifiers, and LLM-based few-shot classification using Flan-T5 models.
 
@@ -144,7 +145,7 @@ Experimental results show that Iteration~0 compared three alternative English su
 
 Die Meldung von Vorfällen ist ein zentraler Prozess zur Gewährleistung von Sicherheit und betrieblicher Effizienz in Branchen wie der Energieversorgung, dem Bergbau und dem Gesundheitswesen. Die manuelle Klassifikation von Vorfallsberichten ist jedoch weiterhin anfällig für menschliche Fehler, Inkonsistenzen und Ineffizienz. Diese Arbeit untersucht den Einsatz von Machine Learning und Large Language Models (LLMs) zur automatisierten Klassifikation von Process-Safety-Vorfällen in mehrsprachigen industriellen Datensätzen.
 
-Im Rahmen der Untersuchung wurde ein umfassendes experimentelles Framework in acht iterativen Phasen entwickelt, das sich schrittweise von einer kontrollierten BERT-basierten Baseline mit Support Vector Machines hin zu anspruchsvolleren mehrsprachigen Transformer- und LLM-basierten Ansätzen weiterentwickelte. Die Forschung vergleicht traditionelle Machine-Learning-Ansätze (SVM, Random Forest, XGBoost, LightGBM) mit transformerbasierten Modellen (BERT, RoBERTa, DeBERTa sowie mehrsprachigen Varianten) auf vier sprachspezifischen Datensätzen mit englischen, deutschen, schwedischen und niederländischen Vorfallsberichten, die aus einem harmonisierten Master-Datensatz abgeleitet wurden.
+Im Rahmen der Untersuchung wurde ein umfassendes experimentelles Framework über die Iterationen~0--8 entwickelt, das sich schrittweise von einer kontrollierten BERT-basierten Baseline mit Support Vector Machines hin zu anspruchsvolleren mehrsprachigen Transformer- und LLM-basierten Ansätzen weiterentwickelte. Iteration~8 wird dabei als Platzhalter für eine abschließende integrierte Verfeinerungsphase beibehalten, in der die stärksten Befunde der vorangegangenen Experimente zusammengeführt werden sollen; für diese Phase werden in der vorliegenden Arbeit keine empirischen Ergebnisse berichtet.
 
 Zu den zentralen Beiträgen gehören eine detaillierte Vorverarbeitungspipeline für mehrsprachige Vorfallsdaten, ein vergleichendes Benchmarking von mehr als 10 Transformer-Architekturen, fortgeschrittene Strategien zum Klassen-Balancing einschließlich SMOTE und sprachbewusstem Undersampling, Ensemble-Methoden zur Kombination mehrerer Klassifikatoren sowie eine LLM-basierte Few-Shot-Klassifikation unter Verwendung von Flan-T5-Modellen.
 
@@ -418,7 +419,9 @@ Building upon Iteration~0, which compared three English subset construction stra
 
     \textbf{RQ3:} Can large language models (LLMs) be used to \textbf{extract and identify underlying hazard types from process safety incidents} (e.g., \textit{Fire/Explosion, Loss of Containment, Mechanical/Material Failure, Exposure to Toxic Substances}) based on incident \textit{titles and descriptions}, with \textbf{macro-F1 $\geq 0.7825$} across multilingual datasets?\\
 
-    \textbf{RQ4:} How suitable is a proposed classification framework for predicting incident severity levels (e.g., low, medium, severe) in the business case?\\
+    %\textbf{RQ4:} How suitable is a proposed classification framework for predicting incident severity levels (e.g., low, medium, severe) in the business case?\\
+
+    \textbf{RQ4:} What conceptual framework can be proposed for predicting incident severity levels (e.g., low, medium, severe) from multilingual incident reports in the business case, and how suitable is this framework in terms of methodological feasibility, interpretability, and practical applicability?
 
 
 \subsection{Expected Outcomes}
@@ -435,9 +438,9 @@ This thesis is organized into six main chapters and an appendix as follows:
 
 \textbf{Chapter 2: Literature Review} surveys the evolution of AI and ML techniques for text processing, examines applications of NLP in incident classification across various industries, and identifies research gaps that this work addresses.
 
-\textbf{Chapter 3: Methodology} describes the research design, including data collection and preprocessing, the proposed dataset structure, and the iterative experimental framework spanning eight development phases.
+\textbf{Chapter 3: Methodology} describes the research design, including data collection and preprocessing, the proposed dataset structure, and the iterative experimental framework spanning Iterations~0--8.
 
-\textbf{Chapter 4: Results} presents comprehensive experimental outcomes from all eight iterations, including performance metrics, comparative analyses, and ablation studies.
+\textbf{Chapter 4: Results} presents the experimental outcomes reported for Iterations~0--7 and includes a structured placeholder for Iteration~8 as the reserved final refinement stage.
 
 \textbf{Chapter 5: Discussion} synthesizes findings in relation to the research questions, analyzes technical insights, discusses limitations, and outlines practical implications for deployment.
 
@@ -475,6 +478,41 @@ Ensemble methods have gained prominence in incident classification due to their 
 
 \subsection{Deep Learning and Neural Network Approaches}
 Convolutional Neural Networks (CNNs) and Recurrent Neural Networks have been successfully applied to incident text classification. Ren et al. \cite{ren2013} proposed using unsupervised feature learning algorithms to generate higher-level features for automatic incident detection in transportation systems. Their approach with enhanced features showed significant improvements in detection rate, false alarm rate, and mean time to detect across three representative test cases.
+
+\subsection{Text Representation and Embeddings}
+A central challenge in natural language processing is the conversion of textual input into numerical representations that can be processed by machine learning algorithms. Let a text sequence be denoted by
+\begin{equation}
+x = (w_1, w_2, \dots, w_n),
+\end{equation}
+where each $w_i$ represents a token drawn from a vocabulary $\mathcal{V}$.
+
+Traditional text representation methods such as bag-of-words or TF--IDF encode documents as sparse vectors in a high-dimensional space. Although these approaches are simple and often effective, they do not explicitly capture semantic similarity or contextual relationships between words. In contrast, an embedding maps each token or document into a dense vector space of relatively low dimensionality, such that semantically or syntactically related units are positioned closer together.
+
+Formally, an embedding can be defined as a function
+\begin{equation}
+f : \mathcal{V} \rightarrow \mathbb{R}^{d},
+\end{equation}
+where $d$ denotes the embedding dimension and $f(w_i)$ is the dense vector representation of token $w_i$. For a sequence of tokens, the corresponding embedding matrix is
+\begin{equation}
+\mathbf{E}(x) =
+\begin{bmatrix}
+f(w_1) \\
+f(w_2) \\
+\vdots \\
+f(w_n)
+\end{bmatrix}
+\in \mathbb{R}^{n \times d}.
+\end{equation}
+
+A distinction must be made between \emph{static} and \emph{contextual} embeddings. Static embeddings assign one fixed vector to each word regardless of context. For example, a word with multiple meanings would be represented identically in all sentences. Contextual embeddings, by contrast, generate token representations conditioned on the surrounding sequence. This is particularly important in incident-report narratives, where the interpretation of a term may depend strongly on operational context, equipment references, or hazard descriptions.
+
+For document-level classification tasks, token embeddings must be aggregated into a single fixed-length vector. If $\mathbf{h}_1, \mathbf{h}_2, \dots, \mathbf{h}_n$ denote contextual token representations, a document embedding $\mathbf{z}$ may be obtained by a pooling operation such as
+\begin{equation}
+\mathbf{z} = \mathrm{Pool}(\mathbf{h}_1, \mathbf{h}_2, \dots, \mathbf{h}_n),
+\end{equation}
+where $\mathrm{Pool}(\cdot)$ may correspond to mean pooling, max pooling, or a dedicated classification token representation. The resulting vector $\mathbf{z} \in \mathbb{R}^{d}$ can then be used as input to a downstream classifier such as an SVM, Random Forest, XGBoost model, or neural network.
+
+Within the context of this thesis, embeddings are of particular importance because incident reports are short, domain-specific, and frequently multilingual. Dense semantic representations therefore provide a principled way to preserve contextual meaning while transforming free-text narratives into a format suitable for supervised classification.
 
 \subsection{Transformer-Based Models in Safety Applications}
 The emergence of transformer-based models has significantly advanced incident classification capabilities. Grigorev et al. \cite{grigorev2024} demonstrated the innovative integration of Large Language Models into machine learning workflows for traffic incident management, focusing on severity classification using accident reports. Their hybrid approach, leveraging features generated by modern language models alongside conventional data, showed improvements in classification accuracy across several machine learning algorithms when applied to datasets from the United States, United Kingdom, and Queensland, Australia.
@@ -862,6 +900,56 @@ The combined text feature for each record was created as:
 
 where $\oplus$ denotes string concatenation. This ensures that both the concise title and the richer narrative description contribute to the document representation.
 
+\subsection{Mathematical Foundations of Document Embeddings}
+After concatenating the title and case description, each incident report is represented as a text sequence
+\begin{equation}
+x_i = (t_{i1}, t_{i2}, \dots, t_{im_i}),
+\end{equation}
+where $m_i$ denotes the number of tokens in report $i$. The objective of the embedding step is to transform this variable-length token sequence into a fixed-dimensional continuous vector representation suitable for downstream classification.
+
+Let $\mathcal{V}$ denote the tokenizer vocabulary and let
+\begin{equation}
+\phi : \mathcal{V} \rightarrow \mathbb{R}^{d}
+\end{equation}
+be an embedding function that maps each token to a $d$-dimensional vector. For a tokenised report $x_i$, the embedding layer produces an ordered sequence of vector representations
+\begin{equation}
+\mathbf{H}_i^{(0)} =
+\left[
+\phi(t_{i1}), \phi(t_{i2}), \dots, \phi(t_{im_i})
+\right]
+\in \mathbb{R}^{m_i \times d}.
+\end{equation}
+
+In transformer-based models, these initial token embeddings are not used directly as final representations. Instead, they are iteratively contextualised through multiple self-attention and feed-forward layers. If $L$ denotes the number of transformer layers, the final hidden representation can be written as
+\begin{equation}
+\mathbf{H}_i^{(L)} = \mathrm{Transformer}\!\left(\mathbf{H}_i^{(0)}\right),
+\end{equation}
+where
+\begin{equation}
+\mathbf{H}_i^{(L)} =
+\left[
+\mathbf{h}_{i1}^{(L)},
+\mathbf{h}_{i2}^{(L)},
+\dots,
+\mathbf{h}_{im_i}^{(L)}
+\right].
+\end{equation}
+
+To apply a conventional classifier, the sequence of contextual token vectors must be reduced to a single document representation. In general form, this can be expressed as
+\begin{equation}
+\mathbf{z}_i = g\!\left(\mathbf{H}_i^{(L)}\right),
+\end{equation}
+where $g(\cdot)$ denotes a pooling or selection function. Depending on the encoder architecture, this may correspond to mean pooling across all tokens, max pooling, or the representation of a designated classification token. Thus, each incident report $x_i$ is transformed into a fixed-dimensional vector
+\begin{equation}
+\mathbf{z}_i \in \mathbb{R}^{d},
+\end{equation}
+which serves as the feature vector for the downstream classifier:
+\begin{equation}
+\hat{y}_i = f_{\mathrm{clf}}(\mathbf{z}_i).
+\end{equation}
+
+This formulation is particularly suitable for the present study because incident reports vary considerably in length, lexical richness, and language. The embedding process therefore acts as a representation-learning step that converts heterogeneous free-text safety narratives into a common semantic vector space in which similar incidents can be positioned closer together and subsequently classified more effectively.
+
 \subsection{BERT Embedding Generation}
 
 For all three English subsets, contextual document representations were generated using the pre-trained \texttt{bert-base-uncased} transformer model. The tokenizer and model were loaded from Hugging Face Transformers, and the model was used in evaluation mode.
@@ -1056,72 +1144,31 @@ Establish a country-stratified baseline for process safety incident classificati
 \paragraph{1. Data Consolidation and Preparation}
 Iteration~1 did not construct a new master dataset from raw reporting streams. Instead, it operated on the cleaned master dataset established in Iteration~0. This cleaned master dataset contained 34,576 incident records after deduplication and the removal of entries with missing \texttt{TITLE}, \texttt{CASE\_DESCRIPTION}, \texttt{CASE\_TYPE}, or \texttt{HAZARD}.
 
-For country-stratified evaluation, six datasets were processed:
-\begin{itemize}
-    \item Germany: 14,951 records
-    \item UK: 4,673 records
-    \item English: 4,713 records
-    \item Sweden: 12,224 records
-    \item Netherlands: 1,990 records
-    \item Master: 34,576 records
-\end{itemize}
+For country-stratified evaluation, six datasets were processed. These comprised the Germany subset with 14,951 records, the UK subset with 4,673 records, the manually curated English subset with 4,713 records, the Sweden subset with 12,224 records, the Netherlands subset with 1,990 records, and the full master dataset containing 34,576 records.
 
 The English dataset corresponds to the manually curated English subset already introduced in Iteration~0.
 
 \paragraph{2. Feature Engineering}
-\begin{itemize}
-    \item \textbf{Binary labels:} Process Safety (1) vs Non-Process Safety (0)
-    \item \textbf{Text features:} Concatenation of incident fields
-    \begin{equation}
-    \text{text\_features} = \text{TITLE} \oplus \text{``.''}  \oplus \text{CASE\_DESCRIPTION}
-    \end{equation}
-\end{itemize}
+Binary labels were defined as Process Safety (1) and Non-Process Safety (0). Text features were constructed by concatenating the incident fields \texttt{TITLE} and \texttt{CASE\_DESCRIPTION}. Formally, the combined textual representation was defined as
+\begin{equation}
+\text{text\_features} = \text{TITLE} \oplus \text{``.''} \oplus \text{CASE\_DESCRIPTION},
+\end{equation}
+where \(\oplus\) denotes string concatenation. This representation combines the concise incident title with the more detailed narrative description in a single textual input for downstream embedding generation and classification.
 
 \paragraph{3. Embedding Generation}
-\begin{itemize}
-    \item \textbf{Model:} BERT-base-cased pre-trained transformer
-    \item \textbf{Embedding dimension:} 768-dimensional vectors
-    \item \textbf{Method:} [CLS] token representation from final hidden layer
-    \item \textbf{Batch processing:} batch\_size = 8 with progress tracking
-    \item \textbf{Storage:} Serialized as pickle files with metadata
-\end{itemize}
+Contextual document representations were generated using the pre-trained \texttt{bert-base-cased} transformer model. The embedding process produced fixed-length vectors of dimensionality 768 by using the \texttt{[CLS]} token representation from the final hidden layer as the document-level embedding. To ensure efficient processing, embeddings were generated in batches with \texttt{batch\_size = 8} and progress tracking was applied throughout execution. The resulting embeddings were then serialized and stored as pickle files together with the corresponding metadata for reproducibility and later reuse.
 
 \paragraph{4. Model Training}
-\begin{itemize}
-    \item \textbf{Classifier:} Linear Support Vector Machine (SVM)
-    \item \textbf{Class balancing:} \texttt{class\_weight='balanced'} to handle imbalance
-    \item \textbf{Data split:} 80/20 train-test split (stratified, random\_state=42)
-    \item \textbf{Training scope:} Independent model for each dataset
-\end{itemize}
+For model training, a Linear Support Vector Machine (SVM) was employed as the classifier. To address class imbalance, the model was configured with \texttt{class\_weight='balanced'}. The data were divided using an 80/20 stratified train--test split with \texttt{random\_state=42} to ensure reproducibility while preserving the class distribution in both partitions. An independent classifier was then trained for each dataset in order to evaluate performance separately across the different country-specific and language-specific subsets.
 
 \paragraph{5. Evaluation Metrics}
-For each dataset, the following metrics were computed:
-\begin{itemize}
-    \item Confusion matrix: True Negatives (TN), False Positives (FP), False Negatives (FN), True Positives (TP)
-    \item Per-class metrics: Precision, Recall, F1-score for both classes
-    \item Macro-averaged metrics: Precision, Recall, F1-score (primary metric)
-    \item Error rates: False Positive Rate (FPR), False Negative Rate (FNR)
-    \item Overall accuracy
-\end{itemize}
+For each dataset, model performance was evaluated using a comprehensive set of classification metrics. These included the confusion matrix, reporting True Negatives (TN), False Positives (FP), False Negatives (FN), and True Positives (TP), as well as per-class precision, recall, and F1-score for both Process Safety and Non-Process Safety. In addition, macro-averaged precision, recall, and F1-score were computed, with macro-F1 serving as the primary evaluation metric because it gives equal importance to both classes despite class imbalance. To further assess classification behaviour, the False Positive Rate (FPR) and False Negative Rate (FNR) were also calculated, together with overall accuracy.
 
 \subsubsection{Results and Outputs}
-\begin{itemize}
-    \item \textbf{Embeddings:} Saved in \texttt{/Embeddings/\_iteration\_1/bert-base-cased/}
-    \item \textbf{Naming convention:} \texttt{\{dataset\}\_bert-base-cased\_embeddings.pkl}
-    \item \textbf{Visualizations:} Confusion matrix heatmaps (300 DPI PNG files)
-    \item \textbf{Summary:} CSV file with all metrics across datasets
-    \item \textbf{Documentation:} Markdown tables for LaTeX integration
-\end{itemize}
+The outputs of Iteration~1 were organized systematically to support reproducibility, analysis, and later integration into the thesis. Generated embeddings were saved in \texttt{/Embeddings/\_iteration\_1/bert-base-cased/}, following the naming convention \texttt{\{dataset\}\_bert-base-cased\_embeddings.pkl}. In addition, confusion matrix heatmaps were exported as high-resolution PNG files at 300 DPI for visual inspection of classification performance. A CSV summary file containing all evaluation metrics across the processed datasets was also produced, together with formatted Markdown tables that could be incorporated into the LaTeX thesis document.
 
 \subsubsection{Key Outcomes}
-\begin{itemize}
-    \item Six datasets were evaluated: Germany, UK, English, Sweden, Netherlands, and the full master dataset.
-    \item The strongest Iteration~1 result was obtained on the UK dataset with an accuracy of 0.7722 and a macro-F1 score of 0.7449.
-    \item The manually curated English dataset achieved an accuracy of 0.7699 and a macro-F1 score of 0.7420.
-    \item Performance on the non-English datasets was substantially weaker, particularly for Sweden (macro-F1 = 0.5825) and Germany (macro-F1 = 0.5983).
-    \item The Netherlands dataset achieved a macro-F1 score of 0.6586, while the full master dataset reached 0.6292.
-    \item False Negative Rates ranged from 0.2518 on the UK dataset to 0.3983 on the Netherlands dataset, indicating that Process Safety recall remained a substantial challenge in Iteration~1.
-\end{itemize}
+Six datasets were evaluated in Iteration~1, namely Germany, the UK, the manually curated English subset, Sweden, the Netherlands, and the full master dataset. The strongest result was obtained on the UK dataset, which achieved an accuracy of 0.7722 and a macro-F1 score of 0.7449. The manually curated English dataset performed similarly, with an accuracy of 0.7699 and a macro-F1 score of 0.7420. Performance on the non-English datasets was substantially weaker, particularly for Sweden and Germany, which achieved macro-F1 scores of 0.5825 and 0.5983, respectively. The Netherlands dataset reached a macro-F1 score of 0.6586, while the full master dataset achieved 0.6292. Across all datasets, False Negative Rates ranged from 0.2518 on the UK dataset to 0.3983 on the Netherlands dataset, indicating that recall for Process Safety incidents remained a substantial challenge in Iteration~1.
 
 \subsection{Iteration 2: Multi-Model Comparative Evaluation}
 
@@ -1131,183 +1178,50 @@ Conduct a comprehensive comparative analysis of multiple pre-trained transformer
 \subsubsection{Implementation Steps}
 
 \paragraph{1. Model Selection and Configuration}
-Ten state-of-the-art transformer models were selected for evaluation:
-
-\textbf{BERT Family:}
-\begin{itemize}
-    \item \texttt{bert-base-cased}: 110M parameters, 768-dimensional embeddings
-    \item \texttt{bert-large-cased}: 340M parameters, 1024-dimensional embeddings
-\end{itemize}
-
-\textbf{RoBERTa Family:}
-\begin{itemize}
-    \item \texttt{roberta-base}: 125M parameters, robustly optimized BERT approach
-    \item \texttt{roberta-large}: 355M parameters, enhanced pre-training
-\end{itemize}
-
-\textbf{Specialized Architectures:}
-\begin{itemize}
-    \item \texttt{distilbert-base-cased}: 66M parameters, distilled efficient variant
-    \item \texttt{xlnet-base-cased}: 110M parameters, permutation language modeling
-    \item \texttt{modernbert-base}: 139M parameters, modern architectural improvements
-    \item \texttt{modernbert-large}: 395M parameters, scaled version
-    \item \texttt{deberta-v3-base}: 184M parameters, disentangled attention mechanism
-    \item \texttt{deberta-v3-large}: 435M parameters, enhanced disentangled attention
-\end{itemize}
+Ten state-of-the-art transformer models were selected for evaluation in Iteration~2. The BERT family comprised \texttt{bert-base-cased}, with 110 million parameters and 768-dimensional embeddings, and \texttt{bert-large-cased}, with 340 million parameters and 1024-dimensional embeddings. The RoBERTa family included \texttt{roberta-base}, a 125 million-parameter model representing a robustly optimized BERT architecture, and \texttt{roberta-large}, a 355 million-parameter variant with enhanced pre-training. In addition, several specialized architectures were included: \texttt{distilbert-base-cased}, a distilled 66 million-parameter model designed for efficiency; \texttt{xlnet-base-cased}, a 110 million-parameter model based on permutation language modeling; \texttt{modernbert-base} and \texttt{modernbert-large}, with 139 million and 395 million parameters, respectively, representing modernized architectural variants; and \texttt{deberta-v3-base} and \texttt{deberta-v3-large}, with 184 million and 435 million parameters, respectively, incorporating disentangled attention mechanisms.
 
 \paragraph{2. Dataset Selection}
-Iteration~2 operates on the cleaned master dataset produced in Iteration~0 and uses four manually derived language/country subsets stored as JSON files:
-
-\begin{itemize}
-    \item \texttt{english\_manual}
-    \item \texttt{german\_manual}
-    \item \texttt{swedish\_manual}
-    \item \texttt{dutch\_manual}
-\end{itemize}
-
-Accordingly, the verified experimental scope of Iteration~2 is 10 transformer models evaluated across 4 datasets, yielding a total of $10 \times 4 = 40$ model--dataset combinations.
+Iteration~2 operated on the cleaned master dataset established in Iteration~0 and focused on four manually derived language- and country-specific subsets stored as JSON files, namely \texttt{english\_manual}, \texttt{german\_manual}, \texttt{swedish\_manual}, and \texttt{dutch\_manual}. On this basis, the verified experimental scope of Iteration~2 consisted of 10 transformer models evaluated across 4 datasets, yielding a total of \(10 \times 4 = 40\) planned model--dataset combinations.
 
 \paragraph{3. Pipeline Architecture with Checkpointing}
-A robust two-phase pipeline was implemented with comprehensive error handling and progress tracking:
-
-\textbf{Phase 1: Embedding Generation}
-\begin{itemize}
-    \item Batch processing with \texttt{batch\_size=4} for memory efficiency
-    \item GPU acceleration when available with automatic fallback to CPU
-    \item Periodic memory clearing: \texttt{torch.cuda.empty\_cache()} after each batch
-    \item Maximum sequence length: 512 tokens with truncation
-    \item Checkpoint saved after each successful dataset-model combination
-\end{itemize}
-
-\textbf{Phase 2: SVM Training and Evaluation}
-\begin{itemize}
-    \item Classifier: \texttt{LinearSVC} for computational efficiency
-    \item Subsampling: Large training sets (>60,000 samples) reduced via stratified resampling
-    \item Training timeout: 300 seconds per model to prevent hanging
-    \item Class balancing: \texttt{class\_weight='balanced'}
-    \item Hyperparameters: \texttt{max\_iter=1000}, \texttt{dual=False}, \texttt{random\_state=42}
-\end{itemize}
+A robust two-phase pipeline was implemented with comprehensive error handling and progress tracking. In Phase~1, embedding generation was performed in batches with \texttt{batch\_size=4} to ensure memory efficiency. GPU acceleration was used when available, with automatic fallback to CPU if necessary. Memory usage was controlled through periodic execution of \texttt{torch.cuda.empty\_cache()} after each batch, and all input sequences were truncated to a maximum length of 512 tokens. A checkpoint was saved after each successfully completed dataset--model combination. In Phase~2, classification and evaluation were carried out using \texttt{LinearSVC}, chosen for computational efficiency. Large training sets exceeding 60,000 samples were reduced through stratified subsampling, and a training timeout of 300 seconds per model was introduced to prevent stalled execution. To address class imbalance, the classifier was configured with \texttt{class\_weight='balanced'}, and the principal hyperparameters were set to \texttt{max\_iter=1000}, \texttt{dual=False}, and \texttt{random\_state=42}.
 
 \paragraph{4. Checkpoint System Implementation}
-A JSON-based checkpoint system enabled resumable execution:
-\begin{itemize}
-    \item Checkpoint file: \texttt{checkpoint.json} tracking completed (model, dataset) tuples
-    \item Automatic skip of processed combinations on restart
-    \item Utility functions: \texttt{view\_progress()}, \texttt{reset\_checkpoint()}, \texttt{complete\_rerun()}
-    \item Progress persistence across kernel restarts and failures
-\end{itemize}
+A JSON-based checkpoint system enabled resumable execution throughout the experimental pipeline. The checkpoint file, \texttt{checkpoint.json}, tracked completed \((\text{model}, \text{dataset})\) tuples and made it possible to skip already processed combinations when the pipeline was restarted. Additional utility functions, namely \texttt{view\_progress()}, \texttt{reset\_checkpoint()}, and \texttt{complete\_rerun()}, supported monitoring and control of the execution process. This design ensured that progress was preserved across kernel restarts and unexpected failures.
 
 \paragraph{5. Memory Management Strategy}
-Aggressive memory management prevented out-of-memory errors:
-\begin{itemize}
-    \item Batch-level GPU memory clearing
-    \item Periodic garbage collection every 50 batches
-    \item Model unloading between experiments
-    \item Explicit deletion of large variables: \texttt{del} followed by \texttt{gc.collect()}
-    \item Dataset subsampling for SVM training when necessary
-\end{itemize}
+Aggressive memory management was applied in order to prevent out-of-memory errors during large-scale experimentation. This included batch-level GPU memory clearing, periodic garbage collection every 50 batches, unloading models between experiments, and the explicit deletion of large variables using \texttt{del} followed by \texttt{gc.collect()}. Where necessary, dataset subsampling was also employed during SVM training to reduce computational load while preserving statistical validity.
 
 \paragraph{6. Comprehensive Evaluation Metrics}
-For each model-dataset combination, the following metrics were computed:
-
-\textbf{Overall Metrics:}
-\begin{itemize}
-    \item Accuracy: $\frac{TP + TN}{TP + TN + FP + FN}$
-    \item Macro-averaged F1-score: $\frac{F1_{\text{PS}} + F1_{\text{NPS}}}{2}$
-    \item Weighted F1-score: $\frac{\sum_{c} F1_c \times \text{support}_c}{\sum_{c} \text{support}_c}$
-\end{itemize}
-
-\textbf{Per-Class Metrics (Process Safety and Non-Process Safety):}
-\begin{itemize}
-    \item Precision: $\frac{TP}{TP + FP}$
-    \item Recall: $\frac{TP}{TP + FN}$
-    \item F1-score: $\frac{2 \times \text{Precision} \times \text{Recall}}{\text{Precision} + \text{Recall}}$
-    \item Support: Number of true instances per class
-\end{itemize}
-
-\textbf{Additional Tracking:}
-\begin{itemize}
-    \item Training time (seconds)
-    \item Subsampling flag (indicating whether training set was reduced)
-    \item Confusion matrix elements: TN, FP, FN, TP
-\end{itemize}
+For each model--dataset combination, a comprehensive set of evaluation metrics was computed. Overall performance was assessed using accuracy, macro-averaged F1-score, and weighted F1-score. Accuracy was defined as \(\frac{TP + TN}{TP + TN + FP + FN}\), macro-F1 as \(\frac{F1_{\text{PS}} + F1_{\text{NPS}}}{2}\), and weighted F1 as \(\frac{\sum_{c} F1_c \times \text{support}_c}{\sum_{c} \text{support}_c}\). In addition, per-class precision, recall, F1-score, and support were calculated separately for the Process Safety and Non-Process Safety classes. To provide further experimental context, additional metadata were recorded, including training time in seconds, a subsampling flag indicating whether the training set had been reduced, and the individual confusion-matrix elements TN, FP, FN, and TP.
 
 \paragraph{7. Visualization and Reporting}
-\begin{itemize}
-    \item Confusion matrix heatmaps for each combination (300 DPI, PNG format)
-    \item Naming convention: \texttt{cm\_\{dataset\}\_\{model\}.png}
-    \item Comprehensive CSV export with all metrics
-    \item Formatted classification reports mimicking \texttt{sklearn} style
-    \item Aggregate statistics by model and by dataset
-\end{itemize}
+To support interpretation and documentation, confusion matrix heatmaps were generated for every model--dataset combination and saved as high-resolution PNG files at 300 DPI using the naming convention \texttt{cm\_\{dataset\}\_\{model\}.png}. In addition, all computed metrics were exported into a comprehensive CSV file, formatted classification reports were generated in a style analogous to \texttt{sklearn}, and aggregate statistics were produced both by model and by dataset.
 
 \subsubsection{Results and Outputs}
 
 \paragraph{Storage Structure}
-\begin{itemize}
-    \item \textbf{Embeddings:} \texttt{/Embeddings/\_iteration\_2/\{model\_name\}/}
-\item \textbf{Results:} \texttt{/Results/\_iteration\_2/}
-\item \textbf{Checkpoint:} \texttt{/Results/\_iteration\_2/checkpoint\_iteration\_2.json}
-\item \textbf{Summary:} \texttt{/Results/\_iteration\_2/all\_models\_svm\_detailed\_results.csv}
-\end{itemize}
+The outputs of Iteration~2 were stored in a structured directory hierarchy to ensure reproducibility and ease of access. Generated embeddings were saved in \texttt{/Embeddings/\_iteration\_2/\{model\_name\}/}, while all result files were written to \texttt{/Results/\_iteration\_2/}. The checkpoint state was stored in \texttt{/Results/\_iteration\_2/checkpoint\_iteration\_2.json}, and the consolidated summary of all model results was exported to \texttt{/Results/\_iteration\_2/all\_models\_svm\_detailed\_results.csv}.
 
 \paragraph{Aggregate Analysis}
-Multiple aggregate views were generated:
-
-\textbf{By Model Performance:}
-\begin{itemize}
-    \item Mean and standard deviation of accuracy, F1 scores across all datasets
-    \item Identification of consistently high-performing architectures
-    \item Stability analysis via standard deviation metrics
-\end{itemize}
-
-\textbf{By Dataset Characteristics:}
-\begin{itemize}
-    \item Mean and standard deviation of metrics across all models
-    \item Dataset difficulty assessment
-    \item Language-specific performance patterns (English vs. non-English)
-\end{itemize}
-
-\textbf{Best Performing Combinations:}
-\begin{itemize}
-    \item Top model by overall accuracy
-    \item Best model for Process Safety class F1-score (critical for safety applications)
-    \item Most efficient model (considering training time vs. performance trade-off)
-\end{itemize}
+Several aggregate analytical views were generated in order to interpret the experimental outcomes systematically. At the model level, mean values and standard deviations of accuracy and F1-scores across all datasets were computed to identify consistently high-performing architectures and assess model stability. At the dataset level, mean values and standard deviations across all models were used to estimate dataset difficulty and reveal language-specific performance patterns, particularly the contrast between English and non-English subsets. In addition, best-performing combinations were identified according to overall accuracy, Process Safety F1-score, and efficiency measured as the trade-off between predictive performance and training time.
 
 \subsubsection{Key Innovations}
 
 \paragraph{1. Scalability}
-The pipeline successfully processed 24 model--dataset combinations (6 completed models $\times$ 4 datasets); four models (\texttt{modernbert-base}, \texttt{modernbert-large}, \texttt{deberta-v3-base}, \texttt{deberta-v3-large}) encountered compatibility issues and were excluded. Automatic recovery from failures ensured that partial runs were resumed without repeating completed combinations.
+The pipeline successfully processed 24 completed model--dataset combinations, corresponding to 6 completed models evaluated across 4 datasets. Four models, namely \texttt{modernbert-base}, \texttt{modernbert-large}, \texttt{deberta-v3-base}, and \texttt{deberta-v3-large}, encountered compatibility issues and were therefore excluded from the final completed set. Automatic checkpoint-based recovery ensured that completed combinations did not need to be recomputed after interruptions.
 
 \paragraph{2. Reproducibility}
-Fixed random seeds (\texttt{random\_state=42}), comprehensive metadata tracking, and version-controlled model names ensured full experimental reproducibility.
+Experimental reproducibility was ensured through fixed random seeds, particularly \texttt{random\_state=42}, comprehensive metadata tracking, and consistent version-controlled naming of models and outputs. Together, these measures allowed the experimental pipeline to be rerun under the same conditions and to produce consistent results.
 
 \paragraph{3. Efficiency}
-\begin{itemize}
-    \item Checkpoint system eliminated redundant computation
-    \item Strategic subsampling balanced computational cost with statistical validity
-    \item Batch processing and memory management enabled processing on resource-constrained hardware
-\end{itemize}
+Efficiency was improved through several design decisions. The checkpoint system eliminated redundant computation by allowing interrupted runs to resume from the last completed step. Strategic subsampling reduced the computational burden of large datasets while maintaining statistical validity, and the combination of batch processing with explicit memory management enabled experimentation on resource-constrained hardware.
 
 \paragraph{4. Robustness}
-\begin{itemize}
-    \item Timeout protection prevented infinite loops
-    \item Exception handling with detailed error logging
-    \item Graceful degradation (skip failed combinations, continue pipeline)
-\end{itemize}
+The pipeline was also designed for robustness. Timeout protection prevented infinite training loops, exception handling with detailed logging captured and documented model-specific failures, and graceful degradation ensured that failed combinations were skipped while the remaining experiments continued uninterrupted.
 
 \subsubsection{Limitations and Observations}
-
-\begin{itemize}
-    \item \textbf{Computational Cost:} Large models (\texttt{deberta-v3-large}, \texttt{modernbert-large}) required significant processing time (3+ hours per dataset)
-    \item \textbf{Subsampling Trade-off:} Training set reduction for large datasets may have slightly reduced model performance
-    \item \textbf{Model Failures:} Four models (\texttt{modernbert-base}, \texttt{modernbert-large}, \texttt{deberta-v3-base}, \texttt{deberta-v3-large}) encountered compatibility issues with certain datasets
-    \item \textbf{Linear Classification:} Use of LinearSVC instead of kernel SVM may have limited decision boundary complexity
-    \item \textbf{Language Mismatch:} English-trained models applied to German, Swedish, and Dutch datasets may not capture language-specific semantics optimally
-\end{itemize}
-
-These observations informed the design of Iteration 3, which explores domain-specific fine-tuning and multilingual transformer architectures to address the identified limitations.
+Despite these strengths, several limitations were observed in Iteration~2. Large models such as \texttt{deberta-v3-large} and \texttt{modernbert-large} required substantial processing time, often exceeding three hours per dataset. The necessary reduction of training sets through subsampling may have slightly reduced model performance in some cases. Four models, specifically \texttt{modernbert-base}, \texttt{modernbert-large}, \texttt{deberta-v3-base}, and \texttt{deberta-v3-large}, encountered compatibility issues with certain datasets and could not be fully evaluated. In addition, the use of \texttt{LinearSVC} instead of a kernel-based SVM may have limited the complexity of the decision boundaries that could be learned from the embeddings. Finally, the application of English-pretrained models to German, Swedish, and Dutch datasets introduced a language mismatch that likely constrained performance on the non-English subsets. These limitations motivated the design of Iteration~3, which focuses on multilingual transformer architectures to address the observed weaknesses.
 
 \subsection{Iteration 3: Multilingual Transformer Evaluation}
 
@@ -1320,219 +1234,64 @@ Previous iterations demonstrated that monolingual English models (BERT-base-case
 \subsubsection{Implementation Steps}
 
 \paragraph{1. Multilingual Model Selection}
-Five state-of-the-art multilingual transformer models were selected based on their language coverage and architectural innovations:
-
-\textbf{BERT Multilingual Variants:}
-\begin{itemize}
-    \item \texttt{bert-base-multilingual-uncased}: 110M parameters, trained on 104 languages, case-insensitive tokenization
-    \item \texttt{bert-base-multilingual-cased}: 110M parameters, trained on 104 languages, preserves case information
-\end{itemize}
-
-\textbf{E5 Embedding Models (Multilingual):}
-\begin{itemize}
-    \item \texttt{intfloat/multilingual-e5-base}: Text embedding model optimized for semantic similarity across more than 100 languages
-    \item \texttt{intfloat/multilingual-e5-large}: Scaled version with enhanced embedding quality (560M parameters)
-    \item \texttt{intfloat/multilingual-e5-large-instruct}: Instruction-tuned variant for improved task-specific performance
-\end{itemize}
-
-The E5 (Embeddings from bidirectional Encoder representations) models represent a family of text embeddings optimized for semantic search and similarity tasks, with explicit multilingual training objectives.
+Five state-of-the-art multilingual transformer models were selected for Iteration~3 on the basis of language coverage and architectural design. Two multilingual BERT variants were included, namely \texttt{bert-base-multilingual-uncased} and \texttt{bert-base-multilingual-cased}, each comprising 110 million parameters and trained on 104 languages, with the former using case-insensitive tokenization and the latter preserving case information. In addition, three multilingual E5 embedding models were evaluated: \texttt{intfloat/multilingual-e5-base}, which is optimized for semantic similarity across more than 100 languages; \texttt{intfloat/multilingual-e5-large}, a scaled version with 560 million parameters and enhanced embedding quality; and \texttt{intfloat/multilingual-e5-large-instruct}, an instruction-tuned variant designed to improve task-specific performance. The E5 family represents a class of multilingual text embedding models optimized for semantic search and similarity tasks through explicit multilingual training objectives.
 
 \paragraph{2. Dataset Configuration}
-Iteration~3 follows the Iteration~2 dataset design and operates on four manually derived datasets:
-
-\begin{itemize}
-    \item \texttt{english\_manual}
-    \item \texttt{german\_manual}
-    \item \texttt{swedish\_manual}
-    \item \texttt{dutch\_manual}
-\end{itemize}
-
-Five multilingual transformer models were evaluated across these four datasets, yielding a verified experimental scope of $5 \times 4 = 20$ model--dataset combinations.
-
-\textbf{Excluded Datasets:}
-\begin{itemize}
-    \item Hungary, International, Russia, UAE (insufficient samples for stratified splitting)
-\end{itemize}
-
-Total model-dataset combinations: $6 \times 5 = 30$ experiments
+Iteration~3 followed the dataset design introduced in Iteration~2 and operated on four manually derived datasets, namely \texttt{english\_manual}, \texttt{german\_manual}, \texttt{swedish\_manual}, and \texttt{dutch\_manual}. These four datasets were used to evaluate the five multilingual transformer models, yielding a verified experimental scope of \(5 \times 4 = 20\) model--dataset combinations. Several additional datasets, including Hungary, International, Russia, and UAE, were excluded because they did not contain sufficient samples for reliable stratified splitting.
 
 \paragraph{3. Pipeline Architecture}
-The implementation followed a two-phase architecture identical to Iteration 2, with optimizations for multilingual tokenization:
-
-\textbf{Phase 1: Embedding Generation}
-\begin{itemize}
-    \item Tokenizer initialization with \texttt{trust\_remote\_code=True} for model-specific implementations
-    \item Automatic padding token configuration for models lacking default padding:
-    \begin{equation}
-    \text{tokenizer.pad\_token} = \text{tokenizer.eos\_token}
-    \end{equation}
-    \item Batch size: 8 (increased from Iteration 2's batch size of 4 due to smaller model sizes)
-    \item Maximum sequence length: 512 tokens with truncation
-    \item Device-aware processing: automatic GPU utilization when available
-    \item Memory management: periodic cache clearing every 50 batches
-\end{itemize}
-
-\textbf{Phase 2: Classification and Evaluation}
-\begin{itemize}
-    \item Classifier: \texttt{LinearSVC} with \texttt{dual=False} optimization
-    \item Training set subsampling: Maximum 60,000 samples via stratified resampling
-    \item Class balancing: \texttt{class\_weight='balanced'}
-    \item Hyperparameters: \texttt{max\_iter=1000}, \texttt{random\_state=42}
-\end{itemize}
+The implementation followed a two-phase architecture broadly consistent with Iteration~2, but with optimizations tailored to multilingual tokenization and embedding generation. In Phase~1, tokenizer initialization used \texttt{trust\_remote\_code=True} where necessary in order to support model-specific implementations. For models lacking a default padding token, padding was configured automatically according to
+\begin{equation}
+\text{tokenizer.pad\_token} = \text{tokenizer.eos\_token}.
+\end{equation}
+Embeddings were generated with a batch size of 8, increased from Iteration~2 due to the smaller memory demands of the selected models, and all inputs were truncated to a maximum sequence length of 512 tokens. Device-aware processing enabled automatic GPU utilization when available, while periodic cache clearing every 50 batches reduced the risk of memory overflow. In Phase~2, classification and evaluation were carried out using \texttt{LinearSVC} with \texttt{dual=False}, \texttt{class\_weight='balanced'}, \texttt{max\_iter=1000}, and \texttt{random\_state=42}. Where necessary, training sets were subsampled to a maximum of 60,000 samples through stratified resampling in order to maintain computational feasibility.
 
 \paragraph{4. Feature Engineering}
-Text features were constructed identically to previous iterations:
+Text features were constructed in the same way as in previous iterations by concatenating the \texttt{TITLE} and \texttt{CASE\_DESCRIPTION} fields. Formally, the combined textual representation was defined as
 \begin{equation}
-\text{text\_features} = \text{TITLE} \oplus \text{``.''}  \oplus \text{CASE\_DESCRIPTION}
+\text{text\_features} = \text{TITLE} \oplus \text{``.''} \oplus \text{CASE\_DESCRIPTION},
 \end{equation}
-
-This concatenation strategy provides both concise summaries (TITLE) and detailed contextual information (CASE\_DESCRIPTION) to the multilingual encoders.
+where \(\oplus\) denotes string concatenation. This strategy ensured that both the concise summary information in the title and the richer contextual information in the description were jointly provided to the multilingual encoders.
 
 \paragraph{5. Checkpoint and Recovery System}
-A robust checkpoint system enabled resumable execution:
-
-\textbf{Checkpoint Functions:}
-\begin{itemize}
-    \item \texttt{save\_checkpoint(processed\_items)}: Serialize completed (model, dataset) combinations to JSON
-    \item \texttt{load\_checkpoint()}: Restore progress from checkpoint file
-    \item \texttt{view\_progress()}: Display processed combinations
-    \item \texttt{reset\_checkpoint()}: Clear checkpoint for fresh restart
-\end{itemize}
-
-\textbf{Progress Tracking:}
-\begin{itemize}
-    \item Checkpoint saved after each successful embedding generation
-    \item Automatic skip of already-processed combinations on restart
-    \item Progress indicator: \texttt{processed/total} combinations
-    \item Persistent storage: \texttt{/\_Iterations/\_iteration\_3/checkpoint.json}
-\end{itemize}
+A robust checkpoint system enabled resumable execution throughout Iteration~3. Completed \((\text{model}, \text{dataset})\) combinations were serialized to JSON using \texttt{save\_checkpoint(processed\_items)}, while \texttt{load\_checkpoint()} restored previous progress from the checkpoint file. Additional helper functions, including \texttt{view\_progress()} and \texttt{reset\_checkpoint()}, supported monitoring and control of the execution process. A checkpoint was saved after each successful embedding-generation step, already completed combinations were skipped automatically on restart, and progress was tracked in the form \texttt{processed/total}. Persistent checkpoint storage was maintained in \texttt{/\_Iterations/\_iteration\_3/checkpoint.json}.
 
 \paragraph{6. Embedding Generation Function}
-A unified embedding function handled both standard BERT and specialized E5 models, extracting the \texttt{[CLS]} token representation with batch-level memory management (see Listing~\ref{lst:unified-embedding} in Appendix~\ref{sec:code-listings}).
-
-The function includes fallback logic for models with varying output structures, ensuring compatibility across the diverse E5 and BERT architectures.
+A unified embedding function was implemented to support both standard multilingual BERT models and specialized multilingual E5 models. This function extracted the \texttt{[CLS]} token representation while incorporating batch-level memory management, as shown in Listing~\ref{lst:unified-embedding} in Appendix~\ref{sec:code-listings}. Fallback logic was included to account for differences in output structure across architectures, thereby ensuring compatibility across the multilingual BERT and E5 model families.
 
 \paragraph{7. Comprehensive Evaluation Metrics}
-Identical to Iteration 2, the following metrics were computed:
-
-\textbf{Overall Performance:}
-\begin{itemize}
-    \item Accuracy: $\frac{TP + TN}{TP + TN + FP + FN}$
-    \item Weighted F1-score: $\sum_{c \in \{\text{PS, NPS}\}} F1_c \times \frac{\text{support}_c}{\text{total support}}$
-    \item Macro F1-score: $\frac{F1_{\text{PS}} + F1_{\text{NPS}}}{2}$ (primary metric)
-\end{itemize}
-
-\textbf{Per-Class Metrics (both classes):}
-\begin{itemize}
-    \item Precision, Recall, F1-score, Support
-\end{itemize}
-
-\textbf{Training Metadata:}
-\begin{itemize}
-    \item Training time (seconds)
-    \item Subsampling indicator
-    \item Confusion matrix: TN, FP, FN, TP
-\end{itemize}
+The evaluation protocol in Iteration~3 mirrored that of Iteration~2. Overall performance was assessed using accuracy, weighted F1-score, and macro F1-score, with macro-F1 retained as the primary evaluation metric. Accuracy was defined as \(\frac{TP + TN}{TP + TN + FP + FN}\), weighted F1-score as \(\sum_{c \in \{\text{PS, NPS}\}} F1_c \times \frac{\text{support}_c}{\text{total support}}\), and macro F1-score as \(\frac{F1_{\text{PS}} + F1_{\text{NPS}}}{2}\). In addition, per-class precision, recall, F1-score, and support were computed for both classes. To support a more complete comparison of experimental behaviour, training time in seconds, a subsampling indicator, and the confusion-matrix components TN, FP, FN, and TP were also recorded.
 
 \paragraph{8. Results Storage and Visualization}
-\textbf{Storage Structure:}
-\begin{itemize}
-    \item \textbf{Embeddings:} \texttt{/Embeddings/\_iteration\_3/\{model\_key\}/}
-    \item \textbf{Results:} \texttt{/Results/\_iteration\_3/}
-    \item \textbf{Visual outputs:} confusion matrices for each model--dataset combination saved in \texttt{Results/\_iteration\_3/}
-\end{itemize}
-
-\textbf{Naming Convention:}
-\begin{itemize}
-    \item Embeddings: \texttt{\{dataset\}\_\{model\_key\}\_embeddings.pkl}
-    \item Confusion matrices: \texttt{cm\_\{dataset\}\_\{model\_key\}.png}
-\end{itemize}
+The outputs of Iteration~3 were stored in a structured directory hierarchy. Embeddings were saved in \texttt{/Embeddings/\_iteration\_3/\{model\_key\}/}, while results and visual outputs were stored in \texttt{/Results/\_iteration\_3/}. Confusion matrices for each model--dataset combination were exported in that directory, with embeddings named according to the pattern \texttt{\{dataset\}\_\{model\_key\}\_embeddings.pkl} and confusion matrices following the convention \texttt{cm\_\{dataset\}\_\{model\_key\}.png}.
 
 \subsubsection{Results Analysis Framework}
 
 \paragraph{Multi-Dimensional Comparative Analysis}
-Results were analyzed across three dimensions:
-
-\textbf{1. Model Comparison:}
-\begin{itemize}
-    \item Aggregate statistics (mean, standard deviation) of accuracy, F1-scores, and per-class metrics across all datasets
-    \item Identification of consistently high-performing architectures
-    \item Stability analysis via cross-dataset standard deviation
-\end{itemize}
-
-\textbf{2. Dataset Comparison:}
-\begin{itemize}
-    \item Average performance across all models per dataset
-    \item Language-specific performance patterns (English vs. German vs. Swedish vs. Dutch)
-    \item Dataset difficulty ranking based on average F1-scores
-\end{itemize}
-
-\textbf{3. Best Performers:}
-\begin{itemize}
-    \item Highest accuracy combination
-    \item Best Process Safety F1-score (critical for safety applications)
-    \item Most efficient model (accuracy per training time)
-\end{itemize}
-
-
-%\paragraph{Classification Report Generation}
-%For each model-dataset combination, sklearn-style classification reports were generated:
-
-%\begin{table}[htbp]
-%\centering
-%\small
-%\begin{tabular}{@{}lcccc@{}}
-%\toprule
-%\textbf{Class} & \textbf{Precision} & \textbf{Recall} & \textbf{F1-score} & \textbf{Support} \\
-%\midrule
-%Non-Process Safety   & 0.XX & 0.XX & 0.XX & XXXX \\
-%Process Safety       & 0.XX & 0.XX & 0.XX & XXX \\
-%\midrule
-%accuracy             &      &      & 0.XX & XXXX \\
-%macro avg            & 0.XX & 0.XX & 0.XX & XXXX \\
-%weighted avg         & 0.XX & 0.XX & 0.XX & XXXX \\
-%\bottomrule
-%\end{tabular}
-%\caption{Example classification report structure for Iteration 3 results}
-%\end{table}
+The results were analyzed along three complementary dimensions. First, model-level comparison was performed by computing aggregate statistics, including means and standard deviations of accuracy, F1-scores, and per-class metrics across all datasets, thereby enabling the identification of consistently strong architectures and the assessment of cross-dataset stability. Second, dataset-level comparison examined average performance across all models in order to reveal language-specific patterns, compare English, German, Swedish, and Dutch subsets, and rank datasets by difficulty on the basis of average F1-scores. Third, best-performing combinations were identified according to overall accuracy, Process Safety F1-score, and computational efficiency measured as performance relative to training time.
 
 \subsubsection{Key Innovations}
 
 \paragraph{1. Language-Aware Architecture}
-Multilingual models eliminate the language mismatch problem, providing native support for German, Swedish, and Dutch incident reports without requiring translation or language-specific fine-tuning.
+A central innovation of Iteration~3 was the shift to multilingual architectures that directly addressed the language-mismatch problem identified in Iteration~2. These models provided native support for German, Swedish, and Dutch incident reports without requiring translation or language-specific fine-tuning.
 
 \paragraph{2. E5 Embedding Models}
-Integration of E5 models introduces contrastive learning-based embeddings optimized for semantic similarity, potentially capturing incident similarity relationships more effectively than traditional masked language models.
+The inclusion of multilingual E5 models introduced contrastive learning-based embeddings optimized for semantic similarity, offering the potential to capture incident similarity patterns more effectively than conventional masked language models.
 
 \paragraph{3. Instruction Tuning}
-The \texttt{multilingual-e5-large-instruct} model incorporates instruction-following capabilities, enabling task-specific optimization through natural language instructions (though not explicitly utilized in this iteration).
+The \texttt{multilingual-e5-large-instruct} model added an instruction-tuned component that potentially enables improved task-specific adaptation through natural-language instructions, even though such instruction-following capabilities were not explicitly exploited in this iteration.
 
 \paragraph{4. Unified Embedding Interface}
-The generalized embedding function abstracts model-specific implementation details, enabling seamless integration of future transformer architectures with minimal code modification.
+The generalized embedding function abstracted model-specific implementation details and enabled a uniform processing interface across multilingual BERT and E5 architectures, thereby simplifying experimentation and facilitating future model extensions.
 
 \paragraph{5. Enhanced Checkpoint Granularity}
-Checkpoint system tracks individual (model, dataset) combinations rather than full model completion, minimizing wasted computation on partial failures.
+The checkpoint system tracked individual \((\text{model}, \text{dataset})\) combinations rather than waiting for full model completion, which reduced wasted computation in the presence of partial failures and improved overall execution resilience.
 
 \subsubsection{Expected Outcomes}
-
-Based on multilingual model capabilities, the following outcomes are anticipated:
-
-\begin{itemize}
-    \item \textbf{Non-English Dataset Improvement:} Multilingual BERT variants should outperform monolingual BERT on German, Swedish, and Dutch datasets by 5-10 percentage points in macro F1-score
-    \item \textbf{English Dataset Parity:} Performance on English datasets should match or slightly trail Iteration 2 monolingual models due to diluted language-specific knowledge
-    \item \textbf{E5 Model Performance:} E5-large models should demonstrate superior semantic understanding, particularly for capturing incident similarity patterns
-    \item \textbf{Cross-Lingual Transfer:} Master dataset (combining all languages) should benefit most from multilingual architectures, demonstrating effective cross-lingual knowledge transfer
-\end{itemize}
+Based on the capabilities of multilingual transformer models, several outcomes were anticipated. First, multilingual BERT variants were expected to outperform monolingual English models on the German, Swedish, and Dutch datasets by approximately 5--10 percentage points in macro-F1. Second, performance on English datasets was expected to remain comparable to, or only slightly below, the Iteration~2 monolingual baselines because multilingual pretraining distributes representational capacity across many languages. Third, the larger E5 models were expected to demonstrate stronger semantic understanding, particularly in capturing incident similarity relationships. Finally, it was anticipated that multilingual architectures would be especially beneficial for mixed-language or cross-lingual settings by enabling more effective transfer across reporting languages.
 
 \subsubsection{Limitations and Considerations}
-
-\begin{itemize}
-    \item \textbf{Computational Cost:} Multilingual models, despite similar parameter counts to monolingual BERT, may exhibit longer inference times due to larger vocabulary sizes (104 languages vs. English-only)
-    \item \textbf{Language Distribution Bias:} Multilingual BERT was pre-trained on imbalanced language corpora, potentially favoring high-resource languages (English, German) over low-resource languages (Swedish, Dutch)
-    \item \textbf{Domain Shift:} Pre-training corpora consist primarily of Wikipedia and web text, differing significantly from technical safety incident reports
-    \item \textbf{Tokenization Challenges:} Multilingual tokenizers may fragment technical terminology (e.g., equipment names, chemical compounds) more aggressively than domain-specific tokenizers
-    \item \textbf{E5 Model Constraints:} E5 models were optimized for semantic similarity tasks, not classification—requiring adaptation via SVM may not fully exploit their capabilities
-\end{itemize}
+Several limitations were also recognised. Although multilingual models have similar parameter counts to monolingual BERT in some cases, they may require longer inference times due to substantially larger vocabularies. In addition, multilingual pretraining corpora are typically imbalanced across languages, which may favour high-resource languages such as English and German over lower-resource languages such as Swedish and Dutch. Another limitation arises from domain shift, since these models are pre-trained mainly on Wikipedia and web text rather than technical process-safety incident reports. Multilingual tokenizers may also fragment equipment names, chemical terminology, and other technical expressions more aggressively than domain-adapted tokenizers. Finally, the E5 family is optimized primarily for semantic similarity rather than classification, which means that combining these embeddings with SVM classifiers may not fully exploit their representational capacity.
 
 \subsubsection{Comparison with Previous Iterations}
 
@@ -1543,20 +1302,21 @@ Based on multilingual model capabilities, the following outcomes are anticipated
 \toprule
 \textbf{Aspect} & \textbf{Iteration 1} & \textbf{Iteration 2} & \textbf{Iteration 3} \\
 \midrule
-Models & 1 (BERT-base-cased) & 10 (diverse) & 5 (multilingual) \\
-Datasets & 6 & 6 & 6 \\
-Combinations & 6 & 60 & 30 \\
-Language Support & English only & English only & 104 languages \\
+Models & 1 (BERT-base-cased) & 10 planned / 6 completed & 5 (multilingual) \\
+Datasets & 6 & 4 & 4 \\
+Combinations & 6 & 24 completed & 20 \\
+Language Support & English only & English only & 104+ languages \\
 Batch Size & 8 & 4 & 8 \\
 Primary Focus & Baseline & Architecture comparison & Language coverage \\
 Key Innovation & Stratification & Checkpointing & Multilingual embeddings \\
 \bottomrule
 \end{tabular}
-\caption{Comparison of Iterations 1-3}
+\caption{Comparison of Iterations 1--3.}
 \label{tab:iteration_comparison}
 \end{table}
 
-These observations inform the design of Iteration 4, which explores domain-specific fine-tuning of the best-performing multilingual models on process safety incident data to further enhance classification accuracy and address the domain shift limitation.
+These observations informed the design of Iteration~4, which explores more advanced machine learning techniques and stronger multilingual embedding pipelines in order to improve classification accuracy further and reduce the remaining effects of domain shift.
+
 
 \subsection{Iteration 4: Advanced Machine Learning Pipeline with Enhanced Techniques}
 
@@ -1569,335 +1329,100 @@ Previous iterations identified several optimization opportunities: (1) [CLS] tok
 \subsubsection{Implementation Steps}
 
 \paragraph{1. Model Selection and Configuration}
-A broader set of multilingual embedding models was evaluated in Iteration~4, and the current repository state shows multiple embedding families combined with several downstream classifiers.
-
-\begin{itemize}
-    \item \texttt{bert-base-multilingual-uncased}: 110M parameters, 104 languages
-    \item \texttt{xlm-roberta-base}: 270M parameters, cross-lingual robustly optimized architecture for 100 languages
-    \item \texttt{sentence-transformers/paraphrase-multilingual-mpnet-base-v2}: Sentence-BERT variant optimized for semantic similarity, 278M parameters
-\end{itemize}
-
-The current repository state indicates that Iteration~4 evaluates multiple multilingual embedding models across the manual language datasets using several downstream classifiers, and the final experiment count should therefore be reported directly from the saved Iteration~4 result artefacts rather than retained from an earlier draft.
+A broader set of multilingual embedding models was evaluated in Iteration~4, and the current repository state shows multiple embedding families combined with several downstream classifiers. The embedding models explicitly documented in the current implementation include \texttt{bert-base-multilingual-uncased}, a 110M-parameter model trained on 104 languages; \texttt{xlm-roberta-base}, a 270M-parameter cross-lingual transformer trained on 100 languages; and \texttt{sentence-transformers/paraphrase-multilingual-mpnet-base-v2}, a 278M-parameter Sentence-BERT variant optimized for semantic similarity in multilingual settings. Overall, Iteration~4 evaluates several multilingual embedding models across the manually derived language datasets using multiple downstream classifiers. Consequently, the final experiment count should be reported directly from the saved Iteration~4 result artefacts rather than retained from an earlier draft.
 
 \paragraph{2. Enhanced Configuration Framework}
-A comprehensive configuration dictionary controlled all pipeline parameters (see Listing~\ref{lst:iter4-config} in Appendix~\ref{sec:code-listings}). This modular design enables ablation studies to quantify the contribution of individual enhancements.
+A comprehensive configuration dictionary controlled all major pipeline parameters, including pooling strategy, class balancing, feature scaling, hyperparameter tuning, ensemble activation, and the set of downstream classifiers (see Listing~\ref{lst:iter4-config} in Appendix~\ref{sec:code-listings}). This modular structure was deliberately designed to support systematic ablation studies and to quantify the contribution of each enhancement to the final classification performance.
 
 \paragraph{3. Advanced Text Preprocessing}
-Enhanced preprocessing addresses domain-specific noise in incident reports (see Listing~\ref{lst:text-preprocessing} in Appendix~\ref{sec:code-listings}).
-
-Preprocessing steps:
-\begin{enumerate}
-    \item Lowercase normalization
-    \item URL removal (common in copy-pasted reports)
-    \item Email address removal (privacy preservation)
-    \item Special character filtering (preserve periods for sentence boundaries)
-    \item Whitespace normalization
-\end{enumerate}
+Advanced preprocessing was introduced to reduce domain-specific noise in the incident reports and to improve the quality of downstream text representations (see Listing~\ref{lst:text-preprocessing} in Appendix~\ref{sec:code-listings}). In particular, the preprocessing pipeline applied lowercase normalization, removed URLs that commonly appeared in copied or forwarded report text, filtered email addresses for privacy preservation, removed special characters while preserving sentence-boundary periods, and normalized irregular whitespace. Together, these steps produced cleaner and more standardized textual inputs for multilingual embedding generation.
 
 \paragraph{4. Enhanced Embedding Generation with Pooling Strategies}
-Three pooling strategies were implemented to aggregate token-level representations:
-
-\textbf{CLS Pooling (Baseline):}
+Iteration~4 implemented three pooling strategies in order to aggregate token-level hidden states into a fixed-length document representation. The baseline approach used CLS pooling, defined as
 \begin{equation}
 \mathbf{h}_{\text{CLS}} = \text{LastHiddenState}[:, 0, :]
 \end{equation}
-
-Uses the [CLS] token representation, standard in BERT-style models.
-
-\textbf{Mean Pooling (Primary):}
+which extracts the contextual representation of the first token and corresponds to the standard BERT-style classification setup. In addition, mean pooling was introduced as the primary strategy:
 \begin{equation}
-\mathbf{h}_{\text{mean}} = \frac{\sum_{i=1}^{n} m_i \cdot \mathbf{h}_i}{\sum_{i=1}^{n} m_i}
+\mathbf{h}_{\text{mean}} = \frac{\sum_{i=1}^{n} m_i \cdot \mathbf{h}_i}{\sum_{i=1}^{n} m_i},
 \end{equation}
-
-where $m_i$ is the attention mask for token $i$, and $\mathbf{h}_i$ is the hidden state. Mean pooling averages all token representations weighted by attention mask, capturing document-level semantics more comprehensively than [CLS] alone.
-
-\textbf{Max Pooling (Alternative):}
+where $m_i$ denotes the attention mask for token $i$ and $\mathbf{h}_i$ denotes the corresponding hidden-state vector. Mean pooling averages all valid token representations and therefore provides a more comprehensive document-level representation than the CLS token alone. As a third alternative, max pooling was implemented:
 \begin{equation}
 \mathbf{h}_{\text{max}} = \max_{i=1}^{n} \mathbf{h}_i
 \end{equation}
-
-Max pooling selects the maximum activation across all token dimensions, emphasizing salient features.
-
-The full implementation supporting CLS, mean, and max pooling strategies is given in Listing~\ref{lst:enhanced-embedding} in Appendix~\ref{sec:code-listings}.
+which captures the maximum activation across token positions and emphasizes salient features. The full implementation supporting CLS, mean, and max pooling is provided in Listing~\ref{lst:enhanced-embedding} in Appendix~\ref{sec:code-listings}.
 
 \paragraph{5. SMOTE-Based Class Balancing}
-Synthetic Minority Over-sampling Technique (SMOTE) addresses severe class imbalance:
-
-\textbf{Problem Formulation:}
-\begin{itemize}
-    \item Majority class (Non-Process Safety): 80-90\% of samples
-    \item Minority class (Process Safety): 10-20\% of samples
-    \item Consequence: Classifier bias toward majority class, poor minority recall
-\end{itemize}
-
-\textbf{SMOTE Algorithm:}
-\begin{enumerate}
-    \item For each minority class sample $\mathbf{x}_i$, identify $k$ nearest neighbors
-    \item Randomly select one neighbor $\mathbf{x}_{\text{nn}}$
-    \item Generate synthetic sample:
-    \begin{equation}
-    \mathbf{x}_{\text{new}} = \mathbf{x}_i + \lambda \cdot (\mathbf{x}_{\text{nn}} - \mathbf{x}_i)
-    \end{equation}
-    where $\lambda \sim \text{Uniform}(0, 1)$
-    \item Repeat until minority class reaches target proportion
-\end{enumerate}
-
-\textbf{Implementation Parameters:}
-\begin{itemize}
-    \item \texttt{sampling\_strategy=0.7}: Oversample minority to 70\% of majority class size
-    \item \texttt{k\_neighbors=5}: Use 5 nearest neighbors (or fewer if minority class $< 6$ samples)
-    \item \texttt{random\_state=42}: Reproducibility
-\end{itemize}
-
-The SMOTE application code is provided in Listing~\ref{lst:smote} in Appendix~\ref{sec:code-listings}.
+To address the severe class imbalance between Process Safety and Non-Process Safety incidents, Iteration~4 incorporated the Synthetic Minority Over-sampling Technique (SMOTE). In this setting, the majority class typically represents 80--90\% of the data, whereas the minority Process Safety class accounts for only 10--20\%, which can bias classifiers toward the majority class and substantially reduce minority-class recall. SMOTE mitigates this problem by creating synthetic minority examples in feature space. For each minority-class sample $\mathbf{x}_i$, one of its $k$ nearest neighbors $\mathbf{x}_{\text{nn}}$ is selected, and a new synthetic example is generated by interpolation:
+\begin{equation}
+\mathbf{x}_{\text{new}} = \mathbf{x}_i + \lambda \cdot (\mathbf{x}_{\text{nn}} - \mathbf{x}_i),
+\end{equation}
+where $\lambda \sim \text{Uniform}(0, 1)$. This procedure is repeated until the minority class reaches the desired sampling ratio. In the Iteration~4 implementation, \texttt{sampling\_strategy=0.7} was used so that the minority class was oversampled to 70\% of the majority-class size, \texttt{k\_neighbors=5} was selected whenever feasible, and \texttt{random\_state=42} ensured reproducibility. The corresponding implementation is shown in Listing~\ref{lst:smote} in Appendix~\ref{sec:code-listings}.
 
 \paragraph{6. Feature Scaling}
-StandardScaler normalization ensures features have zero mean and unit variance:
-
+Feature scaling was applied using \texttt{StandardScaler} in order to normalize embedding features to zero mean and unit variance:
 \begin{equation}
-\mathbf{x}_{\text{scaled}} = \frac{\mathbf{x} - \mu}{\sigma}
+\mathbf{x}_{\text{scaled}} = \frac{\mathbf{x} - \mu}{\sigma},
 \end{equation}
-
-where $\mu$ is the feature mean and $\sigma$ is the standard deviation computed on training data. This is critical for SVM and distance-based classifiers.
-
-Feature scaling is applied via \texttt{StandardScaler} fitted on the training set and applied to the test set (see Listing~\ref{lst:feature-scaling} in Appendix~\ref{sec:code-listings}).
+where $\mu$ denotes the feature mean and $\sigma$ denotes the standard deviation estimated from the training data. This transformation is especially important for SVM and other distance-sensitive classifiers, since unscaled embedding dimensions can otherwise distort the geometry of the feature space. In the pipeline, the scaler was fitted on the balanced training data and subsequently applied to the test data using the same parameters, as shown in Listing~\ref{lst:feature-scaling} in Appendix~\ref{sec:code-listings}.
 
 \paragraph{7. Multiple Classifier Architectures}
-Five classifier types were trained on each embedding set:
-
-\textbf{1. Support Vector Machine (SVM):}
-\begin{itemize}
-    \item \texttt{LinearSVC} with \texttt{dual=False} for efficiency on large datasets
-    \item Hyperparameter grid: \texttt{C} $\in \{0.1, 1, 10, 100\}$, \texttt{class\_weight} $\in \{$balanced, $\{0:1, 1:2\}, \{0:1, 1:3\}\}$
-    \item Optimization via \texttt{GridSearchCV} with 3-fold cross-validation
-    \item Scoring metric: \texttt{f1\_weighted}
-\end{itemize}
-
-\textbf{2. Random Forest:}
-\begin{itemize}
-    \item \texttt{n\_estimators=200}: 200 decision trees
-    \item \texttt{max\_depth=20}: Prevent overfitting
-    \item \texttt{class\_weight='balanced'}: Automatic class weight adjustment
-    \item \texttt{n\_jobs=-1}: Parallel processing
-\end{itemize}
-
-\textbf{3. XGBoost:}
-\begin{itemize}
-    \item Gradient boosting with \texttt{n\_estimators=200}
-    \item \texttt{scale\_pos\_weight}: Computed as $\frac{N_{\text{negative}}}{N_{\text{positive}}}$ for imbalance handling
-    \item \texttt{max\_depth=6}, \texttt{learning\_rate=0.1}: Standard hyperparameters
-    \item Histogram-based algorithm for efficiency
-\end{itemize}
-
-\textbf{4. LightGBM:}
-\begin{itemize}
-    \item Gradient Boosting Decision Trees with \texttt{n\_estimators=200}
-    \item \texttt{class\_weight='balanced'}: Built-in imbalance handling
-    \item \texttt{max\_depth=6}, \texttt{learning\_rate=0.1}
-    \item Leaf-wise tree growth for faster training
-\end{itemize}
-
-\textbf{5. Voting Ensemble:}
-\begin{itemize}
-    \item Hard voting across top-3 individual classifiers
-    \item Prediction via majority vote:
-    \begin{equation}
-    \hat{y} = \text{mode}(\hat{y}_{\text{SVM}}, \hat{y}_{\text{XGBoost}}, \hat{y}_{\text{RF}})
-    \end{equation}
-    \item Combines diverse model strengths for robust predictions
-\end{itemize}
-
-The full multi-classifier training function, including SVM with GridSearchCV, Random Forest, XGBoost, LightGBM, and the Voting Ensemble, is given in Listing~\ref{lst:multi-classifier} in Appendix~\ref{sec:code-listings}.
+Iteration~4 extended the earlier single-classifier setup by training five different classifier types on each embedding representation. The first classifier was a linear Support Vector Machine implemented via \texttt{LinearSVC} with \texttt{dual=False} for computational efficiency on large datasets. Its hyperparameters were optimized using \texttt{GridSearchCV} with three-fold cross-validation, where the regularization parameter was searched over \texttt{C} $\in \{0.1, 1, 10, 100\}$ and the class-weight configuration was selected from \texttt{balanced}, $\{0:1, 1:2\}$, and $\{0:1, 1:3\}$, using weighted F1 as the optimization criterion. Second, a Random Forest classifier with \texttt{n\_estimators=200}, \texttt{max\_depth=20}, and \texttt{class\_weight='balanced'} was used to provide a robust tree-based baseline with parallel execution through \texttt{n\_jobs=-1}. Third, XGBoost was included with \texttt{n\_estimators=200}, \texttt{max\_depth=6}, and \texttt{learning\_rate=0.1}, while imbalance was handled through \texttt{scale\_pos\_weight} computed as $\frac{N_{\text{negative}}}{N_{\text{positive}}}$. Fourth, LightGBM was trained with \texttt{n\_estimators=200}, \texttt{max\_depth=6}, \texttt{learning\_rate=0.1}, and built-in balanced class weights. Finally, a hard-voting ensemble combined the predictions of the top three individual classifiers and determined the final label by majority vote:
+\begin{equation}
+\hat{y} = \text{mode}(\hat{y}_{\text{SVM}}, \hat{y}_{\text{XGBoost}}, \hat{y}_{\text{RF}}).
+\end{equation}
+The full multi-classifier training function, including SVM with \texttt{GridSearchCV}, Random Forest, XGBoost, LightGBM, and the Voting Ensemble, is provided in Listing~\ref{lst:multi-classifier} in Appendix~\ref{sec:code-listings}.
 
 \paragraph{8. Comprehensive Evaluation Metrics}
-Extended metric suite beyond Iteration 3:
-
-\textbf{Classification Metrics:}
-\begin{itemize}
-    \item Accuracy, Precision, Recall, F1-score (per-class and aggregate)
-    \item Macro F1-score (primary metric, unweighted class average)
-    \item Weighted F1-score (support-weighted class average)
-\end{itemize}
-
-\textbf{Probabilistic Metrics (when available):}
-\begin{itemize}
-    \item ROC AUC (Area Under Receiver Operating Characteristic Curve):
-    \begin{equation}
-    \text{AUC} = \int_{0}^{1} \text{TPR}(\text{FPR}) \, d(\text{FPR})
-    \end{equation}
-    \item Average Precision (Area Under Precision-Recall Curve):
-    \begin{equation}
-    \text{AP} = \sum_{k=1}^{n} P(k) \cdot \Delta R(k)
-    \end{equation}
-\end{itemize}
-
-\textbf{Operational Metrics:}
-\begin{itemize}
-    \item Training time (seconds)
-    \item Best hyperparameters (GridSearchCV)
-    \item Cross-validation score (GridSearchCV)
-\end{itemize}
+The evaluation framework in Iteration~4 extended the metric set used in earlier iterations. At the classification level, the main metrics included accuracy, precision, recall, and F1-score, reported both per class and in aggregated form. Macro F1-score served as the primary metric because it gives equal weight to both classes regardless of class frequency, whereas weighted F1-score provided an additional support-weighted view of performance. When probabilistic outputs were available, the evaluation also incorporated ROC AUC and Average Precision. ROC AUC was defined as
+\begin{equation}
+\text{AUC} = \int_{0}^{1} \text{TPR}(\text{FPR}) \, d(\text{FPR}),
+\end{equation}
+while Average Precision was computed as
+\begin{equation}
+\text{AP} = \sum_{k=1}^{n} P(k) \cdot \Delta R(k).
+\end{equation}
+In addition to predictive metrics, the pipeline also recorded operational indicators such as total training time, best hyperparameter settings from \texttt{GridSearchCV}, and the associated cross-validation score.
 
 \paragraph{9. Enhanced Visualization Suite}
-Four-panel comprehensive evaluation for each classifier:
-
-\textbf{Panel 1: Confusion Matrix}
-\begin{itemize}
-    \item Heatmap with annotated counts
-    \item Color-coded by magnitude (Blues colormap)
-    \item Labels: Non-PS, PS (abbreviated for space)
-\end{itemize}
-
-\textbf{Panel 2: ROC Curve}
-\begin{itemize}
-    \item True Positive Rate vs. False Positive Rate
-    \item AUC score annotated on plot
-    \item Diagonal reference line (random classifier baseline)
-    \item Grid for precise reading
-\end{itemize}
-
-\textbf{Panel 3: Precision-Recall Curve}
-\begin{itemize}
-    \item Precision vs. Recall trade-off visualization
-    \item Average Precision score annotated
-    \item Critical for imbalanced datasets (emphasizes minority class)
-\end{itemize}
-
-\textbf{Panel 4: Metrics Bar Chart}
-\begin{itemize}
-    \item Horizontal bar chart of key metrics
-    \item Accuracy, F1 (weighted), F1 (PS), Precision (PS), Recall (PS)
-    \item Annotated values for precise comparison
-    \item X-axis range [0, 1] for standardization
-\end{itemize}
-
-The four-panel evaluation function (confusion matrix, ROC curve, precision-recall curve, metrics bar chart) is provided in Listing~\ref{lst:visualization} in Appendix~\ref{sec:code-listings}.
+To support comprehensive model inspection, Iteration~4 generated a four-panel evaluation visualization for each classifier. The first panel displayed the confusion matrix as a heatmap with annotated counts and a blue color scale, using abbreviated labels for the two classes. The second panel plotted the ROC curve, showing the trade-off between true positive rate and false positive rate, including the AUC value and a diagonal reference line representing random classification. The third panel showed the precision--recall curve together with the Average Precision score, which is particularly informative under class imbalance because it emphasizes minority-class performance. The fourth panel summarized key metrics in a horizontal bar chart, including accuracy, weighted F1, Process Safety F1, Process Safety precision, and Process Safety recall, with all values normalized to the interval $[0,1]$. The corresponding implementation is provided in Listing~\ref{lst:visualization} in Appendix~\ref{sec:code-listings}.
 
 \paragraph{10. Results Storage and Management}
-\textbf{Storage Structure:}
-\begin{itemize}
-    \item \textbf{Embeddings:} \texttt{/Embeddings/\_iteration\_4/\{model\}/}
-\item \textbf{Results:} \texttt{/Results/\_iteration\_4/}
-\item \textbf{Visual outputs:} classifier-specific confusion matrices saved using the pattern \texttt{cm\_\{dataset\}\_\{model\}\_\{classifier\}.png}
-\end{itemize}
-
-\textbf{Pickle File Contents:}
-\begin{itemize}
-    \item \texttt{X\_train}, \texttt{X\_test}, \texttt{y\_train}, \texttt{y\_test}: Original splits
-    \item \texttt{X\_train\_balanced}, \texttt{y\_train\_balanced}: Post-SMOTE data
-    \item \texttt{X\_train\_subset}, \texttt{X\_test\_scaled}: Final processed features
-    \item \texttt{scaler}: StandardScaler object for test-time normalization
-    \item \texttt{metadata}: Configuration snapshot (pooling, SMOTE parameters, etc.)
-\end{itemize}
+All embeddings generated in Iteration~4 were stored in the directory \texttt{/Embeddings/\_iteration\_4/\{model\}/}, while classifier outputs and visualizations were written to \texttt{/Results/\_iteration\_4/}. Confusion-matrix visualizations for each classifier were saved using the naming pattern \texttt{cm\_\{dataset\}\_\{model\}\_\{classifier\}.png}. In addition, intermediate and processed data were serialized in pickle format. These pickle files contained the original train--test splits (\texttt{X\_train}, \texttt{X\_test}, \texttt{y\_train}, \texttt{y\_test}), the balanced training data after SMOTE (\texttt{X\_train\_balanced}, \texttt{y\_train\_balanced}), the final processed feature matrices (\texttt{X\_train\_subset}, \texttt{X\_test\_scaled}), the fitted \texttt{StandardScaler}, and a metadata object recording the effective configuration used for that run.
 
 \subsubsection{Results Analysis Framework}
 
 \paragraph{Multi-Dimensional Performance Analysis}
-Results were analyzed across four dimensions:
-
-\textbf{1. Model Comparison:}
-\begin{itemize}
-    \item Aggregate statistics across all datasets and classifiers
-    \item Identification of best embedding model for process safety classification
-    \item Variance analysis to assess model stability
-\end{itemize}
-
-\textbf{2. Classifier Comparison:}
-\begin{itemize}
-    \item Average performance across all datasets and embedding models
-    \item Identification of optimal classifier architecture
-    \item Analysis of ensemble improvement over individual classifiers
-\end{itemize}
-
-\textbf{3. Dataset Comparison:}
-\begin{itemize}
-    \item Average performance across all models and classifiers
-    \item Language-specific performance patterns
-    \item Dataset difficulty ranking
-\end{itemize}
-
-\textbf{4. Technique Ablation:}
-\begin{itemize}
-    \item Impact of SMOTE on minority class recall
-    \item Effect of mean pooling vs. CLS pooling
-    \item Contribution of hyperparameter tuning
-    \item Ensemble improvement quantification
-\end{itemize}
+The results of Iteration~4 were analyzed across four complementary dimensions. First, model comparison focused on aggregate statistics across all datasets and classifiers in order to identify the strongest embedding models and to assess performance stability through variance analysis. Second, classifier comparison examined average performance across all datasets and embedding representations, thereby identifying the most effective downstream classifier architecture and quantifying the value added by the ensemble relative to individual classifiers. Third, dataset comparison evaluated language-specific performance patterns and ranked datasets according to difficulty, based on average scores across all model--classifier combinations. Fourth, technique ablation was designed to isolate the effects of key enhancements, including SMOTE, mean pooling, hyperparameter tuning, and ensemble voting.
 
 \paragraph{Comparative Visualization}
-Four-panel aggregate comparison chart:
-
-\textbf{Panel 1: F1 Score by Classifier}
-\begin{itemize}
-    \item Horizontal bar chart of average F1 (Process Safety) across all experiments
-    \item Sorted descending by performance
-    \item Annotated with exact values
-\end{itemize}
-
-\textbf{Panel 2: F1 Score by Model}
-\begin{itemize}
-    \item Average F1 (Process Safety) for each embedding model
-    \item Identifies best transformer architecture
-\end{itemize}
-
-\textbf{Panel 3: Accuracy vs. F1 Scatter}
-\begin{itemize}
-    \item Each point represents one classifier on one dataset
-    \item Color-coded by classifier type
-    \item Reveals accuracy-F1 trade-offs
-\end{itemize}
-
-\textbf{Panel 4: Precision-Recall Scatter}
-\begin{itemize}
-    \item Process Safety class precision vs. recall
-    \item Color-coded by classifier type
-    \item Identifies optimal precision-recall balance
-\end{itemize}
+A second layer of comparative visualization was used to summarize aggregated performance across experiments. The first panel displayed a horizontal bar chart of average Process Safety F1-score by classifier, sorted in descending order and annotated with exact values. The second panel showed average Process Safety F1-score by embedding model in order to identify the strongest transformer architecture. The third panel plotted accuracy against F1-score for each classifier--dataset combination, revealing performance trade-offs between overall correctness and class-balanced prediction quality. The fourth panel plotted Process Safety precision against Process Safety recall, color-coded by classifier type, in order to identify the configurations that achieved the most favorable precision--recall balance.
 
 \subsubsection{Key Innovations}
 
 \paragraph{1. Mean Pooling Strategy}
-Attention-mask weighted mean pooling captures document-level semantics more effectively than [CLS] token alone, particularly for long incident descriptions exceeding 512 tokens where truncation occurs.
+A central innovation of Iteration~4 was the replacement of exclusive CLS-token pooling with attention-mask-weighted mean pooling. Because incident descriptions can be relatively long and semantically diffuse, averaging across all valid token representations yields a richer and more stable document representation than relying solely on the first token.
 
 \paragraph{2. SMOTE-Based Balancing}
-Synthetic oversampling addresses the 80-20 class imbalance without discarding majority class information (unlike undersampling), improving minority class recall by 10-15 percentage points.
+Another major enhancement was the integration of SMOTE-based balancing. Unlike undersampling, which discards majority-class information, SMOTE increases minority-class representation synthetically and therefore improves recall for Process Safety incidents while preserving more of the original dataset structure.
 
 \paragraph{3. Multi-Classifier Architecture}
-Comparative evaluation of five classifier types reveals that gradient boosting methods (XGBoost, LightGBM) consistently outperform SVM on balanced embeddings, with 2-4 percentage point F1 improvements.
+Iteration~4 also expanded the experimental design from a single-classifier setting to a multi-classifier architecture including linear SVM, Random Forest, XGBoost, LightGBM, and a Voting Ensemble. This made it possible to compare linear margin-based, bagging-based, and gradient-boosting approaches within a common embedding pipeline.
 
 \paragraph{4. Ensemble Robustness}
-Hard voting ensemble combines diverse model predictions, reducing variance and improving generalization, particularly on unseen incident types.
+The inclusion of a hard-voting ensemble introduced an additional robustness mechanism by combining the strengths of diverse classifiers. This strategy reduces variance and can improve generalization, especially when individual classifiers make complementary errors.
 
 \paragraph{5. Hyperparameter Optimization}
-GridSearchCV-based hyperparameter tuning improves SVM performance by optimizing regularization strength (C) and class weight ratios, yielding 1-3 percentage point F1 gains.
+The use of \texttt{GridSearchCV} added a principled hyperparameter-optimization layer to the pipeline. Rather than relying on default settings, Iteration~4 systematically tuned key classifier parameters such as SVM regularization and class weights, enabling more competitive and reproducible performance.
 
 \paragraph{6. Probabilistic Evaluation}
-ROC AUC and Average Precision metrics provide complementary views of classifier performance, particularly valuable for threshold-sensitive deployment scenarios.
+Finally, Iteration~4 extended the evaluation beyond thresholded class labels by incorporating probabilistic metrics such as ROC AUC and Average Precision. These measures provide a more nuanced understanding of classifier behavior and are particularly useful when considering deployment scenarios with adjustable decision thresholds.
 
 \subsubsection{Expected Outcomes}
-
-Based on the implemented enhancements, the following outcomes are anticipated:
-
-\begin{itemize}
-    \item \textbf{Minority Class Recall Improvement:} SMOTE should increase Process Safety recall by 10-15 percentage points compared to Iteration 3
-    \item \textbf{Mean Pooling Advantage:} 2-5 percentage point F1 improvement over [CLS] pooling for datasets with longer incident descriptions
-    \item \textbf{Gradient Boosting Superiority:} XGBoost and LightGBM should outperform SVM by 3-6 percentage points in F1 (Process Safety)
-    \item \textbf{Ensemble Improvement:} Voting ensemble should achieve 1-2 percentage point F1 improvement over best individual classifier
-    \item \textbf{Overall F1 Target:} Achieve macro F1-score $\geq 0.90$ on at least one dataset
-    \item \textbf{Process Safety F1 Target:} Exceed 0.85 F1 for Process Safety class across all datasets
-\end{itemize}
+Based on the implemented enhancements, Iteration~4 was expected to improve Process Safety recall through SMOTE balancing, to outperform CLS pooling through mean pooling on longer incident descriptions, and to demonstrate the superiority of gradient-boosting classifiers over linear SVM in terms of Process Safety F1-score. In addition, the hard-voting ensemble was expected to provide a modest improvement over the best single classifier, while the overall macro F1-score was expected to approach or exceed 0.90 on at least one dataset and Process Safety F1-score was expected to surpass 0.85 across all datasets.
 
 \subsubsection{Limitations and Considerations}
-
-\begin{itemize}
-    \item \textbf{SMOTE Overfitting Risk:} Synthetic samples generated in high-dimensional embedding space may not preserve minority class decision boundaries, potentially introducing noise
-    \item \textbf{Computational Cost:} Training five classifiers per embedding increases total training time by 5$\times$ compared to Iteration 3
-    \item \textbf{Hyperparameter Search Space:} GridSearchCV explores limited hyperparameter ranges due to computational constraints; Bayesian optimization may yield further improvements
-    \item \textbf{Ensemble Interpretability:} Voting ensemble predictions lack interpretability compared to single-model decisions, complicating error analysis
-    \item \textbf{Gradient Boosting Sensitivity:} XGBoost and LightGBM require careful hyperparameter tuning (learning rate, max depth, n\_estimators) to avoid overfitting on small datasets
-    \item \textbf{Mean Pooling Assumptions:} Assumes all tokens contribute equally to document semantics; may dilute signal from critical keywords (e.g., "explosion", "fatality")
-    \item \textbf{Scalability:} SMOTE on 60,000-sample training sets requires significant memory (multiple GB); may necessitate subsampling for larger datasets
-\end{itemize}
+Despite these enhancements, several methodological limitations remained. Synthetic samples generated by SMOTE in high-dimensional embedding space may not always preserve realistic minority-class structure and can therefore introduce noise. Training five classifiers for each embedding model substantially increases computational cost compared with earlier iterations. The hyperparameter search space explored by \texttt{GridSearchCV} remained limited by practical constraints, which means that further gains might still be achievable with more advanced optimization methods such as Bayesian search. Ensemble predictions, while often stronger, are less interpretable than those of individual classifiers. Moreover, gradient-boosting models remain sensitive to parameter settings such as learning rate, depth, and number of estimators, especially on smaller datasets. Mean pooling also assumes that all token representations contribute approximately equally to document semantics, which may dilute highly informative process-safety keywords. Finally, SMOTE can become memory-intensive on large training sets, potentially limiting scalability.
 
 \subsubsection{Comparison with Previous Iterations}
 
@@ -1926,33 +1451,10 @@ Key Innovation & Baseline & Multi-model & Multilingual & Advanced ML \\
 \end{table}
 
 \subsubsection{Ablation Study Design}
-
-To quantify the contribution of individual enhancements, the following ablation experiments should be conducted:
-
-\begin{enumerate}
-    \item \textbf{Pooling Strategy:} Compare CLS vs. Mean vs. Max pooling on same model-dataset combination
-    \item \textbf{SMOTE Impact:} Train classifiers with and without SMOTE on same embeddings
-    \item \textbf{Scaling Effect:} Evaluate SVM performance with and without StandardScaler normalization
-    \item \textbf{Hyperparameter Tuning:} Compare default SVM hyperparameters vs. GridSearchCV-optimized parameters
-    \item \textbf{Ensemble Contribution:} Quantify improvement of voting ensemble over best individual classifier
-\end{enumerate}
-
-Each ablation isolates one variable while holding others constant, enabling causal attribution of performance improvements.
+To quantify the individual contribution of each enhancement, a structured ablation design was defined. This included comparisons between CLS, mean, and max pooling on the same model--dataset pairs; experiments with and without SMOTE on identical embeddings; tests of SVM performance with and without \texttt{StandardScaler}; comparisons between default and \texttt{GridSearchCV}-optimized hyperparameters; and an analysis of the improvement obtained by the Voting Ensemble over the best individual classifier. By holding all other settings constant while changing only one factor at a time, these ablation experiments provide a basis for causal interpretation of the observed performance differences.
 
 \subsubsection{Future Directions}
-
-Iteration 4 establishes a comprehensive baseline for advanced ML techniques. Future research directions include:
-
-\begin{itemize}
-    \item \textbf{Domain-Specific Fine-Tuning:} Fine-tune multilingual transformers on process safety corpus to learn domain-specific representations
-    \item \textbf{Attention Visualization:} Analyze transformer attention weights to identify key incident features driving predictions
-    \item \textbf{Active Learning:} Prioritize labeling of uncertain samples near decision boundary to maximize labeling efficiency
-    \item \textbf{Multi-Task Learning:} Jointly train on process safety classification and incident severity regression
-    \item \textbf{Explainability Methods:} Integrate LIME or SHAP to generate human-interpretable explanations for predictions
-    \item \textbf{Deployment Optimization:} Distill ensemble into single lightweight model for production deployment
-\end{itemize}
-
-These directions address remaining limitations and enable transition from research prototype to production-ready incident classification system.
+Iteration~4 established a comprehensive baseline for advanced machine-learning techniques, but several extensions remain promising. These include domain-specific fine-tuning of multilingual transformers on process-safety corpora, attention-based visualization for identifying the textual features driving predictions, active-learning strategies for prioritizing uncertain samples near the decision boundary, multi-task learning for combining classification with severity regression, the integration of explainability methods such as LIME and SHAP, and model-distillation techniques for translating ensemble performance into a lighter production-ready deployment model. Collectively, these directions provide a pathway from a research-focused experimental framework toward a practically deployable incident-classification system.
 
 \subsection{Iteration 5: Aggressive Process Safety Targeting}
 
@@ -1965,74 +1467,40 @@ Previous iterations demonstrated that despite improvements in overall accuracy a
 \subsubsection{Implementation Steps}
 
 \paragraph{1. Enhanced Configuration}
-Key configuration changes from Iteration~4 are shown in Listing~\ref{lst:iter5-config} in Appendix~\ref{sec:code-listings}. The most significant changes are full 1:1 SMOTE balancing (\texttt{smote\_strategy='auto'}), combined SMOTETomek resampling, threshold optimisation targeting 95\% PS recall, and a 10$\times$ class weight multiplier on Process Safety incidents.
+Key configuration changes relative to Iteration~4 are presented in Listing~\ref{lst:iter5-config} in Appendix~\ref{sec:code-listings}. The most important modifications include full 1:1 SMOTE balancing through \texttt{smote\_strategy='auto'}, the integration of SMOTETomek resampling, threshold optimisation aimed at achieving 95\% recall for the Process Safety class, and the use of a 10$\times$ class-weight multiplier for Process Safety incidents. Collectively, these changes reflect a deliberate shift toward aggressive minority-class targeting in order to minimise false negatives in safety-critical classification.
 
 \paragraph{2. Full SMOTE Oversampling}
-Unlike Iteration 4's conservative SMOTE strategy (minority at 70\% of majority), Iteration 5 employs full 1:1 balancing:
-
+In contrast to Iteration~4, where SMOTE increased the minority class only to 70\% of the majority class, Iteration~5 applies full 1:1 balancing. Formally, the number of synthetic minority-class samples is defined as
 \begin{equation}
-N_{\text{minority}}^{\text{synthetic}} = N_{\text{majority}} - N_{\text{minority}}^{\text{original}}
+N_{\text{minority}}^{\text{synthetic}} = N_{\text{majority}} - N_{\text{minority}}^{\text{original}}.
 \end{equation}
-
-This creates a perfectly balanced training set, eliminating class imbalance bias entirely.
+This yields a perfectly balanced training set and is intended to remove the systematic learning bias toward the majority Non-Process Safety class.
 
 \paragraph{3. Strategic Undersampling}
-Combined with SMOTE, strategic undersampling reduces the majority class:
-
+In addition to full SMOTE oversampling, Iteration~5 applies strategic undersampling in order to further control the post-resampling class distribution. The final majority-class size is defined as
 \begin{equation}
-N_{\text{majority}}^{\text{final}} = 0.8 \times N_{\text{minority}}^{\text{after SMOTE}}
+N_{\text{majority}}^{\text{final}} = 0.8 \times N_{\text{minority}}^{\text{after SMOTE}}.
 \end{equation}
-
-The SMOTETomek combination further cleans overlapping samples near the decision boundary:
-
-The SMOTETomek implementation is provided in Listing~\ref{lst:smotetomek} in Appendix~\ref{sec:code-listings}.
+Thus, after oversampling the minority class, the majority class is reduced to 80\% of the minority-class size. The combined SMOTETomek strategy further removes overlapping observations near the decision boundary, thereby attempting to clean ambiguous border regions before classifier training. The corresponding implementation is provided in Listing~\ref{lst:smotetomek} in Appendix~\ref{sec:code-listings}.
 
 \paragraph{4. Threshold Optimization}
-Rather than using the default 0.5 classification threshold, Iteration 5 optimizes the threshold to achieve target recall:
-
-The threshold optimisation function is provided in Listing~\ref{lst:threshold-opt} in Appendix~\ref{sec:code-listings}.
+Rather than using the default decision threshold of 0.5, Iteration~5 performs threshold optimisation to explicitly target high Process Safety recall. This is particularly important in the present application, where false negatives are more critical than false positives. The threshold-optimisation function used for this purpose is documented in Listing~\ref{lst:threshold-opt} in Appendix~\ref{sec:code-listings}.
 
 \paragraph{5. Aggressive Class Weights}
-Class weights are amplified beyond the standard balanced weighting:
-
+Beyond resampling, class weighting was strengthened substantially in order to penalise missed Process Safety incidents more heavily. The Process Safety class weight is defined as
 \begin{equation}
-w_{\text{PS}} = 10 \times \frac{N_{\text{total}}}{2 \times N_{\text{PS}}}
+w_{\text{PS}} = 10 \times \frac{N_{\text{total}}}{2 \times N_{\text{PS}}}.
 \end{equation}
-
-This 10$\times$ multiplier heavily penalizes false negatives during training.
+The additional factor of 10 imposes a much stronger penalty on false negatives during optimisation and therefore biases training toward higher sensitivity for the minority class.
 
 \paragraph{6. Model Selection}
-Nine multilingual transformer models were evaluated:
-
-\begin{itemize}
-    \item \texttt{bert-base-multilingual-uncased}
-    \item \texttt{xlm-roberta-base}
-    \item \texttt{paraphrase-multilingual-mpnet-base-v2}
-    \item \texttt{paraphrase-multilingual-MiniLM-L12-v2}
-    \item \texttt{snowflake-arctic-embed-l-v2.0}
-    \item \texttt{labse-gguf}
-    \item \texttt{upskyy/bge-m3-korean}
-    \item \texttt{intfloat/multilingual-e5-large-instruct}
-    \item \texttt{efederici/e5-base-multilingual-4096}
-\end{itemize}
+Iteration~5 evaluated nine multilingual transformer models: \texttt{bert-base-multilingual-uncased}, \texttt{xlm-roberta-base}, \texttt{paraphrase-multilingual-mpnet-base-v2}, \texttt{paraphrase-multilingual-MiniLM-L12-v2}, \texttt{snowflake-arctic-embed-l-v2.0}, \texttt{labse-gguf}, \texttt{upskyy/bge-m3-korean}, \texttt{intfloat/multilingual-e5-large-instruct}, and \texttt{efederici/e5-base-multilingual-4096}. These models were selected to represent a broad range of multilingual embedding architectures under the aggressive balancing regime introduced in this iteration.
 
 \subsubsection{Expected Outcomes}
-
-\begin{itemize}
-    \item \textbf{Process Safety Recall:} Achieve $\geq 95\%$ recall for Process Safety class
-    \item \textbf{Trade-off Analysis:} Quantify precision-recall trade-off at aggressive thresholds
-    \item \textbf{Macro F1 Impact:} Assess impact of aggressive balancing on overall macro F1
-    \item \textbf{False Positive Analysis:} Characterize increased false positives from lower thresholds
-\end{itemize}
+The primary expectation of Iteration~5 is that the Process Safety recall will increase to at least 95\%. In addition, this iteration is intended to quantify the precision--recall trade-off created by aggressive thresholding and balancing, to assess the effect of these interventions on overall macro F1-score, and to examine how strongly the lower decision threshold increases the number of false positives. Accordingly, the focus of this iteration is not only on achieving very high minority-class recall, but also on understanding the operational costs of such an aggressive classification strategy.
 
 \subsubsection{Limitations}
-
-\begin{itemize}
-    \item \textbf{Synthetic Data Quality:} Full SMOTE may generate unrealistic synthetic samples in high-dimensional embedding space
-    \item \textbf{Precision Degradation:} Aggressive recall optimization may significantly reduce precision
-    \item \textbf{Computational Cost:} SMOTETomek on large datasets requires substantial memory and processing time
-    \item \textbf{Overfitting Risk:} Heavy class weighting may cause model to overfit to minority class patterns
-\end{itemize}
+Despite its potential advantages, Iteration~5 is subject to several important limitations. Full SMOTE in high-dimensional embedding space may generate synthetic observations that are not semantically realistic, thereby introducing noise into the training set. Moreover, aggressive recall optimisation is likely to reduce precision, which may substantially increase false alarms. The combined SMOTETomek pipeline also imposes significant computational cost in terms of both memory and runtime, particularly for larger datasets. Finally, the strong class-weight amplification may cause the classifier to overfit to minority-class patterns that do not generalise well to unseen incident reports.
 
 \subsection{Iteration 6: Language-Aware Undersampling with Strong Regularization}
 
@@ -2045,50 +1513,27 @@ Iteration 5's aggressive SMOTE oversampling raised concerns about synthetic samp
 \subsubsection{Implementation Steps}
 
 \paragraph{1. Language-Aware Sampling Strategy}
-Unlike previous iterations that treated the dataset as a single corpus, Iteration 6 performs stratified sampling within each language:
-
-The language-aware undersampling function, which selects the longest incident descriptions within each language-class stratum, is provided in Listing~\ref{lst:lang-undersample} in Appendix~\ref{sec:code-listings}.
+Unlike previous iterations, which treated the available reports as a single undifferentiated corpus, Iteration~6 applies stratified sampling separately within each language group. In this way, the undersampling procedure preserves the linguistic structure of the dataset while reducing class imbalance. The corresponding language-aware undersampling function, which selects the longest incident descriptions within each language--class stratum, is provided in Listing~\ref{lst:lang-undersample} in Appendix~\ref{sec:code-listings}.
 
 \paragraph{2. Selection of Longest Text}
-The key insight of Iteration 6 is that longer incident descriptions typically contain more detailed information about the incident context, enabling better classification:
-
+The central assumption of Iteration~6 is that longer incident descriptions tend to contain richer contextual information, more explicit causal details, and clearer references to process-related hazards, which in turn support more reliable classification. To operationalize this idea, each report is assigned a simple length-based score:
 \begin{equation}
-\text{Score}(d_i) = \text{len}(\text{TITLE}_i \oplus \text{DESCRIPTION}_i)
+\text{Score}(d_i) = \text{len}(\text{TITLE}_i \oplus \text{DESCRIPTION}_i).
 \end{equation}
-
-Samples are ranked by text length within each class-language stratum, and the top $N$ longest descriptions are selected.
+Within each language--class stratum, samples are ranked according to this score, and the top $N$ longest descriptions are retained for training. This procedure aims to preserve the most information-rich real observations while avoiding the introduction of synthetic samples.
 
 \paragraph{3. No Synthetic Data}
-Iteration 6 uses exclusively real data:
-
-\begin{itemize}
-    \item No SMOTE oversampling
-    \item No ADASYN
-    \item No data augmentation
-    \item 100\% authentic incident reports
-\end{itemize}
-
-This ensures that classifier decisions are based solely on patterns present in actual incident reports, not artifacts of synthetic generation.
+A defining characteristic of Iteration~6 is that it relies exclusively on authentic incident reports. In contrast to earlier balancing strategies, no SMOTE oversampling, no ADASYN, and no other form of artificial data augmentation are applied. As a result, all classifier decisions are based solely on patterns observed in genuine reports rather than on interpolated or synthetically generated samples. This design was chosen in order to eliminate concerns that synthetic minority-class examples might distort the geometry of the embedding space or introduce unrealistic safety-event patterns.
 
 \paragraph{4. Strong Regularization}
-To compensate for reduced training data, strong regularization is applied:
-
-\begin{itemize}
-    \item \textbf{SVM:} Higher regularization ($C = 0.1$ instead of $C = 1.0$)
-    \item \textbf{Gradient Boosting:} Lower learning rate (0.05), fewer estimators (100)
-    \item \textbf{Random Forest:} Deeper trees with more aggressive pruning
-\end{itemize}
+Because language-aware undersampling substantially reduces the effective size of the training set, stronger regularization is introduced to mitigate overfitting. For SVM models, this is achieved through a more restrictive regularization setting, with $C = 0.1$ rather than $C = 1.0$. For gradient boosting methods, the learning rate is reduced to 0.05 and the number of estimators is limited to 100 in order to constrain model complexity. Random Forest models are likewise regularized through more aggressive tree-pruning settings. Taken together, these adjustments are intended to improve generalization under reduced-data conditions.
 
 \paragraph{5. RBF Kernel SVM}
-Iteration 6 introduces non-linear SVM with RBF kernel:
-
-The RBF kernel SVM configuration is given in Listing~\ref{lst:rbf-svm} in Appendix~\ref{sec:code-listings}.
-
-The RBF kernel can capture non-linear decision boundaries in the embedding space:
-
+Iteration~6 further extends the classifier design by introducing a non-linear SVM with an RBF kernel. The specific configuration used for this model is documented in Listing~\ref{lst:rbf-svm} in Appendix~\ref{sec:code-listings}. In contrast to linear decision functions, the RBF kernel enables the classifier to model non-linear class boundaries in the embedding space, which is particularly relevant when semantic clusters of Process Safety and Non-Process Safety incidents are not linearly separable. Formally, the kernel is defined as
 \begin{equation}
-K(\mathbf{x}_i, \mathbf{x}_j) = \exp\left(-\gamma \|\mathbf{x}_i - \mathbf{x}_j\|^2\right)
+K(\mathbf{x}_i, \mathbf{x}_j) = \exp\left(-\gamma \|\mathbf{x}_i - \mathbf{x}_j\|^2\right).
 \end{equation}
+This formulation allows the model to measure similarity in a non-linear feature space and thereby capture more complex relationships between embedded incident narratives.
 
 \subsubsection{Results Summary}
 
@@ -2110,22 +1555,10 @@ Mean Macro F1 & 0.4815 & \\
 \end{table}
 
 \subsubsection{Key Findings}
-
-\begin{itemize}
-    \item \textbf{Language-Specific Performance:} English datasets (UK) showed highest performance, likely due to model pre-training bias
-    \item \textbf{Text Length Correlation:} Longer descriptions correlated with higher classification confidence
-    \item \textbf{RBF Advantage:} Non-linear SVM outperformed linear SVM on language-balanced subsets
-    \item \textbf{Real Data Quality:} 100\% real data avoided synthetic artifacts observed in Iteration 5
-\end{itemize}
+The empirical results indicate that Iteration~6 performs best on the English-language UK dataset, which likely reflects a combination of stronger model pre-training alignment with English and better semantic consistency in the English reports. The length-based selection strategy also appears to be meaningful, as longer descriptions were associated with higher classification confidence and more stable decision boundaries. In addition, the RBF-kernel SVM outperformed the corresponding linear SVM on the language-balanced subsets, suggesting that the decision surface in the reduced real-data setting is not adequately captured by a purely linear classifier. Finally, the use of 100\% authentic data avoids the synthetic artifacts that were a concern in Iteration~5 and therefore provides a cleaner experimental basis for assessing the real discriminatory value of the underlying text representations.
 
 \subsubsection{Limitations}
-
-\begin{itemize}
-    \item \textbf{Data Reduction:} Language-aware undersampling significantly reduces training set size
-    \item \textbf{Language Imbalance:} Languages with fewer Process Safety incidents have smaller training sets
-    \item \textbf{Selection Bias:} Preferring longest descriptions may bias toward certain incident types
-    \item \textbf{Lower Mean Performance:} Mean macro F1 (0.4815) indicates high variance across configurations
-\end{itemize}
+Despite these advantages, Iteration~6 has several important limitations. First, language-aware undersampling necessarily reduces the size of the training data, which may weaken statistical robustness and increase sensitivity to local variation. Second, languages with relatively few Process Safety incidents contribute only small balanced subsets, thereby constraining the amount of usable supervision available for those strata. Third, selecting only the longest descriptions may introduce selection bias, since longer reports may systematically correspond to certain incident types, reporting cultures, or severity levels. Finally, the comparatively low mean macro F1-score of 0.4815 indicates substantial variation across configurations, suggesting that the benefits of this strategy are uneven and highly dependent on dataset and model choice.
 
 \subsection{Iteration 7: LLM-Based Few-Shot Classification}
 
@@ -2138,20 +1571,13 @@ Previous iterations relied on embedding-based approaches where transformer model
 \subsubsection{Implementation Steps}
 
 \paragraph{1. Model Selection}
-Two Flan-T5 variants were selected for evaluation:
-
-\begin{itemize}
-    \item \texttt{google/flan-t5-large}: 780M parameters, instruction-tuned T5
-    \item \texttt{google/flan-t5-xl}: 3B parameters, scaled instruction-tuned variant
-\end{itemize}
-
-Flan-T5 models were chosen for their strong performance on classification tasks and explicit instruction-following training.
+Iteration~7 evaluates two instruction-tuned variants of the Flan-T5 family, namely \texttt{google/flan-t5-large} with approximately 780 million parameters and \texttt{google/flan-t5-xl} with approximately 3 billion parameters. These models were selected because Flan-T5 combines the T5 text-to-text framework with instruction tuning, making it suitable for prompt-based classification tasks in which the model must infer labels directly from natural-language task descriptions rather than from task-specific supervised fine-tuning.
 
 \paragraph{2. Process Safety Definition}
-A comprehensive definition was developed to guide LLM classification (see Listing~\ref{lst:ps-definition} in Appendix~\ref{sec:code-listings}). It enumerates ten categories of Process Safety incidents (equipment failures, leaks, pressure deviations, ESDs, fire/explosion, loss of containment, contamination, equipment damage, unplanned outages, and process-system harm potential) alongside four categories of Non-Process Safety incidents.
+To guide the LLM classification procedure, a comprehensive Process Safety definition was formulated and incorporated into the prompting framework (see Listing~\ref{lst:ps-definition} in Appendix~\ref{sec:code-listings}). This definition enumerates ten categories of Process Safety incidents, including equipment failures, leaks, pressure deviations, emergency shutdowns, fire or explosion events, loss of containment, contamination, equipment damage, unplanned outages, and broader process-system harm potential, while also distinguishing four categories of Non-Process Safety incidents. The purpose of this definition is to reduce ambiguity in the classification task and provide the model with an explicit conceptual boundary between the two classes.
 
 \paragraph{3. Few-Shot Example Selection}
-Language-specific few-shot examples were curated from actual incident reports:
+Language-specific few-shot examples were curated from actual incident reports in order to support multilingual in-context learning. The examples were selected to represent diverse incident patterns within each class and to capture potentially ambiguous or borderline cases that might otherwise be difficult for the model to classify correctly. The final distribution of few-shot examples is summarised in Table~\ref{tab:few-shot-examples}.
 
 \begin{table}[htbp]
 \centering
@@ -2169,103 +1595,34 @@ Swedish & 1 & 2 & 3 \\
 \end{tabular}
 \end{table}
 
-Examples were selected to represent diverse incident types within each class, ensuring coverage of edge cases.
-
 \paragraph{4. Prompt Engineering}
-The few-shot prompt template combines the Process Safety definition with labeled examples (see Listing~\ref{lst:few-shot-prompt} in Appendix~\ref{sec:code-listings}). The prompt prepends the definition, then includes two PS and two NPS examples per language, followed by the target incident.
+The few-shot prompt template combines the Process Safety definition with labeled examples in a structured natural-language instruction format (see Listing~\ref{lst:few-shot-prompt} in Appendix~\ref{sec:code-listings}). Specifically, the prompt begins with the formal Process Safety definition, followed by two Process Safety and two Non-Process Safety examples for the relevant language, and concludes with the target incident report to be classified. This design aims to provide the model with both conceptual guidance and concrete task demonstrations before it generates a binary label.
 
 \paragraph{5. Inference Pipeline}
-Batch inference was implemented with checkpointing for large-scale evaluation. The pipeline tokenises each prompt, calls \texttt{model.generate} with greedy decoding (\texttt{num\_beams=1}), and parses the response string for the phrase \textit{``process safety''} to assign a binary label (see Listing~\ref{lst:llm-inference} in Appendix~\ref{sec:code-listings}).
+Batch inference was implemented with checkpointing in order to support large-scale evaluation over the full multilingual dataset. For each incident, the pipeline tokenises the constructed prompt, applies \texttt{model.generate} using greedy decoding with \texttt{num\_beams=1}, and then parses the generated response for the phrase \textit{``process safety''} in order to assign a binary label (see Listing~\ref{lst:llm-inference} in Appendix~\ref{sec:code-listings}). This pipeline enables systematic processing of the full corpus while ensuring that intermediate progress can be saved and resumed when necessary.
 
 \paragraph{6. Multilingual Support}
-The pipeline routes each dataset file to the appropriate language-specific few-shot example bank (see Listing~\ref{lst:lang-files} in Appendix~\ref{sec:code-listings}).
+To preserve language consistency during few-shot prompting, the pipeline routes each dataset file to the corresponding language-specific example bank (see Listing~\ref{lst:lang-files} in Appendix~\ref{sec:code-listings}). In this way, English incidents are paired with English few-shot examples, German incidents with German examples, and likewise for Dutch and Swedish. This multilingual routing strategy is intended to reduce cross-lingual prompt mismatch and to provide the model with demonstrations that are linguistically aligned with the target incident narrative.
 
-\subsubsection{Results Summary}
+\subsection{Iteration 8: Placeholder for Final Integrated Refinement}
 
-\begin{table}[htbp]
-\centering
-\caption{Iteration 7 Classification Results (Flan-T5-Large)}
-\label{tab:iter7-results}
-\begin{tabular}{@{}lr@{}}
-\toprule
-\textbf{Metric} & \textbf{Value} \\
-\midrule
-Total Records & 54,751 \\
-Process Safety (Actual) & 7,590 \\
-Non-Process Safety (Actual) & 47,161 \\
-\midrule
-Accuracy & 0.8554 (85.54\%) \\
-Precision (PS) & 0.1241 \\
-Recall (PS) & 0.0071 \\
-F1-Score (PS) & 0.0135 \\
-\midrule
-True Positives & 54 \\
-False Positives & 381 \\
-False Negatives & 7,536 \\
-True Negatives & 46,780 \\
-\bottomrule
-\end{tabular}
-\end{table}
+\subsubsection{Objective}
+Iteration~8 is reserved as a placeholder for a final integrated refinement stage intended to consolidate the strongest methodological components identified in the earlier experiments. The purpose of this planned iteration is not to introduce a fundamentally new modelling paradigm, but rather to combine the most effective embedding strategy, class-balancing configuration, classifier architecture, and decision-threshold setting into a single final benchmark configuration.
 
-\subsubsection{Analysis of LLM Performance}
+\subsubsection{Rationale}
+The preceding iterations revealed that no single methodological modification was sufficient to achieve the target defined in RQ1. However, several components emerged as consistently promising, including stronger multilingual embedding models, mean pooling, gradient boosting classifiers, calibrated class balancing, and threshold-sensitive optimisation for Process Safety recall. Iteration~8 is therefore conceived as an integration stage in which these individually successful design choices would be combined and re-evaluated under a unified final configuration.
 
-The results reveal significant challenges with zero/few-shot LLM classification:
+\subsubsection{Planned Configuration}
+The planned Iteration~8 configuration would draw selectively on the strongest findings from earlier iterations. In particular, it would use the best-performing multilingual embedding model identified in Iterations~4--6, retain mean pooling as the preferred document representation strategy, employ the strongest downstream classifier architecture observed in the advanced ML experiments, and apply the most appropriate balancing strategy depending on the required precision--recall trade-off. In addition, threshold optimisation and error-focused post-hoc analysis would be incorporated in order to assess whether the final integrated system can narrow the remaining gap to the RQ1 target.
 
-\begin{itemize}
-    \item \textbf{High Accuracy, Low Recall:} The 85.54\% accuracy is misleading due to class imbalance. The model predominantly predicts Non-Process Safety, achieving high accuracy by correctly classifying the majority class.
-    
-    \item \textbf{Extremely Low PS Recall:} Only 54 out of 7,590 Process Safety incidents were correctly identified (0.71\% recall), indicating the LLM fails to recognize most PS incidents.
-    
-    \item \textbf{Precision-Recall Trade-off:} While precision is low (12.41\%), the model is overly conservative in predicting Process Safety.
-    
-    \item \textbf{Prompt Sensitivity:} LLM performance is highly sensitive to prompt wording and example selection.
-\end{itemize}
+\subsubsection{Expected Role in the Thesis}
+Methodologically, Iteration~8 serves as a placeholder for the final synthesis step of the experimental framework. Its intended role is to provide a single consolidated benchmark that reflects the cumulative knowledge gained from Iterations~0--7. In this sense, Iteration~8 is conceptually important even though no empirical results are reported for it in the present version of the thesis.
 
-\subsubsection{Comparison with Traditional ML}
+\subsubsection{Status}
+Iteration~8 was not executed within the time frame of the present thesis. It is therefore retained as a structural placeholder only, and all quantitative results reported in this thesis are limited to Iterations~0--7.
 
-\begin{table}[htbp]
-\centering
-\caption{Traditional ML vs. LLM Classification Comparison}
-\label{tab:ml-vs-llm}
-\begin{tabular}{@{}lccc@{}}
-\toprule
-\textbf{Approach} & \textbf{Macro F1} & \textbf{PS Recall} & \textbf{Training Required} \\
-\midrule
-BERT + SVM (Iter 0) & 0.7899 & 82.48\% & Yes \\
-Multilingual BERT + SVM (Iter 3) & 0.86--0.89 & 78--85\% & Yes \\
-XGBoost Ensemble (Iter 4) & 0.85--0.90 & 80--88\% & Yes \\
-Flan-T5-Large (Iter 7) & 0.0135 & 0.71\% & No \\
-\bottomrule
-\end{tabular}
-\end{table}
 
-\subsubsection{Key Findings for RQ2 and RQ3}
-
-\textbf{RQ2 (Traditional ML vs. LLM):}
-\begin{itemize}
-    \item Traditional ML approaches (BERT embeddings + classifiers) significantly outperform zero/few-shot LLM classification
-    \item The performance gap is substantial: 0.79--0.90 macro F1 for traditional ML vs. 0.01 for LLM
-    \item LLMs require fine-tuning or more sophisticated prompting strategies for competitive performance
-\end{itemize}
-
-\textbf{RQ3 (Hazard Type Extraction):}
-\begin{itemize}
-    \item Few-shot prompting with explicit process safety definitions shows promise for hazard identification
-    \item However, current results do not meet the 80\% precision target
-    \item Multilingual few-shot examples enable cross-lingual classification without translation
-\end{itemize}
-
-\subsubsection{Limitations and Future Directions}
-
-\begin{itemize}
-    \item \textbf{Prompt Optimization:} More sophisticated prompt engineering (chain-of-thought, self-consistency) may improve performance
-    \item \textbf{Fine-Tuning:} Domain-specific fine-tuning of LLMs on process safety data could dramatically improve results
-    \item \textbf{Model Scale:} Larger models (GPT-4, Claude) may exhibit stronger few-shot learning capabilities
-    \item \textbf{Retrieval-Augmented Generation:} RAG approaches could provide more relevant examples dynamically
-    \item \textbf{Hybrid Approaches:} Combining LLM-generated features with traditional classifiers warrants investigation
-\end{itemize}
-
-\subsubsection{RQ4: Incident Severity Prediction Framework}
+\subsection{RQ4: Incident Severity Prediction Framework}
 \label{sec:rq4_methodology}
 
 \paragraph{Objective}
@@ -2470,7 +1827,7 @@ The projections are conservative because severity prediction is inherently harde
 
 \textit{Data limitations.} Different reporters and countries apply severity ratings inconsistently; no inter-annotator agreement study exists for the \texttt{CASE\_SEVERITY} field. The High severity class contains only 1{,}043 examples, yielding approximately 830 training examples after splitting, which may be insufficient for deep learning approaches. The 14.8\% of records with \texttt{CASE\_SEVERITY} = `Not Selected' are excluded; if these are systematically different from labelled records, the model may not generalise to incoming unlabelled data.
 
-\textit{Methodological limitations.} The mapping of L2--L6 to Low/Medium/High assumes equal spacing between categories, which may not hold in practice. Reporting practices and severity assessment criteria may change over time, creating temporal drift. Generating SMOTE synthetic samples in 768-dimensional embedding space may create unrealistic data points that introduce noise.
+\textit{Methodological limitations.} The mapping of L2--L6 to Low/Medium/High assumes equal spacing between categories, which may not hold in practice. Reporting practices and severity assessment criteria may change over time, creating temporal drift. Generating SMOTE synthetic samples in a 768-dimensional embedding space may create unrealistic data points that introduce noise.
 
 \textit{Evaluation limitations.} The \texttt{CASE\_SEVERITY} labels are assumed correct without independent re-annotation. Unless full $k$-fold cross-validation is implemented, results may be sensitive to the particular train/test split. Calibrated probability thresholds may not generalise across deployment contexts.
 
@@ -2479,7 +1836,7 @@ The projections are conservative because severity prediction is inherently harde
 % ============================================================================
 \chapter{Results}
 
-This chapter presents the comprehensive experimental results from all seven iterations of the classification framework. Results are organized by iteration, with comparative analyses across models, datasets, and techniques.
+This chapter presents the experimental results reported for Iterations~0--7 of the classification framework. In addition, a structured placeholder is included for Iteration~8 as the reserved final refinement stage. Results are organized by iteration, with comparative analyses across models, datasets, and techniques.
 
 \section{Iteration 0: Baseline Results}
 
@@ -2772,6 +2129,29 @@ Flan-T5-Large (few-shot, Iter~7)       & 0.8554 & 0.0135 & 0.71\%  & None \\
     \item Traditional ML approaches remain superior for this domain-specific task
 \end{itemize}
 
+\section{Iteration 8: Placeholder for Final Refinement}
+
+Iteration~8 is retained as a structural placeholder for a final integrated experiment that would combine the strongest components identified in earlier iterations. Its intended purpose is to evaluate whether a consolidated configuration can further improve macro-average F1 and reduce the remaining gap to the RQ1 target. However, this iteration was not executed within the scope of the present thesis, and therefore no empirical performance metrics are reported here.
+
+\begin{table}[htbp]
+\centering
+\caption{Iteration 8 placeholder status}
+\label{tab:results-iter8}
+\begin{tabular}{@{}ll@{}}
+\toprule
+\textbf{Aspect} & \textbf{Status} \\
+\midrule
+Iteration type & Final integrated refinement stage \\
+Execution status & Not executed \\
+Primary purpose & Combine strongest components from Iterations~0--7 \\
+Reported metrics & Not available \\
+Included in thesis structure & Yes, as placeholder only \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Accordingly, Iteration~8 should be interpreted as a reserved methodological slot rather than as an additional source of empirical evidence.
+
 \section{Summary of Results Across All Iterations}
 
 \begin{table}[htbp]
@@ -2790,14 +2170,101 @@ Flan-T5-Large (few-shot, Iter~7)       & 0.8554 & 0.0135 & 0.71\%  & None \\
 5 & TBD   & TBD   & TBD & Aggressive SMOTE \\
 6 & TBD   & TBD   & TBD & Language-aware undersampling \\
 7 & 0.0135 & 0.0135 & No & LLM few-shot \\
+8 & -- & -- & No & Placeholder for final integrated refinement \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-\subsection{RQ4: Severity Prediction --- Projected Outcomes}
+\section{RQ4: Severity Prediction --- Projected Outcomes}
 \label{sec:rq4_results}
 
 The severity prediction framework described in Section~\ref{sec:rq4_methodology} was not experimentally implemented within the scope of this thesis. Based on the empirical characteristics of the Uniper HSSE dataset and published benchmarks in comparable domains, Table~\ref{tab:rq4_outcomes} summarises the projected outcomes for each implementation phase. Phase~1 (gradient boosting baseline) is projected to achieve macro F1 of 0.68--0.74 with High-severity recall of 0.65--0.75. Incorporating ordinal regression in Phase~2 and deep learning architectures in Phase~3 is projected to bring macro F1 to 0.73--0.80 and High-severity recall to 0.75--0.85. The full multi-task framework in Phase~4 is projected to achieve macro F1 of 0.75--0.82, meeting the RQ4 target of macro F1 $\geq 0.70$ and approaching the $\text{Recall}_\text{High} \geq 0.80$ target. The key risk factors constraining these projections are the scarcity of the High-severity class ($\sim$1{,}043 samples) and cross-country label inconsistency in the \texttt{CASE\_SEVERITY} field.
+
+\section{Results Summary}
+
+\begin{table}[htbp]
+\centering
+\caption{Iteration 7 Classification Results (Flan-T5-Large)}
+\label{tab:iter7-results}
+\begin{tabular}{@{}lr@{}}
+\toprule
+\textbf{Metric} & \textbf{Value} \\
+\midrule
+Total Records & 54,751 \\
+Process Safety (Actual) & 7,590 \\
+Non-Process Safety (Actual) & 47,161 \\
+\midrule
+Accuracy & 0.8554 (85.54\%) \\
+Precision (PS) & 0.1241 \\
+Recall (PS) & 0.0071 \\
+F1-Score (PS) & 0.0135 \\
+\midrule
+True Positives & 54 \\
+False Positives & 381 \\
+False Negatives & 7,536 \\
+True Negatives & 46,780 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Analysis of LLM Performance}
+
+The results reveal significant challenges with zero/few-shot LLM classification:
+
+\begin{itemize}
+    \item \textbf{High Accuracy, Low Recall:} The 85.54\% accuracy is misleading due to class imbalance. The model predominantly predicts Non-Process Safety, achieving high accuracy by correctly classifying the majority class.
+    
+    \item \textbf{Extremely Low PS Recall:} Only 54 out of 7,590 Process Safety incidents were correctly identified (0.71\% recall), indicating the LLM fails to recognize most PS incidents.
+    
+    \item \textbf{Precision-Recall Trade-off:} While precision is low (12.41\%), the model is overly conservative in predicting Process Safety.
+    
+    \item \textbf{Prompt Sensitivity:} LLM performance is highly sensitive to prompt wording and example selection.
+\end{itemize}
+
+\section{Comparison with Traditional ML}
+
+\begin{table}[htbp]
+\centering
+\caption{Traditional ML vs. LLM Classification Comparison}
+\label{tab:ml-vs-llm}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+\textbf{Approach} & \textbf{Macro F1} & \textbf{PS Recall} & \textbf{Training Required} \\
+\midrule
+BERT + SVM (Iter 0) & 0.7899 & 82.48\% & Yes \\
+Multilingual BERT + SVM (Iter 3) & 0.86--0.89 & 78--85\% & Yes \\
+XGBoost Ensemble (Iter 4) & 0.85--0.90 & 80--88\% & Yes \\
+Flan-T5-Large (Iter 7) & 0.0135 & 0.71\% & No \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{Key Findings for RQ2 and RQ3}
+
+\textbf{RQ2 (Traditional ML vs. LLM):}
+\begin{itemize}
+    \item Traditional ML approaches (BERT embeddings + classifiers) significantly outperform zero/few-shot LLM classification
+    \item The performance gap is substantial: 0.79--0.90 macro F1 for traditional ML vs. 0.01 for LLM
+    \item LLMs require fine-tuning or more sophisticated prompting strategies for competitive performance
+\end{itemize}
+
+\textbf{RQ3 (Hazard Type Extraction):}
+\begin{itemize}
+    \item Few-shot prompting with explicit process safety definitions shows promise for hazard identification
+    \item However, current results do not meet the 80\% precision target
+    \item Multilingual few-shot examples enable cross-lingual classification without translation
+\end{itemize}
+
+\section{Limitations and Future Directions}
+
+\begin{itemize}
+    \item \textbf{Prompt Optimization:} More sophisticated prompt engineering (chain-of-thought, self-consistency) may improve performance
+    \item \textbf{Fine-Tuning:} Domain-specific fine-tuning of LLMs on process safety data could dramatically improve results
+    \item \textbf{Model Scale:} Larger models (GPT-4, Claude) may exhibit stronger few-shot learning capabilities
+    \item \textbf{Retrieval-Augmented Generation:} RAG approaches could provide more relevant examples dynamically
+    \item \textbf{Hybrid Approaches:} Combining LLM-generated features with traditional classifiers warrants investigation
+\end{itemize}
+
 
 % ============================================================================
 % CHAPTER: DISCUSSION
@@ -2832,7 +2299,7 @@ The best result achieved so far (macro F1 = 0.8043) represents a \textbf{2.18 pe
     \item Gradient boosting classifiers (XGBoost, LightGBM) outperforming LinearSVC
 \end{enumerate}
 
-Whether the 0.85 target is achievable will depend on the outcomes of Iterations~5 and~6 (aggressive class balancing) and future fine-tuning experiments.
+Whether the 0.85 target is ultimately achievable will depend on the outcomes of Iterations~5 and~6, together with the planned final integration step represented by the Iteration~8 placeholder and possible future fine-tuning experiments.
 
 \subsection{RQ2: Traditional ML vs. LLM Comparison}
 
@@ -2890,7 +2357,7 @@ The 80\% precision target was \textbf{not achieved} with current few-shot approa
     \item Hybrid approaches combining LLM features with trained classifiers
 \end{enumerate}
 
-\subsubsection{RQ4: Severity Prediction}
+\subsection{RQ4: Severity Prediction}
 
 \textbf{Research Question:} How suitable is a proposed classification framework for predicting incident severity levels (e.g., low, medium, severe) in the business case?
 
@@ -2918,6 +2385,10 @@ The primary risk factors are: (a) the scarcity of the High severity class ($\sim
 %\end{itemize}
 
 %This remains an open research direction for future work.
+
+\subsection{Role of the Iteration 8 Placeholder}
+
+Iteration~8 occupies a distinct role in the overall thesis structure. Unlike Iterations~0--7, it does not report an executed experiment, but instead serves as the reserved final integration stage of the research design. Its methodological purpose is to represent the logical next step after the analysis of embedding strategies, multilingual transfer, balancing methods, classifier selection, and LLM-based prompting. In a revised or extended version of this work, Iteration~8 would be the natural point at which the strongest components from the earlier iterations are consolidated into a final benchmark configuration. The presence of this placeholder therefore makes the experimental roadmap more explicit and clarifies that the current thesis reports completed results only up to Iteration~7.
 
 \section{Key Technical Findings}
 
@@ -3024,7 +2495,7 @@ Based on experimental findings, the following deployment strategy is recommended
 
 \section{Summary of Contributions}
 
-This thesis investigated the application of machine learning and large language models for automated classification of process safety incidents in multilingual industrial datasets. Through seven iterative experimental phases, a comprehensive framework was developed and evaluated, yielding the following key contributions:
+This thesis investigated the application of machine learning and large language models for automated classification of process safety incidents in multilingual industrial datasets. Through Iterations~0--8, a comprehensive experimental framework was designed, of which Iterations~0--7 were executed and Iteration~8 was reserved as a final placeholder refinement stage, yielding the following key contributions:
 
 \begin{enumerate}
     \item \textbf{Robust Baseline Establishment:} A BERT-based embedding pipeline with feature standardisation and an RBF-kernel SVM classifier achieved a macro F1-score of 0.7825 on the manually curated English subset, establishing the official Iteration~0 baseline.
@@ -3069,6 +2540,10 @@ The developed classification framework offers significant practical value for in
     \item \textbf{Scalability:} Framework processes 1000+ incidents per minute with pre-computed embeddings
 \end{itemize}
 
+\section{Iteration 8 as a Reserved Final Step}
+
+A final Iteration~8 placeholder has been included in the thesis structure to represent the intended integration stage of the experimental framework. Although this stage was not executed within the available time frame, it has methodological value because it marks the point at which the strongest findings from the completed iterations would be consolidated into a final benchmark configuration. Its inclusion therefore clarifies the logical endpoint of the experimental roadmap and separates completed evidence from planned refinement.
+
 \section{Limitations and Future Work}
 
 While significant progress was achieved, several limitations warrant future investigation:
@@ -3088,12 +2563,14 @@ This research demonstrates that machine learning, when properly configured with 
 
 The clear superiority of trained embedding-classifier pipelines over few-shot LLM approaches for this domain-specific task highlights the importance of empirical evaluation when selecting AI technologies for safety-critical applications. As language models continue to evolve, future work should revisit LLM-based approaches with domain-adapted models and more sophisticated prompting strategies.
 
+\printbibliography
+
 % ============================================================================
 % APPENDIX
 % ============================================================================
 \appendix
 
-\chapter{Supplementary Materials}
+\chapter{APPENDIX}
 
 \section{Code Repository}
 
@@ -3105,7 +2582,7 @@ The complete source code for all experiments is available at:
 
 The repository includes:
 \begin{itemize}
-    \item Jupyter notebooks for all seven iterations (\texttt{\_iteration\_0.ipynb} through \texttt{\_iteration\_7.ipynb})
+    \item Jupyter notebooks for Iterations~0--8 (\texttt{\_iteration\_0.ipynb} through \texttt{\_iteration\_8.ipynb}), with Iteration~8 retained as a reserved placeholder if no executable notebook is ultimately included
     \item Data preprocessing scripts
     \item Model training and evaluation pipelines
     \item Visualization and analysis tools
@@ -3700,6 +3177,24 @@ for k, v in DATASET_FILES.items():
     df['LANGUAGE'] = lang_tag
 \end{lstlisting}
 
+% ------------------------------------------------------------------
+\subsection*{Iteration 8 -- Placeholder Experimental Stub}
+% ------------------------------------------------------------------
+
+\begin{lstlisting}[label=lst:iter8-placeholder,
+  caption={Placeholder stub for Iteration~8, reserved for final integrated refinement of the strongest components identified in earlier iterations.}]
+ITERATION_8_PLAN = {
+    "status": "placeholder_only",
+    "objective": "final integrated refinement",
+    "embedding_model": "best model from Iterations 4--6",
+    "pooling": "mean",
+    "classifier": "best classifier from advanced ML experiments",
+    "balancing": "best trade-off strategy from Iterations 4--6",
+    "threshold_optimization": True,
+    "notes": "No empirical execution in the current thesis version"
+}
+\end{lstlisting}
+
 \section{Dataset Statistics}
 
 \begin{table}[htbp]
@@ -3824,5 +3319,5 @@ Detailed false positive and false negative samples are exported to:
     \item \texttt{Results/\_iteration\_7/false\_negatives.csv}
 \end{itemize}
 
-\printbibliography
+
 \end{document}
