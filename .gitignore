@@ -189,6 +189,8 @@ cython_debug/
 /Tests/
 /_old_iteration_files/
 /_Iterations/_old_iteration_files/
+/.github/
+
 
 Betas/
 NLP_LLMs/
