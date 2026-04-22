@@ -198,6 +198,10 @@ SVM/
 desktop.ini
 Previous Master Dataset (Not in use)/
 
+# macOS metadata
+.DS_Store
+**/.DS_Store
+
 # Data files
 *.json
 *.csv
